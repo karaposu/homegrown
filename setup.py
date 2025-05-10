@@ -5,11 +5,11 @@ import os
 
 setup(
 
-    name='native',  # Package name
-    version='0.0.1',  # Version of your package
+    name='homegrown',  # Package name
+    version='0.0.2',  # Version of your package
     author='Enes Kuzucu',  # Your name
     
-    description='LLM native Agent Framework',  # Short description
+    description='The LLM-Native Agent Framework',  # Short description
     long_description=open('README.md').read(),  # Long description from a README file
     long_description_content_type='text/markdown',  # Type of the long description
     packages=find_packages(),  # Automatically find packages in the directory
