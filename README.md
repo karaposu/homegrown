@@ -1,40 +1,78 @@
+# **Homegrown: A Swarm-Native LLM Operating System**
 
-# Native 
-Agentic workflows uses 2 steps
+Homegrown is designed to allow swarms of agentic processes to be as flexible, self-governing, and self-organizing as possible—without locking them into rigid schemas. We believe this is the key to unlocking emergent behaviors.
 
-1. Agent loops: which handles core operation of taking an input and giving an output in micro level. 
+Here are our core features:
 
-2. Agentic Core Components:  peripherals for agentic workflows which enhances agentic workflow into a system level. and give them actual useful problem solving capabilities 
+---
 
+### 1. Each Core (a member of the swarm) runs an Agentic Loop:
 
-Agent loop consists of core internal flow :
+> **intent → plan → act → interpret → reflect → loop**
 
-intent  →  plan  →  act  →  interpret  → loop reflection - >  memory ↺
+This enables each Core to independently understand, execute, and refine its role in a dynamic system.
 
-And Agentic Core Components are abstarct features such like:  Multilayer Context
-Reflection
-Extensive Planning       
-Tool Orchestration
-Self-Modeling 
-Dynamic Memory
-Integrated Awareness
-Holistic Memory
-Autonomous Productive Capacity
+---
 
+### 2. Cores can spawn other Cores
 
-there are different approaches to achive/reach these Core Components. And all frameworks treats LLM operations as not enough and support and fill between the operations with lots of python code. 
+Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations.  
+This mimics how humans handle unfamiliar problems:
 
-This has 2 harmful outcomes.  First is scalability problems. To scale your agent you should enhance both agent loop codes and your code resposible of creating abstarct features. Which is not maintainable on the long run. 
+> “A developer is assigned a task about voice processing.  
+> They’re unfamiliar with the domain, so they allocate dedicated time to research and run small experiments to validate their understanding.  
+> Once confident, they return to the original task and continue working—now informed.”
 
-Second harmful outcome is about chaining and self calling and recursive looping.  Such manual code based scaffolding makes chaining and self calling non-native and tool calling like.  
+This recursive delegation and learning process is native to Homegrown.
 
-So with Native what we do is like every organ in the body is composed of cells and cells are made from atoms, we maintain similar structure in the overall agent by composing each piece from LLMs.  
-Agent loop components (intent,  plan ,  act ,  interpret , loop reflection ) are all composed of LLM calls. We dont use python scaffold around everything and this is amazing. 
+---
 
+### 3. All information is stored in **Sitozol**
 
+Sitozol is the shared memory substrate that all Cores can access.  
+It allows persistent state, shared knowledge, and coordination without tight coupling.
 
-our framework has 2 slogans
+---
 
-- minimal glue code, maximal LLM calls
-- When GLue is absolutely needed, we also use an LLM for glueing
+### 4. Hierarchical organization and adaptive reshaping
+
+Cores can ask their parents—or the user—for clarification or details.  
+Feedback flows both ways, and the swarm adapts based on that feedback.
+
+> Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding.  
+> This avoids blind execution and encourages meaningful adaptation.
+
+---
+
+## 2. Goals
+
+We’ve identified three representative challenges—each requiring a different problem-solving paradigm—to showcase Homegrown’s core strengths:
+
+---
+
+### 1. **Long-Form Document Generation**  
+**Request:** “Produce a comprehensive 100-page analysis of the future of the world with AI.”  
+**Why it matters:**
+- Demonstrates the system’s ability to orchestrate its own outputs over multiple passes (respecting model token limits and document length constraints).
+- Shows how Homegrown breaks a massive goal into smaller chunks, then stitches those parts into a coherent, structured whole.
+- Validates that Cores can recognize their own limitations (e.g., context window) and spawn or collaborate to fill the gaps.
+
+---
+
+### 2. **Meta-Documentation Generation**  
+**Request:** “Generate system documentation for a Python backend script that itself produces long text files based on an arbitrary topic.”  
+**Why it matters:**
+- Goes beyond generating content to testing whether Homegrown can introspect its own workflow.
+- Verifies that Cores understand the architecture behind “generate long documents,” reviewing logs or thought-logs to architect a proper solution.
+- Confirms the system doesn’t just produce prose—it understands the process that produces that prose.
+
+---
+
+### 3. **Multi-Tool Orchestration for Wild-Data Processing**  
+**Request:** “Build a pipeline that uses asynchronous web scraping, data extraction and validation, plus database operations to ingest unstructured data from the web.”  
+**Why it matters:**
+- Validates Homegrown’s agility in combining multiple tools with precise coordination.
+- Tests the system’s ability to handle “wild” or unnormalized data found via scraping, then normalize, validate, and persist it in a database.
+- Shows that Homegrown can dynamically select, sequence, and monitor disparate tools to complete a complex, real-world workflow.
+
 
