@@ -1,4 +1,4 @@
-# **Homegrown: A Swarm-Native LLM Operating System**
+# **Homegrown: A Swarm-Native LLM Framework**
 
 Homegrown is designed to allow swarms of agentic processes to be as flexible, self-governing, and self-organizing as possible—without locking them into rigid schemas. We believe this is the key to unlocking emergent behaviors.
 
@@ -6,12 +6,12 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
 
 ## Main Features
 
-* **Each  member (Core) of the swarm runs an Agentic Loop**  
+ **1. Each  member (Core) of the swarm runs an Agentic Loop**  
   - **intent → plan → act → interpret → reflect → ↺** 
 
   - This enables each Core to independently understand, execute, and refine its role in a dynamic system.
 
-* **Cores can natively spawn other Cores**  
+2.**Cores can natively spawn other Cores**  
   - Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. 
   
   - This mimics how humans handle unfamiliar problems. Imagine a developer receives a task they don't understand. How would they act?
@@ -25,7 +25,7 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
   
 
 
-* **All information is stored in Sitozol**  
+3.**All information is stored in Sitozol**  
   - Sitozol is the shared memory substrate that all Cores can access.  
   It allows persistent state, shared knowledge, and coordination without tight coupling.
 
@@ -33,14 +33,14 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
 
 
 
-* **Hierarchical organization and adaptive reshaping**  
+4.**Hierarchical organization and adaptive reshaping**  
    - Cores can ask their parents—or the user—for clarification or details.  
    Feedback flows both ways, and the swarm adapts based on that feedback.
 
    - Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding. This avoids blind execution and encourages meaningful adaptation.
 
 
-* **Workflow Myelination: Native way for optimisation**  
+5.**Workflow Myelination: Native way for optimisation**  
 
    - In neuroscience, myelination is the process by which neural pathways become insulated and vastly faster—repeated activity “hard-wires” a route so signals fire more efficiently. Similarly, once Homegrown has learned and validated a cascade of agentic loops, “myelinating” that workflow bundles it into a single, streamlined tool.
 
@@ -52,14 +52,15 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
 
 
 
-## 2. Goals
+## 2. Problem Space
 
 We’ve identified three representative challenges—each requiring a different problem-solving paradigm—to showcase Homegrown’s core strengths:
 
 
 
-### 1. **Long-Form Document Generation**  
-**Request:** “Produce a comprehensive 100-page analysis of the future of the world with AI.”  
+### 2.1. **Long-Form Document Generation**  
+**Request:** “Produce a comprehensive 100-page analysis of the future of the world with AI.” 
+
 **Why it matters:**
 - Demonstrates the system’s ability to orchestrate its own outputs over multiple passes (respecting model token limits and document length constraints).
 - Shows how Homegrown breaks a massive goal into smaller chunks, then stitches those parts into a coherent, structured whole.
@@ -67,8 +68,9 @@ We’ve identified three representative challenges—each requiring a different 
 
 
 
-### 2. **Meta-Documentation Generation**  
+### 2.2. **Meta-Documentation Generation**  
 **Request:** “Generate system documentation for a Python backend script that itself produces long text files based on an arbitrary topic.”  
+
 **Why it matters:**
 - Goes beyond generating content to testing whether Homegrown can introspect its own workflow.
 - Verifies that Cores understand the architecture behind “generate long documents,” reviewing logs or thought-logs to architect a proper solution.
@@ -76,8 +78,10 @@ We’ve identified three representative challenges—each requiring a different 
 
 
 
-### 3. **Multi-Tool Orchestration for Wild-Data Processing**  
+### 2.3. **Multi-Tool Orchestration for Wild-Data Processing**  
+
 **Request:** “Build a pipeline that uses asynchronous web scraping, data extraction and validation, plus database operations to ingest unstructured data from the web.”  
+
 **Why it matters:**
 - Validates Homegrown’s agility in combining multiple tools with precise coordination.
 - Tests the system’s ability to handle “wild” or unnormalized data found via scraping, then normalize, validate, and persist it in a database.
