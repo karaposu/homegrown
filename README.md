@@ -12,20 +12,24 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
   - This enables each Core to independently understand, execute, and refine its role in a dynamic system.
 
 * **Cores can natively spawn other Cores**  
-  - Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. This mimics how humans handle unfamiliar problems:
+  - Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. 
+  
+  - This mimics how humans handle unfamiliar problems. Imagine a developer receives a task they don't understand. How would they act?
 
-     > “A developer is assigned a task about voice processing.  
-    > They’re unfamiliar with the domain, so they allocate dedicated time to research and run small experiments to validate their understanding.  
-    > Once confident, they return to the original task and continue working—now informed.”
+    ```
+    He would allocate dedicated time to research and run small experiments to validate his understanding. Once confident, they return to the original task and continue working—now informed.
+    ```
 
-   - This recursive delegation and learning process is native to Homegrown.
+  - This recursive delegation and learning process is native to Homegrown.
 
-   - Sitozol also holds tools and multilayer context retrivial logic. 
+  
 
 
 * **All information is stored in Sitozol**  
   - Sitozol is the shared memory substrate that all Cores can access.  
   It allows persistent state, shared knowledge, and coordination without tight coupling.
+
+   - Sitozol also holds tools and multilayer context retrivial logic. 
 
 
 
