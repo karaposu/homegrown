@@ -6,30 +6,45 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
 
 ## Main Features
 
-* **Each Core (a member of the swarm) runs an Agentic Loop**  
-  **intent → plan → act → interpret → reflect → ↺** 
-  This enables each Core to independently understand, execute, and refine its role in a dynamic system.
+* **Each  member (Core) of the swarm runs an Agentic Loop**  
+  - **intent → plan → act → interpret → reflect → ↺** 
+
+  - This enables each Core to independently understand, execute, and refine its role in a dynamic system.
 
 * **Cores can natively spawn other Cores**  
-  Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. This mimics how humans handle unfamiliar problems:
+  - Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. This mimics how humans handle unfamiliar problems:
 
      > “A developer is assigned a task about voice processing.  
     > They’re unfamiliar with the domain, so they allocate dedicated time to research and run small experiments to validate their understanding.  
     > Once confident, they return to the original task and continue working—now informed.”
 
-   This recursive delegation and learning process is native to Homegrown.
+   - This recursive delegation and learning process is native to Homegrown.
+
+   - Sitozol also holds tools and multilayer context retrivial logic. 
 
 
 * **All information is stored in Sitozol**  
-  Sitozol is the shared memory substrate that all Cores can access.  
+  - Sitozol is the shared memory substrate that all Cores can access.  
   It allows persistent state, shared knowledge, and coordination without tight coupling.
 
 
+
 * **Hierarchical organization and adaptive reshaping**  
-   Cores can ask their parents—or the user—for clarification or details.  
+   - Cores can ask their parents—or the user—for clarification or details.  
    Feedback flows both ways, and the swarm adapts based on that feedback.
 
-   Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding. This avoids blind execution and encourages meaningful adaptation.
+   - Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding. This avoids blind execution and encourages meaningful adaptation.
+
+
+* **Workflow Myelination: Native way for optimisation**  
+
+   - In neuroscience, myelination is the process by which neural pathways become insulated and vastly faster—repeated activity “hard-wires” a route so signals fire more efficiently. Similarly, once Homegrown has learned and validated a cascade of agentic loops, “myelinating” that workflow bundles it into a single, streamlined tool.
+
+   
+
+  - It “myelinates” that sequence—translating it into a compact, native function (or package) that carries the same logic but no longer needs per-step LLM prompts. This drastically reduces latency and cost for discovered tasks.   
+
+  - If a myelinated task receives new type of data, The swarm can wake up and update the whole myelination. Or choose to process it separately as an exception. 
 
 
 
