@@ -2,47 +2,37 @@
 
 Homegrown is designed to allow swarms of agentic processes to be as flexible, self-governing, and self-organizing as possible—without locking them into rigid schemas. We believe this is the key to unlocking emergent behaviors.
 
-Here are our core features:
-
 ---
 
-### 1. Each Core (a member of the swarm) runs an Agentic Loop:
 
-> **intent → plan → act → interpret → reflect → loop**
+## Main Features
 
-This enables each Core to independently understand, execute, and refine its role in a dynamic system.
+* **Each Core (a member of the swarm) runs an Agentic Loop**  
+  **intent → plan → act → interpret → reflect → ↺** 
+  This enables each Core to independently understand, execute, and refine its role in a dynamic system.
 
+* **Cores can natively spawn other Cores**  
+  Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations. This mimics how humans handle unfamiliar problems:
+
+     > “A developer is assigned a task about voice processing.  
+    > They’re unfamiliar with the domain, so they allocate dedicated time to research and run small experiments to validate their understanding.  
+    > Once confident, they return to the original task and continue working—now informed.”
+
+   This recursive delegation and learning process is native to Homegrown.
+
+
+* **All information is stored in Sitozol**  
+  Sitozol is the shared memory substrate that all Cores can access.  
+  It allows persistent state, shared knowledge, and coordination without tight coupling.
+
+
+* **Hierarchical organization and adaptive reshaping**  
+   Cores can ask their parents—or the user—for clarification or details.  
+   Feedback flows both ways, and the swarm adapts based on that feedback.
+
+   Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding. This avoids blind execution and encourages meaningful adaptation.
 ---
 
-### 2. Cores can spawn other Cores
-
-Each Core has the ability to spawn new sub-Cores to deliberate on a specific task and run their own agentic loop in iterations.  
-This mimics how humans handle unfamiliar problems:
-
-> “A developer is assigned a task about voice processing.  
-> They’re unfamiliar with the domain, so they allocate dedicated time to research and run small experiments to validate their understanding.  
-> Once confident, they return to the original task and continue working—now informed.”
-
-This recursive delegation and learning process is native to Homegrown.
-
----
-
-### 3. All information is stored in **Sitozol**
-
-Sitozol is the shared memory substrate that all Cores can access.  
-It allows persistent state, shared knowledge, and coordination without tight coupling.
-
----
-
-### 4. Hierarchical organization and adaptive reshaping
-
-Cores can ask their parents—or the user—for clarification or details.  
-Feedback flows both ways, and the swarm adapts based on that feedback.
-
-> Unlike static pipelines, Homegrown supports **feedback on feedback**—Cores can challenge or reshape their instructions if they conflict with system knowledge or contextual understanding.  
-> This avoids blind execution and encourages meaningful adaptation.
-
----
 
 ## 2. Goals
 
