@@ -53,8 +53,9 @@ Homegrown is designed to allow swarms of agentic processes to be as flexible, se
 
 
 ## 2. Problem Space
+To demonstrate Homegrown’s versatility, we defined three benchmark challenges, each demanding a different problem-solving paradigm:
 
-We’ve identified three representative challenges—each requiring a different problem-solving paradigm—to showcase Homegrown’s core strengths:
+
 
 
 
@@ -63,7 +64,7 @@ We’ve identified three representative challenges—each requiring a different 
 
 **Why it matters:**
 - Demonstrates the system’s ability to orchestrate its own outputs over multiple passes (respecting model token limits and document length constraints).
-- Shows how Homegrown breaks a massive goal into smaller chunks, then stitches those parts into a coherent, structured whole.
+- Shows that Cores can decompose a massive goal into smaller pieces, then reconstruct a coherent, structured whole..
 - Validates that Cores can recognize their own limitations (e.g., context window) and spawn or collaborate to fill the gaps.
 
 
@@ -72,9 +73,11 @@ We’ve identified three representative challenges—each requiring a different 
 **Request:** “Generate system documentation for a Python backend script that itself produces long text files based on an arbitrary topic.”  
 
 **Why it matters:**
-- Goes beyond generating content to testing whether Homegrown can introspect its own workflow.
-- Verifies that Cores understand the architecture behind “generate long documents,” reviewing logs or thought-logs to architect a proper solution.
-- Confirms the system doesn’t just produce prose—it understands the process that produces that prose.
+- Introspection: Tests whether Homegrown can reflect on its own machinery. Cores must interpret “how do we generate long documents?” by inspecting thought logs or prior runs.
+
+- Architectural understanding: Verifies that Cores can outline the backend script’s workflow—reading logs, identifying key components (prompt templates, chunking logic, file I/O), and then document that architecture.
+
+- Process-aware output: Ensures that Homegrown doesn’t just produce prose, but truly understands and explains how it produces that prose.
 
 
 
@@ -83,7 +86,8 @@ We’ve identified three representative challenges—each requiring a different 
 **Request:** “Build a pipeline that uses asynchronous web scraping, data extraction and validation, plus database operations to ingest unstructured data from the web.”  
 
 **Why it matters:**
-- Validates Homegrown’s agility in combining multiple tools with precise coordination.
+- Tool choreography: Validates Homegrown’s agility in combining multiple tools—scrapers, parsers, validators, and DB writers—with precise sequencing and conditional fallback.
+
 - Tests the system’s ability to handle “wild” or unnormalized data found via scraping, then normalize, validate, and persist it in a database.
 - Shows that Homegrown can dynamically select, sequence, and monitor disparate tools to complete a complex, real-world workflow.
 
