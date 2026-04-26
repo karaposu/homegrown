@@ -1,57 +1,36 @@
 #!/bin/bash
-# Install AlignStack skills into OpenAI Codex format
+# Install homegrown skills into OpenAI Codex format
 # Transforms commands/*.md → .codex/skills/<name>/SKILL.md
 #
 # Usage:
-#   bash install_codex.sh              # local repo-level (default when in repo)
-#   bash install_codex.sh --user       # user-level (~/.codex/skills/)
-#   bash install_codex.sh --repo       # repo-level (.codex/skills/)
+#   bash install_for_codex.sh              # local repo-level (default when in repo)
+#   bash install_for_codex.sh --user       # user-level (~/.codex/skills/)
+#   bash install_for_codex.sh --repo       # repo-level (.codex/skills/)
 #
 # Remote (curl):
-#   curl -sL https://raw.githubusercontent.com/karaposu/alignstack/main/install_codex.sh | bash
+#   curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/commands/install_for_codex.sh | bash
 #   curl -sL ... | bash -s -- --repo   # install to current directory's .codex/skills/
 
 set -euo pipefail
 
-RAW_URL="https://raw.githubusercontent.com/karaposu/alignstack/main"
+RAW_URL="https://raw.githubusercontent.com/karaposu/homegrown/main"
 CLEANUP=""
 
-# Keep this list in sync with commands/install.sh
+# Keep this list in sync with commands/install_for_claude.sh
 REMOTE_COMMANDS=(
-  devdocs-foundation.md
-  devdocs-foundation-concepts.md
-  devdocs-foundation-simplified-concepts.md
-  devdocs-foundation-identify-modules.md
-  devdocs-foundation-architecture.md
-  elaborate.md
-  task-desc.md
-  task-plan.md
-  critic.md
-  critic-d.md
-  sense-making.md
-  innovate.md
-  td_critique.md
-  decompose.md
-  explore.md
-  wayfinding.md
-  inquiry.md
-  comprehend.md
   MVL.md
   MVL+.md
-  reflect.md
+  comprehend.md
+  decompose.md
+  elaborate.md
+  explore.md
+  innovate.md
+  inquiry.md
   navigation.md
-  arch-small-summary.md
-  arch-intro.md
-  arch-traces.md
-  arch-traces-2.md
-  arch-top-improvements.md
-  dead-code-index.md
-  dead-code-concepts.md
-  roadmap.md
-  overview-report.md
-  align.md
-  align-modes.md
-  devdocs-archivist.md
+  reflect.md
+  sense-making.md
+  td-critique.md
+  wayfinding.md
 )
 
 # Detect source: local repo or remote download
@@ -59,7 +38,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd 2>/dev/
 COMMANDS_DIR="$SCRIPT_DIR/commands"
 
 if [ ! -d "$COMMANDS_DIR" ]; then
-  echo "Downloading AlignStack commands..."
+  echo "Downloading Homegrown commands..."
   TMPDIR=$(mktemp -d)
   CLEANUP="$TMPDIR"
   COMMANDS_DIR="$TMPDIR/commands"

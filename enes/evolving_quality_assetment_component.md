@@ -61,7 +61,7 @@ Has 2 main inputs:
 
 ---
 
-### 3. Retrospective (delayed, empirical)
+### 3. Retrospective RC (delayed, empirical)
 
 **When:** Later. Days, weeks, sometimes months after the output was produced. After the finding has been used, after the spec edit has been tested in real inquiries, after downstream consequences have played out.
 
@@ -72,10 +72,10 @@ Has 2 main inputs:
 It mainly employs the reflect discipline.
 
 **Examples:**
-- A finding was superseded 3 weeks later because it was wrong — Retrospective signal: that finding was bad
-- A spec edit led to noticeably better discipline output in subsequent inquiries — Retrospective signal: that edit was good
-- A hunch that "this will be similar to X" turned out to be exactly right — Retrospective signal: the hunch mechanism was well-calibrated for that case
-- A finding has been cited by 4 subsequent inquiries — Retrospective signal: that finding was valuable
+- A finding was superseded 3 weeks later because it was wrong — Retrospective RC signal: that finding was bad
+- A spec edit led to noticeably better discipline output in subsequent inquiries — Retrospective RC signal: that edit was good
+- A hunch that "this will be similar to X" turned out to be exactly right — Retrospective RC signal: the hunch mechanism was well-calibrated for that case
+- A finding has been cited by 4 subsequent inquiries — Retrospective RC signal: that finding was valuable
 
 ---
 
@@ -102,9 +102,9 @@ The graduated autonomy model (from `enes/desc.md`) maps directly onto quality aw
 | Autonomy level | Quality awareness state |
 |---|---|
 | Level 0 (human reviews everything) | Human is all three layers |
-| Level 1 (human reviews process changes) | System has Primitive; human provides Retrospective + Predictive |
-| Level 2 (human reviews uncertain cases) | System has Primitive + partial Retrospective; human provides Predictive + handles Retrospective edge cases |
-| Level 3 (human sets strategic direction) | System has Primitive + Retrospective + Predictive; human reviews calibration quality |
+| Level 1 (human reviews process changes) | System has Primitive RC; human provides Retrospective RC + Predictive RC |
+| Level 2 (human reviews uncertain cases) | System has Primitive RC + partial Retrospective RC; human provides Predictive RC + handles Retrospective RC edge cases |
+| Level 3 (human sets strategic direction) | System has Primitive RC + Retrospective RC + Predictive RC; human reviews calibration quality |
 | Level 4+ (system proposes own direction) | System's quality awareness is self-sustaining; human observes |
 
 Quality awareness IS the substrate of autonomy. A system that can't tell good from bad output can't be trusted to self-modify. Each autonomy level requires the corresponding quality awareness capability.

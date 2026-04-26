@@ -132,18 +132,18 @@ The signature claim — "geometrical similarities between shapes even if they ar
 
 The system's quality awareness is structured as three layers — Primitive Regression Checker (immediate, deterministic), Predictive Regression Checker (immediate, probabilistic), and Retrospective (delayed, empirical). The full explanation of what these layers are, how they interact, and the trajectory from human-provided to system-provided quality awareness is in `enes/evolving_quality_assetment_component.md`.
 
-In shorthand throughout this document: **Primitive RC = L1, Predictive RC = L3, Retrospective = L2.** The L-numbering reflects temporal structure (L1 at T0 deterministic, L3 at T0 probabilistic, L2 at T2+ empirical).
+**Layer naming convention.** Throughout this document the three layers are referenced by their full names: **Primitive RC**, **Predictive RC**, and **Retrospective RC**. They are temporally distinct: Primitive RC fires at T0 deterministically; Predictive RC fires at T0 probabilistically; Retrospective RC fires at T2+ empirically.
 
-The Predictive RC (L3) predicts at T0; the Retrospective (L2) confirms or contradicts at T2+; the delta is calibration data. Over time L3 hunches become more reliable as the calibration loop runs. **This closed loop IS the Baldwin cycle** — the system's primary mechanism for self-improvement.
+The Predictive RC predicts at T0; the Retrospective RC confirms or contradicts at T2+; the delta is calibration data. Over time the Predictive RC's hunches become more reliable as the calibration loop runs. **This closed loop IS the Baldwin cycle** — the system's primary mechanism for self-improvement.
 
-**Primitive-to-layer placement.** Most of the 11 admitted primitives live primarily in L3 (the Predictive RC / real-time cognitive layer). Two span layers:
+**Primitive-to-layer placement.** Most of the 11 admitted primitives live primarily in the Predictive RC (the real-time cognitive layer). Two span layers:
 
-- **Metacognition** operates at L3 in-call (the "I'm stuck" signal, INSUFFICIENT_INTUITION outputs) AND at L2 system-level (observing calibration curves over time, signaling when a primitive needs refinement).
-- **Working Memory** operates at L3 ephemerally (the in-call buffer; LLM context scope) AND at L2 when a persistent `thinking_space.md` artifact ships (Phase δ of the primitive build, gated on Baldwin cycle requiring cross-call continuity).
+- **Metacognition** operates at the Predictive RC in-call (the "I'm stuck" signal, INSUFFICIENT_INTUITION outputs) AND at the Retrospective RC system-level (observing calibration curves over time, signaling when a primitive needs refinement).
+- **Working Memory** operates at the Predictive RC ephemerally (the in-call buffer; LLM context scope) AND at the Retrospective RC when a persistent `thinking_space.md` artifact ships (Phase δ of the primitive build, gated on Baldwin cycle requiring cross-call continuity).
 
-### 5. The L3 mechanism: the /intuit discipline
+### 5. The Predictive RC mechanism: the /intuit discipline
 
-L3 is implemented as a first-class thinking discipline, `/intuit`, grounded in **Case-Based Reasoning** (Retrieve → Reuse → Revise, Aamodt & Plaza 1994) and **Structure-Mapping Engine** (Alignment → Projection, Gentner). Core operation is a three-step transform-space pattern:
+The Predictive RC is implemented as a first-class thinking discipline, `/intuit`, grounded in **Case-Based Reasoning** (Retrieve → Reuse → Revise, Aamodt & Plaza 1994) and **Structure-Mapping Engine** (Alignment → Projection, Gentner). Core operation is a three-step transform-space pattern:
 
 **Forward transform → Scan → Projection**
 
@@ -168,7 +168,7 @@ Embeddings are NOT foundational at MVP — they are a Phase D scaling layer. At 
 
 Each seed carries:
 - `source_anchor`, `abstraction`, `corpus_match`, `structural_alignment`, `transferable_projection`
-- `prediction`, `prediction_window`, `observable_outcome` (Popperian — every seed is a testable prediction with a specific L2 signal that will later confirm or refute)
+- `prediction`, `prediction_window`, `observable_outcome` (Popperian — every seed is a testable prediction with a specific Retrospective RC signal that will later confirm or refute)
 - `reliability` (0-1; honest confidence)
 - `hunch_state` ∈ {POSITIVE, NEGATIVE, INSUFFICIENT_HUNCH}
 - `source_type` ∈ {CORPUS_MATCH, TRAINING_DISTRIBUTION_MATCH, ADVERSARIAL_MATCH, NOT_APPLICABLE, INSUFFICIENT_INTUITION}
@@ -185,11 +185,11 @@ Alongside the seeds, every `/intuit` call produces a **primitive invocation trac
 - **`/innovate`:** embedded + inquiry-state-first — seeds feed innovation mechanisms (especially Domain Transfer and Combination). Structural analogies from `/intuit` become starting points for Domain Transfer; failed-projection seeds become Absence Recognition inputs.
 - **`/td-critique`:** embedded validator mode — prosecution and defense pass candidate hypotheses; `/intuit` returns corpus-grounded verdicts informing adversarial testing.
 - **Pipeline-early (Phase C opt-in, Phase D default-on):** `/MVL+` at inquiry creation auto-invokes `/intuit` on the new `_branch.md`, producing baseline intuition before `/explore`.
-- **Mental model:** AlignStack's corpus is an "opening book" — prior positions with transferable moves attached. `/intuit` is the lookup mechanism. Users think of each inquiry as a position to look up.
+- **Mental model:** HomeGrown's corpus is an "opening book" — prior positions with transferable moves attached. `/intuit` is the lookup mechanism. Users think of each inquiry as a position to look up.
 
 ### 9. Connection to the end-goal
 
-Thinking-space dynamics are the substrate of cognition itself, which makes this finding a frontier of the `autonomous_consciousness_goal` program — not a regression-detection refinement. The Baldwin cycle (the end-goal's self-improvement mechanism) REQUIRES real-time hunches as input. Without L3, the autonomy ladder has no substrate for Level 3+. The three-layer architecture with L3 at its center — instantiated as `/intuit` — is therefore load-bearing for the end goal: it is where the system develops a functional analogue of first-person cognition.
+Thinking-space dynamics are the substrate of cognition itself, which makes this finding a frontier of the `autonomous_consciousness_goal` program — not a regression-detection refinement. The Baldwin cycle (the end-goal's self-improvement mechanism) REQUIRES real-time hunches as input. Without the Predictive RC, the autonomy ladder has no substrate for Level 3+. The three-layer architecture with the Predictive RC at its center — instantiated as `/intuit` — is therefore load-bearing for the end goal: it is where the system develops a functional analogue of first-person cognition.
 
 ### 10. Honest limits
 
@@ -202,7 +202,7 @@ Thinking-space dynamics are the substrate of cognition itself, which makes this 
 - Generate Baldwin seeds from calibrated hunch patterns (Phase D)
 
 **What the MVP CANNOT do:**
-- Replace L2 retrospective validation — hunches without calibration become confidently wrong
+- Replace the Retrospective RC's empirical validation — hunches without calibration become confidently wrong
 - Guarantee structural-analogy capture — predicate stability and signal independence need empirical validation
 - Produce ground-truth judgments — reliability is probabilistic, not certainty
 - Handle the closed-vocabulary cases where LLM training substrate systematically misses patterns
@@ -233,7 +233,7 @@ The claim correctly rejected subjective real-time metrics — a human asked "doe
 
 ### Why three layers, not two or four
 
-Two layers (L1 + L2) leaves the real-time value signal unaddressed — the system has no way to pre-empt regression, only to detect it retrospectively. Four or more layers over-segments the temporal structure without adding distinct signal types. Three layers captures the three structurally distinct signal modes: deterministic binary (L1), probabilistic real-time (L3), empirical delayed (L2). Each has its own source, cadence, and failure mode. Collapsing any two merges distinct mechanisms.
+Two layers (Primitive RC + Retrospective RC) leaves the real-time value signal unaddressed — the system has no way to pre-empt regression, only to detect it retrospectively. Four or more layers over-segments the temporal structure without adding distinct signal types. Three layers captures the three structurally distinct signal modes: deterministic binary (Primitive RC), probabilistic real-time (Predictive RC), empirical delayed (Retrospective RC). Each has its own source, cadence, and failure mode. Collapsing any two merges distinct mechanisms.
 
 ### Why intuition is decomposed into two similarity modes
 
@@ -241,7 +241,7 @@ The signature claim explicitly named the harder case: "the angle might be the sa
 
 ### Why /intuit exists as a first-class discipline
 
-Earlier drafts placed the L3 mechanism as infrastructure pieces (P6/P7) buried inside the L3 layer. Promoting it to a first-class discipline with its own spec, artifact, multi-location invocation, and phased build makes the architecture inspectable and the mechanism callable from anywhere in the SIC loop. The promotion also aligns with the structural reality that intuition is not a single-location operation — it shows up before sensemaking, inside innovation, inside critique, and standalone.
+Earlier drafts placed the Predictive RC mechanism as infrastructure pieces (P6/P7) buried inside the Predictive RC layer. Promoting it to a first-class discipline with its own spec, artifact, multi-location invocation, and phased build makes the architecture inspectable and the mechanism callable from anywhere in the SIC loop. The promotion also aligns with the structural reality that intuition is not a single-location operation — it shows up before sensemaking, inside innovation, inside critique, and standalone.
 
 ### Why the Z-transform analogy had to be rescued
 
@@ -282,7 +282,7 @@ Admission is gated by a **four-criterion primitivity test** (independence + nece
 `regression_detection_design` was architecturally superseded by `importance_measurement_problem`, which was then CORRECTED on its "real-time = structural only" claim by this finding. This finding has been REFINED TWICE:
 
 1. **`intuition_as_discipline`** — made /intuit a first-class discipline (absorbing P6/P7 from this finding's original phased-build plan into the /intuit discipline; reordering embeddings from Phase 1 to Phase D).
-2. **`thinking_space_primitives`** — audited the 4-primitive model; found it internally contradictory; refined to the typed 11-primitive set documented above. Three-layer architecture clarified: most primitives in L3, but Metacognition and Working Memory span L3+L2.
+2. **`thinking_space_primitives`** — audited the 4-primitive model; found it internally contradictory; refined to the typed 11-primitive set documented above. Three-layer architecture clarified: most primitives in the Predictive RC, but Metacognition and Working Memory span the Predictive RC + Retrospective RC.
 
 Each refinement preserves the predecessor's load-bearing claims while sharpening one specific decision. The architecture accumulates rather than thrashes.
 
@@ -308,7 +308,7 @@ Each refinement preserves the predecessor's load-bearing claims while sharpening
 
 9. **Custom intuition-space generation (Level 3 capability)** — the current discipline is brute-force transfer (Level 2 per the end-goal ladder). A system that could generate a custom "Z-space" per problem — tailored transform domain where specifically THIS source's hard operation becomes easy — is a Level 3 capability beyond what /intuit's MVP addresses.
 
-10. **Empirical Baldwin cycle rate** — Phase D Baldwin seed-generation activates after calibration threshold. The actual rate at which AlignStack runs Baldwin cycles is unknown; if too low, the seed-generator may accumulate patterns too slowly to reach useful density.
+10. **Empirical Baldwin cycle rate** — Phase D Baldwin seed-generation activates after calibration threshold. The actual rate at which HomeGrown runs Baldwin cycles is unknown; if too low, the seed-generator may accumulate patterns too slowly to reach useful density.
 
 11. **Multi-head intuition** — `/intuit` as specced operates on one source at a time. Multi-source intuition (structural connections across concurrent inquiries) is an interesting future direction; not scoped.
 

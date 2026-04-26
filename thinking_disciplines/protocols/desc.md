@@ -58,7 +58,7 @@ Every mature system of practice has both a content dimension and a procedural di
 - **Science:** Experiments (content) + peer review, publication, replication (procedures)
 - **Law:** Substantive law (content) + legal procedure — filing, evidence rules, appeal process (procedures)
 
-In AlignStack:
+In HomeGrown:
 
 - **Thinking Disciplines** = the content dimension (what cognitive operations exist)
 - **Protocols** = the procedural dimension (how those operations are managed)

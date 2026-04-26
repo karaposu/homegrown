@@ -1,4 +1,4 @@
-# AlignStack Thinking Disciplines
+# HomeGrown Thinking Disciplines
 
 Thinking Disciplines are natural cognitive operations — borrowed from how humans actually think — formalized into repeatable structures with defined components, processes, and failure modes. They are domain-agnostic: each one works for coding, business, design, research, or any field where that type of thinking is needed.
 
@@ -244,5 +244,5 @@ Inquiry CONFIGUREs the right disciplines for the problem. Wayfinding's six moves
 4 planned: Diagnosis, Reflection, Recovery, Evaluation
 Meta-Plan: absorbed into Inquiry (CONFIGURE) + Wayfinding (steering)
 
-Each discipline is standalone and domain-agnostic. `/inquiry` turns them from a list into a system — CONFIGURE reads the problem and produces the right discipline sequence, wayfinding steers between iterations. The AlignStack Agent uses them as the methodology behind its seven modes.
+Each discipline is standalone and domain-agnostic. `/inquiry` turns them from a list into a system — CONFIGURE reads the problem and produces the right discipline sequence, wayfinding steers between iterations. The HomeGrown Agent uses them as the methodology behind its seven modes.
 

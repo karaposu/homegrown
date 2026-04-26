@@ -44,7 +44,7 @@ The canonical location for the 4-category discipline taxonomy. Other files (`/MV
 
 | Discipline | Role |
 |---|---|
-| `/intuit` | L3 real-time hunch layer — recognition-and-transfer via transform-space (Forward transform → Scan → Projection); grounded in CBR + SME |
+| `/intuit` | Predictive RC (real-time hunch layer) — recognition-and-transfer via transform-space (Forward transform → Scan → Projection); grounded in CBR + SME |
 
 ### Cross-cutting admission criteria (descriptive, evidence-required)
 
@@ -127,7 +127,7 @@ verdict: PASS (pending second reviewer)
 | Discipline | Role |
 |---|---|
 | `/reflect` (R) | Backward-looking process-quality observation — "how did this cycle run?" |
-| `/navigate` (N) | Forward-looking direction enumeration with 15-type taxonomy — "what directions exist next?" |
+| `/navigation` (N) | Forward-looking direction enumeration with 15-type taxonomy — "what directions exist next?" |
 
 **Admission rule:** Boundary disciplines operate at cycle boundaries (between one SIC iteration and the next). Backward (R) and forward (N) cover the temporal space; a candidate for a third Boundary discipline would need a new temporal direction that isn't backward or forward (e.g., cross-cycle longitudinal) to be structurally justified.
 
@@ -141,11 +141,10 @@ verdict: PASS (pending second reviewer)
 
 - `/comprehend` — construct understanding from existing material (codebase, foreign concept)
 - `/elaborate` — expand concise content into richer form
-- `/align` — evaluate fit between work and principles
-- `/wayfinding` — select one recommended direction (unlike `/navigate` which enumerates all)
+- `/wayfinding` — select one recommended direction (unlike `/navigation` which enumerates all)
 - Others added organically as specialized needs arise
 
-**Admission rule:** Situational disciplines are specialized tools for specific situations. Admission is loose — if the discipline serves a specific operational purpose and has a coherent spec, it belongs here. Overlap with other disciplines is acceptable as long as the specialization is real (e.g., `/wayfinding` selects one direction where `/navigate` enumerates all — specialization, not redundancy).
+**Admission rule:** Situational disciplines are specialized tools for specific situations. Admission is loose — if the discipline serves a specific operational purpose and has a coherent spec, it belongs here. Overlap with other disciplines is acceptable as long as the specialization is real (e.g., `/wayfinding` selects one direction where `/navigation` enumerates all — specialization, not redundancy).
 
 **Situational disciplines skip Primitive Profile sections.** Rationale: maintenance burden without benefit; the set is organic and individually specialized; profile distinctness across Situational is not a load-bearing property.
 
@@ -211,7 +210,7 @@ This section is a **structured invitation**, not a prohibition. When a revival t
 
 2. **Consolidation discipline (cross-inquiry merge)**
    - Rejected: deferred — real capability gap but low priority; parallel inquiries rare
-   - Revival trigger: if parallel-inquiry rate exceeds N/month (N calibrated by operation) OR if `/navigate`'s MERGE type consistently surfaces candidates needing systematic consolidation
+   - Revival trigger: if parallel-inquiry rate exceeds N/month (N calibrated by operation) OR if `/navigation`'s MERGE type consistently surfaces candidates needing systematic consolidation
 
 3. **Intrinsic-valuation discipline**
    - Rejected: category mistake — intrinsic valuation is an INDICATOR (autonomy-gradient level), not a discipline-level operation
@@ -264,7 +263,7 @@ This is an active dragnet for missing categories rather than passive waiting. Pa
 | `/td-critique` | Core | **Evaluation**, **Inhibition**, Metacognition, Simulation | Intuition-similarity | exploratory Attention-pointer |
 | `/intuit` | Cross-cutting | Simulation, Intuition-similarity, Metacognition, Inhibition, Working Memory | Context-framing, Attention-pointer, Focus-deep | — |
 | `/reflect` (R) | Boundary | Metacognition, Working Memory, Evaluation | Intuition-similarity | Simulation |
-| `/navigate` (N) | Boundary | Simulation, Evaluation, Intuition-similarity | Working Memory, Metacognition | Inhibition |
+| `/navigation` (N) | Boundary | Simulation, Evaluation, Intuition-similarity | Working Memory, Metacognition | Inhibition |
 
 Each discipline has a DISTINCT profile — atom-level distinctness across the set. Disciplines are primitive compounds, not primitive instances. This table is the empirical argument for the conservation verdict from the `thinking_disciplines_audit` inquiry.
 
@@ -305,7 +304,7 @@ Per-Core-discipline content documented in `thinking_disciplines_audit/finding.md
 
 ## Boundary discipline notes
 
-- **`/navigate` (N)** consumes `corpus_limit_seeds` from `/intuit` Phase β+ as a new input type (NEW-INQUIRY-SEED items alongside the 15-type taxonomy)
+- **`/navigation` (N)** consumes `corpus_limit_seeds` from `/intuit` Phase β+ as a new input type (NEW-INQUIRY-SEED items alongside the 15-type taxonomy)
 - **`/reflect` (R)** is explicitly unchanged. R's scope is process quality, not invocation data richness. Data availability doesn't require scope change. (Documented here to prevent "should R also be updated?" future loops.)
 
 ---
@@ -323,12 +322,6 @@ Per-Core-discipline content documented in `thinking_disciplines_audit/finding.md
 ## Charter: what `enes/` holds
 
 `enes/` holds curated stable-view files for architectural concepts — **one file per concept**.
-
-Current files:
-- `thinking_space_dynamics.md` — three-layer architecture + typed 11-primitive set
-- `intuit.md` — `/intuit` discipline spec
-- `desc.md` — autonomous consciousness goal
-- `discipline_taxonomy.md` — this file (4-category discipline taxonomy)
 
 Future additions must pass the "curated stable-view of an architectural concept" test.
 

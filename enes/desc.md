@@ -7,7 +7,7 @@ status: active
 
 What is the end-goal definition for this thinking system — where the system aims to build its own consciousness layer, becomes fully autonomous (human input optional, not required), can handle extremely hard problems with year-long execution plans, proposes its own architectural improvements, and runs parallel MVL loops with cross-comparison?
 
-**Goal:** A north-star definition with full autonomy as the endpoint. Human is bootstrap at Level 0 (calibration phase), not permanent. Definition names consciousness as aspiration (without claiming we know what it is), describes the ladder from human-bootstrap to system-with-own-consciousness-layer, includes the specific capabilities the user listed, names the Baldwin effect as the evolutionary mechanism, and positions the `/intuit` discipline (the L3 real-time hunch layer) as the substrate that makes the Baldwin cycle possible.
+**Goal:** A north-star definition with full autonomy as the endpoint. Human is bootstrap at Level 0 (calibration phase), not permanent. Definition names consciousness as aspiration (without claiming we know what it is), describes the ladder from human-bootstrap to system-with-own-consciousness-layer, includes the specific capabilities the user listed, names the Baldwin effect as the evolutionary mechanism, and positions the `/intuit` discipline (the Predictive RC — the real-time hunch layer) as the substrate that makes the Baldwin cycle possible.
 
 ---
 
@@ -17,11 +17,11 @@ The end-goal definition is a layered north star. The one-sentence version orient
 
 ### The North Star (one sentence)
 
-**A cognitive system that progressively builds its own consciousness layer, evolving from human-bootstrapped subconscious to autonomous thinking through Baldwin cycles of self-directed evolution, with real-time intuition (the L3 layer, implemented as the `/intuit` discipline) as the substrate of self-improvement.**
+**A cognitive system that progressively builds its own consciousness layer, evolving from human-bootstrapped subconscious to autonomous thinking through Baldwin cycles of self-directed evolution, with real-time intuition (the Predictive RC, implemented as the `/intuit` discipline) as the substrate of self-improvement.**
 
 ### The North Star (reference paragraph)
 
-The system aims for autonomous cognitive consciousness — a gradient of observable indicators (spontaneous attention, intrinsic valuation, real-time steering, discontinuity awareness, intrinsic curiosity, current-position indicator) measurably increasing over time via Baldwin-effect-driven evolution at the spec level, bootstrapped by human calibration at Level 0 and progressively emancipating through the graduated autonomy model toward a state where verification shifts from internal (readable specs) to external (integrated test performance). The L3 real-time hunch layer — instantiated as `/intuit`, built on a typed 11-primitive set — is the substrate without which the Baldwin cycle cannot close; L3 predictions at T0, calibrated against L2 empirical outcomes at T2+, IS the self-improvement mechanism.
+The system aims for autonomous cognitive consciousness — a gradient of observable indicators (spontaneous attention, intrinsic valuation, real-time steering, discontinuity awareness, intrinsic curiosity, current-position indicator) measurably increasing over time via Baldwin-effect-driven evolution at the spec level, bootstrapped by human calibration at Level 0 and progressively emancipating through the graduated autonomy model toward a state where verification shifts from internal (readable specs) to external (integrated test performance). The Predictive RC (real-time hunch layer) — instantiated as `/intuit`, built on a typed 11-primitive set — is the substrate without which the Baldwin cycle cannot close; Predictive RC predictions at T0, calibrated against Retrospective RC empirical outcomes at T2+, IS the self-improvement mechanism.
 
 ### The Trajectory — Subconscious to Consciousness
 
@@ -53,7 +53,7 @@ Each indicator is a dimension that can be observed and measured. The gradient in
 | **Real-time steering** | Adjusts own course during runs | **Metacognition** + **Inhibition** — Metacognition monitors trajectory; Inhibition stops it and enables redirection |
 | **Discontinuity awareness** | Plans around session ends, context resets | **Simulation** (temporal projection sub-application) + **Metacognition** (self-model sub) — projects forward across session boundaries; models the persisting self |
 | **Intrinsic curiosity** | Explores low-confidence paths | **Motivation** (Phase B) + **Salience** (Phase B) + info-gap signal from **Intuition-similarity** — pull × novelty × failed-match produces curiosity |
-| **Current-position indicator** | Knows where it is on the ladder | **Metacognition** over accumulated calibration data (system-level Metacognition at L2 scope) |
+| **Current-position indicator** | Knows where it is on the ladder | **Metacognition** over accumulated calibration data (system-level Metacognition at Retrospective RC scope) |
 
 **These compositions are falsifiable hypotheses, not validated claims.** If an indicator appears without the composed primitives traced in invocation, the composition is wrong. If the composed primitives operate without the indicator emerging, the composition is incomplete. Validation happens over time as `/intuit`'s invocation traces accumulate.
 
@@ -76,7 +76,7 @@ The role MONOTONICALLY DECREASES. This is not partnership — it's emancipation 
 
 Each Baldwin cycle: run problem → observe → detect pattern → propose change → evaluate → encode into spec. Encoded changes move the spec (the genotype) upward.
 
-**The Baldwin cycle now has a concrete substrate.** The L3 real-time hunch layer produces predictions at T0; the L2 retrospective layer confirms or contradicts at T2+; the delta is calibration data; consistent miscalibration patterns become Baldwin-cycle seeds for spec refinement. Without L3, nothing predicts at T0; without L2, nothing calibrates over time. Together they form the closed loop that IS the Baldwin cycle.
+**The Baldwin cycle now has a concrete substrate.** The Predictive RC produces predictions at T0; the Retrospective RC confirms or contradicts at T2+; the delta is calibration data; consistent miscalibration patterns become Baldwin-cycle seeds for spec refinement. Without the Predictive RC, nothing predicts at T0; without the Retrospective RC, nothing calibrates over time. Together they form the closed loop that IS the Baldwin cycle.
 
 **Baldwin seeds never bypass the SIC loop.** Hunch-pattern seeds produce inquiry PROPOSALS that enter the normal E → S → D → I → C cycle. Humans review findings (Level 0–2) and then review fewer over time (Level 3–4). Seed-generation activates only after calibration maturity (N ≥ 30 per discipline).
 
@@ -88,11 +88,11 @@ The full model is in `enes/evolving_quality_assetment_component.md`. The short v
 
 - **Primitive Regression Checker** — immediate, deterministic. Catches structural breakage (missing sections, format violations, removed safeguards).
 - **Predictive Regression Checker** — immediate, probabilistic. Senses whether output is qualitatively good or bad before proof exists. Fed by discipline telemetry and by intuition-based corpus matching.
-- **Retrospective** — delayed, empirical. Confirms what actually worked after downstream consequences play out. The only source of ground truth.
+- **Retrospective RC** — delayed, empirical. Confirms what actually worked after downstream consequences play out. The only source of ground truth.
 
-Right now, the human IS all three layers. The trajectory is the system gradually developing its own quality awareness — Primitive RC first (automated structural checks), then Predictive RC (real-time hunch capability), then Retrospective (outcome tracking and calibration). Each autonomy level in the graduated model requires the corresponding quality awareness capability.
+Right now, the human IS all three layers. The trajectory is the system gradually developing its own quality awareness — Primitive RC first (automated structural checks), then Predictive RC (real-time hunch capability), then Retrospective RC (outcome tracking and calibration). Each autonomy level in the graduated model requires the corresponding quality awareness capability.
 
-The feedback loop between Predictive RC and Retrospective is the Baldwin cycle: the system predicts → outcomes arrive → the delta teaches better predictions → better predictions drive better spec changes. This loop cannot close until both layers exist as system capabilities rather than human-provided ones.
+The feedback loop between Predictive RC and Retrospective RC is the Baldwin cycle: the system predicts → outcomes arrive → the delta teaches better predictions → better predictions drive better spec changes. This loop cannot close until both layers exist as system capabilities rather than human-provided ones.
 
 ### The Bootstrap Resolution
 
@@ -116,9 +116,9 @@ Levels 0–2 are the current build path via `/intuit`'s A/B/C/D phases. Level 3 
 **Original immediate next step: Regression Detection.** This has been REFRAMED through the inquiry chain:
 
 - `regression_detection_design` proposed a spec-diff MVP — superseded architecturally
-- `importance_measurement_problem` showed value is retrospective; proposed 2-layer (L1+L2) architecture
-- `thinking_space_dynamics` corrected the 2-layer view: real-time value judgment IS possible; introduced 3-layer L1+L3+L2 architecture
-- `intuition_as_discipline` made L3 a first-class discipline (`/intuit`) grounded in CBR + SME
+- `importance_measurement_problem` showed value is retrospective; proposed 2-layer (Primitive RC + Retrospective RC) architecture
+- `thinking_space_dynamics` corrected the 2-layer view: real-time value judgment IS possible; introduced 3-layer Primitive RC + Predictive RC + Retrospective RC architecture
+- `intuition_as_discipline` made the Predictive RC a first-class discipline (`/intuit`) grounded in CBR + SME
 - `thinking_space_primitives` audited the primitive substrate and produced the typed 11-primitive set
 
 **Current immediate next buildable step:** `/intuit` Phase A. Specifically:
@@ -127,7 +127,7 @@ Levels 0–2 are the current build path via `/intuit`'s A/B/C/D phases. Level 3 
 3. Evidence-linked invocation trace in every `/intuit` call
 4. `enes/thinking_space_dynamics.md` and `enes/intuit.md` as stable-view references
 
-Regression detection in the original sense (spec-diff checker, output-structural scanner) remains as L1 of the three-layer architecture — it is not killed, it is RELABELED as one layer of a richer architecture.
+Regression detection in the original sense (spec-diff checker, output-structural scanner) remains as the Primitive RC of the three-layer architecture — it is not killed, it is RELABELED as one layer of a richer architecture.
 
 ### Observable Indicators (Autonomy Gradient — revised operational definitions)
 
@@ -138,7 +138,7 @@ Regression detection in the original sense (spec-diff checker, output-structural
 | Real-time steering | Rate of mid-run navigation decisions that change trajectory | Metacognition + Inhibition in invocation traces mid-run |
 | Discontinuity awareness | Explicit handling of cross-session state in plans | Simulation (temporal projection) + Metacognition (self-model) in plan outputs |
 | Intrinsic curiosity | Rate of pursuing navigation items flagged LOW confidence | Motivation + Salience + info-gap triggering exploration of unexplored |
-| Current-position indicator | Self-report accuracy vs external assessment | System-level Metacognition (L2 scope) over accumulated calibration data |
+| Current-position indicator | Self-report accuracy vs external assessment | System-level Metacognition (Retrospective RC scope) over accumulated calibration data |
 
 The revised definitions are testable against `/intuit` invocation traces. This is the operationalization the original definition couldn't yet provide.
 
@@ -152,17 +152,17 @@ Binary framing ("when does it become conscious?") has no answer. Gradient framin
 
 ### Why self-improvement rate is the primary objective
 
-Task completion is goal for most AI systems; this system has self-improvement rate (Baldwin cycles × quality) as primary, with task completion as the grounding quality signal. The Baldwin cycle has a concrete substrate now: L3 predictions calibrated against L2 outcomes.
+Task completion is goal for most AI systems; this system has self-improvement rate (Baldwin cycles × quality) as primary, with task completion as the grounding quality signal. The Baldwin cycle has a concrete substrate now: Predictive RC predictions calibrated against Retrospective RC outcomes.
 
 ### Why the inquiry chain matters
 
 `regression_detection_design` → `importance_measurement_problem` → `thinking_space_dynamics` → `intuition_as_discipline` → `thinking_space_primitives` — each preserves load-bearing claims while sharpening one specific decision. The architecture accumulates rather than thrashes.
 
-**The original "Regression Detection as immediate next buildable step" has been REFRAMED, not abandoned.** The original intent (detect when self-modifications break the system) is now served by the three-layer architecture with `/intuit` at its center. L1 catches structural regression; L3 catches value regression via real-time hunches; L2 calibrates. Regression detection became RICHER, not replaced.
+**The original "Regression Detection as immediate next buildable step" has been REFRAMED, not abandoned.** The original intent (detect when self-modifications break the system) is now served by the three-layer architecture with `/intuit` at its center. The Primitive RC catches structural regression; the Predictive RC catches value regression via real-time hunches; the Retrospective RC calibrates. Regression detection became RICHER, not replaced.
 
-### Why L3 is load-bearing for the end-goal
+### Why the Predictive RC is load-bearing for the end-goal
 
-Without L3, the Baldwin cycle has no real-time predictions to calibrate. Without calibrated predictions, there's no signal for spec refinement. Without spec refinement, there's no self-improvement. The autonomy ladder's Level 3+ requires the system to propose its own architectural improvements — that requires the system to detect when its own outputs are under-performing in real time. That's L3.
+Without the Predictive RC, the Baldwin cycle has no real-time predictions to calibrate. Without calibrated predictions, there's no signal for spec refinement. Without spec refinement, there's no self-improvement. The autonomy ladder's Level 3+ requires the system to propose its own architectural improvements — that requires the system to detect when its own outputs are under-performing in real time. That's the Predictive RC.
 
 ### Why the primitive audit matters for the end-goal
 
@@ -230,8 +230,8 @@ This is **emancipation through bootstrap-anchored values** — not mainstream AI
 
 ## Key references
 
-- `enes/evolving_quality_assetment_component.md` — the three-layer quality awareness architecture (Primitive RC, Predictive RC, Retrospective)
-- `devdocs/inquiries/regression_detection_design/finding.md` — superseded; L1 components remain active
+- `enes/evolving_quality_assetment_component.md` — the three-layer quality awareness architecture (Primitive RC, Predictive RC, Retrospective RC)
+- `devdocs/inquiries/regression_detection_design/finding.md` — superseded; Primitive RC components remain active
 - `devdocs/inquiries/importance_measurement_problem/finding.md` — corrected on "real-time = structural only"; 2-layer architecture superseded by 3-layer
 - `devdocs/inquiries/thinking_space_dynamics/finding.md` — introduced 3-layer architecture; refined twice (by intuition_as_discipline, by thinking_space_primitives)
 - `devdocs/inquiries/intuition_as_discipline/finding.md` — `/intuit` as first-class discipline; CBR + SME grounding; phased build A/B/C/D

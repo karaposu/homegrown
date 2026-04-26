@@ -5,7 +5,7 @@ taxonomy: enes/discipline_taxonomy.md
 ---
 # /intuit — The Intuition Discipline
 
-First-class AlignStack thinking discipline that operates the **L3 real-time hunch layer** of the three-layer architecture. Grounded in Case-Based Reasoning (Aamodt & Plaza 1994: Retrieve → Reuse → Revise) and Structure-Mapping Engine (Gentner: Alignment → Projection). Built on a **typed 11-primitive set** (see `enes/thinking_space_dynamics.md`). Scale-adaptive implementation (LLM-direct at current corpus; embeddings as Phase δ scaling layer).
+First-class HomeGrown thinking discipline that operates the **Predictive RC** (the real-time hunch layer) of the three-layer architecture. Grounded in Case-Based Reasoning (Aamodt & Plaza 1994: Retrieve → Reuse → Revise) and Structure-Mapping Engine (Gentner: Alignment → Projection). Built on a **typed 11-primitive set** (see `enes/thinking_space_dynamics.md`). Scale-adaptive implementation (LLM-direct at current corpus; embeddings as Phase δ scaling layer).
 
 **Category:** Cross-cutting — one of four discipline categories (Core / **Cross-cutting** / Boundary / Situational). See `enes/discipline_taxonomy.md` for taxonomy details, admission criteria, and `/intuit`'s admission audit.
 
@@ -139,7 +139,7 @@ Re-evaluated on major substrate change.
 - `transferable_projection` (what transfers to source + how)
 - `prediction` (Popperian — directional claim)
 - `prediction_window` (T1 / T2+ / T4)
-- `observable_outcome` (specific L2 signal that will confirm/refute)
+- `observable_outcome` (specific Retrospective RC signal that will confirm/refute)
 - `reliability` (0–1; honest confidence)
 - `hunch_state` ∈ {POSITIVE, NEGATIVE, INSUFFICIENT_HUNCH}
 - `source_type` ∈ {CORPUS_MATCH, TRAINING_DISTRIBUTION_MATCH, ADVERSARIAL_MATCH, NOT_APPLICABLE, INSUFFICIENT_INTUITION}
@@ -253,7 +253,7 @@ Each phase delivers standalone value; later-phase failure doesn't invalidate ear
 
 **With `/MVL+` (pipeline-early, Phase C+):** auto-invoke on new `_branch.md` to produce baseline intuition before `/explore`. Opt-in initially; default-on after calibration matures.
 
-**Mental model:** AlignStack's corpus is an "opening book" — prior positions with transferable moves attached. `/intuit` is the lookup mechanism. Users think of each inquiry as a position to look up.
+**Mental model:** HomeGrown's corpus is an "opening book" — prior positions with transferable moves attached. `/intuit` is the lookup mechanism. Users think of each inquiry as a position to look up.
 
 ---
 
@@ -265,7 +265,7 @@ Per-discipline calibration curves track whether predictions at reliability R act
 - N ≥ 30 per discipline for "well-calibrated" claims
 - N ≥ 50 per discipline for miscalibration claims or Baldwin seed-input use
 
-**Recording only in MVP** — no live weight updates. Seeds log linked to L2 outcome signals when those fire. Per-primitive calibration (which primitive's signal was most load-bearing for seeds that turned out POSITIVE vs NEGATIVE) aggregates from invocation traces.
+**Recording only in MVP** — no live weight updates. Seeds log linked to Retrospective RC outcome signals when those fire. Per-primitive calibration (which primitive's signal was most load-bearing for seeds that turned out POSITIVE vs NEGATIVE) aggregates from invocation traces.
 
 **Baldwin seed-generation** (Phase D+, gated on calibration maturity): consistent hunch patterns across inquiries become inquiry-PROPOSAL seeds. Never direct spec modification. Seeds enter normal SIC loop for validation.
 
@@ -280,7 +280,7 @@ Per-discipline calibration curves track whether predictions at reliability R act
 - Phase D: scale-adaptive operation; persistent cross-call working memory; Baldwin seed generation
 
 **What the MVP CANNOT do:**
-- Replace L2 retrospective validation — hunches without calibration become confidently wrong
+- Replace the Retrospective RC's empirical validation — hunches without calibration become confidently wrong
 - Guarantee structural-analogy capture — predicate stability and signal independence need empirical validation
 - Produce ground-truth judgments — reliability is probabilistic, not certainty
 - Introspect which internal LLM operations correspond to named primitives — primitive invocation traces are evidence-linked, not introspective
@@ -304,8 +304,8 @@ Per-discipline calibration curves track whether predictions at reliability R act
 ## 13. Related specifications
 
 - `enes/thinking_space_dynamics.md` — the three-layer architecture + typed 11-primitive set that /intuit operates on
-- `enes/desc.md` — autonomous consciousness goal; /intuit's L3 role is the Baldwin cycle's real-time input
+- `enes/desc.md` — autonomous consciousness goal; /intuit's Predictive RC role is the Baldwin cycle's real-time input
 - Inquiry findings:
   - `devdocs/inquiries/intuition_as_discipline/finding.md` — original discipline spec
   - `devdocs/inquiries/thinking_space_primitives/finding.md` — primitive refactor
-  - `devdocs/inquiries/importance_measurement_problem/finding.md` — L1/L2 foundation (corrected)
+  - `devdocs/inquiries/importance_measurement_problem/finding.md` — Primitive RC + Retrospective RC foundation (corrected)

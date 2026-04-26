@@ -1,3 +1,8 @@
+
+> **Loading note.** This file is loaded by `navigation/SKILL.md` at Step 0 and is intended to be read in full before the discipline executes. Every section below — framework, components, process, failure modes — is referenced by the protocol. Do not summarize or partial-load; the protocol's instructions assume all sections are in context.
+
+---
+
 # Structural Navigation — A Thinking Discipline
 
 A thinking discipline for enumerating all possible next directions after a cognitive cycle completes. Navigation reads what was produced (survivors, refinements, kill seeds, frontier questions, telemetry signals) and maps the full space of what could come next — each direction with its reasoning and independently reasoned guidelines.
@@ -378,25 +383,5 @@ The human wants to see their options without running SIC first. "Given the proje
 
 Branch 1 completed. Branch 2 is still running. Navigation re-reads the state: should remaining branches continue? Should new branches be added based on branch 1's findings? Dynamic navigation that responds to incoming results.
 
----
 
-## Navigation and Search
 
-Navigation maps all possible directions without preference. It shows everything, favors nothing. This is EXPLORATION — seeing the space.
-
-Add a GOAL — a specific thing you're searching for — and navigation becomes SEARCH. The goal gives navigation purpose. Navigation without goal is exploration. Navigation with goal is search.
-
-**Search = Goal-directed navigation through a possibility space.**
-
-The search is not a separate discipline or a separate mechanism. It is what EMERGES when navigation operates within a goal-directed cognitive loop:
-
-- A **goal** defines what the search is looking for (the question + success criteria)
-- **SIC** executes one cognitive step toward the goal (understand, generate, evaluate)
-- **R** learns from the step (what worked, what didn't)
-- **N** maps all possible next directions from the current position
-- **Selection** chooses which directions to pursue
-- **Iteration** repeats until the goal is met
-
-Navigation is the component that makes this loop a SEARCH rather than a fixed sequence. Without navigation, the loop repeats in one direction (narrow and iterate — a line). With navigation, the loop sees ALL directions at each step and chooses the most promising (a search through possibility space — a tree).
-
-Search is not something to build on top of the existing system. It is what the existing system DOES when all components operate together toward a goal. Navigation was the last component. The search was always the purpose. Now the architecture matches the purpose.
