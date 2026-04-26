@@ -101,7 +101,7 @@ Transfer protocols manage how outputs move between contexts — from the thinkin
 
 **SYNTHESIZE** — Take scattered discipline outputs and produce a coherent deliverable for someone who wasn't in the thinking process. Decomposes into: sensemaking (resolve stale/inconsistent outputs) + critique (select what matters) + audience-aware restructuring. Quality test: "Can someone who wasn't in the loop act on this?" Named but underspecified — **needs full formalization.**
 
-**RESUME** — Pick up a saved inquiry across sessions. Read `_state.md`, determine what's been done, figure out the next step. Currently lives inside `/inquiry`.
+**RESUME** — Pick up a saved inquiry across sessions OR between disciplines. Read `_state.md`, read each completed discipline's `Overall: PROCEED / FLAG / RE-RUN` verdict, route the loop accordingly (PROCEED to next / FLAG with shortfall + wait / RE-RUN with feedback + wait). Implemented as `homegrown/protocols/resume.md`. **Not currently invoked by `/MVL` or `/MVL+`** — those auto-chain runners don't gate on per-discipline FLAG/RE-RUN waits (per their "pipeline runs continuously, checkpoints are informational not gates" rule). Available for manual-flow contexts and future runners that need telemetry-aware iteration resume. Reflect is structurally exempt (advisory output, not read for routing).
 
 **HANDOFF** — Transfer an inquiry's full context to a different agent (human or AI) who will continue it. Package: state, key outputs, frontier questions, resume instructions. Currently does not exist — **not yet formalized.**
 
