@@ -1,4 +1,4 @@
-> **Loading note.** This file is loaded by `commands/MVL.md` and `commands/MVL+.md` at the RESUME entry-point (when invoked with a folder path) and may be loaded by future loop runners that need telemetry-aware iteration resume. Read in full before RESUME executes. Every section below — pipeline detection, verdict reading, routing, state update, failure modes — is referenced by the procedure. Do not summarize or partial-load.
+> **Loading note.** This file is loaded by future loop runners that perform telemetry-aware iteration resume. Read in full before RESUME executes. Every section below — pipeline detection, verdict reading, routing, state update, failure modes — is referenced by the procedure. Do not summarize or partial-load.
 
 ---
 
