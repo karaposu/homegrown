@@ -31,6 +31,7 @@ skills_with_refs=(
 skills_no_refs=(
   "MVL"
   "MVL+"
+  "meta-loop"
 )
 
 for entry in "${skills_with_refs[@]}"; do
@@ -80,7 +81,7 @@ echo ""
 echo "Done. Installed $skill_count skills + $proto_count protocols to $SKILLS_DIR"
 echo ""
 echo "Skills (invoke as /<skill-name>):"
-echo "  /MVL, /MVL+, /sense-making, /innovate, /td-critique,"
+echo "  /MVL, /MVL+, /meta-loop, /sense-making, /innovate, /td-critique,"
 echo "  /explore, /decompose, /comprehend, /reflect, /navigation"
 echo ""
 echo "Protocols (loaded by skills, not user-invoked):"

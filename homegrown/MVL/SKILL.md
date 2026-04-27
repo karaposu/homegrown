@@ -19,7 +19,7 @@ $ARGUMENTS
 
 1. Read the question fully. Restate it clearly in one sentence.
 
-2. Create the inquiry folder: `devdocs/inquiries/<slugified_name>/`
+2. Create the inquiry folder: `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slugified_name>/`. This timestamped directory name is `[folder_name]` in path placeholders below.
 
 3. Write `_branch.md`:
    ```markdown
@@ -59,7 +59,7 @@ $ARGUMENTS
 
 5. Present briefly:
    ```
-   SIC loop created: devdocs/inquiries/[name]/
+   SIC loop created: devdocs/inquiries/[folder_name]/
    Pipeline: S → I → C
    Question: [restated clearly]
    Goal: [what a good answer looks like]
@@ -95,16 +95,16 @@ Run disciplines sequentially: S → I → C. For each discipline that hasn't pro
    If any structural checks failed, list them: `[FAIL: label1, label2]`
 
 2. **Load the discipline spec via Skill tool:**
-   - Invoke `Skill(skill: "<discipline-skill-name>", args: "devdocs/inquiries/[name]/_branch.md")`
+   - Invoke `Skill(skill: "<discipline-skill-name>", args: "devdocs/inquiries/[folder_name]/_branch.md")`
    - If the Skill tool fails → fall back to `Read` on the discipline's command file, then execute
-   - If Read also fails → HALT and tell the user: "Could not load spec for [discipline]. Run manually: /[discipline] devdocs/inquiries/[name]/_branch.md"
+   - If Read also fails → HALT and tell the user: "Could not load spec for [discipline]. Run manually: /[discipline] devdocs/inquiries/[folder_name]/_branch.md"
    - **Never execute a discipline from memory alone.**
 
 3. **Execute the loaded spec** at full depth. The discipline saves its output to the inquiry folder.
 
 4. **Run structural check** on the saved output:
    ```
-   bash tools/structural_check.sh devdocs/inquiries/[name]/[output_file] [discipline_name]
+   bash tools/structural_check.sh devdocs/inquiries/[folder_name]/[output_file] [discipline_name]
    ```
    Discipline-to-name mapping: `sensemaking.md → sensemaking`, `innovation.md → innovation`, `critique.md → critique`.
    If any `[FAIL]` lines appear, fix the missing sections in the output and re-save. Re-run the check to confirm. Include the results in the next checkpoint display.
@@ -175,7 +175,7 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
   If this iteration produced multiple survivors, frontier questions, or branching possibilities, suggest:
   ```
   Multiple directions emerged. For a full possibility map, run:
-  /navigate devdocs/inquiries/[name]/
+  /navigate devdocs/inquiries/[folder_name]/
   ```
 
 **3. Does the answer advance the goal?**
@@ -197,7 +197,7 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 ## Cross-Session Resume
 
 ```
-/MVL devdocs/inquiries/[name]/
+/MVL devdocs/inquiries/[folder_name]/
   → Reads _state.md
   → Sees where you left off
   → Loads the next discipline's spec via Skill tool

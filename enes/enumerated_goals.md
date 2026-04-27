@@ -1,3 +1,11 @@
+
+-preserve the correction chain
+
+- inquiry folder name fix
+
+
+
+
 Consolidation & Cleaning of Current State 
 
 Finding a good way to integrate Navigate, maybe MVL++ loop where last element is Navigate ?  lets say findings has many bullet points , many things to do , many new understandings. Navigate should output list of things that should be done , should investigate, should reconsider? but not neccesarily we immediately do what finding md files says.  i guess there is other mechanism there? maybe listing thigns is explore and not navigate? i am mistaking things?

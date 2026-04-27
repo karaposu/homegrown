@@ -35,6 +35,7 @@ SKILLS_WITH_REFS=(
 SKILLS_NO_REFS=(
   "MVL"
   "MVL+"
+  "meta-loop"
 )
 
 # Supporting protocols (loaded by runners; not directly invoked)
@@ -233,7 +234,7 @@ echo ""
 echo "Done. Installed $installed skills + $proto_count protocols to $TARGET"
 echo ""
 echo "Skills (invoke with \$skill-name in Codex):"
-echo "  \$MVL, \$MVL+, \$sense-making, \$innovate, \$td-critique,"
+echo "  \$MVL, \$MVL+, \$meta-loop, \$sense-making, \$innovate, \$td-critique,"
 echo "  \$explore, \$decompose, \$comprehend, \$reflect, \$navigation"
 echo ""
 echo "Protocols (loaded by skills, not directly invoked):"

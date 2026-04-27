@@ -1,73 +1,47 @@
-# Small Summary
+# Small Project Summary
 
-## What this project is about
+This project is a collection of installable AI-assistant skills for structured thinking work. It is not a normal app with a screen, server, API, or command-line program. Its main usable pieces are Markdown skill files and shell installers that copy those skills into Codex or Claude Code.
 
-This repository is mainly a writing-and-workflow project for AI-assisted software development. The code shows two connected things:
+The active skill set is built around turning open-ended questions into repeatable inquiry workflows. The core workflow creates a folder for each inquiry, tracks progress in state files, asks the assistant to run a sequence of thinking steps, saves each step as Markdown, and eventually turns the results into a final `finding.md`.
 
-1. A book called **AlignStack**, built as a website from Markdown chapters.
-2. A reusable pack of commands, skills, and file conventions meant to guide tools like Codex or Claude through structured software work.
+## What It Currently Does
 
-So this is less a traditional app and more a method: it teaches a way of working with AI, and it also ships the actual prompts and scripts needed to use that method.
+The project currently provides individual skills for several kinds of thinking work:
 
-## What it currently does
+- `sense-making` turns vague or complex input into a clearer understanding.
+- `explore` maps an unfamiliar area before trying to interpret it.
+- `decompose` breaks a complex whole into smaller, connected questions.
+- `comprehend` builds a tested working model of an artifact such as code, a system, or a document.
+- `innovate` generates possible ideas or approaches.
+- `td-critique` evaluates competing ideas and decides what survives, needs refinement, or should be rejected.
+- `reflect` looks back at how a completed thinking run performed.
+- `navigation` lists possible next directions after a completed run.
 
-From the files that are actually wired together today, the project already does a few concrete things:
+It also provides two loop runners:
 
-- It builds a static documentation/book site from the `src/` folder using `mdBook`.
-- It deploys that site to GitHub Pages through the GitHub Actions workflow.
-- It provides installer scripts that download or transform the command set into formats usable by Claude Code and Codex.
-- It includes a hook that automatically adds metadata to files written under `devdocs/`.
-- It includes a structural checking script that validates whether discipline outputs contain the expected sections.
+- `MVL` runs a fixed three-step loop: sense-making, innovation, then critique.
+- `MVL+` runs an extended five-step loop: exploration, sense-making, decomposition, innovation, then critique.
 
-The command set itself is substantial. It defines repeatable workflows for:
+Both loop runners are designed to create `devdocs/inquiries/<name>/` folders, maintain `_branch.md` and `_state.md`, save step outputs, and continue across sessions. Supporting protocols named `resume` and `conclude` describe how to pick up an inquiry later and how to compile a completed run into a final finding.
 
-- clarifying a task
-- planning work
-- critiquing plans
-- understanding existing codebases
-- creating project documentation
-- running inquiry loops across multiple thinking steps
-- producing summaries, roadmaps, traces, and improvement reports
+The installer scripts are the most conventional executable code in the project. `install_for_codex.sh` installs the skills into Codex format, either in the current repository or at the user level. It can use the local `homegrown/` folder or download the same files from GitHub. `install_for_claude.sh` downloads the skills into `~/.claude/skills` for Claude Code.
 
-In practice, this means the repo already works as a **playbook plus installable prompt toolkit** for people doing software work with AI assistants.
+## What It Appears To Be Trying To Do
 
-## What it appears to be trying to do
+The project appears to be building a repeatable "thinking system" for AI-assisted work. Instead of asking an AI one large question and accepting one answer, it pushes the assistant through named disciplines: map the territory, clarify the problem, split it into pieces, generate candidates, test them, record a finding, reflect on the process, and choose what to do next.
 
-The code also shows a larger ambition that is only partly complete.
+It is also trying to make long-running investigations persistent. The inquiry folders, state files, archives, and resume protocol are all aimed at letting a person or assistant return to a question later without starting over.
 
-It is trying to become a full operating system for AI-assisted development work: not just single prompts, but a structured loop where AI can explore a problem, make sense of it, break it apart, generate ideas, critique them, save the outputs into folders, and resume later.
+Some future-facing pieces are visible but not complete. The loop runners refer to a `tools/structural_check.sh` script, but no `tools` directory is present in the current working tree. A GitHub workflow exists for publishing a Python package, but there is no visible package configuration such as `pyproject.toml` or `setup.py`. The book and older notes mention commands such as `elaborate`, `inquiry`, and `wayfinding`, but those are not active skills in the current `homegrown/` source layout.
 
-There are clear signs this bigger system is still in progress:
+## Who Would Use This
 
-- some chapters are explicitly marked unfinished
-- some loop components are described as first drafts or primitive versions
-- several disciplines are listed as planned rather than built
-- a large amount of repo content is exploratory notes, inquiries, and evolving design material rather than settled product behavior
+This is for people using Codex or Claude Code who want reusable AI workflows for complex thinking tasks. Likely users are developers, researchers, product builders, or planners who want the assistant to produce visible intermediate artifacts instead of only a final answer.
 
-So the working core exists, but the broader self-improving loop the project points toward is still under active design.
+It would be most useful when the question is large, ambiguous, or likely to span multiple sessions. It is less useful for simple one-off questions where the overhead of creating inquiry folders and running multiple thinking steps would be too heavy.
 
-## Who would use this and why
+## General Shape
 
-This looks aimed at:
+The project is best described as an AI skill pack plus a research/workflow archive. Its real source of behavior is the `homegrown/` directory, where each skill has a `SKILL.md` file and, for most skills, a longer reference file. The `devdocs/`, `enes/`, `thinking_disciplines/`, and `src/book/` areas are mostly supporting notes, prior inquiry outputs, or draft explanatory material rather than runnable software.
 
-- developers who use AI coding assistants heavily
-- teams that want more structure around AI-generated work
-- people writing internal prompt systems, command packs, or AI working methods
-- readers who want a methodology for keeping AI work understandable, traceable, and reviewable
-
-They would use it to reduce confusion, create shared working artifacts, and make AI-driven development feel less ad hoc.
-
-## General shape of the project
-
-This is **not** primarily a web app, API, or library.
-
-Its current shape is:
-
-- a publishable book/documentation site
-- a command and skill pack for AI coding tools
-- a small set of helper scripts and hooks
-- a large working knowledge base of experiments, inquiries, and methodology drafts
-
-The most honest plain-language description is:
-
-**a methodology product with working installation scripts and reusable AI workflow commands, plus a book that explains the system and a large amount of in-progress thinking around where it should go next.**
+The current state looks active but unfinished. The active skill files and installers form a coherent usable core, while several surrounding files show migration or cleanup in progress.

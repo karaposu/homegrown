@@ -58,14 +58,16 @@ Plain-language preference. Use the simplest accurate phrasing. "The AI picks the
 
 Use this structure for your output finding.md file:
 
-```markdown
+````markdown
 ---
 status: active
-refines: devdocs/inquiries/X/finding.md         [only when refining/superseding a prior finding]
+refines: devdocs/inquiries/X/finding.md         [or supersedes:/corrects: when applicable; omit when no prior finding]
 ---
 # Finding: [inquiry name]
 
 ## Changes from Prior                           [optional; only when frontmatter has refines/supersedes/corrects]
+**Prior path:** devdocs/inquiries/prior_inquiry_name_here/finding.md
+**Revision trigger:** User correction / new evidence / scope change / stronger framing / implementation result
 **What's preserved:** ...
 **What's changed:** ...
 **What's new:** ...
@@ -155,7 +157,20 @@ Anti-patterns to avoid:
 ### Refinement Triggers
 [Specific conditions (time-bound / condition-bound / observable) under
  which a locked decision in this finding re-opens.]
+
+## Source Input                                 [required for correction/refinement findings unless omitted/redacted with reason; optional otherwise]
+
+<details>
+<summary>Raw user input for this finding</summary>
+
+```text
+[raw prompt or correction text]
 ```
+
+</details>
+````
+
+If `Source Input` is required but the raw input is omitted or redacted, keep the section and replace the details block with: `Raw input omitted/redacted: [reason].`
 
 ### Style rules (apply throughout the finding)
 
@@ -181,7 +196,7 @@ For multi-iteration inquiries: the finding reflects the FINAL iteration's answer
 After writing the finding, ask: *"Can someone read ONLY `finding.md`,
 at normal reading speed without backtracking, and understand the
 complete decision?"* If no — if the reader needs to re-read paragraphs,
-scroll up to decode references, or consultother files to understand the verdict — the finding has failed
+scroll up to decode references, or consult other files to understand the verdict — the finding has failed
 the test. Revise.
 
 ---
