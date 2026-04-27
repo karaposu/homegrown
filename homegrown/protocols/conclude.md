@@ -26,7 +26,20 @@ If `_state.md` is missing or malformed, HALT and tell the user: "Cannot detect p
 
 Read all discipline outputs identified in Step 1, plus `_branch.md` for the question and goal context. Produce `finding.md` as a single argumentative document using the Below given finding document structure template. 
 
-Write for a reader who has NOT seen the SIC output — someone who just joined the project and needs to understand: what was the question, what's the answer, why this answer over the alternatives, and what's still open. **Do not compress.** Explain fully even if the finding is long. The test: can someone read ONLY `finding.md` and understand the complete decision?
+Write for a reader who has NOT seen the discipline outputs — someone
+who just joined the project and needs to understand: what was the
+question, what's the answer, why this answer over the alternatives,
+and what's still open.
+
+**Be complete but not dense.** Completeness means nothing important
+is left out. Density means too many things squeezed into too few
+sentences. The failure mode is not "the finding is too long" — it's
+"the finding is hard to follow because each paragraph is doing four
+things at once." Give each idea room to breathe. A longer finding
+that reads easily is better than a shorter one that requires
+re-reading.
+
+
 
 ### Non-ambiguity principle (applies to every sentence)
 
@@ -38,6 +51,8 @@ Example of the failure mode and its correction:
 
 - ❌ *"Template extends from 4 sections to 6"* — which template? in what context?
 - ✅ *"Our existing finding.md template (defined in the `value_extraction_design` inquiry) has 4 sections; this audit adds 2 more for a total of 6."*
+
+Plain-language preference. Use the simplest accurate phrasing. "The AI picks the highest-confidence option" over "the autonomous-mode selection heuristic is deterministic (highest-confidence option)." Technical terms earn their place only when the plain version would be imprecise or ambiguous — not when it would merely be less formal. When a technical term is necessary, follow it immediately with what it means in practice.
 
 ### Finding template
 
@@ -61,12 +76,32 @@ refines: devdocs/inquiries/X/finding.md         [only when refining/superseding 
  reader has context before the answer.]
 
 ## Finding Summary
-[The specific answer as 3-7 bullet points. Each bullet is a complete
- claim satisfying the non-ambiguity principle (readable standalone
- by someone with no prior exposure to this inquiry). Bold key terms.
- Bullets preferred over prose for scannability. WRITE THIS BEFORE
- THE FINDING BODY — it becomes a commitment the Finding elaborates;
- revise if the body reveals the summary needs updating.]
+Write this section BEFORE the Finding body — it becomes a commitment
+the body elaborates. If writing the body reveals the summary needs
+updating, revise it.
+
+
+Format: bullet points or sub-bullet points (as many as the answer needs). Each bullet
+should be digestible in one read — if a bullet requires the reader
+to stop and mentally separate its parts, it's doing too much. Split
+when in doubt, but don't split things that only make sense together. Every reference carries its short descriptive name — "Item 3 (the continuous-loop runner)," not "Item 3." The reader should never need
+to scroll up to decode a reference.
+
+Plain language first: Use the simplest accurate phrasing.
+  "The runner picks the highest-confidence option" over "the
+  autonomous-mode selection heuristic is deterministic
+  (highest-confidence option)." A technical term earns its place only
+  when the plain version would be imprecise — not when it would merely
+  be less formal.
+
+Anti-patterns to avoid:
+- A single bullet that lists all five roadmap items, then states their
+  dependencies, then gives the effort estimate. That is three bullets.
+- A bullet that packs four resolved design decisions into one sentence
+  joined by commas. Each decision is its own bullet.
+- A bullet that says "Item 3 is the load-bearing item" without ever
+  saying what Item 3 is in that bullet.
+
 
 ## Finding
 [The full answer. Base on critique's "The Answer" or assembly
@@ -122,11 +157,16 @@ refines: devdocs/inquiries/X/finding.md         [only when refining/superseding 
  which a locked decision in this finding re-opens.]
 ```
 
-### Three style rules (apply throughout the finding)
+### Style rules (apply throughout the finding)
 
 1. **Hedging specificity.** A hedge is a phrase that softens a claim ("mostly works," "generally sound," "with caveats"). Any hedge must name WHAT is specifically uncertain and WHY. Vague hedges are defects.
 2. **Cross-reference format.** First reference to another finding uses the full path (`devdocs/inquiries/X/finding.md`); subsequent references use the bare inquiry name (`X`). Add a relationship label when applicable — `REFINES: X (what specifically is load-bearing)`. In frontmatter, use the full path in `refines:` / `supersedes:` / `corrects:` / `impacted_by:` fields.
 3. **Gate specificity.** Triggers, deferred conditions, and revival criteria must be time-bound ("after 30 inquiries"), condition-bound ("when /intuit Phase β ships"), or observable ("if calibration N ≥ 30"). "Eventually," "when appropriate," "as needed" are defects.
+
+4. One decision per paragraph. If a paragraph contains more than one decision, verdict, or resolved question, break it into separate paragraphs or a list — one item per entry or subitems. The failure mode: a paragraph that reads as one thought but actually contains 3-4 independent claims the reader must mentally separate. Test: if you could put "separately," between two claims in the same paragraph, they belong in different paragraphs.
+5. Anchored references. When referring to a numbered item, named concept, or earlier decision, always include the short descriptive name on first use in each section not just the label. "Item 3" alone is a defect; "Item 3 (the continuous-loop runner)" is correct
+
+
 
 ### Size-adaptive application
 
@@ -138,7 +178,11 @@ For multi-iteration inquiries: the finding reflects the FINAL iteration's answer
 
 ### Quality test
 
-After writing the finding, ask: *"Can someone read ONLY `finding.md` and understand the complete decision?"* If no — if the reader needs to consult `sensemaking.md` or `critique.md` to understand the verdict — the finding has failed the test. Revise.
+After writing the finding, ask: *"Can someone read ONLY `finding.md`,
+at normal reading speed without backtracking, and understand the
+complete decision?"* If no — if the reader needs to re-read paragraphs,
+scroll up to decode references, or consultother files to understand the verdict — the finding has failed
+the test. Revise.
 
 ---
 
@@ -218,6 +262,6 @@ If there are no `## Relationships`, no additional output is printed beyond Step 
 - **Pipeline detection failure** — `_state.md` is missing, malformed, or has an unrecognized pipeline. HALT and ask the user to specify the pipeline manually before retrying.
 - **Missing discipline outputs** — Step 1 says the pipeline expects N files but fewer exist in the folder. Do NOT proceed; the iteration isn't actually complete. Tell the user which files are missing.
 - **Internally-referential shorthand in the finding** — the finding fails the non-ambiguity principle. Detect via the quality test in Step 2; revise before saving.
-- **Vague hedges, vague gates, malformed cross-references** — the finding fails one of the three style rules. Detect during writing; revise before saving.
+- **Vague hedges, vague gates, malformed cross-references** — the finding fails one of the style rules. Detect during writing; revise before saving.
 
 ---
