@@ -1,5 +1,7 @@
+---
 name: MVL+
 description: Run the Extended Cognitive Loop (Exploration → Sensemaking → Decomposition → Innovation → Critique) on any question. Always the full pipeline. If the question isn't answered, loop again.
+---
 
 # /MVL+ — The Extended Cognitive Loop
 
@@ -145,9 +147,9 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
 
 - **YES — the question is answered:**
 
-  Load `homegrown/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the loop's artifacts (exploration, sensemaking, decomposition, innovation, critique) into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol; CONCLUDE auto-detects the extended pipeline from `_state.md`'s `flow-type: extended` field), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers (using `/MVL+` as the resume runner unless the parent's flow-type is classic, in which case `/MVL`).
+  Load `/Users/ns/Desktop/projects/native/.codex/skills/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the loop's artifacts (exploration, sensemaking, decomposition, innovation, critique) into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol; CONCLUDE auto-detects the extended pipeline from `_state.md`'s `flow-type: extended` field), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers (using `/MVL+` as the resume runner unless the parent's flow-type is classic, in which case `/MVL`).
 
-  Do not execute CONCLUDE from memory; always load `homegrown/protocols/conclude.md` before invoking.
+  Do not execute CONCLUDE from memory; always load `/Users/ns/Desktop/projects/native/.codex/skills/protocols/conclude.md` before invoking.
 
 - **NO — the question is not fully answered:**
   ```
@@ -225,4 +227,3 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 5. **The human can redirect at any point.** The pipeline runs continuously without pausing. The human can interrupt mid-response to redirect, re-run, or override. Checkpoints display telemetry between disciplines for visibility — they are informational, not gates.
 6. **Failures are data.** If the loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).
 7. **Classic `/mvl` is UNCHANGED.** This command (`/mvl+`) is separate and coexists with classic. Existing classic inquiries resume with `/mvl`, not `/mvl+`. The `flow-type` field in `_state.md` distinguishes them.
-8. DO NOT RUN EACH SKILL PARALLEL OR WITH SUBAGENTS TO SAVE TIME OR TOKEN. EACH SKILL SHOULD BE RUN AS CANNON AND IT IS OKAY IF THEY CONSUME CONTEXT. THEY SUPPOSED TO BE. 

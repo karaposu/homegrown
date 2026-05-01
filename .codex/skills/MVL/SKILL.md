@@ -1,11 +1,13 @@
-name: MVL+
-description: Run the Extended Cognitive Loop (Exploration → Sensemaking → Decomposition → Innovation → Critique) on any question. Always the full pipeline. If the question isn't answered, loop again.
+---
+name: MVL
+description: Run the SIC loop (Sensemaking → Innovation → Critique) on any question. Always the full pipeline. S feeds I feeds C. If the question isn't answered, loop again.
+---
 
-# /MVL+ — The Extended Cognitive Loop
+# /MVL — The SIC Loop
 
-Run Exploration → Sensemaking → Decomposition → Innovation → Critique on any question. Always the full pipeline. No classification. No variable pipelines. Each step feeds the next. If the question isn't answered after C, loop again with a refined focus.
+Run Sensemaking → Innovation → Critique on any question. Always the full pipeline. No classification. No variable pipelines. S feeds I feeds C. If the question isn't answered after C, loop again with a refined focus.
 
-This is the extended form of the cognitive loop. `/mvl` (classic) runs only S → I → C. `/mvl+` adds Exploration (map territory) and Decomposition (partition complexity) to the first phase. Use `/mvl+` as the default for new inquiries; use `/mvl` classic for simple well-defined problems when speed matters.
+This is the only primitive. Every cognitive task is a SIC loop applied to a different question.
 
 ## Additional Input/Instructions
 
@@ -36,14 +38,10 @@ $ARGUMENTS
 4. Write `_state.md`:
    ```markdown
    # State: [name]
-   ## Flow-type
-   extended
    ## Pipeline
-   E → S → D → I → C (always)
+   S → I → C (always)
    ## Progress
-   - [ ] Exploration
    - [ ] Sensemaking
-   - [ ] Decomposition
    - [ ] Innovation
    - [ ] Critique
    ## Iteration
@@ -51,7 +49,7 @@ $ARGUMENTS
    ## Status
    ACTIVE
    ## Next Discipline
-   Exploration
+   Sensemaking
    ## Relationships
    [Add if applicable. Omit section if standalone.
    - CONTINUES FROM: folder_name (context)
@@ -63,8 +61,8 @@ $ARGUMENTS
 
 5. Present briefly:
    ```
-   Extended loop created: devdocs/inquiries/[folder_name]/
-   Pipeline: E → S → D → I → C
+   SIC loop created: devdocs/inquiries/[folder_name]/
+   Pipeline: S → I → C
    Question: [restated clearly]
    Goal: [what a good answer looks like]
    ```
@@ -77,15 +75,13 @@ $ARGUMENTS
 
 1. Read `_state.md` and `_branch.md` from the folder.
 
-2. Verify `flow-type: extended` in `_state.md`. If the field is `classic` or absent, this inquiry belongs to `/mvl`, not `/mvl+` — flag to the user and stop.
-
-3. Determine where the pipeline left off by checking which files exist. Proceed to EXECUTE PIPELINE below, starting from the first incomplete discipline.
+2. Determine where the pipeline left off by checking which files exist. Proceed to EXECUTE PIPELINE below, starting from the first incomplete discipline.
 
 ---
 
 ### EXECUTE PIPELINE
 
-Run disciplines sequentially: E → S → D → I → C. For each discipline that hasn't produced its output file yet, execute it using the Discipline Transition Protocol below. Continue through all remaining disciplines without pausing — do not wait for user input between disciplines. The user can interrupt at any time to redirect.
+Run disciplines sequentially: S → I → C. For each discipline that hasn't produced its output file yet, execute it using the Discipline Transition Protocol below. Continue through all remaining disciplines without pausing — do not wait for user input between disciplines. The user can interrupt at any time to redirect.
 
 **For each discipline in sequence:**
 
@@ -112,28 +108,26 @@ Run disciplines sequentially: E → S → D → I → C. For each discipline tha
    ```
    bash tools/structural_check.sh devdocs/inquiries/[folder_name]/[output_file] [discipline_name]
    ```
-   Discipline-to-name mapping: `exploration.md → exploration`, `sensemaking.md → sensemaking`, `decomposition.md → decomposition`, `innovation.md → innovation`, `critique.md → critique`.
+   Discipline-to-name mapping: `sensemaking.md → sensemaking`, `innovation.md → innovation`, `critique.md → critique`.
    If any `[FAIL]` lines appear, fix the missing sections in the output and re-save. Re-run the check to confirm. Include the results in the next checkpoint display.
 
 5. **Update `_state.md`:** check off the completed discipline, set next discipline.
 
-6. **Continue immediately** to the next discipline in E → S → D → I → C.
+6. **Continue immediately** to the next discipline in S → I → C.
 
 **Skill-to-command mapping:**
 
 | Discipline | Skill name | Output file |
 |---|---|---|
-| Exploration | `explore` | `exploration.md` |
 | Sensemaking | `sense-making` | `sensemaking.md` |
-| Decomposition | `decompose` | `decomposition.md` |
 | Innovation | `innovate` | `innovation.md` |
 | Critique | `td-critique` | `critique.md` |
 
-**When all five are complete** → proceed to ITERATION COMPLETE below.
+**When all three are complete** → proceed to ITERATION COMPLETE below.
 
 ---
 
-### If ITERATION COMPLETE (all five files exist):
+### If ITERATION COMPLETE (all three files exist):
 
 Read the critique output. Answer three questions:
 
@@ -145,9 +139,9 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
 
 - **YES — the question is answered:**
 
-  Load `homegrown/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the loop's artifacts (exploration, sensemaking, decomposition, innovation, critique) into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol; CONCLUDE auto-detects the extended pipeline from `_state.md`'s `flow-type: extended` field), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers (using `/MVL+` as the resume runner unless the parent's flow-type is classic, in which case `/MVL`).
+  Load `/Users/ns/Desktop/projects/native/.codex/skills/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the SIC artifacts into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers.
 
-  Do not execute CONCLUDE from memory; always load `homegrown/protocols/conclude.md` before invoking.
+  Do not execute CONCLUDE from memory; always load `/Users/ns/Desktop/projects/native/.codex/skills/protocols/conclude.md` before invoking.
 
 - **NO — the question is not fully answered:**
   ```
@@ -162,13 +156,13 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
 
   ### Next iteration focus
   [Restate the question with a NARROWER focus based on the gap.
-   This becomes the seed for the next E → S → D → I → C pass.]
+   This becomes the seed for the next S → I → C pass.]
   ```
 
   Update `_state.md`:
   - Increment iteration
-  - Reset progress checkboxes (all 5)
-  - Set next discipline: Exploration
+  - Reset progress checkboxes
+  - Set next discipline: Sensemaking
   - Append to History: what happened this iteration, what the gap is, what the next focus is
 
   Print briefly:
@@ -198,15 +192,15 @@ If the user provides one, append to `devdocs/improvement_observations.md`:
 ## [date] | [problem from _branch.md] | [iteration count]
 [the user's observation]
 ```
-If the user skips, move on. No gate. No requirement. Observations accumulate over time. When patterns emerge across multiple observations, the user can run `/MVL+ "review improvement observations and propose spec changes"` — the loop on the system's own feedback.
+If the user skips, move on. No gate. No requirement. Observations accumulate over time. When patterns emerge across multiple observations, the user can run `/MVL "review improvement observations and propose spec changes"` — a SIC loop on the system's own feedback.
 
 ---
 
 ## Cross-Session Resume
 
 ```
-/MVL+ devdocs/inquiries/[folder_name]/
-  → Reads _state.md (verifies flow-type: extended)
+/MVL devdocs/inquiries/[folder_name]/
+  → Reads _state.md
   → Sees where you left off
   → Loads the next discipline's spec via Skill tool
   → Continues the pipeline from where it stopped
@@ -218,11 +212,9 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 
 ## Rules
 
-1. **Always E → S → D → I → C.** Every question gets the full loop. No shortcuts. No variable pipelines. Strict sequence in the first phase (Exploration, then Sensemaking, then Decomposition) before Innovation and Critique.
-2. **Each step saves to the inquiry folder.** Point discipline commands at files in the folder — output saves alongside with the discipline's canonical name (`exploration.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md`).
-3. **`_state.md` is the source of truth.** Progress, iteration count, history, next command, flow-type.
+1. **Always S → I → C.** Every question gets the full loop. No shortcuts. No variable pipelines.
+2. **Each step saves to the inquiry folder.** Point discipline commands at files in the folder — output saves alongside.
+3. **`_state.md` is the source of truth.** Progress, iteration count, history, next command.
 4. **If the question isn't answered, loop again.** Each iteration narrows the focus based on what the previous iteration revealed.
 5. **The human can redirect at any point.** The pipeline runs continuously without pausing. The human can interrupt mid-response to redirect, re-run, or override. Checkpoints display telemetry between disciplines for visibility — they are informational, not gates.
-6. **Failures are data.** If the loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).
-7. **Classic `/mvl` is UNCHANGED.** This command (`/mvl+`) is separate and coexists with classic. Existing classic inquiries resume with `/mvl`, not `/mvl+`. The `flow-type` field in `_state.md` distinguishes them.
-8. DO NOT RUN EACH SKILL PARALLEL OR WITH SUBAGENTS TO SAVE TIME OR TOKEN. EACH SKILL SHOULD BE RUN AS CANNON AND IT IS OKAY IF THEY CONSUME CONTEXT. THEY SUPPOSED TO BE. 
+6. **Failures are data.** If the SIC loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).

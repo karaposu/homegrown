@@ -1,7 +1,6 @@
 
--preserve the correction chain
+navigate's complimentary decide mechanism . 
 
-- inquiry folder name fix
 
 
 
