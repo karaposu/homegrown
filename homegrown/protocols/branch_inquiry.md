@@ -238,6 +238,22 @@ If the parent has no branch depth, set:
 branch_depth = 1
 ```
 
+### Depth policy
+
+Recursive branches are allowed. A branch may itself become a parent branch.
+
+Use this depth policy before creating the child folder:
+
+```text
+depth 1-3: normal
+depth 4-5: warn in the creation summary and verify the source/goal are clear
+depth 6+: require explicit user confirmation or recommend a new root inquiry linked by relationships
+```
+
+Depth policy is not a hard architectural cap. It is a safety check for path length, readability, and over-nesting.
+
+If the user chooses a new root inquiry instead of physical nesting, do not use BRANCH_INQUIRY. Create a normal root inquiry and record relationships such as `CONTINUES FROM` or `RELATED`.
+
 ### Branch id
 
 Use:
@@ -283,6 +299,33 @@ Create child branches under:
 This full folder path is `inquiry_path`.
 
 The local folder name is `inquiry_id`.
+
+### Path length preflight
+
+Before creating the child folder, estimate the final path length for:
+
+```text
+[parent_path]/branches/[branch_id]/
+```
+
+When available, use the filesystem path limit for the workspace, for example:
+
+```text
+getconf PATH_MAX .
+```
+
+If the limit cannot be checked, assume a conservative limit of 1024 characters.
+
+Use this policy:
+
+```text
+below 80% of limit: proceed
+80-90% of limit: warn and prefer a shorter slug
+above 90% of limit: halt and shorten the slug before creating the folder
+would exceed limit: halt; do not create the branch
+```
+
+If the path is long because of repeated nesting, recommend either a shorter slug or a new root inquiry with explicit relationships.
 
 ---
 
@@ -531,6 +574,60 @@ Future branch-status refresh or merge protocols own parent-level aggregation acr
 
 Parallel or multihead branch children must write only to their own child folders during execution. They must not all mutate the parent `_branches.md` during conclusion.
 
+## Path source-of-truth rules
+
+`inquiry_path` is the source of truth for file operations.
+
+Use `inquiry_path` for:
+
+- reading `_branch.md`;
+- reading `_state.md`;
+- running discipline inputs;
+- writing discipline outputs;
+- structural checks;
+- resume;
+- conclude;
+- navigation;
+- archive operations.
+
+`inquiry_id` is only a display identifier after creation.
+
+Use `inquiry_id` for:
+
+- headings;
+- local table ids;
+- short labels in conversation;
+- branch ids when the local folder name is needed.
+
+Do not rebuild a path from `inquiry_id`.
+
+This is invalid for nested branches:
+
+```text
+inquiry_path = devdocs/inquiries/[inquiry_id]/
+```
+
+That construction is allowed only during root inquiry creation, before the inquiry exists.
+
+Only two operations may construct inquiry paths:
+
+```text
+root creation:   inquiry_path = devdocs/inquiries/[inquiry_id]/
+branch creation: inquiry_path = [parent_path]/branches/[branch_id]/
+```
+
+After creation, runners and protocols must consume the full `inquiry_path` as an opaque folder path.
+
+Do not infer lineage by chopping path strings. For parent, root, and depth, use metadata:
+
+```text
+Parent Inquiry
+Root Inquiry
+Branch Depth
+BRANCH_OF
+ROOT_INQUIRY
+```
+
 ---
 
 ## Output summary
@@ -560,6 +657,10 @@ Do not print the full child `_branch.md` or `_state.md` unless the user asks.
 - **Runner mismatch** - runner is not `MVL` or `MVL+`. Ask for one of the supported runners.
 - **Branch mode mismatch** - `set-member` has no `branch_set_id`, or `single` has a coordinated set id. Ask for corrected branch mode fields.
 - **Path collision** - computed child path already exists. Generate a suffix or ask for a different slug.
+- **Depth warning ignored** - branch depth is 6 or greater and no explicit user confirmation was given. Halt and ask whether to physically nest or create a related root inquiry.
+- **Path too long** - computed child path is above the safe path-length threshold or would exceed the filesystem limit. Halt and shorten the slug or recommend a related root inquiry.
+- **Path re-rooting** - a runner tries to rebuild `devdocs/inquiries/[inquiry_id]/` from a nested branch id. Stop and use the full `inquiry_path`.
+- **Lineage by path slicing** - a runner tries to infer parent/root/depth by chopping path strings. Stop and read branch metadata instead.
 - **Scope gap** - child question does not cover the stated goal. Ask whether to widen/sharpen the question before running the pipeline.
 - **Parent index write failure** - child folder exists but `_branches.md` could not be updated. Report both facts; do not delete child files.
 - **Accidental merge** - branch creation starts rewriting the parent finding or synthesizing results. Stop; merge is a separate protocol.

@@ -89,7 +89,7 @@ Pipeline protocols manage the lifecycle of a discipline chain: how to start, wha
 
 **SCOPE** — Before starting a discipline: set the depth target, time/effort budget, and aspect. Calibrate effort to purpose. A quick bug fix needs CV3; a major refactoring needs CV4. Currently ad-hoc — **not yet formalized.**
 
-**BRANCH** — After decomposition creates sub-problems: create parallel inquiry branches, each with its own pipeline. Manage the branch tree. Currently identified as a gap — **not yet formalized.**
+**BRANCH** — Create a child inquiry from a specific source anchor in a parent inquiry, preserving lineage, source authority, and resumable state. Branches may come from decomposition sub-problems, interesting findings, critique kills/refinements, navigation options, loop-diagnosis results, user-selected follow-ups, or source ambiguities that deserve their own inquiry. Branches may be single and sequential, sibling branch sets, or future parallel executions. Initial explicit child-branch creation is formalized in `homegrown/protocols/branch_inquiry.md`; broader branch-set coordination and parallel branch management remain future work.
 
 **MERGE** — After parallel branches complete: combine their outputs, resolve conflicts between branches, produce a unified result. Requires BRANCH. Currently identified as a gap — **not yet formalized.**
 
