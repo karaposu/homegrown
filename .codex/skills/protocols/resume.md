@@ -10,15 +10,35 @@ RESUME does NOT judge the disciplines' outputs. Per `thinking_disciplines/protoc
 
 ---
 
+## Path contract
+
+RESUME operates on one `inquiry_path`: the full path to the inquiry folder being resumed.
+
+`inquiry_path` may be a root inquiry:
+
+```text
+devdocs/inquiries/<inquiry_id>/
+```
+
+or a nested branch inquiry:
+
+```text
+devdocs/inquiries/<root>/branches/<child>/branches/<grandchild>/
+```
+
+Use `inquiry_path` for every file operation. Do not rebuild paths from an inquiry name or local folder id.
+
+---
+
 ## Step 1 — Pipeline detection
 
-RESUME auto-detects which pipeline applies by inspecting `_state.md` in the inquiry folder:
+RESUME auto-detects which pipeline applies by inspecting `[inquiry_path]/_state.md`:
 
 - **Classic pipeline** (`Pipeline: S → I → C`, or `Flow-type: classic`, or absent flow-type): expected discipline outputs are `sensemaking.md`, `innovation.md`, `critique.md` (in pipeline order).
 - **Extended pipeline** (`Pipeline: E → S → D → I → C`, or `Flow-type: extended`): expected discipline outputs are `exploration.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md` (in pipeline order).
 - **Other pipelines** (future runners with different SIC-shaped pipelines): the pipeline declaration in `_state.md` is the authoritative ordered list of expected disciplines.
 
-If `_state.md` is missing or malformed, HALT and tell the user: "Cannot detect pipeline from `_state.md`. RESUME needs the pipeline declaration to determine which discipline outputs to read."
+If `[inquiry_path]/_state.md` is missing or malformed, HALT and tell the user: "Cannot detect pipeline from `[inquiry_path]/_state.md`. RESUME needs the pipeline declaration to determine which discipline outputs to read."
 
 ---
 
@@ -26,7 +46,7 @@ If `_state.md` is missing or malformed, HALT and tell the user: "Cannot detect p
 
 For each expected discipline in the pipeline (per Step 1's ordered list), in order:
 
-1. **Check existence.** Does the discipline's output file exist in the inquiry folder?
+1. **Check existence.** Does `[inquiry_path]/[discipline_output_file]` exist?
    - If NO → this discipline hasn't run yet. Mark this discipline as the next-to-run; **stop iterating through subsequent disciplines** (they can't have run before this one); proceed to Step 3 with this finding.
    - If YES → continue to step 2.2.
 
@@ -71,7 +91,7 @@ Return signal: "pipeline complete with PROCEED on all disciplines." The runner p
 Present the specific shortfall to the user with options:
 
 ```
-Inquiry: [name]
+Inquiry: [inquiry_path]
 Status: [discipline] complete but FLAGGED.
 
 Telemetry concern: [specific shortfall from the discipline's own report — e.g., "Sensemaking's anchor diversity was 1 type from 1 perspective; perspective saturation reached at 2 perspectives"].
@@ -88,7 +108,7 @@ Options:
 Recommend re-running the discipline with targeted feedback drawn from the discipline's own failure-mode report:
 
 ```
-Inquiry: [name]
+Inquiry: [inquiry_path]
 Status: [discipline] complete with RE-RUN signal.
 
 The discipline self-assessed as below threshold on critical metrics: [specific failure modes from the discipline's report].
@@ -102,7 +122,7 @@ Recommendation: Re-run /[discipline] with focus on [the specific failure modes].
 
 ## Step 4 — Update `_state.md`
 
-After the routing decision in Step 3, modify the inquiry folder's `_state.md`:
+After the routing decision in Step 3, modify `[inquiry_path]/_state.md`:
 
 - **Case A (PROCEED, next-to-run identified):** check off any newly-completed disciplines whose verdicts were PROCEED in this RESUME pass; set `Next Discipline` to the next-to-run; append a History entry summarizing the RESUME pass (which disciplines verified PROCEED).
 - **Case B (pipeline complete with all PROCEED):** all discipline checkboxes already checked; set `Next Discipline` to `ITERATION COMPLETE` (or equivalent); append a History entry noting "RESUME confirmed all disciplines PROCEED; deferring to runner's iteration-complete check."
@@ -116,11 +136,11 @@ After the routing decision in Step 3, modify the inquiry folder's `_state.md`:
 Print (not the full pipeline state):
 
 ```
-Inquiry: [name]
+Inquiry: [inquiry_path]
 Pipeline progress: [N] of [M] disciplines complete (with verdicts: [list — e.g., "S: PROCEED, I: PROCEED, C: FLAG"]).
 [NOTE: any backward-compat treat-as-PROCEED entries]
 
-Next: [Run /[discipline] devdocs/inquiries/[name]/[input_file]
+Next: [Run /[discipline] [inquiry_path]/[input_file]
         OR  Pipeline complete — runner proceeds to iteration-complete check
         OR  Wait for user decision on FLAG / RE-RUN]
 ```
@@ -136,12 +156,20 @@ If `_state.md` has a `## Relationships` section AND this RESUME pass produced Ca
 If RESUME is invoked AFTER the inquiry is already COMPLETE (status field), print:
 
 ```
-Inquiry: [name] — already COMPLETE.
-Finding: devdocs/inquiries/[name]/finding.md
-[Print any RELATED relationships from _state.md]
+Inquiry: [inquiry_path] — already COMPLETE.
+Finding: [inquiry_path]/finding.md
+[Print any BRANCH_OF / ROOT_INQUIRY / BRANCH_SET / RELATED relationships from _state.md]
 ```
 
 This handles cross-session re-entry on a completed inquiry.
+
+For completed branch inquiries, preserve paths exactly as written in `_state.md`:
+
+```text
+Parent: [BRANCH_OF target]
+Root inquiry: [ROOT_INQUIRY target]
+Branch set: [BRANCH_SET value]
+```
 
 ---
 
@@ -149,7 +177,9 @@ This handles cross-session re-entry on a completed inquiry.
 
 - **Pipeline detection failure** — `_state.md` is missing, malformed, or has an unrecognized pipeline. HALT and ask the user to specify the pipeline manually before retrying.
 
-- **Missing discipline output despite earlier in pipeline being complete** — pipeline order says S → I → C, but `innovation.md` exists and `sensemaking.md` doesn't. This indicates `_state.md` and the actual files are inconsistent. HALT and tell the user: "State inconsistency: `[later_file]` exists but `[earlier_file]` does not. Verify pipeline order and re-run RESUME or fix manually."
+- **Missing discipline output despite earlier in pipeline being complete** — pipeline order says S → I → C, but `[inquiry_path]/innovation.md` exists and `[inquiry_path]/sensemaking.md` doesn't. This indicates `[inquiry_path]/_state.md` and the actual files are inconsistent. HALT and tell the user: "State inconsistency: `[inquiry_path]/[later_file]` exists but `[inquiry_path]/[earlier_file]` does not. Verify pipeline order and re-run RESUME or fix manually."
+
+- **Path re-rooting** — RESUME tries to rebuild `devdocs/inquiries/[inquiry_id]/` from a local folder name. Stop and use the full `inquiry_path`.
 
 - **Verdict line ambiguous** — multiple `**Overall: PROCEED**` / `**Overall: FLAG**` / `**Overall: RE-RUN**` lines found in the same discipline output (e.g., the discipline output contains the pattern within a quoted example or inside a sub-section that isn't the discipline's own self-assessment). Use the LAST occurrence in the file (assumed to be the discipline's actual verdict at the end of its self-assessment section). If still ambiguous, treat as backward-compat PROCEED with a NOTE: "Discipline `[name]` had ambiguous verdict pattern; defaulted to PROCEED."
 

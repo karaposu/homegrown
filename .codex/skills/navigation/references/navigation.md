@@ -5,11 +5,11 @@
 
 # Structural Navigation — A Thinking Discipline
 
-A thinking discipline for enumerating all possible next directions after a cognitive cycle completes. Navigation reads what was produced (survivors, refinements, kill seeds, frontier questions, telemetry signals) and maps the full space of what could come next — each direction with its reasoning and independently reasoned guidelines.
+A thinking discipline for enumerating all possible next directions after a cognitive cycle completes. Navigation reads what was produced (survivors, refinements, kill seeds, frontier questions, telemetry signals) and maps the full space of what could come next — each direction with its purpose, route state, reasoning, and independently reasoned guidelines.
 
 Navigation is a BOUNDARY discipline — it operates between cognitive cycles, not within them. It looks FORWARD: given what this cycle produced, what are all the possible next directions?
 
-> **Structural Navigation is the process of transforming a completed cognitive cycle's output into a full enumeration of typed next directions, each with independent reasoning and guidelines — producing a navigation map that reveals the complete possibility space without filtering or selecting.**
+> **Structural Navigation is the process of transforming a completed cognitive cycle's output into a full enumeration of typed next directions, each with purpose, movement, reachability state, independent reasoning, and guidelines — producing a navigation map that reveals the complete possibility space without filtering or selecting.**
 
 ---
 
@@ -19,14 +19,14 @@ Navigation is a BOUNDARY discipline — it operates between cognitive cycles, no
 
 Navigation is not:
 - Decision-making (navigation ENUMERATES possibilities. Choosing which to pursue is a separate operation)
-- Planning (navigation maps the space. Sequencing, dependencies, and scheduling are separate)
+- Planning (navigation maps the space and records descriptive reachability. Sequencing, ownership, and scheduling are separate)
 - Wayfinding (wayfinding produced ONE direction — the "best" one. Navigation produces ALL directions and lets the selector decide)
 - Reflection (reflection looks BACKWARD at process quality. Navigation looks FORWARD at possibility space)
 - Routing (routing is mechanical dispatch — "S done, run I next." Navigation is cognitive — understanding what possibilities exist and why)
 
 Navigation has one structural operation:
 
-**Enumeration** — reading the cycle's output and producing a typed, reasoned, guideline-enriched list of every possible next direction. The enumeration is COMPLETE (all possibilities, not a filtered subset) and TYPED (each direction has a category and type from the taxonomy).
+**Enumeration** — reading the cycle's output and producing a typed, reasoned, route-state-aware, guideline-enriched list of every possible next direction. The enumeration is COMPLETE (all possibilities, not a filtered subset) and TYPED (each direction has a category and type from the taxonomy).
 
 ---
 
@@ -34,7 +34,7 @@ Navigation has one structural operation:
 
 **Input:** A completed SIC cycle's output — C's verdicts (survivors, refinements, kill seeds), frontier questions, telemetry from S/I/C, scope check results, and optionally R's process observations.
 
-**Output:** A navigation map — the full enumeration of possible next directions, each as a navigation item with direction + WHY + guidelines (each guideline with its own WHY).
+**Output:** A navigation map — the full enumeration of possible next directions, each as a navigation item with direction + purpose + movement + status + blockers/unlocks + WHY + guidelines (each guideline with its own WHY) + continuation note.
 
 **The transform:** SIC output → possibility space. What was produced → what could come next.
 
@@ -42,13 +42,25 @@ Navigation has one structural operation:
 
 ## Navigation Item Structure
 
-Each item in the navigation map has two levels:
+Each item in the navigation map is a route record. It has three levels:
 
-### Direction + WHY
+### Route identity + route state
 
-WHAT to pursue and WHY it's worth pursuing.
+WHAT the route is, what it would serve, and whether it is reachable from the current state.
 
 - **Direction** — the type (from the 16-type taxonomy) + the specific target
+- **Purpose** — what this route would serve, reveal, or unlock
+- **Movement** — the descriptive transition this route represents: current state → target state
+- **Status** — the route's reachability or lifecycle state: open, blocked, deferred, active, done, stale, or superseded
+- **Blocked by** — the gate, missing evidence, missing artifact, or condition preventing movement; use `none` when unblocked
+- **Unlocks** — one or more downstream routes, checks, decisions, or artifacts this route may open; use `unknown` when unclear
+
+These fields are required on every included route. If the value is not known, say `unknown`. If the field does not apply, say `none`. Do not omit the field; omission makes the map harder to resume from later.
+
+### Reasoning
+
+WHY the route is worth considering.
+
 - **WHY** — the evidence from C's output, telemetry, or context that makes this direction worth considering
 
 ### Guidelines + each has WHY
@@ -63,10 +75,19 @@ Guidelines can address any discipline step:
 - C guidelines: "Check for trap D" → bc [reason]
 - General: "Elegance matters here" → bc [reason]
 
+### Continuation note
+
+What a future warm-up should remember about this route. This is not an instruction to pursue the route. It is durable context for later Navigation: why the route existed, what changed, what remained blocked, or what evidence would make the route live again.
+
 ### Example
 
 ```
-■ DEEPEN: The taxonomy's completeness [HIGH]
+■ DEEPEN: The taxonomy's completeness [HIGH] [open]
+  Purpose: test whether the 16-type taxonomy is complete enough for real Navigation runs
+  Movement: first-pass taxonomy → usage-tested taxonomy
+  Status: open
+  Blocked by: none
+  Unlocks: taxonomy refinement routes, telemetry improvements, possible type consolidation
   WHY: 16 types is a first-pass enumeration — untested against real use
 
   Guidelines:
@@ -80,6 +101,8 @@ Guidelines can address any discipline step:
     → bc multi-agent scenarios weren't considered in the original analysis
   - Elegance criterion: if 16 is too many, find the deeper structure
     → bc the user explicitly values structural simplicity
+
+  Continuation note: if repeated runs show overlap between DEEPEN and RE-RUN DEEPER, reopen the taxonomy boundary.
 ```
 
 ---
@@ -149,22 +172,40 @@ The navigation map is the FULL enumeration of possible next directions, presente
 ## Navigation Map ([N] items, [H] HIGH)
 
 ### Content [count]
-■ [TYPE]: [direction] [HIGH]
+■ [TYPE]: [route title] [HIGH] [status]
+  Purpose: [what this route would serve, reveal, or unlock]
+  Movement: [current state] → [target state]
+  Status: [open | blocked | deferred | active | done | stale | superseded]
+  Blocked by: [gate, missing evidence, missing artifact, condition, none, or unknown]
+  Unlocks: [one or more downstream routes/checks/decisions/artifacts, or unknown]
   WHY: [evidence]
   Guidelines:
   - [pointer 1] → [why this pointer matters]
   - [pointer 2] → [why]
   - [pointer 3] → [why]
+  Continuation note: [what a future warm-up should remember]
 
-○ [TYPE]: [direction] [MEDIUM]
+○ [TYPE]: [route title] [MEDIUM] [status]
+  Purpose: [what this route would serve, reveal, or unlock]
+  Movement: [current state] → [target state]
+  Status: [open | blocked | deferred | active | done | stale | superseded]
+  Blocked by: [gate, missing evidence, missing artifact, condition, none, or unknown]
+  Unlocks: [one or more downstream routes/checks/decisions/artifacts, or unknown]
   WHY: [reason]
   Guidelines:
   - [pointer 1] → [why]
+  Continuation note: [what a future warm-up should remember]
 
-· [TYPE]: [direction] [LOW]
+· [TYPE]: [route title] [LOW] [status]
+  Purpose: [what this route would serve, reveal, or unlock]
+  Movement: [current state] → [target state]
+  Status: [open | blocked | deferred | active | done | stale | superseded]
+  Blocked by: [gate, missing evidence, missing artifact, condition, none, or unknown]
+  Unlocks: [one or more downstream routes/checks/decisions/artifacts, or unknown]
   WHY: [reason]
   Guidelines:
   - [pointer 1] → [why]
+  Continuation note: [what a future warm-up should remember]
 
 ### Process [count]
 ...
@@ -186,7 +227,13 @@ Confidence is a ROUGH signal for implicit prioritization, not a precise measurem
 
 ### Excluded Section
 
-Types that navigation considered and REJECTED, with reasoning. Only STRUCTURALLY inapplicable types (e.g., CONSOLIDATE when only 1 inquiry exists). Low-priority items stay in the main map with · LOW — they're deprioritized, not excluded.
+Types that navigation considered and REJECTED, with reasoning.
+
+Only STRUCTURALLY inapplicable types belong here (e.g., CONSOLIDATE when only 1 inquiry exists). A route is structurally inapplicable when it does not fit the current possibility space at all.
+
+Blocked routes do not belong in Excluded. A blocked route is still part of the possibility space; it is just not reachable yet. Keep it in the main map with `Status: blocked`, fill `Blocked by`, and connect it to the relevant `UNBLOCK` route/check when one exists.
+
+Low-priority items also stay in the main map with · LOW. Low priority means deprioritized, not excluded.
 
 ---
 
@@ -202,7 +249,7 @@ Read everything produced by the completed SIC cycle:
 - The original question and goal
 - R's observations (if R ran before N)
 
-**Reachability check:** Before assigning types, identify which directions are accessible from current state and which are gated behind prerequisites. A gate has three parts: blocked region (what becomes reachable when the gate opens), condition (what must be true), current state (open or closed). For each detected gate: log it. If a gate blocks an otherwise-promising direction, the type assignment in Step 2 must include the gate condition as part of the direction's WHY (e.g., "DEEPEN survivor X — gated on UNBLOCK condition Y first").
+**Reachability check:** Before assigning types, identify which directions are accessible from current state and which are gated behind prerequisites. A gate has three parts: blocked region (what becomes reachable when the gate opens), condition (what must be true), current state (open or closed). For each detected gate: log it and encode it into the affected route records. The affected route gets `Status: blocked` or `Status: open`, the gate appears in `Blocked by`, and possible downstream openings appear in `Unlocks`. If a gate blocks an otherwise-promising direction, keep that direction in the main map as a blocked route and add or link an `UNBLOCK` route/check that names the condition.
 
 ### Step 2: Assign Types
 
@@ -238,11 +285,11 @@ Assign ■/○/· based on evidence strength:
 
 ### Step 5: Check Excluded
 
-For each of the 16 types: is it structurally inapplicable? If yes, add to excluded section with reasoning. If no but low priority, keep in map with · LOW.
+For each of the 16 types: is it structurally inapplicable? If yes, add to excluded section with reasoning. If no but low priority, keep in map with · LOW. If the route is meaningful but blocked, it must remain in the main map with `Status: blocked` and must connect to the relevant `UNBLOCK` route/check when that check is known.
 
 ### Step 6: Format the Map
 
-Group by category (content/process/context). Order by confidence within each category. Include guidelines with WHY for each item. Include excluded section.
+Group by category (content/process/context). Order by confidence within each category. Include every required route field for each item: Purpose, Movement, Status, Blocked by, Unlocks, WHY, Guidelines, and Continuation note. Include the excluded section for structurally inapplicable types.
 
 ---
 
@@ -282,7 +329,15 @@ Listing types without per-item WHY and per-guideline WHY. The map is a bare list
 
 **How to prevent:** Every item must have WHY (direction-level reasoning) and 3-6 guidelines (each with its own WHY). If you can't articulate WHY a direction is in the map, it might not belong there.
 
-### 5. Scope Fixation
+### 5. Route State Omission
+
+Listing directions without Purpose, Movement, Status, Blocked by, Unlocks, or Continuation note. The map may be useful in the moment, but a later warm-up cannot reliably tell what the route was for, whether it was reachable, or what it was supposed to open.
+
+**How to recognize:** Items have direction and WHY, but no explicit status or blocker fields. Blocked routes are described only inside prose. `UNBLOCK` appears without the blocked destination route it is meant to open.
+
+**How to prevent:** Treat every navigation item as a route record. Fill all route-state fields even when the value is `none` or `unknown`. Keep blocked routes in the main map with `Status: blocked`.
+
+### 6. Scope Fixation
 
 All directions are within the current question's scope. Missing "the question itself should change" types (REFRAME, WIDEN). The map explores within the box but never questions the box.
 
@@ -301,6 +356,10 @@ After producing the navigation map, assess the quality of this navigation run:
 - **Category balance** — Are items distributed across content, process, and context? If one category is empty, check whether that's correct for the situation or indicates a blind spot. Track across runs — if a category is consistently empty, it's a systematic blind spot.
 
 - **Guideline depth** — Do items have guidelines with per-guideline WHY, or are they bare directions? Guidelines are what make navigation items actionable. Without them, the map is a list.
+
+- **Route-state completeness** — Does every included item have Purpose, Movement, Status, Blocked by, Unlocks, and Continuation note? Missing fields make the map weak as continuation memory.
+
+- **Blocked-route visibility** — Are blocked but meaningful routes represented in the main map with `Status: blocked`, instead of being hidden in Excluded or collapsed into only an `UNBLOCK` item?
 
 - **Excluded reasoning** — Does the excluded section explain why types were rejected? Excluded without reasoning is premature filtering. Excluded with reasoning is conscious assessment.
 
@@ -382,6 +441,3 @@ The human wants to see their options without running SIC first. "Given the proje
 ### Between branches (during multi-headed execution)
 
 Branch 1 completed. Branch 2 is still running. Navigation re-reads the state: should remaining branches continue? Should new branches be added based on branch 1's findings? Dynamic navigation that responds to incoming results.
-
-
-

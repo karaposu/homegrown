@@ -62,6 +62,7 @@ done
 echo "Installing protocols..."
 
 protocols=(
+  "branch_inquiry.md"
   "conclude.md"
   "resume.md"
 )
@@ -85,8 +86,9 @@ echo "  /MVL, /MVL+, /meta-loop, /sense-making, /innovate, /td-critique,"
 echo "  /explore, /decompose, /comprehend, /reflect, /navigation"
 echo ""
 echo "Protocols (loaded by skills, not user-invoked):"
-echo "  $SKILLS_DIR/protocols/conclude.md"
-echo "  $SKILLS_DIR/protocols/resume.md"
+for proto in "${protocols[@]}"; do
+  echo "  $SKILLS_DIR/protocols/$proto"
+done
 echo ""
 # Cursor uses ~/.cursor/commands/ for slash commands; whether it supports the skills/
 # format is unverified at the time of writing. If you're using Cursor and the skills/

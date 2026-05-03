@@ -17,13 +17,32 @@ $ARGUMENTS
 
 ## Instructions
 
+### Path vocabulary
+
+Use these path variables consistently:
+
+- `inquiry_path` is the full path to the inquiry folder. Use it for every file operation.
+- `inquiry_id` is the local folder name or short display id. Do not use it to rebuild paths after creation.
+
+Root inquiry creation is the only place MVL+ builds:
+
+```text
+inquiry_path = devdocs/inquiries/[inquiry_id]/
+```
+
+Branch inquiry creation is delegated to `/Users/ns/Desktop/projects/native/.codex/skills/protocols/branch_inquiry.md`, which returns `inquiry_path`. After that, MVL+ must treat `inquiry_path` as an opaque folder path.
+
 ### If NEW (input is a question or description):
 
 1. Read the question fully. Restate it clearly in one sentence.
 
-2. Create the inquiry folder: `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slugified_name>/`. This timestamped directory name is `[folder_name]` in path placeholders below.
+2. Determine creation mode:
 
-3. Write `_branch.md`:
+   - **BRANCH NEW:** If the input includes `branch_from:` or `--branch-from`, load `/Users/ns/Desktop/projects/native/.codex/skills/protocols/branch_inquiry.md` in full and execute BRANCH_INQUIRY with `runner: MVL+`. Use the returned `inquiry_path`, `inquiry_id`, and `next_discipline`. Do not create a root inquiry folder. Do not rewrite the child `_branch.md` or `_state.md` after BRANCH_INQUIRY creates them.
+   - **ROOT NEW:** Otherwise create a normal root inquiry folder: `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slugified_name>/`. This timestamped directory name is `inquiry_id`; the full folder path is `inquiry_path`.
+
+3. For ROOT NEW only, write `[inquiry_path]/_branch.md`:
+
    ```markdown
    # Branch: [name]
    ## Question
@@ -35,7 +54,7 @@ $ARGUMENTS
    ```
    If the scope check flags a gap, present the proposed wider question to the user before proceeding. The user decides whether to widen or keep the original scope.
 
-4. Write `_state.md`:
+4. For ROOT NEW only, write `[inquiry_path]/_state.md`:
    ```markdown
    # State: [name]
    ## Flow-type
@@ -56,16 +75,16 @@ $ARGUMENTS
    Exploration
    ## Relationships
    [Add if applicable. Omit section if standalone.
-   - CONTINUES FROM: folder_name (context)
-   - SUPERSEDED BY: folder_name (reason)
-   - RELATED: folder_name (connection)]
+   - CONTINUES FROM: inquiry_path (context)
+   - SUPERSEDED BY: inquiry_path (reason)
+   - RELATED: inquiry_path (connection)]
    ## History
    - [date]: Created. Question: [one-line summary]
    ```
 
 5. Present briefly:
    ```
-   Extended loop created: devdocs/inquiries/[folder_name]/
+   Extended loop created: [inquiry_path]/
    Pipeline: E → S → D → I → C
    Question: [restated clearly]
    Goal: [what a good answer looks like]
@@ -77,11 +96,13 @@ $ARGUMENTS
 
 ### If RESUME (input is a folder path):
 
-1. Read `_state.md` and `_branch.md` from the folder.
+1. Set `inquiry_path` to the input folder path. Use `inquiry_id` only as a display label.
 
-2. Verify `flow-type: extended` in `_state.md`. If the field is `classic` or absent, this inquiry belongs to `/mvl`, not `/mvl+` — flag to the user and stop.
+2. Read `[inquiry_path]/_state.md` and `[inquiry_path]/_branch.md`.
 
-3. Determine where the pipeline left off by checking which files exist. Proceed to EXECUTE PIPELINE below, starting from the first incomplete discipline.
+3. Verify `flow-type: extended` in `[inquiry_path]/_state.md`. If the field is `classic` or absent, this inquiry belongs to `/mvl`, not `/mvl+` — flag to the user and stop.
+
+4. Determine where the pipeline left off by checking which files exist in `[inquiry_path]`. Proceed to EXECUTE PIPELINE below, starting from the first incomplete discipline.
 
 ---
 
@@ -103,16 +124,16 @@ Run disciplines sequentially: E → S → D → I → C. For each discipline tha
    If any structural checks failed, list them: `[FAIL: label1, label2]`
 
 2. **Load the discipline spec via Skill tool:**
-   - Invoke `Skill(skill: "<discipline-skill-name>", args: "devdocs/inquiries/[folder_name]/_branch.md")`
+   - Invoke `Skill(skill: "<discipline-skill-name>", args: "[inquiry_path]/_branch.md")`
    - If the Skill tool fails → fall back to `Read` on the discipline's command file, then execute
-   - If Read also fails → HALT and tell the user: "Could not load spec for [discipline]. Run manually: /[discipline] devdocs/inquiries/[folder_name]/_branch.md"
+   - If Read also fails → HALT and tell the user: "Could not load spec for [discipline]. Run manually: /[discipline] [inquiry_path]/_branch.md"
    - **Never execute a discipline from memory alone.**
 
 3. **Execute the loaded spec** at full depth. The discipline saves its output to the inquiry folder.
 
 4. **Run structural check** on the saved output:
    ```
-   bash tools/structural_check.sh devdocs/inquiries/[folder_name]/[output_file] [discipline_name]
+   bash tools/structural_check.sh [inquiry_path]/[output_file] [discipline_name]
    ```
    Discipline-to-name mapping: `exploration.md → exploration`, `sensemaking.md → sensemaking`, `decomposition.md → decomposition`, `innovation.md → innovation`, `critique.md → critique`.
    If any `[FAIL]` lines appear, fix the missing sections in the output and re-save. Re-run the check to confirm. Include the results in the next checkpoint display.
@@ -185,7 +206,7 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
   If this iteration produced multiple survivors, frontier questions, or branching possibilities, suggest:
   ```
   Multiple directions emerged. For a full possibility map, run:
-  /navigate devdocs/inquiries/[folder_name]/
+  /navigate [inquiry_path]/
   ```
 
 **3. Does the answer advance the goal?**
@@ -207,7 +228,7 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 ## Cross-Session Resume
 
 ```
-/MVL+ devdocs/inquiries/[folder_name]/
+/MVL+ [inquiry_path]/
   → Reads _state.md (verifies flow-type: extended)
   → Sees where you left off
   → Loads the next discipline's spec via Skill tool
@@ -227,3 +248,4 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 5. **The human can redirect at any point.** The pipeline runs continuously without pausing. The human can interrupt mid-response to redirect, re-run, or override. Checkpoints display telemetry between disciplines for visibility — they are informational, not gates.
 6. **Failures are data.** If the loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).
 7. **Classic `/mvl` is UNCHANGED.** This command (`/mvl+`) is separate and coexists with classic. Existing classic inquiries resume with `/mvl`, not `/mvl+`. The `flow-type` field in `_state.md` distinguishes them.
+8. DO NOT RUN EACH SKILL PARALLEL OR WITH SUBAGENTS TO SAVE TIME OR TOKEN. EACH SKILL SHOULD BE RUN AS CANNON AND IT IS OKAY IF THEY CONSUME CONTEXT. THEY SUPPOSED TO BE.

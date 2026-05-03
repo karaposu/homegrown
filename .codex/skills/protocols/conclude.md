@@ -10,6 +10,26 @@ CONCLUDE does NOT decide whether the question is answered (that's the runner's r
 
 ---
 
+## Path contract
+
+CONCLUDE operates on one `inquiry_path`: the full path to the inquiry folder being concluded.
+
+`inquiry_path` may be a root inquiry:
+
+```text
+devdocs/inquiries/<inquiry_id>/
+```
+
+or a nested branch inquiry:
+
+```text
+devdocs/inquiries/<root>/branches/<child>/branches/<grandchild>/
+```
+
+Use `inquiry_path` for every file operation. Do not rebuild paths from an inquiry name or local folder id.
+
+---
+
 ## Step 1 — Pipeline detection
 
 CONCLUDE auto-detects which discipline outputs to read by inspecting `_state.md`:
@@ -211,7 +231,7 @@ Move discipline output files to a `docarchive/` subfolder inside the inquiry fol
 
 Use:
 ```bash
-mkdir -p devdocs/inquiries/<name>/docarchive/
+mkdir -p [inquiry_path]/docarchive/
 # move the appropriate files based on pipeline
 ```
 
@@ -236,7 +256,7 @@ Print (not the full finding):
 
 Question: [restated from _branch.md]
 Answer: [one-sentence summary]
-Finding: devdocs/inquiries/[name]/finding.md
+Finding: [inquiry_path]/finding.md
 ```
 
 The user can read the finding directly; the conversation print is just the navigation pointer.
@@ -245,13 +265,37 @@ The user can read the finding directly; the conversation print is just the navig
 
 ## Step 6 — Print post-completion pointers from `_state.md` Relationships
 
-Read the `## Relationships` section of `_state.md`. For each relationship type present:
+Read the `## Relationships` section of `_state.md`. For each relationship type present, preserve paths exactly as written. Relationship targets may be root inquiry paths or nested branch inquiry paths.
+
+- **BRANCH_OF:** print
+  ```
+  Branch complete.
+  Parent: [parent_path] ([source/context if present]).
+  Finding: [inquiry_path]/finding.md
+  Resume parent: [appropriate runner] [parent_path]/
+  ```
+  Choose the parent runner based on the parent's `Flow-type`:
+  - `classic` → `/MVL`
+  - `extended` → `/MVL+`
+  - Other → use the runner recorded in the parent's `_state.md` history if available.
+
+  Parent `_branches.md` is an index, not the authority for child completion. CONCLUDE may print the parent update target, but child completion must not fail if parent `_branches.md` is stale or not updated.
+
+- **ROOT_INQUIRY:** print only when it differs from the direct parent:
+  ```
+  Root inquiry: [root_path]
+  ```
+
+- **BRANCH_SET:** print
+  ```
+  Branch set: [branch_set_id]
+  ```
 
 - **CONTINUES FROM:** print
   ```
-  This finding is ready for [parent_name] ([context]).
+  This finding is ready for [parent_path] ([context]).
   Finding: [one-sentence answer].
-  Resume: [appropriate runner] devdocs/inquiries/[parent_name]/
+  Resume: [appropriate runner] [parent_path]/
   ```
   Choose the runner based on the parent's `Flow-type`:
   - `classic` → `/MVL`
@@ -260,12 +304,12 @@ Read the `## Relationships` section of `_state.md`. For each relationship type p
 
 - **RELATED:** print
   ```
-  Related: [name] ([context]) — this finding may affect it.
+  Related: [path or name] ([context]) — this finding may affect it.
   ```
 
 - **SUPERSEDED BY:** print
   ```
-  Note: this inquiry is superseded by [name]. The finding stands as historical record.
+  Note: this inquiry is superseded by [path or name]. The finding stands as historical record.
   ```
 
 If there are no `## Relationships`, no additional output is printed beyond Step 5's brief summary.
@@ -276,6 +320,7 @@ If there are no `## Relationships`, no additional output is printed beyond Step 
 
 - **Pipeline detection failure** — `_state.md` is missing, malformed, or has an unrecognized pipeline. HALT and ask the user to specify the pipeline manually before retrying.
 - **Missing discipline outputs** — Step 1 says the pipeline expects N files but fewer exist in the folder. Do NOT proceed; the iteration isn't actually complete. Tell the user which files are missing.
+- **Path re-rooting** — CONCLUDE tries to rebuild `devdocs/inquiries/[inquiry_id]/` from a local folder name. Stop and use the full `inquiry_path`.
 - **Internally-referential shorthand in the finding** — the finding fails the non-ambiguity principle. Detect via the quality test in Step 2; revise before saving.
 - **Vague hedges, vague gates, malformed cross-references** — the finding fails one of the style rules. Detect during writing; revise before saving.
 

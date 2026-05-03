@@ -1,17 +1,14 @@
 #!/bin/bash
 # Install homegrown skills into OpenAI Codex format
 # Uses the new homegrown/<skill>/ source layout + homegrown/protocols/
-# Each skill becomes <TARGET>/<skill>/SKILL.md (with YAML frontmatter) + references/<ref>.md
-# Protocols installed at <TARGET>/protocols/
+# Each skill becomes ~/.codex/skills/<skill>/SKILL.md (with YAML frontmatter) + references/<ref>.md
+# Protocols install to ~/.codex/skills/protocols/
 #
 # Usage:
-#   bash install_for_codex.sh              # default: --repo if local, --user if remote
-#   bash install_for_codex.sh --user       # user-level (~/.codex/skills/)
-#   bash install_for_codex.sh --repo       # repo-level (.codex/skills/)
+#   bash install_for_codex.sh              # global install (~/.codex/skills/)
 #
 # Remote (curl):
 #   curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh | bash
-#   curl -sL ... | bash -s -- --repo   # install to current directory's .codex/skills/
 
 set -euo pipefail
 
@@ -40,6 +37,7 @@ SKILLS_NO_REFS=(
 
 # Supporting protocols (loaded by runners; not directly invoked)
 PROTOCOLS=(
+  "branch_inquiry.md"
   "conclude.md"
   "resume.md"
 )
@@ -77,49 +75,19 @@ if [ ! -d "$HOMEGROWN_DIR" ]; then
     echo "  downloading protocols/$proto"
     curl -fsSL "$RAW_URL/homegrown/protocols/$proto" -o "$HOMEGROWN_DIR/protocols/$proto"
   done
-
-  REMOTE=true
-else
-  REMOTE=false
 fi
 
 trap '[ -n "$CLEANUP" ] && rm -rf "$CLEANUP"' EXIT
 
-# --- Mode selection: --user vs --repo ---
+# --- Target selection: Codex installs are always user-global ---
 
-if [ -z "${1:-}" ]; then
-  if $REMOTE; then
-    MODE="--user"
-  else
-    MODE="--repo"
-  fi
-else
-  MODE="$1"
+if [ "$#" -gt 0 ]; then
+  echo "Usage: bash install_for_codex.sh"
+  echo "  Installs to ~/.codex/skills/."
+  exit 1
 fi
 
-case "$MODE" in
-  --user)
-    TARGET="$HOME/.codex/skills"
-    ;;
-  --repo)
-    if $REMOTE; then
-      TARGET="$(pwd)/.codex/skills"
-    else
-      TARGET="$SCRIPT_DIR/.codex/skills"
-    fi
-    ;;
-  --help|-h)
-    echo "Usage: bash install_for_codex.sh [--repo | --user]"
-    echo "  --repo  Install to .codex/skills/ in project root (or cwd for remote)"
-    echo "  --user  Install to ~/.codex/skills/ (available in all repos)"
-    exit 0
-    ;;
-  *)
-    echo "Unknown option: $MODE"
-    echo "Usage: bash install_for_codex.sh [--repo | --user]"
-    exit 1
-    ;;
-esac
+TARGET="$HOME/.codex/skills"
 
 mkdir -p "$TARGET"
 
@@ -238,5 +206,6 @@ echo "  \$MVL, \$MVL+, \$meta-loop, \$sense-making, \$innovate, \$td-critique,"
 echo "  \$explore, \$decompose, \$comprehend, \$reflect, \$navigation"
 echo ""
 echo "Protocols (loaded by skills, not directly invoked):"
-echo "  $TARGET/protocols/conclude.md"
-echo "  $TARGET/protocols/resume.md"
+for proto in "${PROTOCOLS[@]}"; do
+  echo "  $TARGET/protocols/$proto"
+done

@@ -32,7 +32,7 @@ curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_c
 curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh | bash
 ```
 
-Claude installs to `~/.claude/skills/` as the agent-skills format (each discipline becomes `~/.claude/skills/<name>/SKILL.md`, invoked as `/<name>`). Loop runners (`/MVL`, `/MVL+`) load supporting protocols from `~/.claude/skills/protocols/conclude.md`. Codex installs to `~/.codex/skills/` (invoke with `$skill-name`). Cursor: `mkdir -p ~/.cursor/skills && cp -r ~/.claude/skills/* ~/.cursor/skills/` (verify Cursor supports the skills format before relying on this).
+Claude installs to `~/.claude/skills/` as the agent-skills format (each discipline becomes `~/.claude/skills/<name>/SKILL.md`, invoked as `/<name>`). Loop runners (`/MVL`, `/MVL+`) load supporting protocols from `~/.claude/skills/protocols/`. Codex always installs globally to `~/.codex/skills/` (invoke with `$skill-name`). Cursor: `mkdir -p ~/.cursor/skills && cp -r ~/.claude/skills/* ~/.cursor/skills/` (verify Cursor supports the skills format before relying on this).
 
 The scripts are idempotent — re-run them to update.
 
