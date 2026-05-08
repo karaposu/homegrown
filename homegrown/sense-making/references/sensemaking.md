@@ -126,7 +126,7 @@ The model clicked into place quickly. SV4 feels clean and clear. But only two or
 
 **Feels like:** Clarity arriving early. Confidence at SV3 or SV4 that feels like SV6. The urge to move on.
 
-**Corrective:** Check: how many perspectives produced NEW anchors versus confirmed existing ones? If fewer than three perspectives produced surprises, the model hasn't been tested from enough angles.
+**Corrective:** Check: how many perspectives produced NEW anchors versus confirmed existing ones? If fewer than three perspectives produced surprises, the model hasn't been tested from enough angles. For testing of load-bearing concepts stabilized in earlier Sensemaking outputs, see Phase 3 — Ambiguity Collapse → load-bearing concept test (in the Execute section).
 
 ### 3. Anchor Dominance
 
@@ -142,7 +142,7 @@ The perspectives checked all agree. Nothing produced discomfort or surprise. The
 
 **Feels like:** Agreement across all perspectives. A feeling that "everyone sees it the same way." No perspective made you pause.
 
-**Corrective:** "Which perspective would be most uncomfortable to check? That's the one to check." If you can't identify an uncomfortable perspective, you're not looking hard enough.
+**Corrective:** "Which perspective would be most uncomfortable to check? That's the one to check." If you can't identify an uncomfortable perspective, you're not looking hard enough. For phase / calibration-state perspectives in inquiries involving phase-dependent rules, see Phase 2 — Perspective Checking → Phase / Calibration-State (in the Execute section).
 
 ### 5. Clean Resolution Trap
 
@@ -211,6 +211,7 @@ Analyze the input from multiple perspectives:
 * Resource / Feasibility
 * Ethical / Systemic (if relevant)
 * Definitional / Consistency — Does this interpretation contradict any established definitions, principles, or prior stabilized models? Check the claim against the strongest known anchors. If a weak anchor (observation, single data point) contradicts a strong anchor (definition, tested principle), the weak anchor must justify the override — not the other way around. But also check the reverse: does the established definition contradict ITSELF? Does its stated purpose align with its actual mechanisms? If a definition's own components are in tension — its core claim promises more than its structure delivers — the definition has an internal gap. Don't protect a definition that contradicts itself.
+* Phase / Calibration-State (when the inquiry involves rules that may behave differently in different project phases or calibration states) — Does this rule depend on calibration that the current project state has? If not, what should the early-stage default be? Is the rule's correctness contingent on a phase the project has not yet reached? Failing to apply this perspective when the inquiry involves phase-dependent rules is an instance of Perspective Blindness (failure mode #4) applied to the calibration-state axis.
 
 
 Extract new anchors from each perspective.
@@ -270,6 +271,16 @@ LOW (elegant but the counter-interpretation has structural merit — do not trea
 [How this resolution reshapes the overall understanding]
 
 Ensure that each entry results in a measurable reduction of ambiguity and interpretive freedom. Focus on irreversible or high-impact commitments.
+
+**Load-bearing concept test.** In addition to vague terms, conflicts, unclear goals, and hidden assumptions identified above, generate at least one ambiguity-collapse pair testing each load-bearing concept that has been stabilized in any earlier Sensemaking output. A load-bearing concept is one whose presence materially affects downstream stages — i.e., removing it would change the loop's verdict. The test predicate is appropriate to the concept's location:
+
+- Phase 1 / Cognitive Anchor Extraction items phrased as fixed properties of the domain (Constraints) or as project axioms (Foundational Principles) → test domain-property-vs-external-default. Counter-interpretation: "Is this the project's actual property/principle, or an external default the loop adopted without testing?"
+- SV2+ Terminology — newly-coined noun phrases or operation names treated as stable in subsequent Sense Versions → test domain-terminology-vs-external-default plus user-language alignment. Counter-interpretation: "Does this term match the project's actual vocabulary and the user's language, or is it a loop-coined neologism that hasn't been validated?"
+- Phase 5 / Conceptual Stabilization output — final committed concepts (especially trigger-classifier rules and concepts whose use depends on a runtime determination) → test multiple sub-aspects: proxy-vs-structural ("does this categorical label represent a real structural distinction, or is it an incidental input property used as a proxy?"), discoverability ("if the concept's use depends on a runtime determination, has the determination mechanism been specified, or left implicit?"), and user-language alignment ("does the concept's name match the user's language, or has the loop coined a name without validation?"). The illustrative list is not exhaustive — future sub-aspects may emerge as evidence accumulates.
+
+Failing to generate at least one ambiguity-collapse pair per load-bearing concept is an instance of Premature Stabilization (failure mode #2).
+
+**Specific-vs-pattern recognition cue.** When Sensemaking commits to a key concept describing "what the problem IS" — particularly when that concept appears as a Phase 1 / Key Insight built from a small set of specific examples (e.g., observations from one inquiry, instances from one corpus chain) — the ambiguity-collapse pair MUST explicitly ask: are these specific examples THE WHOLE PROBLEM, or just a few cases of a wider pattern? The strongest counter is: a small set of examples doesn't always tell us about the wider pattern; the concept might fit those examples but miss the broader problem they're examples of.
 
 #### Sense Version 4 (SV4 — Clarified Understanding)
 

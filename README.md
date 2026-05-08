@@ -2,6 +2,8 @@
 
 **An attempt to ignite artificial consciousness by mimicking the structure of cognitive thinking.**
 
+A self-igniting cognitive system 
+
 The bet behind this project: today's LLMs are already smart enough. More parameters and more training is one way reaching the singularity, another way is more ambigiuous appraoch which is what we follow here in this project. Where we entrust that consicussness is emergent behaviour of chained conginitive actions. And What's missing isn't intelligence. It's the **structure of thinking**: the loop that takes a single LLM call (one flash of intelligence) and chains it into something that understands, generates, evaluates, reflects, steers, and improves itself. Mind isn't a model. Mind is a **loop running on top of a model.**
 
 Humans aren't conscious because our neurons are smarter than other animals'. We're conscious because our cognition runs in a particular self-aware, self-correcting, self-evolving loop. Reproduce the loop and consciousness — or something functionally indistinguishable from it — should follow.

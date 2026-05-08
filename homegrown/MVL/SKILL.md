@@ -7,6 +7,35 @@ Run Sensemaking → Innovation → Critique on any question. Always the full pip
 
 This is the only primitive. Every cognitive task is a SIC loop applied to a different question.
 
+
+
+## Discipline Workspace Invariant
+
+Each discipline must run in its own focused workspace. The purpose is not merely to create files in order; the purpose is to let each discipline produce correct output from its own frame and from the prior discipline's actual saved result.
+
+For the current discipline:
+
+1. Load only the current discipline's spec and required references.
+2. Use `_branch.md`, `_state.md`, and already-saved prior discipline outputs as the discipline's input.
+3. Do not draft, precompute, or write outputs for later disciplines while executing the current discipline.
+4. Write only the current discipline's canonical output file in the inquiry root.
+5. Attempt structural check for that output.
+6. If `tools/structural_check.sh` is unavailable, manually check the discipline's required structure and record the result in `_state.md`.
+7. Update `_state.md` to check off the current discipline, summarize the check result, and name the next discipline.
+
+Only after this handoff is committed may the next discipline begin.
+
+Invalid compact execution patterns:
+
+- drafting or writing outputs for later disciplines during the current discipline's workspace;
+- writing two or more discipline outputs before the prior discipline has a committed `_state.md` handoff;
+- writing all discipline outputs and `finding.md` in one edit;
+- writing discipline outputs directly into `docarchive/`;
+- marking all disciplines complete in `_state.md` without per-discipline history entries;
+- skipping structural check silently because the checker script is missing.
+
+`finding.md` and `docarchive/` movement belong only to CONCLUDE, after all discipline workspaces have completed and after `homegrown/protocols/conclude.md` has been loaded.
+
 ## Additional Input/Instructions
 
 $ARGUMENTS

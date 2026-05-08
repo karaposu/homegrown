@@ -269,6 +269,8 @@ Not all outputs will be useful. That's expected. The point is to generate a spre
 
 **Combining mechanisms:** Mechanisms chain. Apply Domain Transfer → get a pattern → apply Lens Shifting to evaluate it under different conditions → apply Constraint Manipulation to refine it. The output of one mechanism becomes the input to another.
 
+For axis coverage of generated candidates, see Phase 3 (Test) → Assembly check / Axis coverage check.
+
 ### Phase 3: Test
 
 Each novel output must be tested. Innovation testing is not the same as validation or proof — it's a survival check:
@@ -283,7 +285,17 @@ Each novel output must be tested. Innovation testing is not the same as validati
 
 Outputs that fail testing are not wasted — they become new seeds. "This didn't work because..." often contains the seed for what will work.
 
+**Output disposition categories.** When outputs pass the 5-test cycle, the disposition depends on evidence shape and observation type:
+
+- **ACTIONABLE** — multi-source / multi-mechanism convergent. The default disposition for survivors with strong evidence; ACTIONABLE outputs are the terminating outputs that downstream consumers act on.
+- **DEFERRED with revival trigger** — single-source or single-mechanism survivors. Evidence is sufficient to pass the 5-test cycle but too thin for full ACTIONABLE confidence. The disposition preserves the option to refine on more evidence; killing the survivor loses the path, promoting it overreaches. Each DEFERRED output has an explicit revival trigger — a time-bound (e.g., "after N more inquiries"), condition-bound (e.g., "when sister-pattern X reaches 3 instances"), or observable (e.g., "if this rule does not fire effectively in the next 3 runs") trigger that promotes the output to ACTIONABLE if met.
+- **RESEARCH FRONTIER** — survivors that require multi-phase architectural work or otherwise exceed per-inquiry scope. The output is preserved as an observation in the finding's Open Questions / Research Frontiers subsection; it is not proposed as an actionable candidate.
+
+The disposition categories apply only to passing survivors; failed outputs follow the new-seed path described above.
+
 **Assembly check:** After testing individual outputs, examine the survivors and refined candidates together. Ask: "What architecture emerges if I combine these survivors? Does the assembly produce emergent value that none of the individual pieces have?" Individual mechanisms generate components. The assembly check catches innovations that exist only at the intersection of those components — where the combination is more valuable than any piece alone.
+
+**Axis coverage check.** Before producing the assembly verdict, examine the candidate set for the orthogonal axes it varies along. When the underlying problem has multiple orthogonal axes — for example, a problem that combines an operation with output storage has at least two axes (operation-trigger control and storage-policy control); a problem involving rules that may behave differently in different states has axes of rule-content and state-condition; a problem with runtime-determined triggers has axes of policy and discovery-mechanism — each axis should have at least one candidate variant. A candidate set that varies along only one axis when multiple orthogonal axes are relevant is incomplete; the assembly check must explicitly identify the candidate-space axes and flag any axis with no variant. Single-axis candidate sets often arise from a frame inherited from upstream pipeline stages; the axis-coverage check counters that bias.
 
 ### Iteration
 

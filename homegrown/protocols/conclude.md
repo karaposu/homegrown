@@ -49,7 +49,7 @@ Read all discipline outputs identified in Step 1, plus `_branch.md` for the ques
 Write for a reader who has NOT seen the discipline outputs — someone
 who just joined the project and needs to understand: what was the
 question, what's the answer, why this answer over the alternatives,
-and what's still open.
+and what's still open. so the reader will understand where you are coming from.  This is important.  
 
 **Be complete but not dense.** Completeness means nothing important
 is left out. Density means too many things squeezed into too few
@@ -71,6 +71,22 @@ Example of the failure mode and its correction:
 
 - ❌ *"Template extends from 4 sections to 6"* — which template? in what context?
 - ✅ *"Our existing finding.md template (defined in the `value_extraction_design` inquiry) has 4 sections; this audit adds 2 more for a total of 6."*
+
+Additional examples of the failure mode and its correction:
+
+- ❌ "the current Probe section says..." — which spec? in what discipline?
+- ✅ "the Probe section in `homegrown/explore/references/explore.md` (the
+   Structural Exploration discipline spec) says..."
+
+- ❌ "Surface-Only Scanning failure mode" — failure mode of what? defined
+   where?
+- ✅ "Surface-Only Scanning (one of six failure modes documented in the
+   Structural Exploration discipline spec at
+   `homegrown/explore/references/explore.md`)"
+
+- ❌ "Coarse Scan" — coarse scan of what? in what process?
+- ✅ "Coarse Scan (the breadth-first first-pass step in Structural
+   Exploration's Resolution Progression)"
 
 Plain-language preference. Use the simplest accurate phrasing. "The AI picks the highest-confidence option" over "the autonomous-mode selection heuristic is deterministic (highest-confidence option)." Technical terms earn their place only when the plain version would be imprecise or ambiguous — not when it would merely be less formal. When a technical term is necessary, follow it immediately with what it means in practice.
 
@@ -126,12 +142,17 @@ Anti-patterns to avoid:
 
 
 ## Finding
+
+ Start by with extra small surrounding helpful context (slight mention of what is the goal why we are even discussing this) so the reader will understand where you are coming from to these conclusions
+
+
 [The full answer. Base on critique's "The Answer" or assembly
- verdict. Enrich with innovation's Assembly design, sensemaking's
+ verdict. with innovation's Assembly design, sensemaking's
  SV6 understanding, and (for extended pipeline) exploration's
  territorial map and decomposition's coupling structure. Complete,
  self-contained, non-compact. Use numbered subsections when length
  exceeds ~100 lines.]
+
 
 ## Next Actions                                  [required when finding proposes changes; otherwise omit]
 

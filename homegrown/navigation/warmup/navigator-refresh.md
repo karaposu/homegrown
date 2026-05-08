@@ -34,7 +34,7 @@ Do not use this when:
 If the baseline is missing or globally stale, stop and recommend full warm-up:
 
 ```text
-navigator-warmup1 -> navigator-warmup2 -> navigator-warmup3 -> post-v3 prior-map overlay
+navigator-warmup1.md -> navigator-warmup2.md -> navigator-warmup3.md -> navigator-prior-map-overlay.md when prior route memory matters
 ```
 
 ---
@@ -367,4 +367,3 @@ Or does this need full warm-up again?
 ```
 
 Then produce the sync brief and hand it to Navigation.
-

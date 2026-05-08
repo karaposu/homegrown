@@ -40,7 +40,7 @@ $ARGUMENTS
    - `fresh_local`: proceed to Step 1.
    - `fresh_project`: proceed to Step 1 and preserve any missing-context warnings from the brief.
    - `refresh_needed`: load `homegrown/navigation/warmup/navigator-refresh.md` in full and execute it before producing the Navigation map. Use the produced sync brief as additional input, and record the sync brief path or inline brief in the Navigation output.
-   - `full_warmup_needed`: stop before producing a normal Navigation map. Tell the user to run `navigator-warmup1.md -> navigator-warmup2.md -> navigator-warmup3.md`, followed by the post-v3 prior-map overlay, then rerun Navigation.
+   - `full_warmup_needed`: stop before producing a normal Navigation map. Tell the user to run `navigator-warmup1.md -> navigator-warmup2.md -> navigator-warmup3.md`, then `navigator-prior-map-overlay.md` when prior route memory matters, then rerun Navigation.
    - `thin_allowed`: proceed only if the user explicitly accepted thin context. Mark Navigation Telemetry as `THIN` and preserve the missing-context warning in the map.
 
    Do not silently refresh. Any refresh must produce or read a sync brief with a read set, freshness anchor, Navigation impact, and confidence limits.

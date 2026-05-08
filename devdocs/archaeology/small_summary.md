@@ -1,54 +1,17 @@
 # Small Project Summary
 
-This project is a pack of reusable AI-assistant skills for structured thinking work. It is not a normal software app with a screen, server, database, or API. Its main working parts are Markdown-based skill definitions, longer reference specifications, and shell scripts that install those skills into Codex or Claude Code.
+This project is a collection of reusable AI-agent skills, protocols, and design notes for running structured thinking workflows. It is not a normal software product like a web app, API, or library. Its main "source code" is Markdown instruction files that tell Codex or Claude Code how to think through problems, save results, resume work, branch inquiries, and turn conclusions into concrete files.
 
-In plain terms, the project tries to make an AI assistant think through difficult questions in named, repeatable steps instead of giving one quick answer. It asks the assistant to map an unknown area, clarify what a question really means, split complex problems into parts, generate ideas, evaluate those ideas, reflect on the process, and decide what direction could come next.
+The project currently has two shell installers. One installs the Homegrown skills into OpenAI Codex's skill folder, and the other installs them into Claude Code's skill folder. The Codex installer can use local files when the repository is present, or download the same files from GitHub when it is run remotely. During installation it rewrites skill files into Codex's required frontmatter format and copies reference files and a few support protocols.
 
-## What It Currently Does
+The working skill set is centered on structured reasoning. The core skills are Exploration, Sensemaking, Decomposition, Innovation, and Critique. Together they form the extended loop used by `MVL+`. There is also a shorter `MVL` loop that runs Sensemaking, Innovation, and Critique. Separate skills cover Comprehension, Reflection, and Navigation. These are meant to help an AI map unfamiliar territory, clarify vague problems, split complex work into parts, generate options, evaluate options, understand existing artifacts, learn from completed runs, and enumerate next possible directions.
 
-The active skill source lives in `homegrown/`. It defines several individual thinking skills:
+The project already defines inquiry workflows. A new inquiry creates a folder with a question file and a state file. The loop then writes discipline outputs into that folder, updates progress, and eventually produces a `finding.md` that summarizes the answer. Branch inquiries can be created under parent inquiries while preserving parent/source metadata. A conclude protocol compiles completed work into a finding and archives intermediate outputs. A resume protocol exists for telemetry-aware continuation, although the main loop runners still mostly describe continuous pipeline execution rather than a fully automated, quality-gated runtime.
 
-- `explore` maps unfamiliar territory before trying to explain it.
-- `sense-making` turns vague or ambiguous input into a clearer working understanding.
-- `decompose` breaks a complex whole into smaller questions with explicit relationships.
-- `comprehend` builds and tests a working model of an artifact, such as code, a system, or a document.
-- `innovate` generates possible ideas or approaches using several deliberate idea-making methods.
-- `td-critique` evaluates candidates and labels them as surviving, needing refinement, or rejected.
-- `reflect` reviews how a completed thinking run performed, focusing on the process rather than the answer.
-- `navigation` lists possible next directions after a completed run.
+The project also contains operational protocols around the thinking loop. There are protocols for branching inquiries, concluding inquiries, resuming, diagnosing failed loops, reviewing whether prior results worked after use, expanding navigation maps across multiple levels, preparing navigation context, and materializing accepted decisions into real files. The materialization protocol is especially important: it tries to prevent the system from jumping directly from "we decided this" to "edit files" without a source, scope, plan, validation, and trace.
 
-The project also defines larger workflows:
+What it appears to be trying to become is larger than a prompt library. The notes describe a long-term goal: a self-improving thinking system where the human initially provides judgment, but over time the system gains more of its own quality awareness. The intended path includes structural checks, predictive "hunch" checks, later outcome review, calibration over many runs, and eventually more autonomous self-improvement. The planned `/intuit` discipline is central to that future direction, but it appears to be specified in the project notes rather than installed as a working Homegrown skill in the current installer list.
 
-- `MVL` runs a three-step loop: sense-making, innovation, then critique.
-- `MVL+` runs a five-step loop: exploration, sense-making, decomposition, innovation, then critique.
-- `meta-loop` is a higher-level workflow that uses `MVL+` and navigation repeatedly, while keeping a separate state file for the larger traversal.
+The likely users are people using AI assistants for complex design, research, architecture, or self-improvement work. A user would use this project to make AI reasoning less ad hoc: every inquiry has a folder, every step has an output, every conclusion has a finding, and later sessions can inspect what happened instead of relying on chat memory.
 
-These workflows are designed to create saved inquiry folders under `devdocs/inquiries/`. They write files such as `_branch.md`, `_state.md`, discipline outputs like `sensemaking.md` or `critique.md`, and eventually a final `finding.md`.
-
-The installer scripts are the conventional executable code:
-
-- `install_for_codex.sh` installs the skills into Codex format, either inside the current repository or at the user level. It can install from the local `homegrown/` folder or download files from GitHub when run remotely.
-- `install_for_claude.sh` downloads the same skills into `~/.claude/skills` for Claude Code.
-
-## What Looks In Progress Or Unfinished
-
-Several pieces look unfinished or in transition:
-
-- The loop runners refer to `tools/structural_check.sh`, but no `tools` directory or script is present in the current working tree. That means the advertised structural-check step would fail as-is.
-- A GitHub workflow exists for publishing a Python package, but there is no visible Python package setup such as `pyproject.toml`, `setup.py`, or Python source code. This looks like leftover or future packaging infrastructure.
-- The generated `.codex/skills/` copies are present but untracked, and many generated `SKILL.md` files contain duplicated metadata blocks. The Codex installer appears to wrap files as if the source metadata were unfenced, while several source skill files already use YAML-style metadata.
-- `navigation` describes itself in one place as using a 15-type taxonomy, while its reference file defines a 16-type taxonomy. That suggests the navigation skill is being revised.
-- A `resume` protocol exists, but the current loop runners still contain their own resume behavior rather than clearly delegating to that protocol.
-- `homegrown/protocols/unknown.md` appears to be an older or partial version of the conclusion flow and is not installed by the current installers.
-
-## Who Would Use This
-
-This is for people using Codex or Claude Code who want an AI assistant to handle complex thinking tasks in a more visible and repeatable way. Likely users are developers, researchers, product builders, or planners working on questions that are too large, ambiguous, or important for a single-shot answer.
-
-It is most useful when the user wants durable artifacts: saved reasoning, state files, final findings, and a trail of how the answer was reached. It is probably too heavy for small everyday questions.
-
-## General Shape
-
-The project is best described as an AI skill pack plus a research/workflow archive. The working core is the `homegrown/` skill library and the two installer scripts. The `.codex/skills/` directory appears to be a generated local install of those skills. The `devdocs/`, `enes/`, `thinking_disciplines/`, and `src/book/` areas are mostly notes, inquiry outputs, and explanatory material rather than executable software.
-
-Overall, the project has a coherent usable core, but it is not a polished application or package. It is an active, evolving set of AI workflow definitions with some migration artifacts, missing support scripts, and packaging leftovers still visible.
+The state of the project is partly working and partly aspirational. The install scripts and existing skills are usable as agent instructions. The inquiry, branch, navigation, materialization, and outcome-review procedures are detailed enough for a careful AI or human to follow. But much of the system is still protocol-first rather than implemented automation. Several pieces describe future runners, future calibration, future structural checkers, future cross-run learning, and future autonomy. There are also references to support tooling and behaviors that are not present as ordinary executable code in the visible source tree. In practice, the project currently works as a structured methodology system for AI agents, with a growing design foundation for a more automated self-improving system later.

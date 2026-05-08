@@ -3,9 +3,43 @@ description: Run the Extended Cognitive Loop (Exploration → Sensemaking → De
 
 # /MVL+ — The Extended Cognitive Loop
 
+(run mvl skills one by one , not at once... and do not use subagents!, And the order is skill run, write it's file, go the next skill and so on. Not run all skills and write all docs...)
+
 Run Exploration → Sensemaking → Decomposition → Innovation → Critique on any question. Always the full pipeline. No classification. No variable pipelines. Each step feeds the next. If the question isn't answered after C, loop again with a refined focus.
 
 This is the extended form of the cognitive loop. `/mvl` (classic) runs only S → I → C. `/mvl+` adds Exploration (map territory) and Decomposition (partition complexity) to the first phase. Use `/mvl+` as the default for new inquiries; use `/mvl` classic for simple well-defined problems when speed matters.
+
+
+
+
+## Discipline Workspace Invariant
+
+Each discipline must run in its own focused workspace. The purpose is not merely to create files in order; the purpose is to let each discipline produce correct output from its own frame and from the prior discipline's actual saved result.
+
+For the current discipline:
+
+1. Load only the current discipline's spec and required references.
+2. Use `_branch.md`, `_state.md`, and already-saved prior discipline outputs as the discipline's input.
+3. Do not draft, precompute, or write outputs for later disciplines while executing the current discipline.
+4. Write only the current discipline's canonical output file in the inquiry root.
+5. Attempt structural check for that output.
+6. If `tools/structural_check.sh` is unavailable, manually check the discipline's required structure and record the result in `_state.md`.
+7. Update `_state.md` to check off the current discipline, summarize the check result, and name the next discipline.
+
+Only after this handoff is committed may the next discipline begin.
+
+Invalid compact execution patterns:
+
+- drafting or writing outputs for later disciplines during the current discipline's workspace;
+- writing two or more discipline outputs before the prior discipline has a committed `_state.md` handoff;
+- writing all discipline outputs and `finding.md` in one edit;
+- writing discipline outputs directly into `docarchive/`;
+- marking all disciplines complete in `_state.md` without per-discipline history entries;
+- skipping structural check silently because the checker script is missing.
+
+`finding.md` and `docarchive/` movement belong only to CONCLUDE, after all discipline workspaces have completed and after `homegrown/protocols/conclude.md` has been loaded.
+
+
 
 ## Additional Input/Instructions
 
@@ -48,7 +82,9 @@ Branch inquiry creation is delegated to `homegrown/protocols/branch_inquiry.md`,
    ## Goal
    [what would a good answer look like? what would the user be able to DO with the answer?]
    ## Scope Check
-   [compare the question's scope to the goal's requirements. Does the question, if answered perfectly, cover everything the goal asks for? If YES: "Question covers goal." If NO: "Question covers goal: NO — goal includes [X, Y] but question only addresses [Z]. Consider widening to: [proposed wider question]."]
+   [compare the question's scope to the goal's requirements. Does the question, if answered perfectly, cover everything the goal asks for? If YES: "Question covers goal." If NO: "Question covers goal: NO — goal includes [X, Y] but question only addresses [Z]. Consider widening to: [proposed wider question]."
+
+   Specific-vs-pattern check: if the Question or Goal points at specific examples (e.g., "the 10 observed failures from inquiry X", "these 7 chains", "these specific instances"), explicitly state whether the inquiry should address JUST THOSE EXAMPLES or the BROADER PATTERN those examples illustrate. Default: address the broader pattern unless the user has explicitly scoped to the specific examples. If both readings are plausible, present both to the user before proceeding (per the existing scope-widening flow above).]
    ```
    If the scope check flags a gap, present the proposed wider question to the user before proceeding. The user decides whether to widen or keep the original scope.
 
@@ -247,3 +283,4 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 6. **Failures are data.** If the loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).
 7. **Classic `/mvl` is UNCHANGED.** This command (`/mvl+`) is separate and coexists with classic. Existing classic inquiries resume with `/mvl`, not `/mvl+`. The `flow-type` field in `_state.md` distinguishes them.
 8. DO NOT RUN EACH SKILL PARALLEL OR WITH SUBAGENTS TO SAVE TIME OR TOKEN. EACH SKILL SHOULD BE RUN AS CANNON AND IT IS OKAY IF THEY CONSUME CONTEXT. THEY SUPPOSED TO BE.
+

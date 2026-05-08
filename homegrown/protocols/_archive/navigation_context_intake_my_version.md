@@ -1,4 +1,8 @@
-> **Loading note.** This file is loaded by a human, Navigation, MVL/MVL+, materialization work, or a future runner before project-level Navigation needs current context. Read it in full before executing NAVIGATION_CONTEXT_INTAKE. This protocol prepares a Navigation-ready current-state brief. It does not enumerate next moves, select a move, create branches, materialize files, or review outcomes.
+> **Archive note.** This was an early sketch for Navigation context intake. It is not an active protocol. The active controller is `homegrown/protocols/navigation_context_intake.md`; detailed warm-up routines live under `homegrown/navigation/warmup/`.
+
+---
+
+> **Original loading note.** This file is loaded by a human, Navigation, MVL/MVL+, materialization work, or a future runner before project-level Navigation needs current context. Read it in full before executing NAVIGATION_CONTEXT_INTAKE. This protocol prepares a Navigation-ready current-state brief. It does not enumerate next moves, select a move, create branches, materialize files, or review outcomes.
 
 ---
 

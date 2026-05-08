@@ -171,6 +171,8 @@ Before evaluating anything, construct the evaluation framework itself.
 4. **Weight dimensions** — which matter most given the context? (Risk-averse contexts weight robustness higher. Speed-critical contexts weight feasibility higher.)
 5. **Define success criteria per dimension** — what does "passing" look like on each axis? This is extraction from sensemaking, not generation.
 
+**Project-specific risk dimension check.** When the candidate set being evaluated involves project artifacts, operations, or state, the dimension list must include at least one project-specific risk dimension that captures the project's documented risk axes. The default dimensions (Correctness, Coherence, Feasibility, Completeness, Robustness, Elegance) are content-oriented; project-specific risk dimensions are mechanism-oriented (e.g., across recent inquiries: duplicate-derivable-state, explicit-culture-fit, operation-parsimony, phase-fit have each been the load-bearing axis for specific candidate types). A dimension list that omits project-specific risk axes when the candidate set involves project artifacts/operations/state is incomplete; the validate-dimensions sub-step must explicitly check this and flag any missing axes for inclusion.
+
 Phase 0 is the meta-critique component. It evaluates the evaluation framework before the evaluation framework is applied. This prevents the failure mode of evaluating confidently on irrelevant dimensions.
 
 **When to re-run Phase 0:** If the sensemaking output changes (problem was re-understood), or if critique reveals that a dimension is producing only noise (no candidates fail or pass meaningfully on it — the dimension isn't discriminating).
@@ -197,6 +199,14 @@ For each candidate from innovation's output, conduct adversarial testing:
 3. **Collision** — put prosecution and defense in direct confrontation. Does the defense survive the killer objection? Does the prosecution overcome the core strength? Where is the balance?
 
 4. **Position** — based on the adversarial result, place the candidate on the fitness landscape. Which dimensions does it pass? Which does it fail? Where does it land — viable, dead, or boundary?
+
+**Multi-axis prosecution depth check.** In addition to dimension-level objections (what dimensions does this candidate fail?), construct prosecution at the appropriate depth-axes when applicable:
+
+- **User-perspective objection** — when the inquiry's source input includes user-stated concerns (e.g., a `_branch.md` Source Input section), construct at least one objection that addresses one of those concerns at the level the user expressed. Dimension-level objections without a corresponding user-perspective objection are shallow when user concerns are observable.
+- **Specific failure-case scenario** — for candidates with conditional or trigger-based behavior, construct at least one concrete edge case where the candidate's logic might fail to prevent the issue it's meant to prevent. Abstract "could fail" prosecution is weaker than concrete failure-case construction.
+- **Specification-gap probe** — for candidates whose runtime behavior depends on load-bearing concepts (e.g., "skip if X exists"), probe whether the candidate specifies HOW the load-bearing concept's runtime state is determined. Candidates that presuppose the determination without specifying the mechanism have an operational gap.
+
+The runner picks the depth-axes most relevant to the candidate's risk surface; not every axis applies to every candidate. Prosecution that constructs only dimension-level objections without considering relevant depth-axes is shallow.
 
 ### Phase 3 — Verdict + Constructive Output
 
@@ -299,7 +309,7 @@ Prosecution is too weak. Everything passes because the adversarial testing wasn'
 
 **How to recognize:** Every candidate gets a SURVIVE verdict. No kills, no refinements. The critique reads like a review, not an adversarial test. The feeling is "this all looks fine."
 
-**How to prevent:** Require prosecution to construct the *strongest possible* objection, not just any objection. If prosecution can't find a killer objection, that's meaningful — but only if prosecution genuinely tried. Quality check: is the prosecution argument something that would make the candidate's strongest advocate pause?
+**How to prevent:** Require prosecution to construct the *strongest possible* objection, not just any objection. If prosecution can't find a killer objection, that's meaningful — but only if prosecution genuinely tried. Quality check: is the prosecution argument something that would make the candidate's strongest advocate pause? For multi-axis prosecution depth (user-perspective, failure-case scenario, specification-gap probe), see Phase 2 / Adversarial Evaluation → Prosecution → Multi-axis prosecution depth check.
 
 ### 3. Nitpicking
 
@@ -315,7 +325,7 @@ A critical dimension is missing entirely. The critique evaluates thoroughly on t
 
 **How to recognize:** Hard to recognize during critique (by definition, you don't check what you don't check). Recognized retrospectively when a failure occurs on an axis that critique never considered. In the accumulator, recognized when the landscape has a region that feels "thin" — coverage is technically complete but something seems unexamined.
 
-**How to prevent:** Phase 0 dimension validation against multiple perspectives (from sensemaking). Cross-reference dimensions against the sensemaking perspectives: if sensemaking checked a technical perspective, a human perspective, and a risk perspective, critique dimensions should cover all three. If a sensemaking perspective has no corresponding critique dimension, something is missing.
+**How to prevent:** Phase 0 dimension validation against multiple perspectives (from sensemaking). Cross-reference dimensions against the sensemaking perspectives: if sensemaking checked a technical perspective, a human perspective, and a risk perspective, critique dimensions should cover all three. If a sensemaking perspective has no corresponding critique dimension, something is missing. For project-specific risk axis coverage when the candidate set involves project artifacts/operations/state, see Phase 0 / Dimension Construction → Project-specific risk dimension check.
 
 ### 5. False Convergence
 

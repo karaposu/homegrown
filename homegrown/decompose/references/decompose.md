@@ -174,6 +174,8 @@ Run a quality check on the decomposition before committing to it.
 | **Completeness** | Do the pieces cover the whole? | No aspect of the original whole falls through the gaps between pieces |
 | **Reassembly** | Can the pieces + interfaces reconstruct the whole? | Given all pieces answered + all interfaces satisfied → the original problem is solved |
 
+**Determination-mechanism piece check.** When the question tree (Q-tree) includes a load-bearing concept whose use depends on a runtime determination — i.e., the concept is referenced in one or more pieces, but its applicability is determined at runtime by checking "does X exist?", "is X applicable?", or similar — the Reassembly self-evaluation check verifies that the Q-tree includes a piece addressing the determination mechanism (HOW the runtime check is performed). A Q-tree that presupposes the determination has been made — without including a piece addressing HOW it is made — fails Reassembly: reconstructing the whole requires the determination, but no piece provides it. Failing this check is an instance of Missing Pieces (failure mode #4).
+
 **Full evaluation (7 dimensions — for complex or high-stakes decompositions):**
 
 | Dimension | Check |
@@ -274,7 +276,7 @@ The decomposition doesn't cover the whole. Something falls through the gaps betw
 
 **How to recognize:** The reassembly check (self-evaluation) fails. Or during execution, someone realizes "this aspect of the problem isn't addressed by any piece."
 
-**How to prevent:** Completeness check in self-evaluation (Step 7). And the question tree validity check — if the original problem has aspects that no question addresses, there's a gap.
+**How to prevent:** Completeness check in self-evaluation (Step 7). And the question tree validity check — if the original problem has aspects that no question addresses, there's a gap. For Q-trees with load-bearing concepts whose use depends on a runtime determination, see Step 7 — Self-Evaluate → Determination-mechanism piece check.
 
 ### 5. Over-Decomposition
 
