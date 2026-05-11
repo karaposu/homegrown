@@ -10,6 +10,34 @@ Rather than relying on intuition alone, Structural Sensemaking treats understand
 
 > **Structural Sensemaking is the process of constructing stable meaning by organizing cognitive anchors into constrained conceptual structures through perspective integration, ambiguity collapse, and degrees-of-freedom reduction.**
 
+Sensemaking has two structural operations:
+
+1. **Comprehending** — extracting cognitive anchors and expanding the
+   anchor space through multi-perspective checking. The output is an
+   enriched anchor set — the meaning territory mapped out with multiple
+   viewpoints applied. (Phase 1 — Cognitive Anchor Extraction and
+   Phase 2 — Perspective Checking, in the operational protocol below.)
+
+2. **Stabilizing** — resolving ambiguities, reducing degrees of
+   freedom, and converging on a coherent conceptual model. The output
+   is a stabilized model — the meaning committed to. (Phase 3 —
+   Ambiguity Collapse, Phase 4 — Degrees-of-Freedom Reduction, and
+   Phase 5 — Conceptual Stabilization, in the operational protocol
+   below.)
+
+Comprehending without Stabilizing = a rich anchor set with no
+commitment; understanding stays in expansion mode.
+Stabilizing without Comprehending = committing to a model built on
+too few or biased anchors (false confidence).
+Both together = the full Sensemaking process.
+
+The two operations chain. Some interleaving is expected — perspective
+checking in Comprehending may surface anchors that resolve ambiguities
+in Stabilizing; ambiguity collapse in Stabilizing may surface new
+conceptual territory needing further perspective application.
+Comprehending and Stabilizing are dominant operations of their phase
+ranges, not strictly sequential.
+
 ### Key Components
 
 #### Cognitive Anchors
@@ -61,6 +89,8 @@ A conceptual structure is the stabilized result of anchor interaction and bounda
 ## Process Model
 
 Structural Sensemaking proceeds through five iterative phases:
+
+The five phases group into the two structural operations introduced above. **Comprehending** spans Phase 1 (Signal Detection), Phase 2 (Anchor Extraction), and Phase 3 (Perspective Expansion) — building the anchor space. **Stabilizing** spans Phase 4 (Boundary Formation) and Phase 5 (Conceptual Stabilization) — committing to a stabilized model. The operational protocol below ("Execute the Following Process" section) uses a slightly different phase grouping (in that scheme, Comprehending = Phases 1-2 and Stabilizing = Phases 3-5); the operation names are identical across both schemes.
 
 ### Phase 1 — Signal Detection
 
@@ -162,6 +192,32 @@ Using sensemaking to evaluate something that shares assumptions with sensemaking
 
 ---
 
+## Meta-Inspection — A Generative Pattern for Structural Checks
+
+Several checks in this spec — Frame-exit Completeness; Phase / Calibration-State; the Phase 3 and Phase 5 refinement notes; and the Self-Reference Blindness corrective — are instances of one generative pattern: applying a meta-question to specific structural surfaces of the analysis.
+
+**The meta-question: "What am I treating as FIXED that might not be?"**
+
+Apply this question to the structure of the analysis, not its content. The hooks below list the surfaces where the question fires; each row names the existing check that calibrates the meta-question for that hook (and the phase where it currently appears).
+
+| Hook | Surface inspected | Existing instance (phase) |
+|---|---|---|
+| H1 — Candidate set | Are candidates being adjudicated for relationships actually instances of one underlying operation? | Phase 2 (informal; no existing refinement note) |
+| H2 — Frame scope | Does the inquiry's frame exclude referents that exist in the broader scope? | Frame-exit Completeness perspective (Phase 2) |
+| H3 — Question framing | Does the question's wording pre-bias the candidate set toward a particular direction? | Phase 2 (informal; no existing refinement note) |
+| H4 — Concept names | Does a concept's name represent its structure, or is it a proxy? | Load-bearing concept test (Phase 3) |
+| H5 — Motivating examples | Are the specific examples the whole story, or a sample of a wider pattern? | Specific-vs-pattern recognition cue (Phase 3) |
+| H6 — Model fit | Is the model not settling because of structural misfit, not unresolved ambiguity? | Accommodation trigger (Phase 5) |
+| H7 — Phase / calibration state | Does this rule depend on calibration the current context has? | Phase / Calibration-State perspective (Phase 2) |
+| H8 — Self-reference | Does the evaluation share its conceptual framework with the target? | Self-Reference Blindness corrective (failure mode 6) |
+| H9 — User language alignment | Does the rephrased concept match the user's language, or is it a newly-coined term? | Sub-aspect of Load-bearing concept test (Phase 3) |
+
+The hooks list extends as new specific checks emerge: apply the meta-question to candidate hooks; if an existing hook generates the new check, it becomes a sub-aspect; otherwise add a new hook.
+
+The meta-question applies to Sensemaking itself — the discipline's own structure is inspectable by the same operation it provides for analyzing external content.
+
+---
+
 ## Standard Analysis Protocol
 
 When applying Structural Sensemaking to a task:
@@ -177,6 +233,8 @@ When applying Structural Sensemaking to a task:
 ---- NOW SOLID INSTRUCTIONS START----
 
 ## Execute the Following Process
+
+The five phases below execute the two structural operations. Phases 1 and 2 execute the **Comprehending** operation; Phases 3, 4, and 5 execute the **Stabilizing** operation. See the "What Sensemaking Is" section above for the operation definitions and the interleaving caveat.
 
 ### Initial Sense Version (SV1 — Baseline Understanding)
 
@@ -226,7 +284,7 @@ Analyze the input from multiple perspectives:
 
   4. **Residual / Coverage Justification.** After applying the three named meta-categories above, ask: "Is there a frame-exit concern about this term — anything the inquiry's frame might exclude — that the named categories did NOT capture?" If yes, name it; apply Existence Enumeration + Role Assessment + Verdict Rigor to it. The named categories above are not exhaustive of frame-exit concerns; this closing-step is the perspective's anti-self-narrowing check. Termination: if applying the named categories to a residual concern produces no new substantive findings — the concern reduces to already-captured cases or to intentional bounding decisions — terminate the recursion. Unbounded recursion is a sign of inquiry-frame instability, not of frame-exit completeness; if recursion would continue indefinitely, the issue is upstream of this perspective.
 
-  Example (positive — gating fires): a metaloop-ladder inquiry inherits "Memory" from a prior session-architecture finding and uses it across 6 levels with distinct propositions per row. Existence Enumeration's TYPE-axis prompt surfaces three referent types — human-mental memory; system-written md files (e.g., per-inquiry md files written by /MVL or /MVL+ runners); runtime in-memory state. The meta-loop frame's scope includes only the first; the other two are excluded. Role Assessment finds the md-file referent load-bearing (persistent memory across inquiries). Verdict: re-locate, not exclude.
+  Example (positive — gating fires): a system-design ladder inquiry inherits "state" from a prior architecture finding and uses it across 6 levels with distinct propositions per row. Existence Enumeration's TYPE-axis prompt surfaces three referent types — persistent state in storage; transient in-memory state during request handling; client-side cached state. The inquiry's frame includes only the first; the other two are excluded. Role Assessment finds the transient in-memory state load-bearing (the system's request-handling depends on it). Verdict: re-locate, not exclude.
 
   Example (negative — gating does NOT fire): a code review where a function-name "authenticate" appears in 2 call sites with the same meaning is NOT distinct propositions; the gating predicate yields FALSE; the perspective skips.
 
@@ -309,7 +367,7 @@ Failing to generate at least one ambiguity-collapse pair per load-bearing concep
 
 *Refinement note (applies at Phase 3 Ambiguity Collapse):*
 
-**Specific-vs-pattern recognition cue.** When Sensemaking commits to a key concept describing "what the problem IS" — particularly when that concept appears as a Phase 1 / Key Insight built from a small set of specific examples (e.g., observations from one inquiry, instances from one corpus chain) — the ambiguity-collapse pair MUST explicitly ask: are these specific examples THE WHOLE PROBLEM, or just a few cases of a wider pattern? The strongest counter is: a small set of examples doesn't always tell us about the wider pattern; the concept might fit those examples but miss the broader problem they're examples of.
+**Specific-vs-pattern recognition cue.** When Sensemaking commits to a key concept describing "what the problem IS" — particularly when that concept appears as a Phase 1 / Key Insight built from a small set of specific examples (e.g., from a small set of observations, or instances from one chain of related cases) — the ambiguity-collapse pair MUST explicitly ask: are these specific examples THE WHOLE PROBLEM, or just a few cases of a wider pattern? The strongest counter is: a small set of examples doesn't always tell us about the wider pattern; the concept might fit those examples but miss the broader problem they're examples of.
 
 #### Sense Version 4 (SV4 — Clarified Understanding)
 
@@ -343,7 +401,7 @@ Synthesize results into:
 
 *Refinement note (applies at Phase 5 Conceptual Stabilization):*
 
-**Accommodation trigger.** When new perspectives keep producing anchors that destabilize the current model — each perspective forces a revision, the model doesn't settle, you keep patching — the structural model itself may be wrong. Don't add exceptions. Drop back to Phase 2 and re-extract anchors using the destabilizing perspectives as primary sources. The problem isn't unresolved ambiguity — it's a structural model that doesn't fit the territory. Failing to recognize this and forcing stabilization is an instance of Premature Stabilization (failure mode #2) applied to the *model-misfit axis* — distinct from but related to the *early-clarity-arrival axis* the original Premature Stabilization rule addresses. (Frontier flag: if N≥2 model-misfit instances emerge across the corpus, revisit this anchor decision and consider promoting Accommodation trigger to a separate named failure mode.)
+**Accommodation trigger.** When new perspectives keep producing anchors that destabilize the current model — each perspective forces a revision, the model doesn't settle, you keep patching — the structural model itself may be wrong. Don't add exceptions. Drop back to Phase 2 and re-extract anchors using the destabilizing perspectives as primary sources. The problem isn't unresolved ambiguity — it's a structural model that doesn't fit the territory. Failing to recognize this and forcing stabilization is an instance of Premature Stabilization (failure mode #2) applied to the *model-misfit axis* — distinct from but related to the *early-clarity-arrival axis* the original Premature Stabilization rule addresses. 
 
 #### Final Sense Version (SV6 — Stabilized Model)
 

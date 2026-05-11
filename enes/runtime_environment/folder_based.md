@@ -1,422 +1,332 @@
-# Folder-Based Exploration System
+# Folder-Based Inquiry System
 
-A convention for running thinking disciplines (SIC loop + meta-search) where the folder structure IS the thinking structure. Folders are branches. Files are discipline outputs. The file system is the accumulator, the decomposition tree, and the search history — all in one.
+A convention where the folder structure IS the thinking structure. Folders are inquiries (questions being investigated). Files are discipline outputs and inquiry state. The file system is the lineage tree and the resume mechanism — all in one.
 
-> **The file system is isomorphic to the thinking structure.** If the thinking is a tree, the files are a tree. If a branch is explored, it has files. If it's dead, its state file says so. Navigation is `cd` and `ls`. Traceability is folder hierarchy.
+> **The file system is isomorphic to the thinking structure.** If the thinking is a tree, the files are a tree. If an inquiry is active, its state file says so. If it concluded, its state file says so. Navigation is `cd` and `ls`. Traceability is folder hierarchy.
 
 ---
 
 ## Core Principle
 
-Every complex problem explored with thinking disciplines produces a tree of branches. Each branch is a question to answer. The SIC loop answers the question. Meta-search steers which branch to explore next. Decomposition creates new branches when a question is too complex to answer in one pass.
+Each question worth investigating becomes an inquiry. Each inquiry has a folder. The folder is created when the inquiry starts (by `/MVL`, `/MVL+`, or `BRANCH_INQUIRY`), filled by the thinking disciplines as the inquiry runs, and concluded by `CONCLUDE` once the question is answered.
 
-The folder system makes this tree physical — persistent, navigable, traceable, and resumable across sessions.
+The folder system makes inquiries physical — persistent, navigable, traceable, and resumable across sessions and across AI sessions.
 
 ---
 
-## Where Explorations Live
+## Where Inquiries Live
 
 ```
 devdocs/
-  sensemaking/        ← standalone sensemaking runs (one-off, not part of a loop)
-  innovation/         ← standalone innovation runs (one-off)
-  explorations/       ← SIC loop explorations (multi-iteration, multi-branch)
-    <exploration_name>/
-      _branch.md
-      _state.md
-      branch_a/
-      branch_b/
-      ...
+  inquiries/                              ← all inquiries (root + branch)
+    YYYY-MM-DD_HH-MM__slug/               ← a root inquiry folder
+      _branch.md                          ← inquiry identity
+      _state.md                           ← current state + history
+      exploration.md                      ← discipline output (E-S-D-I-C pipeline)
+      sensemaking.md
+      decomposition.md
+      innovation.md
+      critique.md
+      finding.md                          ← compiled answer (written by CONCLUDE)
+      docarchive/                         ← discipline outputs archived by CONCLUDE
+        exploration.md
+        sensemaking.md
+        decomposition.md
+        innovation.md
+        critique.md
+      branches/                           ← optional: child inquiries (BRANCH_INQUIRY)
+        <child_slug>/
+          _branch.md
+          _state.md
+          ...
+  sensemaking/                            ← standalone /sense-making one-offs
+  exploration/                            ← standalone /explore one-offs
+  innovation/                             ← standalone /innovate one-offs
+  decomposition/                          ← standalone /decompose one-offs
+  critique/                               ← standalone /td-critique one-offs
 ```
 
-**Standalone discipline runs** (one-off `/sense-making` or `/innovate` without a loop) go in `devdocs/sensemaking/` or `devdocs/innovation/` as before.
+**Root inquiries** are created by `/MVL` or `/MVL+` as `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slug>/`. The slug is timestamp-prefixed for chronological ordering.
 
-**Explorations** (multi-iteration SIC loop runs with decomposition and meta-search) go in `devdocs/explorations/<name>/`. Each exploration is a root folder with a tree of branches inside.
+**Branch inquiries** are children of an existing inquiry, created by the `BRANCH_INQUIRY` protocol at `homegrown/protocols/branch_inquiry.md`. They live under their parent at `<parent>/branches/<child_slug>/`. Nested branching is allowed — a branch can itself have a `branches/` subfolder.
+
+**Standalone discipline runs** (one-off `/sense-making`, `/innovate`, `/explore`, `/decompose`, `/td-critique` without a loop) save into the discipline's own `devdocs/<discipline>/` folder. They are not part of the inquiry tree.
 
 ---
 
-## The Branch Protocol
+## The Inquiry File Inventory
 
-Every branch folder — at every level of the tree — follows the same protocol. This makes any branch self-describing and navigable without guessing what's inside.
+Every inquiry folder — root or branch — uses the same two metadata files at the same lifecycle stages.
 
-### Required Files
+### Required at creation
 
-#### `_branch.md` — Branch Identity
+#### `_branch.md` — Inquiry Identity
 
-Created by: Decomposition (when the branch is first created)
+Created by: the runner (`/MVL`, `/MVL+`, or `BRANCH_INQUIRY`) at inquiry start. Written ONCE. Rarely modified.
+
+Defines what this inquiry IS — the question, what a good answer looks like, scope, and relationships to other inquiries.
+
+Template (for a `/MVL+` extended-pipeline root inquiry):
 
 ```markdown
-# Branch: [descriptive name]
+# Branch: [name]
 
 ## Question
-[The specific question this branch is trying to answer.
-Not a topic — a question. "What is decomposition at the meta level?"
-not "Decomposition."]
+[The question, stated clearly in one sentence.]
 
-## Parent
-[What whole this was decomposed from. Path to parent folder.
-Root branches say "Root — this is the exploration's top level."]
+## Goal
+[What would a good answer look like? What would the user be able to DO with the answer?]
 
-## Depends on
-[What sibling branches this needs input from before it can be fully answered.
-"None" if independent.]
+## Scope Check
+[Does the question, if answered perfectly, cover everything the goal asks for?
+Specific-vs-pattern check: if examples are named, does the inquiry address just those
+examples or the broader pattern?]
 
-## Provides to
-[What sibling branches need from this branch's output.
-"None" if no dependents.]
-
-## Tags
-[Keywords for cross-exploration search: #feasibility #critique #meta-level etc.]
-
-## Verification
-- [ ] [Concrete criterion that defines "this question is answered"]
-- [ ] [Another criterion]
-- [ ] [Another criterion]
-[Branch is COMPLETE when all criteria are checked.]
+## Relationships                          [optional]
+- CONTINUES FROM: <inquiry_path> (context)
+- SUPERSEDED BY: <inquiry_path> (reason)
+- DIAGNOSES: <inquiry_path> (for loop_diagnose)
+- COMPARES WITH: <inquiry_path>
+- RELATED: <inquiry_path> (connection)
 ```
 
-The `_branch.md` is written ONCE when the branch is created and rarely modified. It defines what this branch IS, not what happened in it.
+For branch inquiries, `BRANCH_INQUIRY` adds additional fields (`branch_from`, `branch_source`, etc.) — see `homegrown/protocols/branch_inquiry.md`.
 
-#### `_state.md` — Branch State + Handoff
+For correction-chain diagnostic inquiries, `LOOP_DIAGNOSE` adds a `## Correction Chain` section recording prior path, corrected path, and the raw human correction — see `homegrown/protocols/loop_diagnose.md`.
 
-Created by: Meta-search (updated at every checkpoint)
+#### `_state.md` — Current State + History
+
+Created by: the runner at inquiry start. Updated through the inquiry's life by the runner (NOT by disciplines — disciplines write their own canonical file; the runner updates state).
+
+Tracks: pipeline configuration, progress, iteration count, current status, next discipline, and a chronological history log.
+
+Template (for `/MVL+` extended pipeline):
 
 ```markdown
-# State: [branch name]
+# State: [name]
+
+## Flow-type
+extended                                      [or "classic" for /MVL]
+
+## Pipeline
+E → S → D → I → C (always)                    [or "S → I → C" for /MVL]
+
+## Progress
+- [ ] Exploration                             [omit for classic]
+- [ ] Sensemaking
+- [ ] Decomposition                           [omit for classic]
+- [ ] Innovation
+- [ ] Critique
+
+## Iteration
+1
 
 ## Status
-[One of: ACTIVE | DEAD(condition) | SURVIVED | RECONSIDERING | COMPLETE | UNEXPLORED]
+ACTIVE                                        [or COMPLETE after CONCLUDE]
 
-## Directive
-[What the next session/agent should do with this branch.
-Written by meta-search at the last checkpoint.]
+## Next Discipline
+Exploration                                   [name of the next discipline; "—" when COMPLETE]
 
-Focus: [which dimension to emphasize]
-Direction: [BROADEN | NARROW | SHIFT]
-Depth: [how many more iterations before reassessing]
+## Relationships                              [optional; mirrors _branch.md when applicable]
 
 ## History
-[Chronological log with timestamps (date + time). One line per significant event.]
-- [YYYY-MM-DD HH:MM]: [what happened]
-- [YYYY-MM-DD HH:MM]: [what happened]
-
-## Kill Record
-[For DEAD branches: the specific condition that killed it, stated as a falsifiable predicate.]
-- [Idea/approach]: killed on [dimension] (condition: "[specific, falsifiable reason]")
-
-## Survival Record
-[For SURVIVED branches: which dimensions it passed and with what strength.]
-
-## Near-Misses
-[Ideas that almost flipped — near the boundary between verdicts.]
-
-## Iteration Count
-[How many SIC iterations have run on this branch.]
-
-## Time Budget
-[Optional. Set by user at CONFIGURE.]
-Budget: [unlimited | N hours | deadline]
+- YYYY-MM-DD: Created. Question: [one-line summary]
+- YYYY-MM-DD: [discipline] complete. [brief telemetry]
+- ...
 ```
 
-The `_state.md` is the **handoff document**. Any AI session or human reads it and knows: what is this branch's status, what happened here, and what to do next. This is the file that makes multi-session work possible.
+The `_state.md` is the **handoff document**. Any AI session or human reads it and knows: what is this inquiry's status, what happened so far, and what to do next. This is the file that makes multi-session work possible.
 
-### Temporal Awareness
+### Produced by the pipeline
 
-`/explore` runs `date` at each checkpoint and records the timestamp in the history entry. From timestamps, meta-search derives:
+The `/MVL+` extended pipeline produces five discipline outputs, in order:
 
-| Metric | Computed from |
+| File | Discipline | Skill name |
+|---|---|---|
+| `exploration.md` | Exploration | `/explore` |
+| `sensemaking.md` | Sensemaking | `/sense-making` |
+| `decomposition.md` | Decomposition | `/decompose` |
+| `innovation.md` | Innovation | `/innovate` |
+| `critique.md` | Critique | `/td-critique` |
+
+The classic `/MVL` pipeline produces three:
+
+| File | Discipline | Skill name |
+|---|---|---|
+| `sensemaking.md` | Sensemaking | `/sense-making` |
+| `innovation.md` | Innovation | `/innovate` |
+| `critique.md` | Critique | `/td-critique` |
+
+Each discipline writes its canonical output file directly in the inquiry root. The runner verifies the file exists (and runs a structural check if `tools/structural_check.sh` is available) before advancing to the next discipline.
+
+### Multi-iteration handling
+
+Iterations do NOT create iteration subfolders. They reuse the same canonical file names — each iteration overwrites the prior outputs. The iteration trail is captured in `_state.md` History entries.
+
+If a record of prior-iteration content is needed, archive it explicitly (e.g., copy `sensemaking.md` to `docarchive/iteration_1__sensemaking.md`) before the next iteration runs — but this is opt-in capture, not the default.
+
+### Written by CONCLUDE
+
+When the runner decides the question is answered, `CONCLUDE` (`homegrown/protocols/conclude.md`) produces:
+
+| Action | Outcome |
 |---|---|
-| Time between checkpoints | timestamp_N - timestamp_N-1 |
-| Session duration | last checkpoint - first checkpoint of this session |
-| Time since last activity | now - last checkpoint |
-| Budget remaining | budget - session duration (if budget set) |
+| Compile `finding.md` | Single argumentative document combining the discipline outputs into the inquiry's answer, with reasoning, alternatives considered, and next actions |
+| Create `docarchive/` | Subfolder for discipline outputs; the five (or three) discipline files move into it |
+| Update `_state.md` | Status → COMPLETE; Next Discipline → "—"; append a History entry summarizing the iteration |
 
-When a time budget is set and approaching its limit, meta-search factors this into its moves — "approaching budget, consider NARROW or TERMINATE." This gives the system temporal pressure awareness that matches the human's real-world constraints.
-
-### Content Files
-
-Created by: The SIC loop disciplines, one per iteration.
-
-For **single-iteration branches** (most branches):
-```
-branch_name/
-  _branch.md
-  _state.md
-  sensemaking.md
-  innovation.md
-  critique.md
-```
-
-For **multi-iteration branches** (when the SIC loop runs multiple passes):
-```
-branch_name/
-  _branch.md
-  _state.md
-  iteration_1/
-    sensemaking.md
-    innovation.md
-    critique.md
-  iteration_2/
-    sensemaking.md
-    innovation.md
-    critique.md
-```
-
-Each iteration subfolder is a self-contained snapshot. Meta-search's velocity is computed by diffing between iterations.
-
-### Subfolders = Further Decomposition
-
-When a branch is too complex to answer in one SIC loop, decomposition breaks it into sub-branches. Each sub-branch is a subfolder following the same protocol.
-
-```
-branch_name/
-  _branch.md          ← the parent question
-  _state.md
-  sub_branch_1/       ← a sub-question decomposed from the parent
-    _branch.md
-    _state.md
-    sensemaking.md
-    ...
-  sub_branch_2/
-    _branch.md
-    _state.md
-    ...
-```
-
-The parent's `_state.md` reflects the aggregate state of its children. The parent question is "answered" when all sub-questions are answered (all children's verification criteria are met).
+After CONCLUDE, the inquiry folder root contains: `_branch.md`, `_state.md`, `finding.md`, and `docarchive/`. The discipline outputs live in `docarchive/`. Branch subfolders (if any) live alongside under `branches/`.
 
 ---
 
-## File Naming Conventions
+## Branch Inquiries (Sub-Inquiries via BRANCH_INQUIRY)
 
-| Prefix/Pattern | Meaning |
+When a finding raises a new question worth investigating in its own right, the user invokes `BRANCH_INQUIRY` to create a child inquiry. The child:
+
+- Lives at `<parent>/branches/<child_slug>/` (one level deeper than the parent).
+- Has its own `_branch.md` and `_state.md` — created by `BRANCH_INQUIRY` at the time of creation.
+- Records its parent in `_branch.md` (`branch_from: <parent_path>`) and its source anchor (which specific bullet, section, or line in the parent's `finding.md` motivated the branch).
+- Runs its own `/MVL` or `/MVL+` pipeline; CONCLUDEs to its own `finding.md`.
+- Nested branching is allowed — a branch can have `<branch>/branches/<grandchild>/`.
+
+The parent maintains an index file `_branches.md` listing its children. The index is informational; child completion is authoritative in the child's `_state.md`.
+
+See `homegrown/protocols/branch_inquiry.md` for the full BRANCH_INQUIRY protocol (input contract, validation, source anchor normalization, parent index update).
+
+---
+
+## Naming Conventions
+
+| Pattern | Meaning |
 |---|---|
-| `_` prefix (`_branch.md`, `_state.md`) | Meta-file — about the branch itself, not discipline content |
-| No prefix (`sensemaking.md`, `innovation.md`, `critique.md`) | Discipline output — content produced by the SIC loop |
-| `iteration_N/` subfolder | Multi-iteration content — each iteration is a self-contained unit |
-| Named subfolder (`sub_branch_name/`) | Further decomposition — a child branch |
+| `_` prefix (`_branch.md`, `_state.md`, `_branches.md`) | Meta-file — about the inquiry itself, not discipline content |
+| No prefix (`exploration.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md`) | Discipline output — canonical name per discipline |
+| `finding.md` | CONCLUDE output — the compiled answer |
+| `docarchive/` | Discipline outputs after CONCLUDE archives them |
+| `branches/<child_slug>/` | Child inquiries created by BRANCH_INQUIRY |
+
+Root inquiry slugs use `YYYY-MM-DD_HH-MM__slugified_name` (creation-time timestamp + lowercased name with underscores). Branch slugs are derived from the child question; no timestamp prefix required.
 
 ---
 
 ## How the Disciplines Map to File Operations
 
-### Decomposition → Create Folders
+### `/MVL+` or `/MVL` creates the folder
 
-Decomposition takes a complex question and produces N sub-questions. Each sub-question becomes a subfolder with its own `_branch.md` (stating the question, verification criteria, dependencies).
+`/MVL+` (or `/MVL` for the classic pipeline) on a new question creates `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slug>/`, writes `_branch.md` and `_state.md`, and begins the pipeline.
 
-**The act of `mkdir` + writing `_branch.md` IS the physical act of decomposing.**
+### Each discipline writes its canonical file
 
-### SIC Loop → Fill Folders with Files
+The runner invokes disciplines via the Skill tool (`/explore`, `/sense-making`, `/decompose`, `/innovate`, `/td-critique`). Each discipline reads `_branch.md` and prior discipline outputs, executes its full process (loading its `references/` spec at Step 0), and writes its canonical output (`exploration.md`, etc.) directly in the inquiry root.
 
-Each SIC iteration produces discipline output files inside the current branch folder. Sensemaking produces `sensemaking.md`. Innovation produces `innovation.md`. Critique produces `critique.md`.
+### Runner updates `_state.md` between disciplines
 
-If the loop runs multiple iterations, each iteration gets its own subfolder (`iteration_1/`, `iteration_2/`, ...).
+After each discipline completes, the runner:
+- Marks the discipline checked in `## Progress`.
+- Updates `## Next Discipline`.
+- Appends a `## History` entry summarizing the discipline's output.
+- Runs a structural check on the output if available; records the result in History.
 
-### Meta-Search → Navigate + Update State
+### `BRANCH_INQUIRY` creates child folders
 
-Meta-search reads `_state.md` files across the tree to understand the exploration's state. It produces two outputs:
-1. Updates to `_state.md` (status changes, directives, kill records)
-2. Navigation decisions (which branch to work on next)
+When a child inquiry is needed, `BRANCH_INQUIRY` creates `<parent>/branches/<child_slug>/` with its own state files. The parent's `_branches.md` index is updated.
 
-**Meta-search moves → file system actions:**
+### `CONCLUDE` compiles + archives
 
-| Move | Action |
-|---|---|
-| **BROADEN** | Create new sibling folder at the same level (explore a different region) |
-| **NARROW** | Create subfolder inside a surviving branch (go deeper on this question) |
-| **SHIFT** | Create new sibling folder with a different dimension focus |
-| **DIAGNOSE** | Update `_state.md` to flag "needs re-sensemaking" — navigate to parent level |
-| **TERMINATE** | Update root `_state.md` with final verdicts and survivors |
-| **RECONSIDER** | Navigate to a DEAD branch, update its `_state.md` to RECONSIDERING, re-run SIC |
-
-### Critique's Accumulator → `_state.md`
-
-The accumulator (kill records, survival records, convergence trend, near-misses) lives in `_state.md`. Each branch has its own accumulator. The root `_state.md` aggregates across all branches.
+When the runner decides the question is answered, `CONCLUDE` compiles `finding.md`, archives discipline outputs to `docarchive/`, and marks the inquiry COMPLETE.
 
 ---
 
 ## Traceability
 
-The folder hierarchy provides all traceability primitives:
+The folder hierarchy provides traceability primitives:
 
-| Trace direction | How | Example |
+| Trace direction | How | What you learn |
 |---|---|---|
-| **Piece → Whole** (up) | Navigate to parent folder | `cd ..` — this branch's parent is the question it was decomposed from |
-| **Whole → Pieces** (down) | List subfolders | `ls` — these are the sub-questions this branch was decomposed into |
-| **Piece → Sibling** (sideways) | Navigate to sibling folder | `cd ../sibling/` — another piece at the same decomposition level |
-| **Current state** | Read `_state.md` | Status, directive, kill record, iteration count |
-| **Branch identity** | Read `_branch.md` | Question, parent, dependencies, verification criteria |
-| **Full exploration shape** | Run `tree` or scan `_branch.md` files | See the entire question map at a glance |
-
-**Reassembly test:** Given all leaf branches answered (verification criteria met) + interfaces satisfied (depends-on/provides-to in `_branch.md`), the root question should be answerable. If not, the decomposition missed something.
-
----
-
-## Starting an Exploration
-
-### Step 1: Create the Root
-
-```
-mkdir devdocs/explorations/<exploration_name>
-```
-
-Write `_branch.md`:
-```markdown
-# Branch: [exploration name]
-
-## Question
-[The top-level question this exploration answers]
-
-## Parent
-Root — this is the exploration's top level.
-
-## Depends on
-None
-
-## Provides to
-None
-
-## Tags
-[#relevant #tags]
-
-## Verification
-- [ ] [How we know this exploration is complete]
-```
-
-Write `_state.md`:
-```markdown
-# State: [exploration name]
-
-## Status
-ACTIVE
-
-## Directive
-Start with sensemaking — clarify the question before decomposing.
-
-## History
-- [date]: Exploration created.
-
-## Iteration Count
-0
-```
-
-### Step 2: Run Sensemaking on the Root Question
-
-Produce `sensemaking.md` in the root folder. This clarifies the question before any decomposition.
-
-### Step 3: Decompose if Needed
-
-If the question is too complex for one SIC loop:
-
-1. Identify sub-questions (decomposition)
-2. Create a subfolder per sub-question
-3. Write `_branch.md` for each (question, dependencies, verification)
-4. Write `_state.md` for each (UNEXPLORED status, initial directive)
-
-### Step 4: Run the SIC Loop on Each Branch
-
-For each active branch:
-1. Sensemaking → `sensemaking.md`
-2. Innovation → `innovation.md`
-3. Critique → `critique.md`
-
-If multiple iterations: create `iteration_N/` subfolders.
-
-### Step 5: Meta-Search Checkpoint
-
-After each SIC iteration:
-1. Read all `_state.md` files in the tree
-2. Integrate: present layer (coverage), trend layer (velocity), memory layer (kill conditions vs new info)
-3. Produce a move: BROADEN, NARROW, SHIFT, DIAGNOSE, TERMINATE, or RECONSIDER
-4. Update `_state.md` with the directive for the next session
-5. Execute the move (create folder, navigate, update state)
-
-### Step 6: Terminate When Done
-
-When convergence criteria are met:
-- At least one branch has SURVIVED or COMPLETE status
-- The landscape has stabilized (no new branches in last 2 iterations)
-- Root verification criteria can be checked
-
-Update root `_state.md` with final verdicts. The exploration is complete.
+| **Inquiry → Parent** (up) | Read `_branch.md`'s `branch_from` field | "This inquiry branched from `<parent_path>`" |
+| **Inquiry → Children** (down) | List `branches/` subfolders or read `_branches.md` index | "These are the questions branched from this inquiry" |
+| **Current state** | Read `_state.md` | Status, progress, next discipline, history |
+| **Inquiry identity** | Read `_branch.md` | Question, goal, scope, relationships |
+| **Answer** | Read `finding.md` | The compiled verdict |
+| **Discipline reasoning** | Read `docarchive/<discipline>.md` | The discipline's full output that fed into the finding |
+| **Inquiry tree shape** | `tree devdocs/inquiries/<inquiry>/` | Full inquiry + branches structure at a glance |
 
 ---
 
-## Reading an Existing Exploration
+## Starting an Inquiry
 
-To understand an exploration you didn't create:
+### As a root inquiry: `/MVL+ "<question>"` (or `/MVL`)
 
-1. **Start at root** — read `_branch.md` (what's the top-level question?) and `_state.md` (what's the current status and directive?)
-2. **Scan the tree** — run `tree` or `ls -R` to see the branch structure. Each folder name is a sub-question.
-3. **Read `_branch.md` files** — one sentence per branch. In 30 seconds you know the full question map.
-4. **Check `_state.md` files** — which branches are active, dead, survived, complete? Where was the exploration when it was last touched?
-5. **Read the directive** — the root `_state.md` directive tells you what to do next.
-6. **Go deep only where needed** — read discipline output files only for branches you're actively working on.
+The runner:
+1. Creates `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slug>/`.
+2. Writes `_branch.md` with the question, goal, and scope check.
+3. Writes `_state.md` with Flow-type, Pipeline, Progress, Iteration=1, Status=ACTIVE, Next Discipline=first discipline.
+4. Begins the pipeline immediately (no user pause between disciplines).
+
+### As a branch from an existing inquiry: invoke BRANCH_INQUIRY
+
+The runner:
+1. Validates parent path, source anchor, child question (per `branch_inquiry.md`).
+2. Creates `<parent>/branches/<child_slug>/`.
+3. Writes the child's `_branch.md` with `branch_from`, `branch_source`, question, goal.
+4. Writes the child's `_state.md`.
+5. Updates the parent's `_branches.md` index.
+6. Returns the child inquiry path to the runner, which continues with `/MVL` or `/MVL+` normally.
+
+---
+
+## Resuming an Inquiry
+
+`/MVL+ <inquiry_path>/` (or `/MVL <inquiry_path>/`):
+
+1. Reads `_state.md`.
+2. Verifies Flow-type matches the runner (extended ↔ `/MVL+`; classic ↔ `/MVL`).
+3. Determines where the pipeline left off by checking which discipline output files exist.
+4. Continues from the first incomplete discipline.
+
+Any AI session, any human reader, can pick up an inquiry from its `_state.md` alone. This is what makes cross-session work feasible.
 
 ---
 
 ## Rules
 
-1. **Every folder gets `_branch.md` and `_state.md`.** No exceptions. A folder without `_branch.md` is an unidentifiable branch. A folder without `_state.md` is invisible to meta-search.
+1. **Every inquiry folder has `_branch.md` and `_state.md`.** No exceptions. A folder without `_branch.md` is unidentifiable. A folder without `_state.md` is invisible to the resume mechanism.
 
-2. **`_branch.md` is written once.** It defines the question and verification criteria. If the question changes fundamentally, that's a new branch, not a modified one.
+2. **`_branch.md` is written once at creation.** It defines what the inquiry IS. If the question changes fundamentally, that's a new inquiry (or a branch), not a modified `_branch.md`.
 
-3. **`_state.md` is updated at every checkpoint.** It always reflects the current state. The directive section always tells the next session what to do. Stale `_state.md` = lost context.
+3. **`_state.md` is updated through the inquiry's life.** It always reflects current state. The History section accumulates a chronological log of what happened. The Next Discipline field always tells the next session what to do.
 
-4. **Dead branches are never deleted.** They're marked DEAD in `_state.md` with their kill condition as a falsifiable predicate. They stay in the tree for RECONSIDER. Information loss = deleting folders.
+4. **Completed inquiries are never deleted.** When a question is answered, CONCLUDE marks Status=COMPLETE and archives discipline outputs. The folder remains as the inquiry's record. Information loss = deleting folders.
 
-5. **Subfolders = decomposition, not organization.** A subfolder means "this question was too complex, so it was broken into sub-questions." Don't create subfolders for organizational convenience — that breaks the isomorphism between tree structure and thinking structure.
+5. **Superseded inquiries are kept with a relationship label.** When a later inquiry corrects or supersedes an earlier one, the earlier inquiry's `_branch.md` (or `_state.md`) Relationships section records `SUPERSEDED BY: <later_inquiry_path>`. The earlier finding stands as historical record.
 
-6. **Kill conditions must be falsifiable.** "This won't work" is not a kill condition. "This won't work because resource X doesn't exist" IS a kill condition — if resource X is later found, RECONSIDER fires. Unfalsifiable kills can never be reconsidered.
+6. **Subfolders mean further decomposition (via BRANCH_INQUIRY), not organization.** A `branches/` subfolder under an inquiry means specific child questions were branched. Don't create subfolders for organizational convenience — that breaks the isomorphism between tree structure and inquiry structure.
 
-7. **Dependencies between siblings must be explicit.** If branch A needs something from branch B, both `_branch.md` files must say so (A's "Depends on" and B's "Provides to"). Hidden dependencies between siblings are decomposition failures.
+7. **Disciplines write canonical files; do not invent file names.** A discipline output must use its canonical name (`exploration.md`, etc.) at the inquiry root. Resume and CONCLUDE depend on the canonical names.
 
-8. **Start simple.** One exploration, following the protocol. Don't build tooling, scripts, or automation until the convention is tested. The protocol should work with nothing but `mkdir`, a text editor, and `tree`.
+8. **Iterations overwrite, not append.** A second iteration of the pipeline overwrites the prior `sensemaking.md`, etc. The iteration trail lives in `_state.md` History, not in iteration subfolders. If you need the prior-iteration record, opt in by archiving it before the overwrite.
+
+9. **CONCLUDE is invoked by the runner, not by disciplines.** No discipline writes `finding.md`. No discipline moves files into `docarchive/`. Those operations belong to CONCLUDE.
 
 ---
 
-## Example: Complete Exploration Tree
+## Example: A Completed `/MVL+` Inquiry
 
 ```
-devdocs/explorations/discipline_building/
-├── _branch.md                              ← "What are the thinking disciplines and how should they be formalized?"
-├── _state.md                               ← ACTIVE, 4 of 11 built
-│
-├── critique/                               ← "What is critique as a meta-cognitive operation?"
-│   ├── _branch.md                          ← Question + verification: meta-test, distinct from others
-│   ├── _state.md                           ← COMPLETE ✓
-│   ├── iteration_1/
-│   │   ├── sensemaking.md                  ← next_discipline_sic_loop.md
-│   │   ├── innovation.md                   ← critique_as_thinking_discipline.md
-│   │   └── critique.md                     ← (self-applied)
-│   └── iteration_2/
-│       └── sensemaking.md                  ← refinement after user feedback
-│
-├── meta_search/                            ← "What is meta-search as a cognitive operation?"
-│   ├── _branch.md
-│   ├── _state.md                           ← COMPLETE ✓
-│   ├── iteration_1/
-│   │   ├── sensemaking.md                  ← signal_component_meta_search.md
-│   │   └── innovation.md                   ← meta_search_cognitive_operation.md
-│   ├── iteration_2/
-│   │   ├── sensemaking.md                  ← resurrect_belongs_in_meta_search.md
-│   │   └── innovation.md                   ← meta_search_redefined_with_memory.md
-│   └── folder_system/                      ← sub-branch: how meta-search maps to file system
-│       ├── _branch.md
-│       ├── _state.md                       ← COMPLETE ✓
-│       ├── sensemaking.md                  ← folder_structure_as_decomposition_tree.md
-│       └── innovation.md                   ← folder_tree_meta_innovations.md
-│
-├── decomposition/                          ← "What is decomposition at the meta level?"
-│   ├── _branch.md
-│   ├── _state.md                           ← ACTIVE ← current focus
-│   └── sensemaking.md                      ← what_is_decomposition.md
-│
-├── [remaining planned disciplines...]      ← UNEXPLORED
-│
-└── meta_plan/                              ← DEAD(condition: "instruments insufficient")
-    ├── _branch.md                          ← near-miss, flagged for RECONSIDER
-    └── _state.md                           ← kill condition: "can't orchestrate <5 instruments"
+devdocs/inquiries/2026-05-11_14-00__loop_diagnose__why_disciplines_missed_convergence/
+├── _branch.md                  ← inquiry identity (question, goal, scope, correction chain, relationships)
+├── _state.md                   ← Status: COMPLETE; History: entries spanning creation through CONCLUDE
+├── finding.md                  ← the compiled answer
+└── docarchive/
+    ├── exploration.md
+    ├── sensemaking.md
+    ├── decomposition.md
+    ├── innovation.md
+    └── critique.md
 ```
 
-This tree is the exploration's THINKING HISTORY — not just what was decided, but what was explored, what was killed and why, what's still pending, and what to do next. A new person reads it top-down and understands the full arc of work in minutes.
+A new reader opens `_branch.md` to learn the question, then `finding.md` to learn the answer. If they want the reasoning trail, they read `docarchive/` files. If they want to resume or branch, they read `_state.md`.
+
+---
+
+This convention is what makes the project's thinking work persistent, resumable, and inspectable — without specialized tooling. `mkdir`, a text editor, and `tree` are enough.
