@@ -150,6 +150,10 @@ Produce an interface map: which pieces connect, what flows, in which direction.
 
 For non-software domains, "flows" include: information, decisions, dependencies, prerequisites, shared resources, timing constraints, assumptions.
 
+*Refinement note (applies at Step 5 Map Interfaces):*
+
+**Assumptions-not-data check.** Interface mapping must ask not just "what data flows?" but "what assumptions does each piece make about what the other provides?" Hidden coupling hides in assumptions, not in data — pieces can look independent in their data flows while sharing unstated expectations about format, timing, state, or contract. Failing to check assumptions during interface mapping is an instance of Hidden Coupling (failure mode #3).
+
 
 
 ### Step 6 — Order by Dependency
@@ -173,6 +177,8 @@ Run a quality check on the decomposition before committing to it.
 | **Independence** | Can each piece be worked on without the others existing? | Each piece's question is answerable without reading sibling pieces (except through defined interfaces) |
 | **Completeness** | Do the pieces cover the whole? | No aspect of the original whole falls through the gaps between pieces |
 | **Reassembly** | Can the pieces + interfaces reconstruct the whole? | Given all pieces answered + all interfaces satisfied → the original problem is solved |
+
+*Refinement note (applies at Step 7 Self-Evaluate):*
 
 **Determination-mechanism piece check.** When the question tree (Q-tree) includes a load-bearing concept whose use depends on a runtime determination — i.e., the concept is referenced in one or more pieces, but its applicability is determined at runtime by checking "does X exist?", "is X applicable?", or similar — the Reassembly self-evaluation check verifies that the Q-tree includes a piece addressing the determination mechanism (HOW the runtime check is performed). A Q-tree that presupposes the determination has been made — without including a piece addressing HOW it is made — fails Reassembly: reconstructing the whole requires the determination, but no piece provides it. Failing this check is an instance of Missing Pieces (failure mode #4).
 
@@ -268,7 +274,7 @@ Pieces look independent but share hidden state, assumptions, or timing requireme
 
 **How to recognize:** Piece A works fine in isolation but breaks when combined with piece B. Or piece A's output is correct but piece B can't use it because of an unstated assumption about format, timing, or state.
 
-**How to prevent:** Interface mapping (Step 5) must be thorough. Ask not just "what data flows?" but "what assumptions does each piece make about what the other provides?" Hidden coupling hides in assumptions, not in data.
+**How to prevent:** During interface mapping (Step 5), ask not just "what data flows?" but "what assumptions does each piece make about what the other provides?" Hidden coupling hides in assumptions, not in data. See Step 5 — Map Interfaces → Assumptions-not-data check refinement for the full rule.
 
 ### 4. Missing Pieces
 

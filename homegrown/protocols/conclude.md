@@ -220,7 +220,13 @@ If `Source Input` is required but the raw input is omitted or redacted, keep the
 3. **Gate specificity.** Triggers, deferred conditions, and revival criteria must be time-bound ("after 30 inquiries"), condition-bound ("when /intuit Phase β ships"), or observable ("if calibration N ≥ 30"). "Eventually," "when appropriate," "as needed" are defects.
 
 4. One decision per paragraph. If a paragraph contains more than one decision, verdict, or resolved question, break it into separate paragraphs or a list — one item per entry or subitems. The failure mode: a paragraph that reads as one thought but actually contains 3-4 independent claims the reader must mentally separate. Test: if you could put "separately," between two claims in the same paragraph, they belong in different paragraphs.
-5. Anchored references. When referring to a numbered item, named concept, or earlier decision, always include the short descriptive name on first use in each section not just the label. "Item 3" alone is a defect; "Item 3 (the continuous-loop runner)" is correct
+5. **Anchored references.** When referring to a numbered item, named concept, or earlier decision, always include the short descriptive name on first use in each section AND on every subsequent reference, not just the label. "Item 3" alone is a defect; "Item 3 (the continuous-loop runner)" is correct.
+
+   The rule covers two label shapes:
+
+   (a) **Positional labels** in a structure the reader can see in the same section (e.g., "Item 3" of a numbered list). Pair with the descriptive name.
+
+   (b) **Workspace scaffolding labels** that index into a system the reader has NOT been introduced to (e.g., category-letter IDs from exploration like "D2", piece labels from decomposition like "P1", sense-version labels like "SV6", variant labels like "P2-A"). Either drop the label entirely (use only the descriptive name) or introduce the system explicitly in the same section. Default: drop. The descriptive name reads cleaner; the label was workspace convenience.
 
 
 

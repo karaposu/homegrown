@@ -89,7 +89,9 @@ Structural Sensemaking proceeds through five iterative phases:
 * Formation of a coherent model
 * Articulation of understanding
 
-The process is iterative and recursive rather than strictly linear. (For the model-misfit case where stabilization is being attempted but the model keeps requiring revision, see the Accommodation trigger refinement at Phase 5 Conceptual Stabilization in the Execute section.)
+The process is iterative and recursive rather than strictly linear.
+
+**Accommodation trigger:** When new perspectives keep producing anchors that destabilize the current model — each perspective forces a revision, the model doesn't settle, you keep patching — the structural model itself may be wrong. Don't add exceptions. Drop back to Phase 2 and re-extract anchors using the destabilizing perspectives as primary sources. The problem isn't unresolved ambiguity — it's a structural model that doesn't fit the territory.
 
 ---
 
@@ -122,11 +124,9 @@ Defending an established structure, definition, or framework because it's docume
 
 The model clicked into place quickly. SV4 feels clean and clear. But only two or three perspectives were checked, and none of them produced discomfort or surprise. The model is untested, not stable.
 
-Premature Stabilization has two recognition axes: the *early-clarity-arrival axis* (this section's primary description — clarity arriving before testing is sufficient) and the *model-misfit axis* (clarity-resistance — multiple perspectives produce destabilizing anchors yet stabilization is forced anyway; see the Accommodation trigger refinement at Phase 5 Conceptual Stabilization in the Execute section).
+**Feels like:** Clarity arriving early. Confidence at SV3 or SV4 that feels like SV6. The urge to move on.
 
-**Feels like:** Clarity arriving early. Confidence at SV3 or SV4 that feels like SV6. The urge to move on. (Or, on the model-misfit axis: every new perspective forces another revision, you keep patching, but you're trying to stabilize anyway.)
-
-**Corrective:** Check: how many perspectives produced NEW anchors versus confirmed existing ones? If fewer than three perspectives produced surprises, the model hasn't been tested from enough angles. For testing of load-bearing concepts stabilized in earlier Sensemaking outputs, see Phase 3 — Ambiguity Collapse → Load-bearing concept test refinement; for committing to a key concept built from a small set of specific examples, see Phase 3 — Ambiguity Collapse → Specific-vs-pattern recognition cue refinement; for model-misfit-induced premature stabilization (clarity-resistance rather than early-clarity-arrival), see Phase 5 — Conceptual Stabilization → Accommodation trigger refinement (all in the Execute section).
+**Corrective:** Check: how many perspectives produced NEW anchors versus confirmed existing ones? If fewer than three perspectives produced surprises, the model hasn't been tested from enough angles. For testing of load-bearing concepts stabilized in earlier Sensemaking outputs, see Phase 3 — Ambiguity Collapse → load-bearing concept test (in the Execute section).
 
 ### 3. Anchor Dominance
 
@@ -142,7 +142,7 @@ The perspectives checked all agree. Nothing produced discomfort or surprise. The
 
 **Feels like:** Agreement across all perspectives. A feeling that "everyone sees it the same way." No perspective made you pause.
 
-**Corrective:** "Which perspective would be most uncomfortable to check? That's the one to check." If you can't identify an uncomfortable perspective, you're not looking hard enough. For phase / calibration-state perspectives in inquiries involving phase-dependent rules, see Phase 2 — Perspective Checking → Phase / Calibration-State perspective requirement refinement (in the Execute section).
+**Corrective:** "Which perspective would be most uncomfortable to check? That's the one to check." If you can't identify an uncomfortable perspective, you're not looking hard enough. For phase / calibration-state perspectives in inquiries involving phase-dependent rules, see Phase 2 — Perspective Checking → Phase / Calibration-State (in the Execute section).
 
 ### 5. Clean Resolution Trap
 
@@ -210,36 +210,11 @@ Analyze the input from multiple perspectives:
 * Risk / Failure
 * Resource / Feasibility
 * Ethical / Systemic (if relevant)
-* Definitional / Internal Consistency — Does this interpretation contradict any established definitions, principles, or prior stabilized models WITHIN the inquiry's frame? Check the claim against the strongest known anchors. If a weak anchor (observation, single data point) contradicts a strong anchor (definition, tested principle), the weak anchor must justify the override — not the other way around. But also check the reverse: does the established definition contradict ITSELF? Does its stated purpose align with its actual mechanisms? If a definition's own components are in tension — its core claim promises more than its structure delivers — the definition has an internal gap. Don't protect a definition that contradicts itself.
-
-* Definitional / Frame-exit Completeness (when the inquiry has inherited multi-value terms in its own committed structures) — Does the inquiry's frame's anchor-set EXCLUDE referents that exist project-wide, and have any out-of-scope verdicts been tested on structural grounds?
-
-  Gating predicate: this perspective fires WHEN BOTH (i) the inquiry's commitments include terms inherited from prior findings, framing-level commitments, or upstream taxonomies; AND (ii) those inherited terms are used across ≥2 distinct values/levels WITHIN the inquiry's own committed structures (multi-row tables, ladders, axes, typed taxonomies — NOT in artifacts the inquiry analyzes; "distinct" means used to assert different propositions in different cells/levels, NOT multiple occurrences of the same proposition).
-
-  When the gating fires, apply the four meta-categories below, in order, as separate cognitive moves:
-
-  1. **Existence Enumeration.** Ask: "What does this term refer to project-wide, regardless of the inquiry's frame?" List each project-wide referent. Dimensions where the term may vary include (not exhaustive): TYPE (multiple referent types), LAYER (project-wide vs per-inquiry; pre-condition vs operation), PHASE (project phase-dependence), AGENT (multiple users / agents), TIME HORIZON, STRUCTURAL ROLE. For each referent enumerated, check whether the inquiry's frame's scope includes it. Failing to enumerate any referent-axis that has multiple project-wide values is an instance of Perspective Blindness (failure mode #4) applied to the frame-exit axis.
-
-  2. **Role Assessment.** For each referent identified as outside the inquiry's frame, ask: "What role does this referent play in the operation being organized?" State the role explicitly. Then ask: "Is the operation's coherence preserved if this excluded referent is ignored?" If NO — the operation depends on the excluded referent — the corrective is NOT to force the referent into the current frame, but to RE-LOCATE it to its correct in-scope layer (e.g., project-wide pre-condition vs per-inquiry artifact) and note that the current inquiry operates within a per-layer slice of the operation.
-
-  3. **Verdict Rigor.** For any "out of scope" or "clean boundary" verdict produced in this perspective (or referenced from another perspective), state the strongest counter-argument and test it on structural grounds. This applies failure mode #5 (Clean Resolution Trap)'s corrective to the frame-exit axis: a clean-boundary verdict that survives only because the counter-argument was never tested is LOW CONFIDENCE.
-
-  4. **Residual / Coverage Justification.** After applying the three named meta-categories above, ask: "Is there a frame-exit concern about this term — anything the inquiry's frame might exclude — that the named categories did NOT capture?" If yes, name it; apply Existence Enumeration + Role Assessment + Verdict Rigor to it. The named categories above are not exhaustive of frame-exit concerns; this closing-step is the perspective's anti-self-narrowing check. Termination: if applying the named categories to a residual concern produces no new substantive findings — the concern reduces to already-captured cases or to intentional bounding decisions — terminate the recursion. Unbounded recursion is a sign of inquiry-frame instability, not of frame-exit completeness; if recursion would continue indefinitely, the issue is upstream of this perspective.
-
-  Example (positive — gating fires): a metaloop-ladder inquiry inherits "Memory" from a prior session-architecture finding and uses it across 6 levels with distinct propositions per row. Existence Enumeration's TYPE-axis prompt surfaces three referent types — human-mental memory; system-written md files (e.g., per-inquiry md files written by /MVL or /MVL+ runners); runtime in-memory state. The meta-loop frame's scope includes only the first; the other two are excluded. Role Assessment finds the md-file referent load-bearing (persistent memory across inquiries). Verdict: re-locate, not exclude.
-
-  Example (negative — gating does NOT fire): a code review where a function-name "authenticate" appears in 2 call sites with the same meaning is NOT distinct propositions; the gating predicate yields FALSE; the perspective skips.
-
-  Failing to apply this perspective when the inquiry has inherited multi-value terms in its own committed structures is an instance of Perspective Blindness (failure mode #4) applied to the frame-exit axis. Failing to apply Verdict Rigor when a clean-boundary verdict is produced is additionally an instance of Clean Resolution Trap (failure mode #5) applied to the frame-exit axis.
-
-* Phase / Calibration-State — does this rule depend on calibration that the current project state has? See the Phase / Calibration-State perspective requirement refinement below for when this perspective is required.
+* Definitional / Consistency — Does this interpretation contradict any established definitions, principles, or prior stabilized models? Check the claim against the strongest known anchors. If a weak anchor (observation, single data point) contradicts a strong anchor (definition, tested principle), the weak anchor must justify the override — not the other way around. But also check the reverse: does the established definition contradict ITSELF? Does its stated purpose align with its actual mechanisms? If a definition's own components are in tension — its core claim promises more than its structure delivers — the definition has an internal gap. Don't protect a definition that contradicts itself.
+* Phase / Calibration-State (when the inquiry involves rules that may behave differently in different project phases or calibration states) — Does this rule depend on calibration that the current project state has? If not, what should the early-stage default be? Is the rule's correctness contingent on a phase the project has not yet reached? Failing to apply this perspective when the inquiry involves phase-dependent rules is an instance of Perspective Blindness (failure mode #4) applied to the calibration-state axis.
 
 
 Extract new anchors from each perspective.
-
-*Refinement note (applies at Phase 2 Perspective Checking):*
-
-**Phase / Calibration-State perspective requirement.** When the inquiry involves rules that may behave differently in different project phases or calibration states, the Phase / Calibration-State perspective from the list above is required (not optional). Ask: does this rule depend on calibration that the current project state has? If not, what should the early-stage default be? Is the rule's correctness contingent on a phase the project has not yet reached? Failing to apply this perspective when the inquiry involves phase-dependent rules is an instance of Perspective Blindness (failure mode #4) applied to the calibration-state axis.
 
 #### Sense Version 3 (SV3 — Multi-Perspective Understanding)
 
@@ -297,8 +272,6 @@ LOW (elegant but the counter-interpretation has structural merit — do not trea
 
 Ensure that each entry results in a measurable reduction of ambiguity and interpretive freedom. Focus on irreversible or high-impact commitments.
 
-*Refinement note (applies at Phase 3 Ambiguity Collapse):*
-
 **Load-bearing concept test.** In addition to vague terms, conflicts, unclear goals, and hidden assumptions identified above, generate at least one ambiguity-collapse pair testing each load-bearing concept that has been stabilized in any earlier Sensemaking output. A load-bearing concept is one whose presence materially affects downstream stages — i.e., removing it would change the loop's verdict. The test predicate is appropriate to the concept's location:
 
 - Phase 1 / Cognitive Anchor Extraction items phrased as fixed properties of the domain (Constraints) or as project axioms (Foundational Principles) → test domain-property-vs-external-default. Counter-interpretation: "Is this the project's actual property/principle, or an external default the loop adopted without testing?"
@@ -306,8 +279,6 @@ Ensure that each entry results in a measurable reduction of ambiguity and interp
 - Phase 5 / Conceptual Stabilization output — final committed concepts (especially trigger-classifier rules and concepts whose use depends on a runtime determination) → test multiple sub-aspects: proxy-vs-structural ("does this categorical label represent a real structural distinction, or is it an incidental input property used as a proxy?"), discoverability ("if the concept's use depends on a runtime determination, has the determination mechanism been specified, or left implicit?"), and user-language alignment ("does the concept's name match the user's language, or has the loop coined a name without validation?"). The illustrative list is not exhaustive — future sub-aspects may emerge as evidence accumulates.
 
 Failing to generate at least one ambiguity-collapse pair per load-bearing concept is an instance of Premature Stabilization (failure mode #2).
-
-*Refinement note (applies at Phase 3 Ambiguity Collapse):*
 
 **Specific-vs-pattern recognition cue.** When Sensemaking commits to a key concept describing "what the problem IS" — particularly when that concept appears as a Phase 1 / Key Insight built from a small set of specific examples (e.g., observations from one inquiry, instances from one corpus chain) — the ambiguity-collapse pair MUST explicitly ask: are these specific examples THE WHOLE PROBLEM, or just a few cases of a wider pattern? The strongest counter is: a small set of examples doesn't always tell us about the wider pattern; the concept might fit those examples but miss the broader problem they're examples of.
 
@@ -340,10 +311,6 @@ Synthesize results into:
 * A coherent interpretation of the input
 * A clear problem structure
 * A stable action or solution framework
-
-*Refinement note (applies at Phase 5 Conceptual Stabilization):*
-
-**Accommodation trigger.** When new perspectives keep producing anchors that destabilize the current model — each perspective forces a revision, the model doesn't settle, you keep patching — the structural model itself may be wrong. Don't add exceptions. Drop back to Phase 2 and re-extract anchors using the destabilizing perspectives as primary sources. The problem isn't unresolved ambiguity — it's a structural model that doesn't fit the territory. Failing to recognize this and forcing stabilization is an instance of Premature Stabilization (failure mode #2) applied to the *model-misfit axis* — distinct from but related to the *early-clarity-arrival axis* the original Premature Stabilization rule addresses. (Frontier flag: if N≥2 model-misfit instances emerge across the corpus, revisit this anchor decision and consider promoting Accommodation trigger to a separate named failure mode.)
 
 #### Final Sense Version (SV6 — Stabilized Model)
 

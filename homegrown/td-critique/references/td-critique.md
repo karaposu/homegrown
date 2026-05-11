@@ -137,7 +137,9 @@ Every candidate receives a verdict. Verdicts are not binary (pass/fail) — they
 | **REFINE** | Boundary region — strong core, specific weaknesses | Direct back to innovation with targeted feedback | Which dimensions failed + what "right" looks like on those dimensions |
 | **KILL** | Dead region — fails on critical dimensions, defense cannot overcome prosecution | Remove from candidate set | The specific dimension that killed it + a seed extracted from the failure ("this didn't work because X, but what if Y?") |
 
-**Constructive requirement:** Every KILL and REFINE verdict must include constructive output. A KILL must extract a seed — what can be learned from the failure that informs the next iteration? A REFINE must specify what needs to change and in what direction. Critique that only says "this is bad" without saying "here's what would make it better" is incomplete.
+*Refinement note (applies at Phase 3 Verdict + Constructive Output):*
+
+**Constructive requirement:** Every KILL and REFINE verdict must include constructive output. A KILL must extract a seed — what can be learned from the failure that informs the next iteration? A REFINE must specify what needs to change and in what direction. Critique that only says "this is bad" without saying "here's what would make it better" is incomplete. This refinement is coverage-anchored — it ensures every KILL or REFINE verdict carries downstream value (a seed or a refinement target) rather than terminating without classification.
 
 ### The Accumulator
 
@@ -171,6 +173,8 @@ Before evaluating anything, construct the evaluation framework itself.
 4. **Weight dimensions** — which matter most given the context? (Risk-averse contexts weight robustness higher. Speed-critical contexts weight feasibility higher.)
 5. **Define success criteria per dimension** — what does "passing" look like on each axis? This is extraction from sensemaking, not generation.
 
+*Refinement note (applies at Phase 0 Dimension Construction):*
+
 **Project-specific risk dimension check.** When the candidate set being evaluated involves project artifacts, operations, or state, the dimension list must include at least one project-specific risk dimension that captures the project's documented risk axes. The default dimensions (Correctness, Coherence, Feasibility, Completeness, Robustness, Elegance) are content-oriented; project-specific risk dimensions are mechanism-oriented (e.g., across recent inquiries: duplicate-derivable-state, explicit-culture-fit, operation-parsimony, phase-fit have each been the load-bearing axis for specific candidate types). A dimension list that omits project-specific risk axes when the candidate set involves project artifacts/operations/state is incomplete; the validate-dimensions sub-step must explicitly check this and flag any missing axes for inclusion.
 
 Phase 0 is the meta-critique component. It evaluates the evaluation framework before the evaluation framework is applied. This prevents the failure mode of evaluating confidently on irrelevant dimensions.
@@ -199,6 +203,8 @@ For each candidate from innovation's output, conduct adversarial testing:
 3. **Collision** — put prosecution and defense in direct confrontation. Does the defense survive the killer objection? Does the prosecution overcome the core strength? Where is the balance?
 
 4. **Position** — based on the adversarial result, place the candidate on the fitness landscape. Which dimensions does it pass? Which does it fail? Where does it land — viable, dead, or boundary?
+
+*Refinement note (applies at Phase 2 Adversarial Evaluation):*
 
 **Multi-axis prosecution depth check.** In addition to dimension-level objections (what dimensions does this candidate fail?), construct prosecution at the appropriate depth-axes when applicable:
 

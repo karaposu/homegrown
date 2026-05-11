@@ -71,10 +71,6 @@ For coarse scans of layered territories, additional breadth requirements apply �
 
 After the first scan, subsequent scans can be importance-weighted: focus scanning effort where importance is high and confidence is low. Skip low-importance regions.
 
-*Refinement note (applies at Scan component, possibility mode):*
-
-**Completeness before novelty.** When scanning in possibility mode, explicitly scan for (a) the obvious standard approach, (b) what most practitioners would do, and (c) what exists in adjacent domains BEFORE scanning for novel or creative possibilities. The standard / boring / obvious candidates must be on the map. Generating only "creative" or "novel" candidates and missing the obvious ones is an instance of Completeness Bias in Possibility Mode (failure mode #6).
-
 ### Signal Detection
 
 Within scanned territory, identify what stands out — what deserves deeper investigation.
@@ -99,8 +95,6 @@ A good probe:
 - May generate new signals (things discovered during the probe that need further investigation)
 
 Probing is not sensemaking. A probe produces "here's what's in this region in detail." Sensemaking produces "here's what this region means."
-
-*Refinement note (applies at Probe component):*
 
 **Type-Aware Probing:** When the coarse scan inventories a candidate that carries a load-bearing quantifiable claim — a claim whose answer is a number or measurable property (cost, benefit, frequency, magnitude, count, etc.) AND whose answer determines whether the candidate stabilizes or is dismissed — at least one empirical probe of the quantifiable claim is required before the candidate can pass into the stabilized candidate set. This rule applies in BOTH artifact and possibility modes — in artifact mode the quantifiable claim is about how many objects exist or what their cost is; in possibility mode the quantifiable claim is about how often a candidate would fire or how cheap it would be. Dispatching a load-bearing quantifiable claim with qualitative reasoning ("this is probably expensive", "this likely happens often") without an empirical probe is an instance of Surface-Only Scanning.
 
@@ -185,8 +179,6 @@ A typical exploration follows a resolution progression:
 4. **Fine scan** — within probed regions, scan at higher resolution
 5. **Repeat** — until the frontier stabilizes at a resolution appropriate for the purpose
 
-*Refinement note (applies at Resolution Progression):*
-
 **Coarse Scan in Layered Territories:** When the territory has an identifiable contextual / structural surround layer — a layer that establishes meaning for the inquiry-specific objects within it (for codebases this is the project's foundational protocols / contracts / conventions; for solution spaces this is the surrounding constraint / value frame; for any territory it is the layer that frames how inquiry-specific objects are interpreted) — the Coarse scan step (step 1 above) must include items from that surround layer before going deep on inquiry-specific objects. Omitting an identifiable surround layer at the Coarse scan step is a Premature Depth instance applied at the layer-of-scan dimension.
 
 The progression is adaptive, not fixed. Some explorations stay coarse (just need a landscape overview). Others go very deep in specific regions. Resolution management decides.
@@ -244,7 +236,7 @@ Believing the map is complete when it isn't. Stopping exploration because the di
 
 **How to recognize:** Convergence criteria appear met, but later work reveals large surprises. Retrospectively, the "stable" frontier was stable because scanning stopped pushing it, not because there was nothing beyond it.
 
-**How to prevent:** Before declaring convergence, perform a deliberate scan in a completely different direction than previous scans. If it produces surprises, the frontier isn't actually stable. See Execute the Exploration Process → Assess Convergence → Jump scan refinement for the full rule.
+**How to prevent:** Before declaring convergence, do one deliberate scan in a completely different direction than previous scans. If it produces surprises, the frontier isn't stable — it was just not being pushed. This is the "jump scan" — a distant check for uncharted voids.
 
 ### 4. Premature Termination
 
@@ -268,7 +260,7 @@ In possibility exploration, generating only "creative" or "novel" candidates and
 
 **How to recognize:** The map looks creative but a domain expert would say "you missed the most obvious approach." The map is innovation-biased rather than exploration-complete.
 
-**How to prevent:** In possibility mode, scan for standard / obvious candidates before novel ones. See Scan → Completeness before novelty refinement for the full rule.
+**How to prevent:** In possibility mode, explicitly scan for: (a) the obvious standard approach, (b) what most practitioners would do, (c) what exists in adjacent domains. THEN scan for novel and creative possibilities. Completeness before novelty.
 
 ---
 
@@ -314,9 +306,7 @@ After each cycle, check the three convergence criteria:
 
 If not converged, run another cycle. If converged, proceed to final deliverable.
 
-*Refinement note (applies at Step 3 Assess Convergence):*
-
-**Jump scan.** Before declaring convergence (when all three criteria appear met — frontier stability, declining discovery rate, bounded gaps), perform one deliberate scan in a completely different direction than previous scans. If the jump scan produces surprises, the frontier isn't actually stable — it was just not being pushed in that direction. If no surprises, convergence holds. Failing to perform a jump scan before declaring convergence is an instance of False Confidence (failure mode #3).
+Before declaring convergence, perform one **jump scan** — a deliberate scan in a completely different direction to check for uncharted voids.
 
 ### 4. Final Deliverable — The Structural Map
 

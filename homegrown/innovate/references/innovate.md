@@ -148,6 +148,8 @@ Mechanisms are the tools for generating novel output from a seed. Each mechanism
 - Ask: "If this opposite were true, what would follow?"
 - Explore the implications without immediately judging feasibility
 
+*Refinement note (applies at Inversion mechanism):*
+
 **Depth check:** After each inversion, ask "Can I invert AGAIN?" The first inversion often produces an incremental improvement. The second often reveals a structural change. Keep inverting until you reach a statement about the SYSTEM, not about a COMPONENT.
 
 - If the inversion produces a statement about a component ("the middleware does X"), invert again
@@ -285,6 +287,8 @@ Each novel output must be tested. Innovation testing is not the same as validati
 
 Outputs that fail testing are not wasted — they become new seeds. "This didn't work because..." often contains the seed for what will work.
 
+*Refinement note (applies at Phase 3 Test):*
+
 **Output disposition categories.** When outputs pass the 5-test cycle, the disposition depends on evidence shape and observation type:
 
 - **ACTIONABLE** — multi-source / multi-mechanism convergent. The default disposition for survivors with strong evidence; ACTIONABLE outputs are the terminating outputs that downstream consumers act on.
@@ -294,6 +298,8 @@ Outputs that fail testing are not wasted — they become new seeds. "This didn't
 The disposition categories apply only to passing survivors; failed outputs follow the new-seed path described above.
 
 **Assembly check:** After testing individual outputs, examine the survivors and refined candidates together. Ask: "What architecture emerges if I combine these survivors? Does the assembly produce emergent value that none of the individual pieces have?" Individual mechanisms generate components. The assembly check catches innovations that exist only at the intersection of those components — where the combination is more valuable than any piece alone.
+
+*Refinement note (applies at Phase 3 Test):*
 
 **Axis coverage check.** Before producing the assembly verdict, examine the candidate set for the orthogonal axes it varies along. When the underlying problem has multiple orthogonal axes — for example, a problem that combines an operation with output storage has at least two axes (operation-trigger control and storage-policy control); a problem involving rules that may behave differently in different states has axes of rule-content and state-condition; a problem with runtime-determined triggers has axes of policy and discovery-mechanism — each axis should have at least one candidate variant. A candidate set that varies along only one axis when multiple orthogonal axes are relevant is incomplete; the assembly check must explicitly identify the candidate-space axes and flag any axis with no variant. Single-axis candidate sets often arise from a frame inherited from upstream pipeline stages; the axis-coverage check counters that bias.
 

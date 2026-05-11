@@ -7,13 +7,9 @@ It is an abstraction layer built using stateless proto intelligent LLM calls. Th
 
 What is a thinking space ?
 
-long complex answer : enes/thinking_space_dynamics.md
-Short answer:
 thinking space is the “mental workspace” where the system holds candidate thoughts, points attention, compares
   structures, simulates possibilities, evaluates worth, and updates context.
 
-
-we have an autonomy ladder
 
 
 How it is useful?
@@ -48,9 +44,6 @@ However even tho we dont reach to MVL, by products of current thinking engine is
 **An attempt to ignite artificial consciousness by mimicking the structure of cognitive thinking.**
 
 A self-igniting cognitive system 
-
-during building we favor descriptive maintenance over heavy machinery; preserve organic emergence; avoid premature codification
-
 
 The bet behind this project: today's LLMs are already smart enough. More parameters and more training is one way reaching the singularity, another way is more ambigiuous appraoch which is what we follow here in this project. Where we entrust that consicussness is emergent behaviour of chained conginitive actions. And What's missing isn't intelligence. It's the **structure of thinking**: the loop that takes a single LLM call (one flash of intelligence) and chains it into something that understands, generates, evaluates, reflects, steers, and improves itself. Mind isn't a model. Mind is a **loop running on top of a model.**
 

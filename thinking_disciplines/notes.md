@@ -1,6 +1,10 @@
 MVL/MVL+ exists because the answer target is often unclear at the beginning. A cognitive loop cannot require, as input, the understanding it is supposed to produce.
 
 
+ to make disciplines better has different ways, one of them is force separate consideration, collectively cover the perspective without    
+  narrowing,
+
+
 
 i think thinking disciplines are about finding a coverage equation for the definition, like sensemaking , innovation it fitts this understanding. 
 but not only. it also about how this coverage should be used , what should be be done it too. 
