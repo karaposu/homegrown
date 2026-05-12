@@ -90,7 +90,6 @@ for proto in "${protocols[@]}"; do
   echo "  $SKILLS_DIR/protocols/$proto"
 done
 echo ""
-# Cursor uses ~/.cursor/commands/ for slash commands; whether it supports the skills/
-# format is unverified at the time of writing. If you're using Cursor and the skills/
-# format is supported there, the mirror command would be:
-#   mkdir -p ~/.cursor/skills && cp -r ~/.claude/skills/* ~/.cursor/skills/
+
+
+# Persistent Effort: Add "effortLevel": "max" to your ~/.claude/settings.json file to make max the default.
