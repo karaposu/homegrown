@@ -123,18 +123,14 @@ Mechanisms are the tools for generating novel output from a seed. Each mechanism
 **How to apply:**
 - Identify the core concepts in and around the seed
 - Find second concepts to connect with. Sources:
-  - **What's already nearby** — concepts in the current context that haven't been connected to the seed yet. Most combinations come from things already in proximity through intuition or daily work.
-
-    **Scope-fidelity caveat.** When the inquiry's framing claims generic scope (e.g., "applies to a class of cases," "should be reusable," "applies regardless of context"), treat the current context as ONE inspiration anchor among many — do not let it become the scope-defining source. Actively seek concepts from outside the immediate working context to match the framed scope. When the inquiry's framing is narrow/specific to one context, the current context is the natural primary source.
+  - **What's already nearby** — concepts in the current context (conversation, project, problem space) that haven't been connected to the seed yet. Most combinations come from things already in proximity through intuition or daily work.
   - **What other mechanisms produced** — outputs from Lens Shifting, Absence Recognition, etc. become combination candidates. Mechanisms feed each other.
   - **What shares the same structure** — the seed has properties and patterns. What else has those same properties in a different domain?
-  - **What the user/audience is already thinking about** — the innovator's concerns and interests are a rich source of second concepts. For generic-scope inquiries, treat these as inspiration anchors but verify the resulting combinations don't narrow output to the user's specific contexts.
+  - **What the user/audience is already thinking about** — the innovator's own concerns, projects, and interests are a rich source of second concepts.
 - Ask: "What happens if I connect A and B?"
 - Explore what emerges at the intersection
 
 **Example:** In a discussion about AI's future, three concepts were in proximity through the speaker's daily work and concerns: methodology (they were building methodologies), convergence (introduced via Lens Shifting), and business value (a personal concern). Connecting all three produced: proprietary AI frameworks as a market category. None of the three alone produces this — it emerges from their combination. The concepts were available for combination because intuition had already placed them in proximity.
-
-**Anti-pattern caution.** Be careful that available-context combination doesn't cause scope misalignment — when the inquiry's framing claims a scope broader than the immediate working context, combinations drawn only from the nearby context can narrow output below the framed scope.
 
 **What it misses:** Condition-dependent truths, absent things, trend implications. Combination is generative but undirected — it finds surprising connections but doesn't explain why they matter.
 
@@ -151,8 +147,6 @@ Mechanisms are the tools for generating novel output from a seed. Each mechanism
 - State the opposite explicitly
 - Ask: "If this opposite were true, what would follow?"
 - Explore the implications without immediately judging feasibility
-
-*Refinement note (applies at Inversion mechanism):*
 
 **Depth check:** After each inversion, ask "Can I invert AGAIN?" The first inversion often produces an incremental improvement. The second often reveals a structural change. Keep inverting until you reach a statement about the SYSTEM, not about a COMPONENT.
 
@@ -291,8 +285,6 @@ Each novel output must be tested. Innovation testing is not the same as validati
 
 Outputs that fail testing are not wasted — they become new seeds. "This didn't work because..." often contains the seed for what will work.
 
-*Refinement note (applies at Phase 3 Test):*
-
 **Output disposition categories.** When outputs pass the 5-test cycle, the disposition depends on evidence shape and observation type:
 
 - **ACTIONABLE** — multi-source / multi-mechanism convergent. The default disposition for survivors with strong evidence; ACTIONABLE outputs are the terminating outputs that downstream consumers act on.
@@ -302,8 +294,6 @@ Outputs that fail testing are not wasted — they become new seeds. "This didn't
 The disposition categories apply only to passing survivors; failed outputs follow the new-seed path described above.
 
 **Assembly check:** After testing individual outputs, examine the survivors and refined candidates together. Ask: "What architecture emerges if I combine these survivors? Does the assembly produce emergent value that none of the individual pieces have?" Individual mechanisms generate components. The assembly check catches innovations that exist only at the intersection of those components — where the combination is more valuable than any piece alone.
-
-*Refinement note (applies at Phase 3 Test):*
 
 **Axis coverage check.** Before producing the assembly verdict, examine the candidate set for the orthogonal axes it varies along. When the underlying problem has multiple orthogonal axes — for example, a problem that combines an operation with output storage has at least two axes (operation-trigger control and storage-policy control); a problem involving rules that may behave differently in different states has axes of rule-content and state-condition; a problem with runtime-determined triggers has axes of policy and discovery-mechanism — each axis should have at least one candidate variant. A candidate set that varies along only one axis when multiple orthogonal axes are relevant is incomplete; the assembly check must explicitly identify the candidate-space axes and flag any axis with no variant. Single-axis candidate sets often arise from a frame inherited from upstream pipeline stages; the axis-coverage check counters that bias.
 
