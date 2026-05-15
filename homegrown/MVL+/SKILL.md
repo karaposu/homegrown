@@ -66,7 +66,9 @@ Branch inquiry creation is delegated to `homegrown/protocols/branch_inquiry.md`,
 
 ### If NEW (input is a question or description):
 
-1. Read the question fully. Restate it clearly in one sentence.
+1. Read the question fully. Restate it clearly in one sentence. Then check the Layer Commitment trigger: does the question target a discipline / protocol / framework artifact for from-scratch redefinition, meta-restructure, or fundamental rewrite? If YES, the `_branch.md` written in step 3 MUST include a populated `## Layer Commitment` section per the template. If the primary cognitive layer (meaning / structural / process) is genuinely ambiguous from the question alone, STOP and present the layer ambiguity to the user before proceeding to step 2; the user picks the primary layer or asks for a sequential multi-layer plan. If the question is an ordinary problem-solving inquiry that does not target a discipline / protocol / framework artifact, omit the Layer Commitment section entirely.
+
+   Also check the Synthesis trigger: does the question involve synthesizing, consolidating, producing an "accurate version" of, or rolling up TWO OR MORE prior inquiry outputs (findings, specs, drafts)? If YES, the `_branch.md` written in step 3 MUST include a populated `## Synthesis Trigger` section per the template, listing the prior outputs being synthesized — this obligates the inquiry's finding to include an `## Inherited Commitments Re-test` section per CONCLUDE's enforcement. Plan the inquiry's discipline work (especially Sensemaking and Critique) to actually do the re-testing, not just record the inheritance. If the question is a fresh inquiry that does not consume prior inquiry outputs as inputs, omit the Synthesis Trigger section entirely.
 
 2. Determine creation mode:
 
@@ -85,6 +87,31 @@ Branch inquiry creation is delegated to `homegrown/protocols/branch_inquiry.md`,
    [compare the question's scope to the goal's requirements. Does the question, if answered perfectly, cover everything the goal asks for? If YES: "Question covers goal." If NO: "Question covers goal: NO — goal includes [X, Y] but question only addresses [Z]. Consider widening to: [proposed wider question]."
 
    Specific-vs-pattern check: if the Question or Goal points at specific examples (e.g., "the 10 observed failures from inquiry X", "these 7 chains", "these specific instances"), explicitly state whether the inquiry should address JUST THOSE EXAMPLES or the BROADER PATTERN those examples illustrate. Default: address the broader pattern unless the user has explicitly scoped to the specific examples. If both readings are plausible, present both to the user before proceeding (per the existing scope-widening flow above).]
+   ## Layer Commitment
+   [REQUIRED when the question is a from-scratch redefinition, a meta-question on a discipline / protocol / framework artifact, or a fundamental restructure of how something is organized. Trigger phrases include: "redefine X from scratch", "what should X be", "rewrite the X spec/protocol", "X isn't doing the right thing — let's redo it", or any question whose answer would replace or restructure an existing discipline / protocol / framework. OMIT this section entirely when the question is an ordinary problem-solving inquiry that does not target a discipline / protocol / framework artifact.
+
+   When required, declare ONE primary cognitive layer the inquiry operates at:
+   - **Meaning** — what the thing IS as a cognitive operation; what concept it captures. Adjudicates name, definition, essence.
+   - **Structural** — what the thing's spec LOOKS LIKE. Adjudicates sections, organization, schema, artifact shape.
+   - **Process** — what STEPS the thing runs. Adjudicates procedure, mechanism, gates, loop.
+
+   Then list the other-layer alternatives that were considered and are explicitly out of scope for THIS run (with a one-line reason each). If the inquiry intends to address multiple layers, declare a sequential plan: which layer first, what the next layer's inquiry will be, and why this order.
+
+   If the primary layer cannot be picked, that is itself a signal — STOP and present the layer ambiguity to the user before continuing. Do not silently default to the structural layer just because the discipline tooling reaches for sections-and-schema-shaped outputs.
+
+   Examples (each shows a different primary layer; X here can be any discipline, protocol, or framework artifact):
+   - "Redefine X from scratch — I think it might mean Y" → primary layer: **meaning**. The user is questioning what X IS as a concept or operation; structural and process choices are downstream of settling that.
+   - "X's spec organization is wrong — let's restructure the sections" → primary layer: **structural**. The user accepts what X is; the artifact's shape is the problem.
+   - "X's procedure has a missing step" or "X runs in the wrong order" → primary layer: **process**. The user accepts what X is and how it's organized; the steps are what need fixing.]
+   ## Synthesis Trigger
+   [REQUIRED when the inquiry consolidates / synthesizes / rolls up TWO OR MORE prior inquiry outputs (findings, specs, drafts) into a single output, OR when the question explicitly produces an "accurate version," "consolidated version," "merged version," or similar of prior outputs. Trigger phrases include: "synthesize X and Y," "consolidate the priors," "produce an accurate/canonical version of X," "roll up findings A through C." OMIT this section entirely when the inquiry does not consume prior inquiry outputs as inputs.
+
+   When required, list each prior output being synthesized:
+   - `[path to prior 1]` — short description of what it commits to.
+   - `[path to prior 2]` — short description of what it commits to.
+   - [...etc]
+
+   Each of these priors carries commitments (decisions, frames, claims, MUSTs/COULDs) that this inquiry will inherit. CONCLUDE will require the finding to include an `## Inherited Commitments Re-test` section that names each commitment and either re-tests it with cited evidence or explicitly flags it as inherited-without-re-test with a reason. Plan the inquiry's discipline work to do the re-testing, not just record the inheritance.]
    ```
    If the scope check flags a gap, present the proposed wider question to the user before proceeding. The user decides whether to widen or keep the original scope.
 

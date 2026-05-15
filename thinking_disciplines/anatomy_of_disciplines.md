@@ -1,5 +1,8 @@
 # Anatomy of a Thinking Discipline
 
+
+This anatomy is a starting template, not an authority. Divergence is permitted when evidence shows a different shape  fits better. BY NO MEANS THIS IS what all disciplines should contain. But generic understanding. UNIQUE disciplines are expected to have unique form and strucutre 
+
 A thinking discipline has two anatomies: what it IS (the spec) and what it PRODUCES (the output). Both are universal — every discipline follows both structures regardless of which cognitive operation it formalizes.
 
 ---

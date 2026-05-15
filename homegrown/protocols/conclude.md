@@ -97,6 +97,8 @@ Use this structure for your output finding.md file:
 ````markdown
 ---
 status: active
+model: [model id from session context, e.g., claude-opus-4-7[1m]; "unknown" if not derivable]
+effort: [effort setting from session context, e.g., max; "unknown" if not derivable]
 refines: devdocs/inquiries/X/finding.md         [or supersedes:/corrects: when applicable; omit when no prior finding]
 ---
 # Finding: [inquiry name]
@@ -154,6 +156,18 @@ Anti-patterns to avoid:
  exceeds ~100 lines.]
 
 
+## Inherited Commitments Re-test                 [required when `_branch.md` declared a Synthesis Trigger OR when the finding's frontmatter declares `refines:` / `supersedes:` / `corrects:` of a prior finding and inherits N≥3 commitments from it; otherwise omit]
+
+[For each commitment inherited from a prior output, list:
+  - **Commitment:** [verbatim or short paraphrase of the inherited commitment]
+  - **Source:** [path to the prior finding/spec + section]
+  - **Re-test status:** RE-TESTED / INHERITED-WITHOUT-RE-TEST
+  - **Evidence (if RE-TESTED):** [what this inquiry observed; cited]
+  - **Reason (if INHERITED-WITHOUT-RE-TEST):** [why the re-test was skipped — e.g., out of scope; trusted by independent priors; resource-constrained]
+
+A commitment cannot be silently absorbed. It is either re-justified by this inquiry's own work, or it is explicitly flagged as carried-forward-without-re-test with a reason. The flag is intentional friction — a future reviewer can spot weak inheritance.]
+
+
 ## Next Actions                                  [required when finding proposes changes; otherwise omit]
 
 ### MUST
@@ -164,7 +178,7 @@ Anti-patterns to avoid:
   - **Why:** expected impact — what this action produces or prevents]
 
 ### COULD
-[Items worth considering but not required. Same per-item format as MUST.]
+[Items worth considering but not required. Same per-item format as MUST, plus an optional `Depends-on:` field for items with cross-section dependencies — populated per "COULD-vs-MUST dependency gating" below.]
 
 ### DEFERRED
 [Items deliberately postponed. Per-item format:
@@ -213,6 +227,40 @@ Anti-patterns to avoid:
 
 If `Source Input` is required but the raw input is omitted or redacted, keep the section and replace the details block with: `Raw input omitted/redacted: [reason].`
 
+### COULD-vs-MUST dependency gating
+
+After drafting Next Actions, walk each COULD and check whether it depends on (references / assumes the resolution of) any MUST item in the same finding. For every COULD with a detected MUST-dependency, append a `Depends-on:` field to the COULD's body that names the specific MUST and marks the COULD as GATED — meaning a future actor (human or AI) should not act on the COULD until the MUST resolves.
+
+Per-item shape with the gating field:
+
+- **What:** [action]
+- **Who:** [agent]
+- **Gate:** [time-bound / condition-bound / observable]
+- **Why:** [expected impact]
+- **Depends-on:** MUST item "[short name of the MUST]". This COULD is GATED — do not act until the MUST resolves.
+
+**Override path.** When the COULD is genuinely adoption-ready independent of the MUST's eventual resolution (e.g., the MUST is a research-frontier item with no expected resolution timeline, but the COULD has standalone value), mark the dependency as overridden with an explicit reason:
+
+- **Depends-on:** MUST item "[short name]". OVERRIDE: COULD is adoption-ready despite open MUST. Reason: [specific reason — e.g., MUST resolution depends on long-horizon evidence accumulation; COULD's value is independent because (...)].
+
+The override is intentional friction — it requires the author to explicitly justify the decoupling rather than silently dropping the dependency. A future reviewer can spot weak overrides.
+
+Skip the gating field entirely when a COULD has no MUST-dependency. Most COULDs will not need it.
+
+### Synthesis re-test enforcement
+
+When the inquiry's `_branch.md` declares a `## Synthesis Trigger` section (per `homegrown/MVL+/SKILL.md`'s pre-template checks), OR when this finding's frontmatter declares `refines:` / `supersedes:` / `corrects:` of a prior finding from which N≥3 commitments are inherited, the finding MUST include the optional `## Inherited Commitments Re-test` section defined in the finding template above.
+
+The compile-time check:
+
+1. List the priors being synthesized (from `_branch.md`'s Synthesis Trigger section, or the prior named in frontmatter).
+2. Enumerate the commitments those priors carry that this finding's content depends on (decisions, frames, claims, inherited MUSTs/COULDs).
+3. Verify the `## Inherited Commitments Re-test` section either re-tests each commitment with cited evidence OR flags it as `INHERITED-WITHOUT-RE-TEST` with a reason.
+
+If the section is missing or commitments are listed without status, HALT and tell the user: "This finding inherits commitments from [N] priors but the `## Inherited Commitments Re-test` section is missing or incomplete. The synthesis cannot be silently absorbed — re-test each inherited commitment or explicitly flag it with a reason."
+
+The `INHERITED-WITHOUT-RE-TEST` flag is intentional friction — like the COULD-vs-MUST override, it requires explicit reasoning rather than silent inheritance. A future reviewer can spot weak inheritance.
+
 ### Style rules (apply throughout the finding)
 
 1. **Hedging specificity.** A hedge is a phrase that softens a claim ("mostly works," "generally sound," "with caveats"). Any hedge must name WHAT is specifically uncertain and WHY. Vague hedges are defects.
@@ -237,6 +285,12 @@ Short findings (≤100 lines) may skip optional sections — Changes from Prior 
 ### Multi-iteration handling
 
 For multi-iteration inquiries: the finding reflects the FINAL iteration's answer. Prior iterations' lessons go in Reasoning as context.
+
+**Cross-iteration MUST/COULD drift check.** When compiling a finding for iteration N+1 in a chain — or when compiling a finding whose frontmatter declares `refines:` / `supersedes:` / `corrects:` of a prior finding — compare the new finding's MUST and COULD content against the prior's. Any content change beyond pure rewording (different scope, different verb, different target, different acceptance criterion) is recorded inside `## Changes from Prior` under "What's changed" with this shape:
+
+- MUST/COULD drift: prior text "[verbatim from prior]"; new text "[verbatim from this finding]"; rationale "[why the content shifted]".
+
+If no rationale is available, flag the drift explicitly and ask the user to acknowledge before publishing the finding. Skip this check when there is no prior finding in the chain, or when all drift is pure rewording with no scope/verb/target/criterion change.
 
 ### Quality test
 
