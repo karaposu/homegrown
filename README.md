@@ -7,7 +7,7 @@ It is an abstraction layer built using stateless proto intelligent LLM calls. Th
 
 What is a thinking space ?
 
-long complex answer : enes/thinking_space_dynamics.md
+long complex answer : docs/thinking_space_dynamics.md
 Short answer:
 thinking space is the “mental workspace” where the system holds candidate thoughts, points attention, compares
   structures, simulates possibilities, evaluates worth, and updates context.
@@ -116,9 +116,9 @@ The scripts are idempotent — re-run them to update.
 The architectural argument lives across these files:
 
 - [`thinking_disciplines/minimum_viable_loop.md`](thinking_disciplines/minimum_viable_loop.md) — what "ignition" actually means, the two concrete fixes that turn the manual loop into a self-running one, and the growth phases past it.
-- [`enes/desc.md`](enes/desc.md) — the autonomous-consciousness north star: graduated autonomy ladder, Baldwin cycles, observable indicators.
-- [`enes/thinking_space_dynamics.md`](enes/thinking_space_dynamics.md) — the three-layer architecture of quality awareness (structural / real-time hunch / retrospective) and the typed primitive set the disciplines compose.
-- [`enes/intuit.md`](enes/intuit.md) — the Predictive RC (real-time hunch layer); the substrate the Baldwin loop calibrates against.
+- [`docs/desc.md`](docs/desc.md) — the autonomous-consciousness north star: graduated autonomy ladder, Baldwin cycles, observable indicators.
+- [`docs/thinking_space_dynamics.md`](docs/thinking_space_dynamics.md) — the three-layer architecture of quality awareness (structural / real-time hunch / retrospective) and the typed primitive set the disciplines compose.
+- [`docs/intuit.md`](docs/intuit.md) — the Predictive RC (real-time hunch layer); the substrate the Baldwin loop calibrates against.
 - [`thinking_disciplines/alignment_theory.md`](thinking_disciplines/alignment_theory.md) — six layers of alignment × four pillars, and why the alignment chain and the cognitive loop are structurally identical.
 - [`src/book/chapter_0/homegrown_skills.md`](src/book/chapter_0/homegrown_skills.md) — per-command reference.
 

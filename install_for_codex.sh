@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install homegrown skills into OpenAI Codex format
-# Uses the new homegrown/<skill>/ source layout + homegrown/protocols/
+# Uses the new cognitive_harness/<skill>/ source layout + cognitive_harness/protocols/
 # Each skill becomes ~/.codex/skills/<skill>/SKILL.md (with YAML frontmatter) + references/<ref>.md
 # Protocols install to ~/.codex/skills/protocols/
 #
@@ -45,13 +45,13 @@ PROTOCOLS=(
 # --- Source detection: local repo or remote download ---
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd 2>/dev/null || pwd)"
-HOMEGROWN_DIR="$SCRIPT_DIR/homegrown"
+HOMEGROWN_DIR="$SCRIPT_DIR/cognitive_harness"
 
 if [ ! -d "$HOMEGROWN_DIR" ]; then
   echo "Downloading Homegrown skills..."
   TMPDIR=$(mktemp -d)
   CLEANUP="$TMPDIR"
-  HOMEGROWN_DIR="$TMPDIR/homegrown"
+  HOMEGROWN_DIR="$TMPDIR/cognitive_harness"
   mkdir -p "$HOMEGROWN_DIR/protocols"
 
   for entry in "${SKILLS_WITH_REFS[@]}"; do
@@ -59,8 +59,8 @@ if [ ! -d "$HOMEGROWN_DIR" ]; then
     ref="${entry##*:}"
     mkdir -p "$HOMEGROWN_DIR/$skill/references"
     echo "  downloading $skill"
-    curl -fsSL "$RAW_URL/homegrown/$skill/SKILL.md"          -o "$HOMEGROWN_DIR/$skill/SKILL.md"
-    curl -fsSL "$RAW_URL/homegrown/$skill/references/$ref"   -o "$HOMEGROWN_DIR/$skill/references/$ref"
+    curl -fsSL "$RAW_URL/cognitive_harness/$skill/SKILL.md"          -o "$HOMEGROWN_DIR/$skill/SKILL.md"
+    curl -fsSL "$RAW_URL/cognitive_harness/$skill/references/$ref"   -o "$HOMEGROWN_DIR/$skill/references/$ref"
   done
 
   for skill in "${SKILLS_NO_REFS[@]}"; do
@@ -68,12 +68,12 @@ if [ ! -d "$HOMEGROWN_DIR" ]; then
     # URL-encode '+' as %2B for safety (some HTTP clients/servers treat literal '+' as space)
     url_skill="${skill//+/%2B}"
     echo "  downloading $skill"
-    curl -fsSL "$RAW_URL/homegrown/$url_skill/SKILL.md" -o "$HOMEGROWN_DIR/$skill/SKILL.md"
+    curl -fsSL "$RAW_URL/cognitive_harness/$url_skill/SKILL.md" -o "$HOMEGROWN_DIR/$skill/SKILL.md"
   done
 
   for proto in "${PROTOCOLS[@]}"; do
     echo "  downloading protocols/$proto"
-    curl -fsSL "$RAW_URL/homegrown/protocols/$proto" -o "$HOMEGROWN_DIR/protocols/$proto"
+    curl -fsSL "$RAW_URL/cognitive_harness/protocols/$proto" -o "$HOMEGROWN_DIR/protocols/$proto"
   done
 fi
 
@@ -142,7 +142,7 @@ install_skill_md() {
     # If this skill references protocols (MVL/MVL+), substitute the in-repo path
     # with the install-target absolute path. $proto_target is mode-aware via $TARGET.
     if $apply_protocol_sub; then
-      sed "s|homegrown/protocols/|${proto_target}/|g"
+      sed "s|cognitive_harness/protocols/|${proto_target}/|g"
     else
       cat
     fi
@@ -175,7 +175,7 @@ done
 for skill in "${SKILLS_NO_REFS[@]}"; do
   src="$HOMEGROWN_DIR/$skill/SKILL.md"
   if [ -f "$src" ]; then
-    # MVL/MVL+ reference homegrown/protocols/<file>.md — pass true to apply protocol-path substitution
+    # MVL/MVL+ reference cognitive_harness/protocols/<file>.md — pass true to apply protocol-path substitution
     install_skill_md "$src" "$skill" true
     echo "  OK: $skill"
     ((installed++))

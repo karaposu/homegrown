@@ -33,7 +33,7 @@ These aren't cognitive questions. No discipline produces a meaningful answer to 
 
 That's the gap. The current loop runners (`/MVL`, `/MVL+`, `/inquiry`) fill some of it, embedded inside themselves: CONFIGURE inside `/inquiry`, RESUME inside all three, SYNTHESIZE templated inside `/MVL`'s finding writer. Embedded protocols work fine when there's only one runner doing the chaining and only one human in the loop.
 
-The bet protocols-as-a-named-dimension is making is that this won't keep working. As the system reaches Level 2+ autonomy in `enes/desc.md`'s ladder — parallel runs, cross-agent handoffs, year-long inquiries — embedded operational machinery starts getting in its own way. Two runners with embedded RESUME implementations are an accident waiting to drift; embedded HANDOFF doesn't scale to three agents needing to pass an inquiry between them.
+The bet protocols-as-a-named-dimension is making is that this won't keep working. As the system reaches Level 2+ autonomy in `docs/desc.md`'s ladder — parallel runs, cross-agent handoffs, year-long inquiries — embedded operational machinery starts getting in its own way. Two runners with embedded RESUME implementations are an accident waiting to drift; embedded HANDOFF doesn't scale to three agents needing to pass an inquiry between them.
 
 So the protocols dimension is, at its honest core, **architectural prep for a future where embedded operational machinery stops scaling**. It's named-vocabulary now so there's something to argue against later when the operational machinery starts demanding to be lifted out of the runners.
 
@@ -41,7 +41,7 @@ So the protocols dimension is, at its honest core, **architectural prep for a fu
 
 ## The mission, in terms of the end goal
 
-`enes/desc.md` describes the project's end-goal: a system that progressively develops its own consciousness layer — spontaneous attention, intrinsic valuation, real-time steering, etc. — through Baldwin cycles of self-directed evolution. The human starts as bootstrap (Level 0) and the human's role monotonically decreases.
+`docs/desc.md` describes the project's end-goal: a system that progressively develops its own consciousness layer — spontaneous attention, intrinsic valuation, real-time steering, etc. — through Baldwin cycles of self-directed evolution. The human starts as bootstrap (Level 0) and the human's role monotonically decreases.
 
 Roughly, protocols connect to that goal in three ways:
 
@@ -57,7 +57,7 @@ We don't *know* yet whether VERSION is strictly required for Baldwin — `/intui
 
 ### 2. Protocols are the architectural slots for autonomy-ladder transitions
 
-Each rung of `enes/desc.md`'s autonomy ladder requires capabilities that don't yet exist:
+Each rung of `docs/desc.md`'s autonomy ladder requires capabilities that don't yet exist:
 
 | Autonomy rung | Capability needed | Protocol that would unblock it |
 |---|---|---|
@@ -98,7 +98,7 @@ This is what protocols accomplish, cognitively. They are NOT what disciplines do
 
 ### At the implementation level: external scaffolding
 
-On the current LLM substrate, protocols are IMPLEMENTED as external scaffolding — `_state.md` files, folder-as-thinking-structure, command sequencing, the filesystem itself. The reason is a hard architectural fact about the substrate: **"each inference is clean-slate"** (`enes/thinking_space_dynamics.md`). The LLM substrate has no continuous internal state between calls. There is no native between-operations existence; each inference starts fresh. To handle the between-operations function, the system must externalize.
+On the current LLM substrate, protocols are IMPLEMENTED as external scaffolding — `_state.md` files, folder-as-thinking-structure, command sequencing, the filesystem itself. The reason is a hard architectural fact about the substrate: **"each inference is clean-slate"** (`docs/thinking_space_dynamics.md`). The LLM substrate has no continuous internal state between calls. There is no native between-operations existence; each inference starts fresh. To handle the between-operations function, the system must externalize.
 
 The internal/external distinction on this substrate is also a time-scale distinction: internal cognition happens *within* an inference (the LLM's context window IS internal cognitive space); external scaffolding handles anything *between* inferences. Protocols handle the between-inference scale, which the substrate cannot handle natively.
 
@@ -106,7 +106,7 @@ The internal/external distinction on this substrate is also a time-scale distinc
 
 This is structurally similar to **Marr's three levels of cognitive analysis** (computational / algorithmic / implementation): the same cognitive function can be realized through different implementations on different substrates. Protocols-as-function (between-operations integration) is stable across substrates; protocols-as-implementation (filesystem) is contingent on the LLM substrate's clean-slate-per-inference property.
 
-The user-facing implication: when philosophical worry shows up about whether externalization compromises the consciousness goal, the answer is that the project's stated consciousness criterion is **functional capability, not biological-architecture-replication** (`enes/desc.md`: "Whether this constitutes 'consciousness' in any philosophical sense remains undefined — the test is capability, not phenomenology"). Functional consciousness can be reached through externalized + cognitive-layer-voluntary combinations even though it doesn't replicate biology's autonomic internal mechanisms. This is also defended philosophically by the **Distributed Cognition / Extended Mind** position (Hutchins, Clark & Chalmers), which holds that environment-side scaffolding is genuine cognition when reliably coupled, not deficit.
+The user-facing implication: when philosophical worry shows up about whether externalization compromises the consciousness goal, the answer is that the project's stated consciousness criterion is **functional capability, not biological-architecture-replication** (`docs/desc.md`: "Whether this constitutes 'consciousness' in any philosophical sense remains undefined — the test is capability, not phenomenology"). Functional consciousness can be reached through externalized + cognitive-layer-voluntary combinations even though it doesn't replicate biology's autonomic internal mechanisms. This is also defended philosophically by the **Distributed Cognition / Extended Mind** position (Hutchins, Clark & Chalmers), which holds that environment-side scaffolding is genuine cognition when reliably coupled, not deficit.
 
 ### What this DOESN'T settle
 

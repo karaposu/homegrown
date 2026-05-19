@@ -11,7 +11,7 @@ mkdir -p "$SKILLS_DIR"
 
 # --- Skills (each with SKILL.md + references/<ref-file>.md) ---
 
-# Disciplines + loop runners. Layout:  homegrown/<skill>/SKILL.md  +  homegrown/<skill>/references/<ref>.md
+# Disciplines + loop runners. Layout:  cognitive_harness/<skill>/SKILL.md  +  cognitive_harness/<skill>/references/<ref>.md
 # Note: sense-making's reference file is named `sensemaking.md` (no hyphen) — historical.
 
 echo "Installing homegrown skills to $SKILLS_DIR ..."
@@ -39,8 +39,8 @@ for entry in "${skills_with_refs[@]}"; do
   ref="${entry##*:}"
   echo "  $skill (with references/$ref)"
   mkdir -p "$SKILLS_DIR/$skill/references"
-  curl -fsSL "$REPO_URL/homegrown/$skill/SKILL.md"          -o "$SKILLS_DIR/$skill/SKILL.md"
-  curl -fsSL "$REPO_URL/homegrown/$skill/references/$ref"   -o "$SKILLS_DIR/$skill/references/$ref"
+  curl -fsSL "$REPO_URL/cognitive_harness/$skill/SKILL.md"          -o "$SKILLS_DIR/$skill/SKILL.md"
+  curl -fsSL "$REPO_URL/cognitive_harness/$skill/references/$ref"   -o "$SKILLS_DIR/$skill/references/$ref"
 done
 
 for skill in "${skills_no_refs[@]}"; do
@@ -48,11 +48,11 @@ for skill in "${skills_no_refs[@]}"; do
   mkdir -p "$SKILLS_DIR/$skill"
   # URL-encode '+' as %2B for safety (some HTTP clients/servers treat literal '+' as space)
   url_skill="${skill//+/%2B}"
-  # MVL/MVL+ reference homegrown/protocols/<file>.md; substitute with install target path.
+  # MVL/MVL+ reference cognitive_harness/protocols/<file>.md; substitute with install target path.
   # Using ${HOME} (not literal ~) so the resulting installed SKILL.md contains an absolute
   # path that doesn't depend on tilde expansion at agent read-time.
-  curl -fsSL "$REPO_URL/homegrown/$url_skill/SKILL.md" \
-    | sed "s|homegrown/protocols/|${HOME}/.claude/skills/protocols/|g" \
+  curl -fsSL "$REPO_URL/cognitive_harness/$url_skill/SKILL.md" \
+    | sed "s|cognitive_harness/protocols/|${HOME}/.claude/skills/protocols/|g" \
     > "$SKILLS_DIR/$skill/SKILL.md"
 done
 
@@ -70,7 +70,7 @@ protocols=(
 mkdir -p "$SKILLS_DIR/protocols"
 for proto in "${protocols[@]}"; do
   echo "  protocols/$proto"
-  curl -fsSL "$REPO_URL/homegrown/protocols/$proto" -o "$SKILLS_DIR/protocols/$proto"
+  curl -fsSL "$REPO_URL/cognitive_harness/protocols/$proto" -o "$SKILLS_DIR/protocols/$proto"
 done
 
 # --- Summary ---
