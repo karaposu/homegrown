@@ -22,6 +22,7 @@ skills_with_refs=(
   "innovate:innovate.md"
   "td-critique:td-critique.md"
   "explore:explore.md"
+  "surfacing:surfacing.md"
   "decompose:decompose.md"
   "comprehend:comprehend.md"
   "reflect:reflect.md"
@@ -31,6 +32,7 @@ skills_with_refs=(
 skills_no_refs=(
   "MVL"
   "MVL+"
+  "MVL2+"
   "meta-loop"
 )
 
@@ -82,8 +84,8 @@ echo ""
 echo "Done. Installed $skill_count skills + $proto_count protocols to $SKILLS_DIR"
 echo ""
 echo "Skills (invoke as /<skill-name>):"
-echo "  /MVL, /MVL+, /meta-loop, /sense-making, /innovate, /td-critique,"
-echo "  /explore, /decompose, /comprehend, /reflect, /navigation"
+echo "  /MVL, /MVL+, /MVL2+, /meta-loop, /sense-making, /innovate, /td-critique,"
+echo "  /explore, /surfacing, /decompose, /comprehend, /reflect, /navigation"
 echo ""
 echo "Protocols (loaded by skills, not user-invoked):"
 for proto in "${protocols[@]}"; do

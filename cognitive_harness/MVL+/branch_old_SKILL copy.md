@@ -80,28 +80,9 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
    ```markdown
    # Branch: [name]
    ## Question
-   [State the question covering all five meta-aspects below. The five categories are a CHECK on what a well-framed question contains, not required sub-fields to populate. If the user's input maps cleanly to a single sentence covering all five, write that one sentence. If the input has multiple clauses or multi-part framing, list the relevant aspects explicitly to ensure each is preserved.
-
-   - **Subject** — what is being investigated.
-   - **Action** — what cognitive operation (compare / decide / diagnose / design / understand / synthesize / strategize / etc.).
-   - **Level** — at what granularity (component / system / loop / discipline / runner / protocol / cross-cutting). Preserve the user's level distinction (e.g., loop-level vs discipline-level) when present.
-   - **Observation targets** — what specific aspects must be observed or produced. **If MULTIPLE, list each as a separate item.** If the user's input contains clause-pairs joined by "and" / "AND" / "BOTH ... AND" (or the logical extensions "in addition to" / "as well as" / "plus"), PRESERVE ALL clauses as separate observation-target items here — do not compress into one clause. (Verbatim trigger pattern from LOOP_DIAGNOSE finding MC2 at `devdocs/inquiries/2026-05-22_14-30__loop_diagnose__enumeration_frame_error_in_test_design/finding.md` — the failure case this category exists to prevent.)
-   - **Deliverable shape** — what form the answer takes (decision with reasoning / list with categorization / design with components and trade-offs / strategy with phases / etc.).
-
-   Then state the question, capturing all five aspects above. The sentence may be longer than one sentence if needed to preserve coverage.]
+   [the question, stated clearly in one sentence]
    ## Goal
-   [What would a good answer look like, covering:
-
-   - **Criterion** — what qualities make an answer "good" (precision, completeness, actionability, etc.).
-   - **Use case** — what the user will do with the answer.
-   - **Desired outcome** — what state the user wants to reach.
-   - **What would fail** — what kind of answer would technically address the question but miss the goal (negative spec).]
-   ## Source Input
-   [Preserve the user's raw request verbatim so downstream disciplines can audit transcription fidelity at any stage. If the agent later notices a load-bearing phrase absent from Question or Goal, this section is the authoritative source.
-
-   ```text
-   [paste the user's raw request here, verbatim]
-   ```]
+   [what would a good answer look like? what would the user be able to DO with the answer?]
    ## Scope Check
    [compare the question's scope to the goal's requirements. Does the question, if answered perfectly, cover everything the goal asks for? If YES: "Question covers goal." If NO: "Question covers goal: NO — goal includes [X, Y] but question only addresses [Z]. Consider widening to: [proposed wider question]."
 
@@ -133,19 +114,6 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
    Each of these priors carries commitments (decisions, frames, claims, MUSTs/COULDs) that this inquiry will inherit. CONCLUDE will require the finding to include an `## Inherited Commitments Re-test` section that names each commitment and either re-tests it with cited evidence or explicitly flags it as inherited-without-re-test with a reason. Plan the inquiry's discipline work to do the re-testing, not just record the inheritance.]
    ```
    If the scope check flags a gap, present the proposed wider question to the user before proceeding. The user decides whether to widen or keep the original scope.
-
-3.5. **Transcription-audit fail-safe (run after `_branch.md` is written):**
-
-   1. Re-read the raw user input (preserved verbatim in `## Source Input`).
-   2. Scan for clause-joiners using LOOP_DIAGNOSE finding MC2's trigger pattern:
-      - **MC2 verbatim:** clause-pairs joined by "and" / "AND" / "BOTH ... AND".
-      - **Logical extensions:** "in addition to" / "as well as" / "plus"; multi-clause commas where each clause carries distinct semantic load; multi-sentence framings where each sentence introduces a new aspect.
-   3. For each clause-joiner found, verify each clause's semantic content appears in Question or Goal. (Source Input covers verbatim; Question + Goal are what downstream disciplines consume as the working framing, so the check is whether semantic content survived transcription beyond Source Input preservation.)
-   4. If a clause's content is missing from Question + Goal, the transcription dropped a load-bearing phrase. Expand Question or Goal to incorporate it before proceeding to Exploration.
-
-   The fail-safe is **trigger-then-verify**: the structural trigger (Step 2) operates on input STRUCTURE (conjunctions, clauses, sentences) — it fires regardless of subject matter. The semantic verification (Step 3) at trigger-fire checks whether each clause's content appears in Question or Goal. The split is intentional: the structural trigger doesn't depend on knowing which content axes matter. The structural fail-safe is the backstop because the 5-meta-category enumeration above cannot be proved complete.
-
-   This audit + the Source Input section + the Observation Targets meta-category together form a triple-mechanism redundancy at three different timings (write-time / post-write audit-time / downstream-discipline-read-time). The redundancy is mechanism-across-timings, not agent-redundancy — total agent non-compliance defeats all three. This is acceptable residual; user-interactive verification ("does this Question capture everything you meant?") would close the residual but adds a runner-interaction step out of scope for this rule.
 
 4. For ROOT NEW only, write `[inquiry_path]/_state.md`:
    ```markdown

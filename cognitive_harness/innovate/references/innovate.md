@@ -152,6 +152,8 @@ Mechanisms are the tools for generating novel output from a seed. Each mechanism
 - Ask: "If this opposite were true, what would follow?"
 - Explore the implications without immediately judging feasibility
 
+*See also:* in Production-task mode, the "Piece-Level Inversion at Meta-Decision Pieces" refinement note at Phase 2 Generate extends "belief related to the seed" to include piece-internal commitments (relationship-label, framing-semantic, lesson-vocabulary, evaluation-criterion, intervention-shape commitment); see the "Meta-Decision-Piece Criterion" refinement note at Phase 2 Generate for the determination mechanism.
+
 *Refinement note (applies at Inversion mechanism):*
 
 **Depth check:** After each inversion, ask "Can I invert AGAIN?" The first inversion often produces an incremental improvement. The second often reveals a structural change. Keep inverting until you reach a statement about the SYSTEM, not about a COMPONENT.
@@ -671,6 +673,8 @@ The first successful reframe is adopted permanently. No further mechanisms are a
 
 **How to prevent:** After the first successful output, apply at least one more mechanism to check if there's something better.
 
+*See also:* at meta-decision pieces (per the "Meta-Decision-Piece Criterion" refinement note at Phase 2 Generate), the "Piece-Level Inversion at Meta-Decision Pieces" refinement note requires the additional mechanism to include Inversion specifically. Recognition signal: a meta-decision piece's mechanism log shows two or more mechanisms applied (count satisfies the base rule above) but none is Inversion — the per-piece rule's TYPE check then fails even when the failure-mode count check passes.
+
 ### 4. Innovation Without Grounding
 
 Novel outputs are generated endlessly but never tested. The process stays in generation mode forever, producing increasingly abstract ideas that never face scrutiny.
@@ -694,6 +698,10 @@ Only the most comfortable or familiar novel outputs survive testing. Truly disru
 **How to recognize:** Everything that survives testing is incremental. Nothing challenges fundamental assumptions. The "innovation" is really just optimization.
 
 **How to prevent:** Deliberately test the most uncomfortable output with extra care. Ask: "Am I rejecting this because it's wrong, or because it's threatening?"
+
+*Refinement note (applies at Survival Bias):*
+
+**Prior-step never-generate variant.** The base prevention rule above presupposes the uncomfortable output exists in the candidate set. When the candidate set at a meta-decision piece (per the "Meta-Decision-Piece Criterion" refinement note at Phase 2 Generate) contains only one direction — preserve / accept / continue / extend the inherited frame — without a candidate that rejects / inverts / discards, the uncomfortable alternative was NEVER GENERATED. There is nothing to test with extra care. **Recognition signal:** at a meta-decision piece, the candidate set contains only directions that preserve the prior, with no candidate that challenges it. **Prevention:** apply the "Piece-Level Inversion at Meta-Decision Pieces" refinement note at Phase 2 Generate to surface the missing direction before reaching the test stage.
 
 ---
 
