@@ -40,7 +40,7 @@ Applied here: do NOT promote cognitive_fixes from folder to standalone protocol 
 
 > "Do not add silent automatic diagnosis-mode inference until at least 10 explicit LOOP_DIAGNOSE runs show stable trigger language with no confusing false positives."
 
-Applied here: do NOT add a runner hook to MVL+/MVL2+ that automatically loads a cognitive_fixes protocol until at least 10 explicit cognitive-fix applications show stable trigger language with no confusing false positives.
+Applied here: do NOT add a runner hook to MVL+/MVLw that automatically loads a cognitive_fixes protocol until at least 10 explicit cognitive-fix applications show stable trigger language with no confusing false positives.
 
 ## Kill conditions
 
@@ -48,7 +48,7 @@ The folder is retired (not promoted) if any of these fire:
 
 - **(a) N=5 future inquiries pass with NO new cognitive-fix applicable cases** — the pattern is not recurring; methodology is one-off; folder becomes documentation but not actionable structure. Retire.
 - **(b) Cross-fix audit at N=3-5 shows no shared structure** — each fix is bespoke; the methodology is not generic. Merge documentation into `cognitive_harness/protocols/spec_governance.md` (or another related protocol); retire folder.
-- **(c) Calendar-bound supplement:** N=5 refers to MVL+/MVL2+ inquiries with multi-part user framing that DON'T add a cognitive_fix. If the project enters long inactivity periods (no new inquiries for >90 days), supplement with a calendar-bound retire trigger.
+- **(c) Calendar-bound supplement:** N=5 refers to MVL+/MVLw inquiries with multi-part user framing that DON'T add a cognitive_fix. If the project enters long inactivity periods (no new inquiries for >90 days), supplement with a calendar-bound retire trigger.
 
 If none fire, fixes accumulate. At N≥5 stable applications, reconsider Step 5 promotion threshold.
 
@@ -62,7 +62,7 @@ The first instance (`01__vague_instruction_decomposition.md`) was authored by th
 
 This folder + its contents are CLEANLY DELETABLE at creation time. No downstream dependencies are created by the folder's existence:
 
-- Runner specs (`MVL+/SKILL.md`, `MVL2+/SKILL.md`) do NOT reference this folder
+- Runner specs (`MVL+/SKILL.md`, `MVLw/SKILL.md`) do NOT reference this folder
 - Other protocols in `cognitive_harness/protocols/` do NOT reference this folder
 - Disciplines do NOT reference this folder
 

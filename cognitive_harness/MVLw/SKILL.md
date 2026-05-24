@@ -1,15 +1,15 @@
 ---
-name: MVL2+
+name: MVLw
 description: Run the Extended Cognitive Loop with Surfacing (Surfacing → Sensemaking → Decomposition → Innovation → Critique) on any question. Parallel variant to /MVL+ — uses /surfacing as the upstream discipline instead of /explore. Always the full pipeline. If the question isn't answered, loop again.
 ---
 
-# /MVL2+ — The Extended Cognitive Loop (Surfacing variant)
+# /MVLw — The Extended Cognitive Loop (Surfacing variant)
 
 (run mvl skills one by one , not at once... and do not use subagents!, And the order is skill run, write it's file, go the next skill and so on. Not run all skills and write all docs...)
 
 Run Surfacing → Sensemaking → Decomposition → Innovation → Critique on any question. Always the full pipeline. No classification. No variable pipelines. Each step feeds the next. If the question isn't answered after C, loop again with a refined focus.
 
-This is an extended form of the cognitive loop using **`/surfacing`** as the upstream discipline. `/mvl` (classic) runs only S → I → C. `/MVL+` adds Exploration and Decomposition to the first phase. `/MVL2+` is the parallel extended variant that swaps Exploration for **Surfacing** (draw relevance-tagged items from a bounded territory) — use `/MVL2+` when the upstream operation should be /surfacing rather than /explore. The two extended variants coexist; the `flow-type` field in `_state.md` distinguishes them.
+This is an extended form of the cognitive loop using **`/surfacing`** as the upstream discipline. `/mvl` (classic) runs only S → I → C. `/MVL+` adds Exploration and Decomposition to the first phase. `/MVLw` is the parallel extended variant that swaps Exploration for **Surfacing** (draw relevance-tagged items from a bounded territory) — use `/MVLw` when the upstream operation should be /surfacing rather than /explore. The two extended variants coexist; the `flow-type` field in `_state.md` distinguishes them.
 
 
 
@@ -58,13 +58,13 @@ Use these path variables consistently:
 - `inquiry_path` is the full path to the inquiry folder. Use it for every file operation.
 - `inquiry_id` is the local folder name or short display id. Do not use it to rebuild paths after creation.
 
-Root inquiry creation is the only place MVL2+ builds:
+Root inquiry creation is the only place MVLw builds:
 
 ```text
 inquiry_path = devdocs/inquiries/[inquiry_id]/
 ```
 
-Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inquiry.md`, which returns `inquiry_path`. After that, MVL2+ must treat `inquiry_path` as an opaque folder path.
+Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inquiry.md`, which returns `inquiry_path`. After that, MVLw must treat `inquiry_path` as an opaque folder path.
 
 ### If NEW (input is a question or description):
 
@@ -74,7 +74,7 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
 
 2. Determine creation mode:
 
-   - **BRANCH NEW:** If the input includes `branch_from:` or `--branch-from`, load `cognitive_harness/protocols/branch_inquiry.md` in full and execute BRANCH_INQUIRY with `runner: MVL2+`. Use the returned `inquiry_path`, `inquiry_id`, and `next_discipline`. Do not create a root inquiry folder. Do not rewrite the child `_branch.md` or `_state.md` after BRANCH_INQUIRY creates them.
+   - **BRANCH NEW:** If the input includes `branch_from:` or `--branch-from`, load `cognitive_harness/protocols/branch_inquiry.md` in full and execute BRANCH_INQUIRY with `runner: MVLw`. Use the returned `inquiry_path`, `inquiry_id`, and `next_discipline`. Do not create a root inquiry folder. Do not rewrite the child `_branch.md` or `_state.md` after BRANCH_INQUIRY creates them.
    - **ROOT NEW:** Otherwise create a normal root inquiry folder: `devdocs/inquiries/<YYYY-MM-DD_HH-MM__slugified_name>/`. This timestamped directory name is `inquiry_id`; the full folder path is `inquiry_path`.
 
 3. For ROOT NEW only, write `[inquiry_path]/_branch.md`:
@@ -195,7 +195,7 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
 
 2. Read `[inquiry_path]/_state.md` and `[inquiry_path]/_branch.md`.
 
-3. Verify `flow-type: extended-surfacing` in `[inquiry_path]/_state.md`. If the field is `classic`, this inquiry belongs to `/mvl`. If the field is `extended`, this inquiry belongs to `/MVL+`. If the field is absent or any other value, flag to the user and stop. Only `extended-surfacing` inquiries resume with `/MVL2+`.
+3. Verify `flow-type: extended-surfacing` in `[inquiry_path]/_state.md`. If the field is `classic`, this inquiry belongs to `/mvl`. If the field is `extended`, this inquiry belongs to `/MVL+`. If the field is absent or any other value, flag to the user and stop. Only `extended-surfacing` inquiries resume with `/MVLw`.
 
 4. Determine where the pipeline left off by checking which files exist in `[inquiry_path]`. Proceed to EXECUTE PIPELINE below, starting from the first incomplete discipline.
 
@@ -263,9 +263,9 @@ Re-read `_branch.md`'s question and goal. Does a clear survivor exist that addre
 
 - **YES — the question is answered:**
 
-  Load `cognitive_harness/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the loop's artifacts (surfacing, sensemaking, decomposition, innovation, critique) into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers (using `/MVL2+` as the resume runner for `extended-surfacing` flow-type).
+  Load `cognitive_harness/protocols/conclude.md` in full and execute the **CONCLUDE** protocol on this inquiry's folder. CONCLUDE compiles the loop's artifacts (surfacing, sensemaking, decomposition, innovation, critique) into `finding.md` (using the standardized template + style rules + size-adaptive guidance defined in the protocol), archives discipline outputs to `docarchive/`, updates `_state.md` to status COMPLETE, prints the brief summary, and prints any `## Relationships` pointers (using `/MVLw` as the resume runner for `extended-surfacing` flow-type).
 
-  Note: CONCLUDE auto-detects classic vs. extended pipelines from `_state.md`'s `flow-type` field. The `extended-surfacing` flow-type produced by `/MVL2+` reads/archives the surfacing variant's 5 discipline files (`surfacing.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md`). If CONCLUDE doesn't yet recognize `extended-surfacing`, you may need to update it to handle the variant or treat the inquiry as `flow-type: extended` with `surfacing.md` in place of `exploration.md`.
+  Note: CONCLUDE auto-detects classic vs. extended pipelines from `_state.md`'s `flow-type` field. The `extended-surfacing` flow-type produced by `/MVLw` reads/archives the surfacing variant's 5 discipline files (`surfacing.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md`). If CONCLUDE doesn't yet recognize `extended-surfacing`, you may need to update it to handle the variant or treat the inquiry as `flow-type: extended` with `surfacing.md` in place of `exploration.md`.
 
   Do not execute CONCLUDE from memory; always load `cognitive_harness/protocols/conclude.md` before invoking.
 
@@ -318,14 +318,14 @@ If the user provides one, append to `devdocs/improvement_observations.md`:
 ## [date] | [problem from _branch.md] | [iteration count]
 [the user's observation]
 ```
-If the user skips, move on. No gate. No requirement. Observations accumulate over time. When patterns emerge across multiple observations, the user can run `/MVL2+ "review improvement observations and propose spec changes"` — the loop on the system's own feedback.
+If the user skips, move on. No gate. No requirement. Observations accumulate over time. When patterns emerge across multiple observations, the user can run `/MVLw "review improvement observations and propose spec changes"` — the loop on the system's own feedback.
 
 ---
 
 ## Cross-Session Resume
 
 ```
-/MVL2+ [inquiry_path]/
+/MVLw [inquiry_path]/
   → Reads _state.md (verifies flow-type: extended-surfacing)
   → Sees where you left off
   → Loads the next discipline's spec via Skill tool
@@ -344,5 +344,5 @@ If the user skips, move on. No gate. No requirement. Observations accumulate ove
 4. **If the question isn't answered, loop again.** Each iteration narrows the focus based on what the previous iteration revealed.
 5. **The human can redirect at any point.** The pipeline runs continuously without pausing. The human can interrupt mid-response to redirect, re-run, or override. Checkpoints display telemetry between disciplines for visibility — they are informational, not gates.
 6. **Failures are data.** If the loop produces a bad answer, the WHERE and WHY of the failure is valuable — it reveals what needs to improve in the discipline configurations (the specs).
-7. **`/mvl` (classic) and `/MVL+` (explore variant) are UNCHANGED.** This command (`/MVL2+`) is the surfacing-variant extended loop and coexists with both. Existing classic inquiries resume with `/mvl`; existing explore-variant extended inquiries resume with `/MVL+`; surfacing-variant extended inquiries resume with `/MVL2+`. The `flow-type` field in `_state.md` distinguishes them: `classic` / `extended` / `extended-surfacing`.
+7. **`/mvl` (classic) and `/MVL+` (explore variant) are UNCHANGED.** This command (`/MVLw`) is the surfacing-variant extended loop and coexists with both. Existing classic inquiries resume with `/mvl`; existing explore-variant extended inquiries resume with `/MVL+`; surfacing-variant extended inquiries resume with `/MVLw`. The `flow-type` field in `_state.md` distinguishes them: `classic` / `extended` / `extended-surfacing`.
 8. DO NOT RUN EACH SKILL PARALLEL OR WITH SUBAGENTS TO SAVE TIME OR TOKEN. EACH SKILL SHOULD BE RUN AS CANNON AND IT IS OKAY IF THEY CONSUME CONTEXT. THEY SUPPOSED TO BE.

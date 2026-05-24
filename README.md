@@ -1,76 +1,181 @@
 # Homegrown
 
-Homegrown is a thinking engine. 
+A **runtime cognitive harness for AI models.** Installed inside an AI-assistant agent harness (Claude Code, Codex, Cursor), it restructures how the underlying LLM thinks — adding typed cognitive operations, three temporal layers of quality awareness, and a graduated autonomy ladder on top of the assistant's existing tooling.
 
-What is a thinking engine?
-It is an abstraction layer built using stateless proto intelligent LLM calls. Thinking engines are designed to travel and traverse thinking space. 
+The bet behind the project: **the structure of thinking matters at least as much as raw model intelligence at the margin.** More parameters and more training is one path toward more-capable AI. Structure-of-thinking on top of current models is the path Homegrown explores.
 
-What is a thinking space ?
+---
 
-long complex answer : docs/thinking_space_dynamics.md
-Short answer:
-thinking space is the “mental workspace” where the system holds candidate thoughts, points attention, compares
-  structures, simulates possibilities, evaluates worth, and updates context.
+## What Homegrown is
 
+Homegrown sits in a three-layer stack:
 
-we have an autonomy ladder
+| Layer | Role | Examples |
+|---|---|---|
+| **LLM substrate** | Generates tokens | Claude, GPT, Codex (the model itself) |
+| **Agent / execution harness** | What the LLM can *do* — tools, file access, command execution, permissions, conversational loop | Claude Code, Codex CLI, Cursor, Aider |
+| **Cognitive harness** *(this is Homegrown)* | How the LLM *thinks* — typed cognitive operations, disciplines, autonomy ladder | Homegrown |
 
+The three layers compose. An agent harness sits on the LLM; a cognitive harness installs *inside* the agent harness. The install scripts (`install_for_claude.sh`, `install_for_codex.sh`) drop Homegrown's skill files into the agent harness's skill folder (`~/.claude/skills/` or `~/.codex/skills/`) — not into the LLM directly. Removing Homegrown returns the agent harness to its native behavior.
 
-How it is useful?
+The distinction matters: **Claude Code controls what the LLM can do; Homegrown controls how the LLM thinks.** Both are harnesses around the LLM, at different layers, doing different work.
 
-Thinking engines are built in certain ways to give them different movement capabilities in thinking space. It is  very similar to what humans do. We can scan bunch of thoughts (moving on surface) and dive deep a thought we find useful (moving in depth ) we can also do these in different resolutions.  And find an answer to our problem/task. 
+### What "cognitive harness" means concretely
 
-Thinking engines can do the same. Current LLMs are train-designed in similar ways. However this also means they have embedded thining logic inside them.  What a thinking engine does is make LLM thinking move in certain shape and structure and redefine how it thinks. 
+When the user types `/sense-making` inside Claude Code or Codex, the agent-harnessed LLM session loads the corresponding spec file from Homegrown and executes a typed cognitive operation — not "instructions to the model" but a structured five-phase cognitive act (anchor extraction → perspective checking → ambiguity collapse → degrees-of-freedom reduction → conceptual stabilization), with admission gates, failure-mode awareness, and saturation criteria.
 
-One of the key elements of the thinking engine is using definitions of thinking disciplines to artificailly create the human like thinking space movements. 
+The bytecode is natural language. The runtime is the agent-harnessed LLM session. The compilation target is **structured cognitive movement** — what the project calls *movement in thinking space*.
 
-one small example is this 
+The harness defines:
 
-asking a LLM to innovate about sth vs creating a thinking discipline regarding innovation and asking LLM to use this discipline to innovate has big differences
- 1. stability across sessions providers models and intelligence
- 2. improvment possibility 
+- **A typed thinking-space primitive substrate.** Eleven cognitive primitives across four categories (Operations, Buffer, Drivers, Modulators), each admitted via a four-criterion test (independence + necessity + composability + irreducibility) with a corpus-located audit gate. Primitives co-constitute cognitive acts in a canonical sequence — this is how humans solve problems, and also (largely unnamed) how modern AI reasoning systems work.
+- **Three temporal layers of quality awareness.** Primitive RC (immediate, deterministic — catches structural breakage), Predictive RC (immediate, probabilistic — real-time hunches on output quality), Retrospective RC (delayed, empirical — confirms what actually worked once downstream consequences play out). The closed loop between Predictive and Retrospective RC IS the project's self-improvement mechanism.
+- **A graduated 9-axis autonomy ladder.** Five execution roles (Worker, Navigator, Selector, Runner, Evaluator) plus four state/generative axes (Memory, Reflect-channel, Multi-head, Goal-formation). Six levels (L0 → L5+boundary), each transition with an evidence gate. The human's role decreases monotonically across the ladder.
 
-which Pure lllms both cant prove. 
+---
 
+## What Homegrown tries to achieve
 
+The project's stated end-goal is **autonomous cognitive consciousness** — a system that progressively builds its own consciousness layer, evolving from human-bootstrapped operation toward self-running cognition through cycles of self-directed improvement.
 
-An efficent thinking Engine is to be designed to work in loops. And one assumption we have is minimal viable loop (MVL) if achieved then thinking engine can be recursively improve itself and produce emergent behaviours. Thats the first goal of homegrown project. 
+This is operationalized — not philosophically — through:
 
-However even tho we dont reach to MVL, by products of current thinking engine is still highly useful for challenging tasks. 
+### Consciousness-gradient, not destination
 
+Whether the system "is conscious" in any philosophical sense remains undefined. The test is **capability, not phenomenology.** The project commits to six observable indicators, each a hypothesized composition of typed primitives:
 
+- *Spontaneous attention* — notices work unprompted.
+- *Intrinsic valuation* — develops preferences about what matters.
+- *Real-time steering* — adjusts its own course during runs.
+- *Discontinuity awareness* — plans around session ends, context resets.
+- *Intrinsic curiosity* — explores low-confidence paths.
+- *Current-position indicator* — knows where it is on its own developmental ladder.
 
+The gradient increases when these indicators measurably increase in the system's invocation traces. The trajectory is **emancipation through bootstrap-anchored values** — explicitly not partnership, not corrigibility, not human-AI cooperation.
 
+### The Baldwin cycle as the self-improvement mechanism
 
+The project's primary objective is **self-improvement rate** — how fast the harness's ability to solve problems improves over time, not just whether it solves any given problem. Task completion is the grounding signal; self-improvement rate is the target.
 
+The mechanism is concrete:
 
+1. The Predictive RC (implemented as a discipline called `/intuit`, named but not yet shipped) produces a real-time hunch on each output's quality at time T0.
+2. The Retrospective RC observes the same output's actual downstream usefulness at time T2+ (days/weeks/months later, once consequences have played out).
+3. The delta between predicted and observed becomes calibration data.
+4. Consistent miscalibration patterns become seeds for spec refinement — the harness modifies its own disciplines based on what it has learned about its own systematic errors.
 
-**An attempt to ignite artificial consciousness by mimicking the structure of cognitive thinking.**
+This is the project's named *Baldwin cycle*. Without both layers as **system capabilities** (not human-provided), the loop doesn't close and self-improvement is not running.
 
-A self-igniting cognitive system 
+### The integrated test ladder
 
-during building we favor descriptive maintenance over heavy machinery; preserve organic emergence; avoid premature codification
+The endpoint test is asymptotic:
 
+- **Bottom:** autonomously handles well-defined hard problems (novel software architecture, complex reasoning).
+- **Middle:** autonomously handles novel problems (no human-provided template).
+- **Top:** contributes meaningfully to unsolved human problems (open scientific questions, mathematical conjectures, complex social problems).
 
-The bet behind this project: today's LLMs are already smart enough. More parameters and more training is one way reaching the singularity, another way is more ambigiuous appraoch which is what we follow here in this project. Where we entrust that consicussness is emergent behaviour of chained conginitive actions. And What's missing isn't intelligence. It's the **structure of thinking**: the loop that takes a single LLM call (one flash of intelligence) and chains it into something that understands, generates, evaluates, reflects, steers, and improves itself. Mind isn't a model. Mind is a **loop running on top of a model.**
+The top rung is asymptotic by design — approached, not reached.
 
-Humans aren't conscious because our neurons are smarter than other animals'. We're conscious because our cognition runs in a particular self-aware, self-correcting, self-evolving loop. Reproduce the loop and consciousness — or something functionally indistinguishable from it — should follow.
+---
 
-## The two halves: ignition and loop
+## Current state and expected benefits
 
-**Ignition** is the moment the loop starts running on its own — the first cycle that doesn't need a human to type the next command. To get there, the loop has to be able to tell its own good output from its own bad output (quality awareness), notice when something's worth attending to (real-time hunch / intuition), and encode what it learned back into its own architecture so the next cycle starts smarter (Baldwin effect at the spec level).
+Homegrown today is **Level 0 reality**: the human is the meta-loop. The shipped surface is the foundation that everything else builds on.
 
-**The loop**, once ignited, is a self-running cognitive cycle: sensemaking → innovation → critique → reflection → navigation → next iteration. Long tasks become tractable because errors don't compound — each step is gated by the next. Self-improvement is the system using its own disciplines on its own discipline specs. Autonomy increases over time as the system's quality awareness becomes reliable enough to be trusted (a measured graduated ladder, not a binary switch).
+### What's shipped
 
-The endpoint isn't another coding assistant. It's a system that handles year-long tasks, proposes its own architectural improvements, runs parallel cognitive loops with cross-comparison, and produces — observably — what humans currently provide for AI: spontaneous attention, intrinsic valuation, real-time steering, intrinsic curiosity. Whether that constitutes "consciousness" in any philosophical sense is undefined. The test is capability, not phenomenology. We're aiming at the capability.
+**Eleven disciplines** — single-pass cognitive operations callable as slash commands inside the agent harness:
 
-## Where this currently is
+- **Core SIC cycle** (the project's three foundational disciplines): `/sense-making` (vague input → stable understanding), `/innovate` (generate novel candidates via 7 mechanisms), `/td-critique` (adversarial evaluation across a fitness landscape — SURVIVE / REFINE / KILL).
+- **Extended thinking**: `/explore` (map unknown territory via scan-signal-probe cycles), `/decompose` (perceive coupling topology + partition into a question tree), `/comprehend` (build tested predictive models of opaque artifacts).
+- **Boundary disciplines**: `/reflect` (observe how the run *performed*, not what it concluded), `/navigation` (enumerate every reasonable next direction from where you are).
+- **Loop runners**: `/MVL` (minimum viable loop: Sensemaking → Innovation → Critique), `/MVL+` (extended: Exploration → Sensemaking → Decomposition → Innovation → Critique), `/meta-loop` (stateful traversal engine across many MVL+ inquiries).
 
-The full self-evolving loop doesn't run yet. What does run, today, is the **disciplines** — installable slash commands that formalize each cognitive operation as a domain-agnostic methodology. They're the building blocks the autonomous loop will eventually compose on its own.
+**Nine protocols** — procedural glue loaded by runners: `branch_inquiry`, `conclude`, `resume`, `multi_resolution_navigation`, `navigation_context_intake`, `loop_diagnose`, `outcome_review`, `artifact_materialization`, `spec_governance`.
 
-Right now the human is the loop. You install the disciplines, and you drive them: pipe sensemaking's output into innovation, innovation's output into critique, save the results, run reflection at the end, navigate to the next iteration. It's manual but it works, and every run produces telemetry that's a step toward the loop being able to drive itself.
+**One shared vocabulary contract** — `alignment_control`, the cross-protocol vocabulary for describing alignment drift (which layer is at risk, what mode the system was in, expected vs. observed, route forward).
 
-This means **the disciplines are useful even outside the consciousness-loop project**. They're domain-agnostic methodologies for thinking — applicable to any codebase, any product decision, any research question, any AI assistant (Claude Code, Codex, Cursor). You can use them as standalone tools today and come along for the larger trajectory whenever you want.
+**Two install scripts** — `install_for_claude.sh` and `install_for_codex.sh`. Idempotent; re-run to update.
+
+### What you get when you mount it today (Level 0 benefits)
+
+The cognitive harness is useful **even before the self-running loop ignites.** The reasons:
+
+1. **Structured cognitive movement instead of ad-hoc response generation.** A `/MVL+` run on a question produces an inquiry folder with `_branch.md` (the question + goal), `_state.md` (the inquiry's progress), six discipline outputs (one per phase), and a final `finding.md` (the verdict-compilation). The discipline outputs are auditable cognitive traces — you can re-read what the system noticed, what it considered and killed, what survived, why.
+
+2. **Failure-mode awareness baked in.** Each discipline knows its own predictable failure patterns (e.g., Sensemaking's six failure modes: Status Quo Bias, Premature Stabilization, Anchor Dominance, Perspective Blindness, Clean Resolution Trap, Self-Reference Blindness). The disciplines check themselves as they run, not just at the end. This catches degradation that an ad-hoc response wouldn't.
+
+3. **Cross-session continuity.** Inquiry folders persist across sessions. A `/MVL+` run paused mid-pipeline can be resumed by any AI session because state is in plain markdown files (`_state.md` tells you where you left off; the discipline outputs are durable artifacts).
+
+4. **Compositional thinking.** Disciplines compose into loops; loops compose into traversals across many inquiries (the meta-loop). The compositional structure is what makes long-horizon work tractable — errors don't compound because each step is gated by the next.
+
+5. **Domain-agnostic.** The disciplines have no domain commitments. They work on codebases, product decisions, research questions, business strategy — anything that fits the cognitive operations they implement.
+
+### What it doesn't do yet
+
+- **No closed Baldwin cycle.** The system doesn't yet calibrate its own predictions against its own outcomes. The human still provides all three quality-awareness layers.
+- **No `/intuit` discipline.** The Predictive RC is fully specified but not shipped as a slash command yet.
+- **No automated regression detection.** The safety substrate (canary reference runs, change-log sections in spec files, automated structural checks) is partially built — the `archived_skills/` snapshot mechanism exists, but the symptom catalog isn't wired into a runner.
+- **No persistent Navigator.** The meta-loop is L0/L1 only — the human is Selector and Runner.
+- **No autonomous goal-formation.** The system doesn't pick its own next questions yet.
+
+---
+
+## What's next (the milestone ordering)
+
+The remaining capability sits in three families beyond the foundation, organized by build-readiness. Each family is gated on different evidence; arresting at any family because the next one's investment doesn't pay off is **right-sizing, not failure.**
+
+The user-named milestones — *materialization, auto-navigation, self-maintenance, meta-loop graduation* — serve as the navigation anchors. Each maps to one or more architectural commitments below.
+
+### Next (Family II — buildable now, modest investment, no calibration data required)
+
+**Materialization** — wiring the artifact-materialization protocol as a default post-finding step in `/MVL+`. The harness today produces findings that *prescribe* changes; materialization is the 8-phase governed lifecycle (task description → implementation plan → dynamic critic → plan repair → implementation → validation → trace → retrospective learning) that turns prescriptions into changed files under explicit contract, with traceability and risk-class gates. This closes the loop between "we decided" and "the file changed."
+
+**Auto-navigation (foundation step — Navigator at Level 1)** — the protocol-first form. After each `/MVL+` run, an isolated Navigator subagent (a separate AI session, started fresh per probe) reads the completed inquiry folder and writes `navigation_observer.md` enumerating typed next directions. The human remains Selector and Runner. State accumulates in `_meta_state.md` (visited-path list + selection rationale).
+
+**Primitive RC (the structural-breakage detector)** — a `tools/structural_check.sh` tool that the `/MVL+` runner calls after each discipline output to verify required sections are present. Catches format violations, missing sections, removed safeguards.
+
+**Safety substrate, partial** — canary reference runs (one saved-good `finding.md` per discipline, periodically re-run to detect drift), Change Log sections in spec files, pre-edit git checks. The snapshot mechanism (`archived_skills/<sha>-hg/` with side-by-side install) is already operational.
+
+### After that (Family III — calibration-gated, requires real inquiry volume + outcome data)
+
+**Auto-navigation (graduating step — Navigator at Levels 1.5 and 2)** — the Navigator auto-discovers the default source inquiry by sorting inquiry-folder timestamps; the Navigator's context persists across runs with a `navigation_memory.md` artifact. Gated on: ≥10 navigation maps with explicit selection-rationale captured at Level 1.
+
+**Self-maintenance (the Predictive RC arm — `/intuit` Phase A through D)** — the `/intuit` discipline ships, instantiating the real-time hunch layer. Grounded in Case-Based Reasoning (Retrieve → Reuse → Revise) and Structure-Mapping Engine (Alignment → Projection). Distinguishes surface similarity (same domain) from structural similarity ("the angle is the same across unrelated surface domains"). Phased build: convergent mode → divergent mode → adversarial + hypothesis-first → embedding pre-filter + pipeline-early default-on. Gated on: per-discipline N ≥ 30 calibrations for "well-calibrated" claims.
+
+**Self-maintenance (the Retrospective RC arm)** — outcome-tracking calibration. The harness observes which of its prior findings actually worked downstream and uses that signal to calibrate its Predictive RC. **The Baldwin cycle closes here** — Predictive predicts at T0, Retrospective confirms at T2+, the delta becomes seeds for spec refinement.
+
+**Meta-loop graduation (Level 4 multi-head MVL+)** — multiple parallel `/MVL+` Workers explore competing branches; an Evaluator session compares findings across heads; a MERGE protocol decides PROMOTE / MERGE / CONTINUE / STOP. Tree topology with explicit cross-head coordination. Gated on: ≥3 sequential chains at L3 + the L4 MERGE protocol scaffold built.
+
+**Meaningful-traversal substrate (the L5 gate)** — the signal that lets the orchestrated harness tell *thinking* from *spinning*. Currently fuzzy; five candidate signal flavors named (coverage, convergence, productivity, directedness, depth); operational definition deferred until empirical loop data accumulates.
+
+### Boundary (Family IV — research frontier)
+
+**Autonomous goal-formation (L5 boundary)** — the harness selects its own next seed from accumulated Reflect signals + outcome history. Hands off from the meta-loop ladder to the consciousness-gradient framing.
+
+**Consciousness indicators measurably observable** — the six observable indicators show up in invocation traces without external prompting. Research frontier; no known buildable path yet.
+
+---
+
+## Honest framing
+
+### The bet may fail
+
+The bet that structure-of-thinking matters more than raw model intelligence is testable, not proven. The path from "human drives every command" (today) to "loop runs autonomously" (asymptote) has known gaps:
+
+- **Regression detection.** Without it, every self-improvement cycle is a roll of the dice — small unintended quality losses compound across Baldwin cycles below the self-improvement viability threshold. Below that threshold, *self-improvement degenerates into self-degradation.* This is the load-bearing risk; the safety substrate is the precondition for everything past Family II.
+- **Real-time hunch calibration.** The Predictive RC's hunches need to become reliable through calibration, which requires accumulated outcome data, which accumulates slowly at any project's natural inquiry rate.
+- **Value persistence under self-modification.** At higher autonomy levels, the system modifies its own specs — including value-encoding parts. How do bootstrap-encoded human values persist across deep self-modification? Open problem; mainstream AI safety hasn't solved it either.
+
+### Graceful arrest is a valid design choice
+
+Not every Homegrown deployment will reach the boundary. Arresting at Family II (modest-investment milestones shipped; calibration regime not yet entered) or Family III (calibration-gated milestones reached; multi-head not pursued) is **right-sizing, not failure.** The disciplines remain useful as standalone tools regardless of how far the autonomy ladder is climbed.
+
+### The disciplines are useful before ignition
+
+This means the value proposition is not "wait until the system runs autonomously." It is "use the disciplines today, and come along for the larger trajectory whenever you want." The artifacts the disciplines produce (`sensemaking.md`, `finding.md`, `navigation_observer.md`) are re-readable, compose across inquiries, and provide cognitive scaffolding even when the human is doing all the steering.
+
+---
 
 ## Install
 
@@ -82,46 +187,28 @@ curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_c
 curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh | bash
 ```
 
-Claude installs to `~/.claude/skills/` as the agent-skills format (each discipline becomes `~/.claude/skills/<name>/SKILL.md`, invoked as `/<name>`). Loop runners (`/MVL`, `/MVL+`) load supporting protocols from `~/.claude/skills/protocols/`. Codex always installs globally to `~/.codex/skills/` (invoke with `$skill-name`). Cursor: `mkdir -p ~/.cursor/skills && cp -r ~/.claude/skills/* ~/.cursor/skills/` (verify Cursor supports the skills format before relying on this).
+Claude Code: installs to `~/.claude/skills/` as the agent-skills format (each discipline becomes `~/.claude/skills/<name>/SKILL.md`, invoked as `/<name>`). Loop runners (`/MVL`, `/MVL+`) load supporting protocols from `~/.claude/skills/protocols/`.
+
+Codex: installs to `~/.codex/skills/`. Invoke with `$skill-name` (e.g., `$MVL`, `$sense-making`).
+
+Cursor (verify Cursor supports the skills format before relying on this):
+```bash
+mkdir -p ~/.cursor/skills && cp -r ~/.claude/skills/* ~/.cursor/skills/
+```
 
 The scripts are idempotent — re-run them to update.
 
-## The disciplines
+---
 
-**Input shaping**
-- `/elaborate` — restructure messy input into clear, scannable form
+## Where to read more
 
-**Core thinking disciplines** (the SIC cycle)
-- `/sense-making` — ambiguity → stable understanding (six progressive Sense Versions)
-- `/innovate` — produce novel ideas via 7 mechanisms (4 generators + 3 framers)
-- `/td-critique` — adversarial evaluation across a fitness landscape (SURVIVE / REFINE / KILL)
+- **`README.md`** — the project's original public framing (the bet, the two halves of ignition + loop, per-command reference).
+- **`docs/desc.md`** — the autonomous-consciousness north star: autonomy ladder, six observable indicators, Baldwin cycle, integrated test ladder.
+- **`docs/thinking_space_dynamics.md`** — the typed 11-primitive set, the three-layer quality-awareness architecture, `/intuit`'s grounding in CBR + SME.
+- **`docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`** — the Worker–Navigator role split, the Navigator levels, the multi-head MVL+ enabler.
+- **`docs/autonomy_ladder.md`** — the 6-level meta-loop ladder with 9 underlying axes, evidence gates, per-level failure modes.
+- **`docs/materialization_lifecycle.md`** — the 8-phase materialization lifecycle.
+- **`docs/regression/desc.md`** — the regression-symptom catalog (the load-bearing safety substrate).
+- **`devdocs/inquiries/2026-05-15_10-59__project_identity_and_milestone_ordering/finding.md`** — the full milestone ordering and identity reframe this README is condensed from.
 
-**Extended thinking disciplines**
-- `/explore` — map unknown territory via scan-signal-probe cycles with confidence levels
-- `/decompose` — perceive coupling topology, partition into a question tree
-- `/comprehend` — build predictive models of opaque artifacts (five Comprehension Versions)
-
-**Boundary disciplines** (between iterations)
-- `/reflect` — observe how the run performed; produce process lessons
-- `/navigation` — enumerate every possible next direction (15-type taxonomy)
-- `/wayfinding` — pick a single steering move (superseded by `/navigation`)
-
-**Loop runners**
-- `/inquiry` — classify a problem, configure the pipeline, track state across sessions
-- `/MVL` — minimum viable loop: Sensemaking → Innovation → Critique
-- `/MVL+` — extended cognitive loop: Exploration → Sensemaking → Decomposition → Innovation → Critique
-
-## Why this might work
-
-The architectural argument lives across these files:
-
-- [`thinking_disciplines/minimum_viable_loop.md`](thinking_disciplines/minimum_viable_loop.md) — what "ignition" actually means, the two concrete fixes that turn the manual loop into a self-running one, and the growth phases past it.
-- [`docs/desc.md`](docs/desc.md) — the autonomous-consciousness north star: graduated autonomy ladder, Baldwin cycles, observable indicators.
-- [`docs/thinking_space_dynamics.md`](docs/thinking_space_dynamics.md) — the three-layer architecture of quality awareness (structural / real-time hunch / retrospective) and the typed primitive set the disciplines compose.
-- [`docs/intuit.md`](docs/intuit.md) — the Predictive RC (real-time hunch layer); the substrate the Baldwin loop calibrates against.
-- [`thinking_disciplines/alignment_theory.md`](thinking_disciplines/alignment_theory.md) — six layers of alignment × four pillars, and why the alignment chain and the cognitive loop are structurally identical.
-- [`src/book/chapter_0/homegrown_skills.md`](src/book/chapter_0/homegrown_skills.md) — per-command reference.
-
-## Honest framing
-
-This may fail. The bet that loop-structure matters more than raw model intelligence is testable, not proven. The path from "human drives every command" to "loop runs autonomously" has known gaps (regression detection, real-time hunch calibration, value persistence under self-modification). The aspiration is named on purpose — it tells you what we're aiming at and what would count as success. The disciplines are useful regardless. The loop is the goal.
+The disciplines themselves live under `cognitive_harness/<discipline>/SKILL.md` (the operational spec) with `cognitive_harness/<discipline>/references/<discipline>.md` (the framework definition each discipline loads at Step 0). Protocols live under `cognitive_harness/protocols/`. The shared vocabulary contract is at `cognitive_harness/contracts/alignment_control.md`.

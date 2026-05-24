@@ -28,7 +28,7 @@ The unit of work is the **surfaced item** — a unit drawn from the territory, t
 
 Surfacing is the **upstream cognitive operation** that produces what every downstream cognitive work-product presupposes — items being claimed to bear on the inquiry. Without prior surfacing, subsequent cognition has nothing to operate on. "Upstream" is meant logically (precondition relationship), not temporally — within a single loop pass the temporal order may vary, but the precondition relationship is fixed.
 
-### 1.3 NOT-list (eight entries; what surfacing does not produce)
+### 1.3 NOT-list (nine entries; what surfacing does not produce)
 
 Each exclusion grounds in an intrinsic feature of the operation, not in what neighbor operations do.
 
@@ -42,6 +42,7 @@ Each exclusion grounds in an intrinsic feature of the operation, not in what nei
 | Interpretive meaning of items | Surfacing emits labeling content (identifier + adjacency facts) but not interpretive role-assignment. Labeling answers "what is this?"; interpretation answers "what does this mean in relation to other things?" |
 | Cross-inquiry memory | Surfacing fires per-invocation. Cross-inquiry coordination is a meta-discipline concern. |
 | The inquiry's purpose | Surfacing is purposive but the purpose is exogenous. Surfacing receives the inquiry's purpose as input; it does not generate it. |
+| Verdict-shaped use of metadata signals (e.g., treating recency, file size, or author as a relevance proxy) | Relevance is purpose-conditioned (per §1.1 verb-meaning); metadata is property-conditioned. The two are orthogonal. The discipline captures metadata as a per-item signal (see §2.1 Recency annotation capture refinement note + §5.4 schema field) but never converts captured metadata into a relevance verdict. |
 
 ### 1.4 Vocabulary
 
@@ -54,6 +55,7 @@ Each exclusion grounds in an intrinsic feature of the operation, not in what nei
 | **artifact** | The discipline's navigation/handoff work-product: a persistent record carrying no item content; traversal trace + state summary. Cross-session-sufficient. |
 | **relevance tag** | A per-item relevance verdict at one of four levels: core-relevant / sub-relevant / side-relevant / umbrella (when subtype granularity is uncertain). |
 | **relevance confidence** | HIGH / MEDIUM / LOW; per-item judgment confidence emitted alongside the relevance tag. |
+| **recency annotation** | A per-item descriptive signal carrying the item's filesystem last-modified time (when available) or `"no mtime available"` (when not). Captured during Item-enumeration; emitted at Output-shaping; reported per-region in the State Summary's recency distribution field. Never used to filter, demote, or otherwise adjudicate the per-item relevance tag. |
 
 ### 1.5 Taxonomy placement
 
@@ -77,6 +79,14 @@ Surfacing has six core components within its Traversal phase, plus one condition
 | **Output-shaping** | Capture per-item tags AT THE MOMENT of emission during traversal (not retrospectively); accumulate into the in-progress artifact; the artifact is the authoritative tag record. (Default capture rule; refinement-trigger = empirical observation that capture-at-moment causes performance degradation or accuracy issues.) |
 
 The six components do not have a strict temporal order in the abstract; the **default operational ordering** during a Traversal cycle is committed at §3.4. The components fire as needed within each cycle.
+
+*Refinement note (applies at §2.1 Item-enumeration / generation):*
+
+**Recency annotation capture.** When Item-enumeration encounters a candidate item, capture its filesystem last-modified time (mtime) alongside the item identifier; emit it as the `recency annotation` field at Output-shaping. The annotation's value shape is `{source: filesystem | none, value: ISO8601 | null}`. For items without filesystem backing (possibility-mode candidates per §3.1, or externally-referenced items without local file), the annotation is `{source: none, value: null}`; this is a first-class value, mandatory per item, never omitted. The filesystem mtime is emitted as an ISO8601 datetime in UTC; sentinel filesystem values (e.g., epoch) are recorded verbatim, never interpreted as "no mtime available." An item has `source: none` when it has no filesystem path — i.e., a candidate-generated item in possibility mode (per §3.1) or an externally-referenced item without local file.
+
+**The annotation is a signal, not a verdict.** The relevance tag (§2.3 relevance-attribution mechanism) is content-driven and remains the sole adjudicator of relevance. The recency annotation supplements the tag; it never replaces the tag, never filters the workspace, never lowers the relevance level, and never serves as the basis for omitting items from the Traversal Trace. The annotation enables downstream consumers (sensemaking, decomposition, or the inquiry author) to spot active-task regions or to question idle artifacts, but the annotation alone never determines relevance.
+
+Failing to keep this separation is an instance of `Recency-Equates-Idleness` (§4.2 LAYER 1 failure mode) when relevance is judged from mtime alone, and an instance of `Recency-Bias-Filter` (§4.2 LAYER 1 failure mode) when mtime is used to filter or down-weight items.
 
 ### 2.2 The Boundary-discovery sub-phase
 
@@ -231,6 +241,8 @@ Failure modes split into two layers:
 | **5** | **Workspace overload** | The LLM session reads so much content during Traversal that the context window saturates; later cognitive operations have degraded performance | PRIMARY: self-signal frontier-for-re-invocation (the discipline traverses what it can within budget, tags items, emits a frontier flag saying "this sub-region is incomplete; re-invoke to cover it"). SECONDARY: sampling (future PROCESS-layer addition; not committed at MEANING-layer). |
 | **6** | **Artifact under-specification** | The artifact is too thin for cross-session resume; a new LLM session cannot determine what to re-read | Required minimum fields enforced at Output-shaping: every Trace entry has item identifiers; every concept-name has provenance; coverage map is complete. |
 | **7** | **Workspace-artifact desync** | Artifact claims item X was tagged core, but workspace LLM lost track due to context drift; the two disagree | Capture-at-moment-of-tagging during Output-shaping (per §2.1). The artifact is the authoritative tag record. |
+| **8** | **Recency-Equates-Idleness** | A consumer of surfacing's output (or surfacing itself in a hypothetical lapse) treats `recency annotation` values as a proxy for relevance — items with old mtime are inferred to be irrelevant without independent content evidence | Restore the metadata-as-signal-not-verdict separation (per §2.1 Recency annotation capture refinement note): relevance is determined by content-vs-purpose at §2.3, not by mtime. Re-test the items judged irrelevant against the content-driven relevance tag. Anchored to §4.4 asymmetric-failure principle: if relevance was judged from mtime alone, false-negatives may have been introduced — re-include the items at uncertain-relevance level (umbrella tag) and proceed. |
+| **9** | **Recency-Bias-Filter** | Surfacing's output (or downstream consumption of it) shows items filtered or down-weighted by mtime — e.g., older items absent from the workspace, omitted from the Traversal Trace, or systematically tagged at a lower level than content-matching would warrant | Re-traverse the affected region with mtime-blindness restored: capture all items per §2.1 Item-enumeration; emit the `recency annotation` field but do not gate or weight on it. Anchored to §4.4 asymmetric-failure principle: mtime-based filtering creates false-negatives (information-loss-in-the-dark), the failure mode that §4.4 explicitly classifies as the worse failure. |
 
 ### 4.3 LAYER 2 — Identity failure modes
 
@@ -329,6 +341,7 @@ Chronological record of the discipline's traversal. Per entry:
 | Per-item relevance verdict | One of {core / sub / side / umbrella} per item |
 | Per-item confidence | HIGH / MEDIUM / LOW per item |
 | Step note (optional) | Brief one-line note (e.g., "high signal density"; "boundary edge reached") |
+| Per-item recency annotation | `{source: filesystem \| none, value: ISO8601 \| null}` per item. Mandatory per item; `source: none, value: null` for items without filesystem backing. Captured at Item-enumeration; emitted at Output-shaping; never used to filter or weight relevance (see §2.1 Recency annotation capture refinement note). |
 
 Per-trace-entry tags are the **primary artifact granularity**. They are captured at the moment of tagging during Traversal (capture-at-moment-of-tagging; per §2.1 Output-shaping); the artifact is the authoritative tag record.
 
@@ -343,6 +356,7 @@ Aggregate view, mechanically derived from the Trace:
 | Coverage map | Per-region: confirmed / scanned-but-shallow / inferred / unknown; aggregate relevance verdict per region (derived from per-trace-entry tags in that region) |
 | Confirmed-absent regions | Regions traversed where no relevant items were found |
 | Concept-names list | Flat list; per-entry: `{name: <string>, type: <vocabulary \| structural-reference \| coined-term>, provenance: <trace-entry-id where discovered>, gloss: <optional one-line>}` |
+| Recency distribution | Per-region aggregation, derived from the Traversal Trace's per-item recency annotation. Format: `{region_id: {newest: <ISO8601>, oldest: <ISO8601>, no-mtime-count: N, total-items: N}}`. The aggregation is descriptive — it never adjudicates the per-region coverage map or the relevance tags within the region. |
 | Frontier flags | Self-signaled requests for re-invocation; suggested refined-sub-purposes |
 | Workspace-populated status | `{populated: <bool>, populated-at: <timestamp>, extent: <coverage-summary>}` — INITIALIZED by the discipline at Assembly; MAINTAINED by the runner over time (updated to `populated: false` when the session ends or the workspace is otherwise invalidated) |
 | Re-invocation parameters (optional) | If the discipline self-signals re-invocation, suggested input parameters |
@@ -356,6 +370,7 @@ Operational metrics reported with the output:
 - Sub-phase fired (yes/no) + boundary-discovery output
 - Convergence criteria status; workspace-overload trigger (fired? when?)
 - Failure modes checked (list of named modes from §4.1)
+- `items_with_mtime` / `items_without_mtime` — counts of items where the recency annotation's `source` field is `filesystem` versus `none`. Reported as raw counts; no banding committed at spec time.
 - Self-assessment verdict (PROCEED / FLAG / RE-RUN)
 
 ### 5.7 Frontier — open questions for downstream

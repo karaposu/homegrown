@@ -21,18 +21,15 @@ SKILLS_WITH_REFS=(
   "sense-making:sensemaking.md"
   "innovate:innovate.md"
   "td-critique:td-critique.md"
-  "explore:explore.md"
+  "surfacing:surfacing.md"
   "decompose:decompose.md"
-  "comprehend:comprehend.md"
-  "reflect:reflect.md"
   "navigation:navigation.md"
 )
 
 # Loop runner skills (no references/ folder)
 SKILLS_NO_REFS=(
   "MVL"
-  "MVL+"
-  "meta-loop"
+  "MVLw"
 )
 
 # Supporting protocols (loaded by runners; not directly invoked)
@@ -96,7 +93,7 @@ mkdir -p "$TARGET"
 install_skill_md() {
   local src="$1"
   local skill_name="$2"
-  local apply_protocol_sub="${3:-false}"   # third arg, default false; true for MVL/MVL+
+  local apply_protocol_sub="${3:-false}"   # third arg, default false; true for MVL
   local skill_dir="$TARGET/$skill_name"
   local proto_target="$TARGET/protocols"
 
@@ -139,7 +136,7 @@ install_skill_md() {
       cat "$src"
     fi
   } | {
-    # If this skill references protocols (MVL/MVL+), substitute the in-repo path
+    # If this skill references protocols (MVL), substitute the in-repo path
     # with the install-target absolute path. $proto_target is mode-aware via $TARGET.
     if $apply_protocol_sub; then
       sed "s|cognitive_harness/protocols/|${proto_target}/|g"
@@ -175,7 +172,7 @@ done
 for skill in "${SKILLS_NO_REFS[@]}"; do
   src="$HOMEGROWN_DIR/$skill/SKILL.md"
   if [ -f "$src" ]; then
-    # MVL/MVL+ reference cognitive_harness/protocols/<file>.md — pass true to apply protocol-path substitution
+    # MVL references cognitive_harness/protocols/<file>.md — pass true to apply protocol-path substitution
     install_skill_md "$src" "$skill" true
     echo "  OK: $skill"
     ((installed++))
@@ -202,8 +199,8 @@ echo ""
 echo "Done. Installed $installed skills + $proto_count protocols to $TARGET"
 echo ""
 echo "Skills (invoke with \$skill-name in Codex):"
-echo "  \$MVL, \$MVL+, \$meta-loop, \$sense-making, \$innovate, \$td-critique,"
-echo "  \$explore, \$decompose, \$comprehend, \$reflect, \$navigation"
+echo "  \$MVL, \$MVLw, \$sense-making, \$innovate, \$td-critique,"
+echo "  \$surfacing, \$decompose, \$navigation"
 echo ""
 echo "Protocols (loaded by skills, not directly invoked):"
 for proto in "${PROTOCOLS[@]}"; do

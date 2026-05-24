@@ -11,7 +11,7 @@ LLM-driven instruction produces inconsistent coverage across runs: vague single-
 ## 2. Affected artifact(s)
 
 - `cognitive_harness/MVL+/SKILL.md` Step 3 of "If NEW" — lines 82-85 (Question + Goal field instructions in the _branch.md template); also new Step 3.5 inserted before original Step 4
-- `cognitive_harness/MVL2+/SKILL.md` Step 3 of "If NEW" — same field instructions, +2 line offset
+- `cognitive_harness/MVLw/SKILL.md` Step 3 of "If NEW" — same field instructions, +2 line offset
 
 Original vague instructions (verbatim, pre-fix):
 
@@ -70,7 +70,7 @@ Original vague instructions (verbatim, pre-fix):
 
 **Telemetry per chain:** raw input + audit-flag-fired + would-current-version-have-dropped + agent's audit decision and rationale.
 
-**Status as of fix authoring:** Branch experiment NOT yet executed. The edit was applied DIRECTLY to MVL+/MVL2+ SKILL.md per user override of the LOOP_DIAGNOSE Step 5 guardrail; user retains revert option via git. The branch experiment retrospectively validates (or refutes) the directly-applied edit.
+**Status as of fix authoring:** Branch experiment NOT yet executed. The edit was applied DIRECTLY to MVL+/MVLw SKILL.md per user override of the LOOP_DIAGNOSE Step 5 guardrail; user retains revert option via git. The branch experiment retrospectively validates (or refutes) the directly-applied edit.
 
 ## 6. First-instance-bias acknowledgment
 
@@ -94,4 +94,4 @@ If the branch experiment passes its ≥3/5 gate, the fix's promotion to permanen
 - **Source inquiry (the fix's design):** `devdocs/inquiries/2026-05-22_14-50__branch_creation_question_field_decomposition/finding.md`
 - **Diagnostic source (the failure mode):** `devdocs/inquiries/2026-05-22_14-30__loop_diagnose__enumeration_frame_error_in_test_design/finding.md` (Hypothesis H1)
 - **LOOP_DIAGNOSE protocol:** `cognitive_harness/protocols/loop_diagnose.md` (Step 5/6 guardrails)
-- **Applied to:** `cognitive_harness/MVL+/SKILL.md` Step 3 + new Step 3.5; same edit at `cognitive_harness/MVL2+/SKILL.md`
+- **Applied to:** `cognitive_harness/MVL+/SKILL.md` Step 3 + new Step 3.5; same edit at `cognitive_harness/MVLw/SKILL.md`
