@@ -1,0 +1,55 @@
+# Branch: L1 Targets the Wrong Stage — The Over-Specification Entered Post-`_branch.md`, Not at Framing Time
+
+## Question
+
+Given that the two prior findings on this topic chain (`devdocs/inquiries/2026-05-14_12-45__loop_diagnose__existing_artifact_as_canonical_reference/finding.md` and its CORRECTS at `devdocs/inquiries/2026-05-14_13-08__phantom_canon_is_generic_not_project_specific/finding.md`) both proposed L1 as a pre-step at `/MVL+`'s root-NEW path BEFORE `_branch.md` is written — and the user has correctly observed that the 2026-05-14_12-45 inquiry's `_branch.md` goal (b) explicitly stated the failure mode should be *"reusable (applies to other half-tried artifacts in the project, not just navigation)"*, meaning the inquiry was FRAMED correctly as generic, but the **finding** produced by the inquiry's pipeline contained the over-specification (L1's trigger criteria enumerated this-project-specific examples) — at WHICH stage of the loop's discipline pipeline (exploration / sensemaking / decomposition / innovation / critique) or CONCLUDE did the over-specification enter, what mechanism catches loop-stage scope-leakage at that stage (as distinct from L1's framing-time canonicalization catch), and what does this say about the H1 attribution (HIGH framing-time implicit canonicalization) being misapplied to this CLASS of failure (loop-stage scope-leakage, NOT framing-time canonicalization)?
+
+## Goal
+
+A new diagnostic finding that:
+
+(a) **Traces the entry point of the over-specification** in the 2026-05-14_12-45 inquiry's pipeline. The inquiry's `_branch.md` was correctly generic (per goal (b)); the finding had this-project-specific examples in L1's trigger criteria. The traceable artifacts to examine: 2026-05-14_12-45's exploration.md, sensemaking.md, decomposition.md, innovation.md, critique.md, and the CONCLUDE-produced finding.md. Identify the discipline (or disciplines) where the over-specification first appeared.
+
+(b) **Names this failure mode distinctly.** The over-specification is NOT Phantom Canon (which is about artifacts being treated as canon without check). It is NOT framing-time canonicalization (which fires at `_branch.md` creation). It is a separate class: **loop-stage scope-leakage** — a generic inquiry, correctly framed, produces over-specified output during the discipline pipeline because the pipeline anchors on concrete this-project artifacts as it generates spec text. Working name candidates: "scope-collapse during specification"; "loop-output scope leakage"; "innovation-stage anchoring narrows project-agnostic scope to project-specific examples"; etc. The 6th MVL+ inquiry will resolve naming.
+
+(c) **Proposes a maintenance candidate at the right stage.** The fix is not L1 (pre-`_branch.md`). The fix lives inside the discipline that introduces the over-specification (likely innovation; possibly sensemaking; or as a Critique check). Maintenance candidate framing TBD pending tracing in (a).
+
+(d) **Corrects the misattribution in the two prior findings.** The H1 HIGH framing-time attribution in 2026-05-14_12-45 was correct for the ORIGINAL 2026-05-14_00-01 → 2026-05-14_00-26 chain (where `_branch.md` was actually mis-framed). But that attribution was IMPLICITLY EXTENDED in my 2026-05-14_13-08 CORRECTS finding to also apply to the over-specification OF the L1 spec — which is at a different stage. This is a misattribution: the over-specification's failure stage is loop-internal, not framing-time. The recursive demonstration in 2026-05-14_13-08 (which framed the L1's over-specification as "Phantom Canon firing at meta-meta-level" / "concrete instance of lesson-introduces-its-own-trap") is structurally mis-framed. The new diagnostic separates: framing-time canonicalization (caught by L1 — still valid for the original chain) vs loop-stage scope-leakage (a different failure mode at a different stage; needs a different maintenance candidate).
+
+(e) **Acknowledges the meta-meta-meta-recursion.** The previous CORRECTS finding (2026-05-14_13-08) explicitly built a "spec eats its own dog food" architecture — including a Layer 3 self-reference check claiming the corrected L1's trigger criteria pass project-agnosticism. That check WAS valid for what it claimed (the corrected text is project-agnostic). But it doesn't address the deeper issue identified now: L1 itself is mis-targeted. The new finding records that even the "spec eats its own dog food" pattern can be applied at the wrong layer — checking text-level agnosticism without checking mechanism-level appropriateness.
+
+(f) **Honest cost-naming.** This is now the SIXTH MVL+ inquiry in succession on the related topic chain. The cumulative cost is heavy. The cumulative value of this iteration: distinguishing two failure modes (framing-time canonicalization vs loop-stage scope-leakage); identifying the correct stage for the maintenance candidate; correcting the misattribution that propagated from 2026-05-14_12-45 into 2026-05-14_13-08; and providing concrete evidence for the project's emerging culture of "diagnose where the failure actually originates, not where it surfaces." The cost is justified only if the new finding produces a candidate that prevents the recurrence in future inquiries.
+
+## Scope Check
+
+Question covers goal. Goal items (a)-(f) are all addressed by the question's framing (entry point + naming + new maintenance candidate + misattribution correction + meta-meta-meta-recursion + honest cost).
+
+**Specific-vs-pattern check.** The user explicitly named the pattern: *"the error doesn't come from branch or before branch."* This is a structural claim about a CLASS of failures (everything that enters during the loop pipeline post-`_branch.md`), not just the specific over-specification in 2026-05-14_12-45. The inquiry is pattern-level by user intent. The specific case (the L1's trigger criteria over-specification) is the demonstration; the pattern (loop-stage scope-leakage as a distinct failure mode) is the deliverable.
+
+**Phantom Canon self-check on THIS inquiry** (applying the corrected L1 from 2026-05-14_13-08 to this inquiry's referenced artifacts, per the spec-eats-its-own-dog-food precedent established in that finding's Layer 3 self-reference, even though L1 is now identified as mis-targeted for the failure being diagnosed — the canon-status declaration is still valuable):
+
+| Referenced artifact | Declared canon-status | Justification |
+|---|---|---|
+| Prior LOOP_DIAGNOSE finding (`2026-05-14_12-45__.../finding.md`) | `under-test` for its discipline outputs (which will be traced for over-specification entry point); `canon` for the diagnostic frame on the original chain | Two-status: the inquiry's pipeline is being traced; the inquiry's verdict on the original 2026-05-14_00-01 → 2026-05-14_00-26 chain remains canon. |
+| CORRECTS finding at 2026-05-14_13-08 | `under-test` for the recursive demonstration framing and the L1 mechanism-targeting; `canon` for the project-agnostic text of the L1 trigger criteria | Two-status: the recursive-demonstration interpretation is being challenged; the corrected L1 text itself is preserved as agnostic-of-project. |
+| 2026-05-14_12-45's discipline outputs (exploration.md, sensemaking.md, decomposition.md, innovation.md, critique.md) — currently archived at `devdocs/inquiries/2026-05-14_12-45__.../docarchive/` | `under-test` | They will be examined to trace where the over-specification first entered. |
+| User's correction quote | external signal, not an artifact | Canon-status not applicable. |
+| LOOP_DIAGNOSE protocol (`homegrown/protocols/loop_diagnose.md`) | `canon` | Authoritative for the diagnostic format. |
+| Strengthened diagnostic (`2026-05-13_12-45__.../finding.md`) | `canon` | Authoritative for the CORRECTS-over-REFINES three-test reasoning. |
+| Discipline skill specs (`~/.claude/skills/`) | `canon` | Canonical-vs-installed match per the prior diff-check. |
+
+None of the referenced artifacts are silently canonicalized. The check is applied rigorously to this inquiry's scope.
+
+**Project-boundary declaration (optional).** For this inquiry, the project boundary is the Homegrown thinking-discipline toolkit (`~/Desktop/projects/native/devdocs/` + `~/Desktop/projects/native/homegrown/`). All referenced artifacts are project-internal except the user's correction quote (external signal).
+
+## Relationships
+
+- **CORRECTS:** `devdocs/inquiries/2026-05-14_13-08__phantom_canon_is_generic_not_project_specific/finding.md`. The CORRECTS targets two dimensions of the prior finding: (i) the recursive-demonstration framing ("Phantom Canon at meta-meta-level" / "concrete instance of lesson-introduces-its-own-trap") was structurally mis-framed — the L1's over-specification is a different failure mode (loop-stage scope-leakage), not the same failure as the original chain; (ii) the L1 mechanism-targeting (pre-step at `/MVL+`'s root-NEW path, BEFORE `_branch.md` is written) catches framing-time canonicalization but NOT loop-stage scope-leakage. The prior finding's corrected L1 trigger criteria text (project-agnostic phrasing + ambiguity threshold + diversified examples + standing meta-check + optional project-boundary declaration) is PRESERVED as text and is still the right correction at the L1 mechanism's actual scope (framing-time canonicalization for inquiries with mis-framed branches). What's corrected: the recursive demonstration's category-attribution and the implication that L1 alone catches the L1-spec's-own-over-specification kind of failure.
+
+- **CORRECTS (indirectly):** `devdocs/inquiries/2026-05-14_12-45__loop_diagnose__existing_artifact_as_canonical_reference/finding.md`. The H1 attribution (HIGH framing-time implicit canonicalization) was correct for the original chain but is now identified as IMPLICITLY EXTENDED beyond its valid scope when applied to the L1's own over-specification. The H1 verdict on the original chain stands; the implicit extension is what's corrected.
+
+- **DEPENDS ON PROTOCOL:** `homegrown/protocols/loop_diagnose.md`. The LOOP_DIAGNOSE Step 4 envelope structures this finding's body.
+
+- **RELATED:** `devdocs/inquiries/2026-05-13_12-45__prior_mapping_understanding_was_wrong_redo/finding.md`. The strengthened CORRECTS-over-REFINES three-test diagnostic applies. Plus: the lesson-introduces-its-own-trap pattern named in that finding is now identified as having been MISAPPLIED to the L1's over-specification in 2026-05-14_13-08. The current inquiry distinguishes the original instance (genuine lesson-introduces-its-own-trap) from the L1-over-specification (loop-stage scope-leakage; a different mechanism).
+
+- **RELATED:** `devdocs/inquiries/2026-05-14_00-26__verify_findingpaths_general_is_configured_explore/finding.md`. The framing-load-bearing pattern named there is structurally analogous. Plus: the principle that framing should be explicitly clarified BEFORE verification applies here as the analog at the loop-stage layer (the loop should explicitly clarify scope BEFORE generating spec text).

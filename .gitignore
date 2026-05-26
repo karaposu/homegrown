@@ -277,5 +277,6 @@ Thumbs.db
 probe
 
 # Development docs and probe tests (not for repo)
-devdocs/
+devdocs/*
+!devdocs/inquiries/
 probe_tests/

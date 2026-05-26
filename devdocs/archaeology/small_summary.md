@@ -2,69 +2,83 @@
 
 ## In one sentence
 
-This project isn't software you run. It's **a pack of instructions for AI coding assistants** (Claude Code and OpenAI's Codex command-line tool) that teaches them how to walk through a hard problem in a slow, deliberate, multi-stage way — and leaves behind a paper trail of every step.
+This project is **not a program you run.** It's a pack of natural-language instructions you install into an AI coding assistant (Claude Code, OpenAI Codex, or Cursor) that changes how the assistant thinks through a hard question — making it slower, more deliberate, and forcing it to leave behind a folder of intermediate notes for every step.
 
-## What you actually get when you install it
+## The shape of the project
 
-Installation is one shell command. It copies a set of Markdown files into a folder that your AI assistant reads from on startup. After that, your assistant gains a list of new commands you can invoke by typing a slash and a name. The ones you'd type include:
+If you opened the folder expecting to find software, you'd be confused. There are only two actual programs: a pair of shell installer scripts. Everything else — and it is a *lot* of else — is plain markdown text files.
 
-- `/MVL` — the smallest pipeline
-- `/MVL+` and `/MVL2+` — longer pipelines
-- `/meta-loop` — an outer orchestrator that strings many runs together
-- `/sense-making`, `/innovate`, `/td-critique`, `/explore`, `/surfacing`, `/decompose`, `/comprehend`, `/reflect`, `/navigation` — individual "thinking moves" that can be invoked on their own
+Those markdown files are the project. They come in two main flavors:
 
-Each name corresponds to a long, careful instruction document the AI is forced to load and follow before it answers you.
+- **"Skills"** — files that the AI assistant reads at the moment a user types a slash-command like `/sense-making` or `/innovate`. Each one tells the AI: "now do this specific kind of thinking, in this specific order, and save the result to a file with this specific name." They aren't documentation about the AI — they're instructions *to* the AI, executed at run time.
+- **"Protocols"** — supporting files the skill files load when they need shared behavior (e.g., "how to create a child inquiry under an existing one," "how to write the final summary document").
 
-## The thing it's really about — the pipelines
+Installation just downloads these markdown files into a folder the AI assistant already watches for plugins (`~/.claude/skills/` for Claude Code, `~/.codex/skills/` for Codex). Removing the files returns the assistant to its native behavior.
 
-The simplest pipeline, `/MVL`, looks like this. You type something like `/MVL "should we rewrite the authentication code?"` and the assistant:
+## What it currently does (working functionality)
 
-1. **Makes sense of the problem** — restates it clearly, surfaces hidden ambiguities, locks down what "answered" would even mean.
-2. **Innovates** — produces a deliberate spread of candidate ideas using seven specific techniques (combination, inversion, taking ideas from other domains, etc.) rather than just whatever comes to mind first.
-3. **Critiques** — runs each candidate through a kind of mock-trial (prosecution / defense / collision with the others) and labels each one SURVIVE, REFINE, or KILL.
-4. If nothing solid survived, it loops back to step 1 with a narrower question.
+When installed, the user gets a set of new slash-commands inside their AI coding assistant:
 
-Each stage's full output is saved as a separate file in a timestamped folder, and a final `finding.md` is compiled when the loop reaches an answer.
+**Single thinking moves** (run one at a time on whatever the user feeds in):
 
-The longer pipelines (`/MVL+`, `/MVL2+`) add two earlier stages — exploring an unfamiliar territory and breaking the problem into pieces — before the original three. `/MVL2+` is a recent variant that pulls items from a defined territory instead of open-ended exploring.
+- `/sense-making` — take ambiguous input and produce a structured understanding of it (six progressively-refined "sense versions" of the problem).
+- `/innovate` — generate candidate ideas across seven different generation techniques (combining things, inverting things, transferring ideas from other domains, etc.), with deliberate variety (generic / focused / contrarian for each).
+- `/td-critique` — evaluate competing candidates adversarially (prosecution + defense + collision) and render verdicts: SURVIVE, REFINE, or KILL.
+- `/surfacing` — pull relevant items out of a large body of material (a codebase, a literature corpus, a folder of notes) and tag each item with how relevant it is.
+- `/decompose` — perceive where the natural boundaries are in a complex topic and partition it into independently-tractable sub-questions.
+- `/routeman` — enumerate every possible next move the user could take from where they are, with each move tagged by type (16 categories) and how reachable it is.
 
-`/meta-loop` is one level above that: it runs `/MVL+`, then asks "given that finding, what are all the possible next directions?" via `/navigation`, presents the human with the map, the human picks, and the loop runs again. It keeps a memory file across runs so it can pick up where it left off.
+**Pipeline runners** (chain the moves together automatically):
 
-## How runs are stored
+- `/MVL "<question>"` — runs sense-making → innovate → critique as a three-stage pipeline. Creates a timestamped folder under `devdocs/inquiries/`, drops a `_branch.md` (the question + goal) and a `_state.md` (progress tracker), then runs each stage in sequence, saving each stage's output as a markdown file. When all three are done, it decides whether the question is answered. If yes, it consolidates everything into a single `finding.md` and archives the per-stage files. If no, it loops with a narrower focus.
+- `/MVLw "<question>"` — same idea but with five stages: surfacing → sense-making → decompose → innovate → critique.
 
-Every inquiry creates a folder named with a date-time stamp and a short slug, like `2026-05-22_14-30__should-we-rewrite-auth/`. Inside:
+Both runners can be paused and resumed across sessions because all state lives in the markdown files on disk — any AI session can pick up where the last one left off by reading `_state.md`.
 
-- `_branch.md` — the question and what a good answer would let the user do
-- `_state.md` — which stage is done, how many iterations have run, history
-- one file per stage (`sensemaking.md`, `innovation.md`, `critique.md`, etc.)
-- `finding.md` — the final compiled answer once the run completes
-- `docarchive/` — where the stage files get moved when the run is done
+The `branch_inquiry` protocol lets a runner spawn a child sub-inquiry under an existing parent inquiry, with explicit lineage tracking (source anchor in the parent, depth limit, parent index update).
 
-You can also "branch" a new inquiry off an existing one, keeping a chain of which question came from which earlier answer.
+That's the working surface. It's small, but each piece is detailed — typical skill specs run 100-400 lines of instructions; protocol specs run 400-700 lines.
 
-## What's clearly working
+## What it appears to be trying to do (partially built, in-progress, or aspirational)
 
-- The two install scripts (one for Claude Code, one for Codex) are complete and look well-tested. They handle URL quirks, frontmatter differences between the two tools, and the difference between skills that have reference files and skills that don't.
-- The core pipelines `/MVL` and `/MVL+` and their nine sub-disciplines are all fully specified.
-- The "glue" protocols (`branch_inquiry`, `conclude`, `resume`) are written out in detail and reference each other consistently.
+This is where it gets interesting. The shipped skills are the foundation of a much larger ambition that the project is openly mid-build on:
 
-## What's newer or half-built
+- **Self-improvement loops.** The long-term vision (stated explicitly in the README and design docs) is that the assistant would eventually run these thinking moves on *itself* — noticing patterns in its own past mistakes, refining its own instructions, calibrating its own real-time confidence against later-observed outcomes. None of that closes today. The human still drives every step.
 
-- `/MVL2+` and `/surfacing` are recent additions (still showing up as untracked files in the project at the time of reading).
-- `/meta-loop` openly labels itself "v1" — it only supports the human picking one direction at a time. The spec mentions a future multi-head / parallel-branch mode that isn't built yet.
-- An "alignment control" document exists that defines vocabulary for noticing when an AI's work drifts from what was asked. It explicitly defers most of its implementation ("don't build numerical scoring until 30+ real records exist; don't build a multi-agent runtime yet") — so right now it's an agreement on words, not a working mechanism.
-- A small checker script (`tools/structural_check.sh`) is referenced by the pipelines, but they tolerate it being absent, which suggests it isn't always there.
+- **A "hunch" layer (`/intuit`).** Designed in detail but not shipped. Would let the assistant predict in real time whether its output is good, then check that prediction against actual downstream usefulness days/weeks later. The gap between predicted and actual would feed back into refining the instructions.
 
-## Who would use this, and why
+- **An autonomous "navigator."** Designed but not active. After each inquiry, a separate AI session would read the result and enumerate possible next directions automatically, accumulating memory across runs. Currently the user picks the next direction by hand.
 
-Someone who:
+- **Discipline-renaming-in-progress.** The original `/navigation` skill has been moved into a folder literally named `deprecated_navigation/` and replaced by a freshly-rebuilt `/routeman` skill. The rename note explains the project deliberately rebuilt rather than renamed-in-place because the old version had accumulated baggage that anchored agent reasoning to outdated framings. This is an active migration — both folders coexist while artifacts still reference the old name.
 
-- works with an AI assistant on complicated, open-ended questions — research, system design, strategy, writing — not just "fix this bug";
-- has noticed that the AI's default mode is to jump straight to an answer without first checking what the question really is, without challenging its own ideas, and without noticing what it's still missing;
-- wants a way to *force* the AI through a slower, structured sequence of moves and end up with a folder of evidence rather than just a chat log.
+- **A `non-active/` folder** holds five more skills (`MVL+`, `comprehend`, `deprecated-explore`, `meta-loop`, `reflect`) that aren't installed by the current install scripts. They're either retired, paused, or waiting on something else.
 
-The author appears to be building this for their own use first. There's a place where the system records observations about its own bad runs, and a habit (visible in the specs) of running the same thinking pipeline on the system's own design to refine it further. In other words: a thinking framework that uses itself on itself.
+- **A `cognitive_fixes/` folder** holds one documented "fix" for a recurring failure mode, with explicit rules that say: don't promote this folder into a formal protocol until at least 5-10 more applications accumulate. It's a deliberately under-formalized staging area.
 
-## The shape of it, in one line
+- **Safety substrate** (regression detection, structural checks, change-log enforcement on the spec files themselves) is partially built. One snapshot-of-prior-versions folder (`archived_skills/`) exists; the automated checking around it does not.
 
-A **command-line skill pack for AI assistants** that turns "ask the chatbot" into "walk a question through a multi-stage reasoning pipeline that leaves an auditable folder of evidence behind."
+So the project's current state is best described as: **the foundation is shipped and usable; the self-running parts are designed in detail but not wired up.**
+
+## The most striking thing about the project
+
+The `devdocs/inquiries/` folder contains 19+ subfolders of past inquiries the system has been used to run — and almost every single one of them is the project investigating *itself*. Titles include "navigation surfacing territory dependency recheck," "routeman discipline design," "autonomy register and discipline read protocol," "file shape contracts upstream artifacts," "multi head aggregation routeman." The skill files are being used to redesign the skill files.
+
+This recursion shows up in the code: skills reference past inquiry folders by path; protocols cite specific inquiry findings as the source of specific rules; new failure modes get a folder explaining the methodology used to fix them.
+
+The project is bootstrapping itself.
+
+## Who would use this and why
+
+The user is someone who already uses an AI coding assistant (Claude Code, Codex, Cursor) for nontrivial work and is willing to trade speed for structure. Specifically:
+
+- **Researchers, writers, designers, or strategists** who want the AI to slow down on hard questions, consider alternatives explicitly, leave an audit trail, and produce a single defensible written answer rather than a quick best-guess.
+- **People investigating something messy** where the right framing isn't obvious yet — the kind of problem where you'd benefit from being forced through "what is this really asking?" → "what are the options?" → "what kills each option?" before committing to an answer.
+- **People building their own AI tooling** who treat this project as a reference implementation for how to structure agent behavior through layered markdown specs with explicit failure modes, telemetry, and inter-spec protocols.
+
+The user gets a folder of evidence (one markdown file per thinking stage) rather than a chat transcript. The folder is durable, re-readable, resumable across sessions, and can be branched into child inquiries.
+
+## In summary
+
+It's a **library of structured-thinking instructions** for AI coding assistants. The instructions are written in plain text, get installed into the assistant's plugin folder, and turn what would otherwise be a freeform conversation into a slower, more disciplined, file-producing reasoning pipeline. The foundation works today; an ambitious self-improvement layer is designed but not yet operational.
+
+It is not a web app, a CLI tool, a library, or an API. It is most accurately called a **prompt library that behaves like a methodology**.
