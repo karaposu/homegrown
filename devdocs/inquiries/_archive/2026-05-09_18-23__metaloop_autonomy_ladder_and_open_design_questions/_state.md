@@ -26,7 +26,7 @@ COMPLETE
 - CONTINUES FROM: devdocs/inquiries/2026-05-10_01-30__metaloop_navigator_session_relationship/ (session-architecture finding underpins this design discussion)
 - CONTINUES FROM: devdocs/inquiries/2026-04-27_20-45__meta_loop_whirl_navigation/ (meta-loop = stateful traversal engine; bounded meaningful traversal)
 - RELATED: enes/loop_desing_ideas/meta_loop.md (concept doc this inquiry refines into a buildable autonomy ladder)
-- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md (Navigator ladder; meta-loop ladder is distinct but composes with it)
+- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md (Navigator ladder; meta-loop ladder is distinct but composes with it)
 
 ## History
 - 2026-05-09: Created. Question: design the meta-loop autonomy ladder (L0–L_N) and resolve the three open parameters (loop count, chaining, movement directions). User anchored L0 (human navigates + runs loops) and L1 (human runs loops; navigation enhanced).

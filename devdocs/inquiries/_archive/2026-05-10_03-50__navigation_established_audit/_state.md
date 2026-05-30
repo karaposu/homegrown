@@ -27,7 +27,7 @@ COMPLETE
 - BUILDS-ON: devdocs/inquiries/2026-05-09_23-15__top_3_capability_aims/finding.md (sequential→multi-head meta-loop ranked #2)
 - BUILDS-ON: devdocs/inquiries/2026-05-09_15-15__decomposition_pipeline_position/finding.md (Boundary classification map)
 - RELATED: /Users/ns/.claude/skills/navigation/references/navigation.md (discipline spec)
-- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md
+- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md
 - RELATED: enes/loop_desing_ideas/meta_loop.md
 - RELATED: enes/discipline_taxonomy.md
 - RELATED: source findings in devdocs/inquiries/2026-04-28_10-18__navigation_observer_session_architecture/ and devdocs/inquiries/2026-04-27_20-26__navigation_mvl_integration/

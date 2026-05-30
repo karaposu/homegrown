@@ -24,7 +24,7 @@ The meta-loop and the isolated Navigator are **complementary layers, not alterna
 
 ### Constraints
 
-- Both source documents stable: `meta_loop.md` (meta-loop concept) + `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` (isolated Navigator with Levels 0→4).
+- Both source documents stable: `meta_loop.md` (meta-loop concept) + `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (isolated Navigator with Levels 0→4).
 - Session-isolation between Worker and Navigator is explicitly named as load-bearing in the isolated-Navigator document.
 - Multi-head MVL+ is the project's stated end-goal; isolated Navigator is the architecture that makes it tractable.
 - "State lives in files" project principle — sessions coordinate through artifacts, not shared process memory.

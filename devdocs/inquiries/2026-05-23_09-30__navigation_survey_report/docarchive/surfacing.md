@@ -10,7 +10,7 @@
 - **Entry point:** signal-first (specific purpose — produce a historical survey).
 - **Territory:** explicit-bounded.
   - Primary: `devdocs/inquiries/_archive/` (42 archived nav-related folders) + `devdocs/inquiries/` (13 active nav-related folders, including the mapping arc).
-  - Adjacent: `cognitive_harness/navigation/SKILL.md` + `cognitive_harness/navigation/references/navigation.md` (current runtime spec); `cognitive_harness/navigation/warmup/*.md` (5 warmup files); `cognitive_harness/protocols/multi_resolution_navigation.md`, `cognitive_harness/protocols/navigation_context_intake.md`; `docs/nav.md`; `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
+  - Adjacent: `cognitive_harness/navigation/SKILL.md` + `cognitive_harness/navigation/references/navigation.md` (current runtime spec); `cognitive_harness/navigation/warmup/*.md` (5 warmup files); `cognitive_harness/protocols/multi_resolution_navigation.md`, `cognitive_harness/protocols/navigation_context_intake.md`; `docs/nav.md`; `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
   - Out of territory: full prose-read of every finding (impractical at 55 inquiries); Summary sections + state-file telemetry are sufficient at this resolution.
 
 ## Boundary-discovery Sub-phase
@@ -33,7 +33,7 @@ Skipped. Territory is explicit-bounded.
 | 8 | protocols/multi_resolution_navigation.md | the multi-resolution / staged-navigation runner pattern (recursive coverage) | sub | MEDIUM | the recursive-navigation protocol |
 | 9 | protocols/navigation_context_intake.md | the navigation context-intake protocol | sub | MEDIUM | post-warmup context loading |
 | 10 | docs/nav.md | "navigation is next target of this codebase" + concept-map artifact pattern + "every direction in Navigation is a concept" | core | HIGH | stable-view orientation; commits concept-map artifact |
-| 11 | docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md | Level 0–4 ladder for isolated Navigator session architecture; v1 protocol-first, v2 persistent, v3 graph-native, v4 bounded autonomy | core | HIGH | the architectural roadmap for navigation-as-cross-run-steering |
+| 11 | docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md | Level 0–4 ladder for isolated Navigator session architecture; v1 protocol-first, v2 persistent, v3 graph-native, v4 bounded autonomy | core | HIGH | the architectural roadmap for navigation-as-cross-run-steering |
 
 ### Group A — Discipline-vs-protocol framing (early, April 27–28)
 

@@ -10,7 +10,7 @@
 ## Source Documents (already in context)
 
 - `enes/loop_desing_ideas/meta_loop.md` — meta-loop concept; "stateful traversal engine for thinking space"; uses Navigation as eyes; MVL+ as probe; meta-state as memory; selection as valuation; meaningful traversal as anti-spinning judgment.
-- `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` — operationalizes the Navigator role with explicit session-isolation; defines Level 0 → Level 4 ladder; introduces Navigator Warming; explicitly enables multi-head MVL+.
+- `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` — operationalizes the Navigator role with explicit session-isolation; defines Level 0 → Level 4 ladder; introduces Navigator Warming; explicitly enables multi-head MVL+.
 
 The two documents are not alternatives — they're **complementary layers**. Meta-loop is the orchestration concept; isolated-Navigator is the operational refinement of how the Navigator role is actually executed (with session-isolation as the load-bearing addition).
 

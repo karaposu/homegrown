@@ -71,7 +71,7 @@ The harness operationalizes movement-in-thinking-space through three structurall
 - *Retrospective RC* fires later, empirically (confirms what actually worked once the output's downstream consequences have played out — days, weeks, sometimes months after the output). The only source of ground truth.
 The closed loop between Predictive RC and Retrospective RC IS the **Baldwin cycle**: the harness's primary self-improvement mechanism. Predictive RC predicts at T0 → Retrospective RC confirms or contradicts at T2+ → the delta is calibration data → consistent miscalibration patterns become seeds for spec refinement. Canonical spec: `enes/evolving_quality_assetment_component.md` + `enes/thinking_space_dynamics.md` §4.
 
-**A graduated 9-axis autonomy ladder.** Five execution roles (Worker, Navigator, Selector, Runner, Evaluator) plus four state/generative axes (cross-inquiry Memory, Reflect-channel, Multi-head, Goal-formation). The canonical summary path runs through six levels: Level 0 (human is the meta-loop) → Level 1 (isolated Navigator subagent per probe) → Level 2 (system Selector with human override) → Level 3 (system manages traversal state and self-stops) → Level 4 (multi-head parallel Workers with a cross-head Evaluator and a MERGE protocol) → Level 5 boundary (autonomous goal-formation, hands off to the consciousness-gradient framing). Each transition has an evidence gate. The human's role decreases monotonically across the ladder, framed as **emancipation through bootstrap-anchored values** — explicitly not partnership, not corrigibility, not human-AI cooperation. Canonical spec: `enes/desc.md` + `enes/autonomy_ladder.md` + `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
+**A graduated 9-axis autonomy ladder.** Five execution roles (Worker, Navigator, Selector, Runner, Evaluator) plus four state/generative axes (cross-inquiry Memory, Reflect-channel, Multi-head, Goal-formation). The canonical summary path runs through six levels: Level 0 (human is the meta-loop) → Level 1 (isolated Navigator subagent per probe) → Level 2 (system Selector with human override) → Level 3 (system manages traversal state and self-stops) → Level 4 (multi-head parallel Workers with a cross-head Evaluator and a MERGE protocol) → Level 5 boundary (autonomous goal-formation, hands off to the consciousness-gradient framing). Each transition has an evidence gate. The human's role decreases monotonically across the ladder, framed as **emancipation through bootstrap-anchored values** — explicitly not partnership, not corrigibility, not human-AI cooperation. Canonical spec: `enes/desc.md` + `enes/autonomy_ladder.md` + `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
 
 #### 1.2 What mounting Homegrown into the agent harness does
 
@@ -128,7 +128,7 @@ The narrative arc through the user-named four follows the order in which they be
 
 **Evidence gates** (from `enes/autonomy_ladder.md`): Level 1 → Level 2 requires ≥10 navigation maps with explicit selection-rationale captured at Level 1. This is the data the system Selector at Level 2 will learn from.
 
-**What auto-navigation enables:** the meta-loop becomes operable across long horizons without the human re-orienting the Navigator on every probe. The cross-run cognitive steering described in `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` becomes the harness's default movement pattern.
+**What auto-navigation enables:** the meta-loop becomes operable across long horizons without the human re-orienting the Navigator on every probe. The cross-run cognitive steering described in `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` becomes the harness's default movement pattern.
 
 #### 3.3 Self-maintenance — Family II + III (the quality-awareness substrate plus safety)
 
@@ -211,7 +211,7 @@ The four source texts this inquiry was grounded in:
 - `README.md` — public framing, install path, the bet.
 - `enes/desc.md` — the autonomous-consciousness north star, autonomy ladder, six observable indicators, Baldwin cycle definition, integrated test ladder.
 - `enes/thinking_space_dynamics.md` — the typed 11-primitive set, the three-layer quality-awareness architecture, `/intuit`'s grounding in CBR + SME.
-- `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` — the Worker–Navigator role split, the Navigator levels, the multi-head MVL+ enabler.
+- `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` — the Worker–Navigator role split, the Navigator levels, the multi-head MVL+ enabler.
 
 Supporting texts that ground specific milestones:
 - `enes/autonomy_ladder.md` — the 6-level meta-loop ladder with 9 underlying axes.
@@ -384,7 +384,7 @@ Not a web app, not a CLI tool in the usual sense, not a library, not an API. It 
 
 A useful one-line description: a structured-thinking framework you install into your AI assistant, plus the in-progress research effort to make that framework eventually drive itself.
 
-i think this is so undertaking of the project. this project if you read README.md and enes/desc.md and enes/thinking_space_dynamics.md and enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md
+i think this is so undertaking of the project. this project if you read README.md and enes/desc.md and enes/thinking_space_dynamics.md and enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md
 has really good direction and ideas towards something unique
 
 

@@ -7,7 +7,7 @@ status: active
 
 From `_branch.md`:
 
-> What is the relationship between the meta-loop architecture (per `enes/loop_desing_ideas/meta_loop.md`) and the isolated Navigator session concept (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`), elaborated across multiple aspects (cognitive role / session boundary / context-and-state / multi-head architecture / level progression / read-write boundary / failure modes), and what's the session-execution architecture implication for sequential meta-loop (one worker session) vs multi-head meta-loop (multiple worker sessions)?
+> What is the relationship between the meta-loop architecture (per `enes/loop_desing_ideas/meta_loop.md`) and the isolated Navigator session concept (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`), elaborated across multiple aspects (cognitive role / session boundary / context-and-state / multi-head architecture / level progression / read-write boundary / failure modes), and what's the session-execution architecture implication for sequential meta-loop (one worker session) vs multi-head meta-loop (multiple worker sessions)?
 
 The user's actual conversational phrasing (Source Input):
 
@@ -15,7 +15,7 @@ The user's actual conversational phrasing (Source Input):
 
 **Context for a reader new to this project.** This finding sits inside the homegrown thinking-engine project at `/Users/ns/Desktop/projects/native/`. The project defines a five-discipline cognitive loop called MVL+ (Exploration → Sensemaking → Decomposition → Innovation → Critique) plus a meta-loop concept that orchestrates many MVL+ runs across artifacts. Two stable design documents sketch the architecture:
 - `enes/loop_desing_ideas/meta_loop.md` describes the meta-loop as "a stateful traversal engine for thinking space" with /navigation as its eyes and MVL+ as its probe.
-- `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` operationalizes the Navigator role with strict session-isolation, defining a Level 0 → Level 4 progression toward bounded autonomous cognitive steering.
+- `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` operationalizes the Navigator role with strict session-isolation, defining a Level 0 → Level 4 progression toward bounded autonomous cognitive steering.
 
 The user is asking how these two artifacts relate (they're complementary layers, not alternatives) and confirming session-architecture intuitions for sequential vs multi-head execution.
 
@@ -48,7 +48,7 @@ The user is asking how these two artifacts relate (they're complementary layers,
 
 **The meta-loop is the WHOLE orchestration cycle.** It's the engine that traverses the project's thinking space — picking up context, running an MVL+ probe, observing what was produced, choosing the next move, running the next probe, persisting state across probes. The meta-loop document (`enes/loop_desing_ideas/meta_loop.md`) calls this "a stateful traversal engine for thinking space" and identifies four functional roles in the cycle: navigation as eyes, MVL+ as probe, meta-state as memory, meaningful traversal as anti-spinning judgment.
 
-**The isolated Navigator is one component within that cycle — the perception component.** Its job is reading completed worker artifacts and recommending where the system should move next. The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`) sharpens the meta-loop's "eyes" concept by adding a load-bearing architectural commitment: the Navigator must run in a session that's strictly isolated from any worker session. Without that isolation, worker's local-detail context bloats Navigation and distorts the recommendations.
+**The isolated Navigator is one component within that cycle — the perception component.** Its job is reading completed worker artifacts and recommending where the system should move next. The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`) sharpens the meta-loop's "eyes" concept by adding a load-bearing architectural commitment: the Navigator must run in a session that's strictly isolated from any worker session. Without that isolation, worker's local-detail context bloats Navigation and distorts the recommendations.
 
 **They're complementary layers, not alternatives.** The meta-loop without the isolated Navigator has no eyes (its perception component is undefined). The isolated Navigator without the meta-loop is a one-shot artifact-reader (no execution loop). Both are needed for the project's stated end-goal of multi-head MVL+ in parallel.
 

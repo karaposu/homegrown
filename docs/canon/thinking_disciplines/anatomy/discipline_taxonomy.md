@@ -20,18 +20,19 @@ The canonical location for the 4-category discipline taxonomy. Other files (`/MV
 
 ## Core
 
-**Pipeline-sequential disciplines.** The SIC-loop core. Every inquiry runs through these, in order.
+**Pipeline-sequential disciplines.** Worker-cycle disciplines that run within one inquiry. Different runner loops compose different subsets: `/MVL` runs S → I → C; `/MVLw` runs Su → S → D → I → C.
 
 **Members:**
 
 | Discipline | Role |
 |---|---|
+| `/surfacing` | Draw relevance-tagged items from a bounded territory into present attention (workspace + thin artifact; four relevance levels: core / sub / side / umbrella) |
 | `/sense-making` | Construct stable meaning through SV1→SV6 progression (anchor extraction + perspective checking + ambiguity collapse + degrees-of-freedom reduction) |
 | `/decompose` | Perceive coupling topology and partition into a question-tree (7-step process with dual-direction validation) |
 | `/innovate` | Systematic mechanism application for novelty (7 mechanisms: Lens Shifting, Combination, Inversion, Constraint Manipulation, Absence Recognition, Domain Transfer, Extrapolation) |
 | `/td-critique` | Adversarial testing across fitness dimensions (prosecution + defense + collision; SURVIVE / REFINE / KILL verdicts) |
 
-**Admission rule:** Core disciplines operate pipeline-sequentially — each runs at a specific SIC-loop step, consuming the prior step's output and producing input for the next. A candidate fails Core if it doesn't fit the sequence.
+**Admission rule:** Core disciplines operate pipeline-sequentially — each runs at a specific worker-loop step, consuming the prior step's output and producing input for the next. A candidate fails Core if it doesn't fit the sequence.
 
 ---
 
@@ -95,9 +96,13 @@ verdict: PASS | REFINE | FAIL
 
 **Members:**
 
-(none currently admitted)
+| Discipline | Role |
+|---|---|
+| `/routeman` | Forward-facing — enumerate possible next moves from current state toward a goal, type each by movement category (16 types across 3 Families: Progression / Re-orientation / Coordination), evaluate reachability, attach per-route adaptive guidance, without selecting which move to take |
 
-**Admission rule:** Boundary disciplines operate at cycle boundaries (between one SIC iteration and the next). Backward and forward cover the temporal space; a candidate for a third Boundary discipline would need a new temporal direction that isn't backward or forward (e.g., cross-cycle longitudinal) to be structurally justified.
+The backward-facing slot is currently unfilled. `/reflect` (spec preserved at `cognitive_harness/non-active/reflect/`) is the candidate spec for that slot — observe how a completed cycle performed at the process level — pending revival.
+
+**Admission rule:** Boundary disciplines operate at cycle boundaries (between one worker-loop iteration and the next). Backward and forward cover the temporal space; a candidate for a third Boundary discipline would need a new temporal direction that isn't backward or forward (e.g., cross-cycle longitudinal) to be structurally justified.
 
 ---
 
@@ -107,10 +112,13 @@ verdict: PASS | REFINE | FAIL
 
 **Members (non-exhaustive; organic):**
 
-- `/comprehend` — construct understanding from existing material (codebase, foreign concept)
-- `/elaborate` — expand concise content into richer form
-- `/wayfinding` — select one recommended direction from a set of options
-- Others added organically as specialized needs arise
+(none currently shipped as live disciplines)
+
+Specs that could become Situational disciplines if reactivated live in `cognitive_harness/non-active/`:
+
+- `/comprehend` (`cognitive_harness/non-active/comprehend/`) — construct tested predictive models of opaque artifacts
+
+The prior taxonomy listed `/elaborate` and `/wayfinding` as Situational members; neither exists as a spec in the source tree (live or non-active) and both are removed pending a concrete spec.
 
 **Admission rule:** Situational disciplines are specialized tools for specific situations. Admission is loose — if the discipline serves a specific operational purpose and has a coherent spec, it belongs here. Overlap with other disciplines is acceptable as long as the specialization is real.
 
@@ -195,14 +203,16 @@ This is an active dragnet for missing categories rather than passive waiting. Pa
 
 ## Primitive Profiles (summary table here; per-discipline sections NOT required)
 
-**Load-bearing primitive summary across Core disciplines:**
+**Load-bearing primitive summary across Core + Boundary disciplines:**
 
 | Discipline | Category | Load-bearing | Secondary | Deliberately absent |
 |---|---|---|---|---|
+| `/surfacing` | Core | Intuition-similarity, Context-framing, Working Memory, Salience | Inhibition, Attention-pointer, Focus-deep | Simulation, Motivation |
 | `/sense-making` | Core | Simulation, Working Memory, Intuition-similarity, Metacognition | Inhibition, Context-framing | Evaluation-as-ranking |
 | `/decompose` | Core | Working Memory, Attention-pointer, Simulation, Intuition-similarity | Metacognition, Inhibition | — |
 | `/innovate` | Core | **Simulation** (dominant), Intuition-similarity, Working Memory | Metacognition, Inhibition, Evaluation | Context-framing-as-narrowing |
 | `/td-critique` | Core | **Evaluation**, **Inhibition**, Metacognition, Simulation | Intuition-similarity | exploratory Attention-pointer |
+| `/routeman` | Boundary | Intuition-similarity, Simulation, Evaluation, Context-framing | Working Memory, Salience, Inhibition, Metacognition | Motivation |
 
 Each discipline has a DISTINCT profile — atom-level distinctness across the set. Disciplines are primitive compounds, not primitive instances. This table is the empirical argument for the conservation verdict from the `thinking_disciplines_audit` inquiry.
 
@@ -222,7 +232,7 @@ Earlier thinking proposed adding a `## Primitive Profile` section (~100 words) t
 
 The summary table carries an implicit version — when the typed primitive set (`docs/thinking_space_dynamics.md`) increments materially, this table is reviewed. Review outcome recorded inline (as a brief note after the table). Rubber-stamp kill criterion: if reviews become mechanical version-bumps without substantive updates, retire versioning of the table.
 
-**Last reviewed:** 2026-04-22 (primitive set version: 11 admitted primitives across Phase A+B; modulators deferred).
+**Last reviewed:** 2026-05-27 (source-layout sync — added `/surfacing` to Core, `/routeman` to Boundary, cleaned Situational members. Primitive set version unchanged: 11 admitted primitives across Phase A+B; modulators deferred).
 
 ---
 

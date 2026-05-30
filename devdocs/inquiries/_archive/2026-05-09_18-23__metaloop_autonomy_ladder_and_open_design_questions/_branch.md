@@ -8,7 +8,7 @@ How should the meta-loop be designed across an autonomy ladder (Level 0 = human 
 
 A coherent design proposal that the user can use as the operational reference for meta-loop work, containing:
 
-1. A **meta-loop autonomy ladder** (L0 → L_N) where each level specifies who plays each role (Worker / Navigator / Selector / Runner / Evaluator) — distinct from the Navigator-only ladder already in `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`. The user has anchored L0 ("human as meta-loop, navigates AND runs each normal loop") and L1 ("human as meta-loop, navigation enhanced, human only runs loops"); the inquiry must propose L2, L3, and the terminal level with explicit role-allocation deltas.
+1. A **meta-loop autonomy ladder** (L0 → L_N) where each level specifies who plays each role (Worker / Navigator / Selector / Runner / Evaluator) — distinct from the Navigator-only ladder already in `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`. The user has anchored L0 ("human as meta-loop, navigates AND runs each normal loop") and L1 ("human as meta-loop, navigation enhanced, human only runs loops"); the inquiry must propose L2, L3, and the terminal level with explicit role-allocation deltas.
 
 2. Answers (or principled design options with verdicts) for the three unresolved parameters:
    - **Loop count**: how many MVL+ probes constitute one meta-loop session — fixed budget, convergence-gated, or unbounded?

@@ -4,7 +4,7 @@
 
 Five meta-aspects:
 
-- **Subject** — the project's accumulated navigation-related work: ~60 inquiry folders in `devdocs/inquiries/` whose names contain `navigation` / `navigate` / `wayfind` / `mapping`, plus the runtime artifacts at `cognitive_harness/navigation/` (SKILL.md + references/navigation.md + warmup/), the stable-view docs at `docs/nav.md` and `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`, and any navigation-related material in protocols (`multi_resolution_navigation.md`, `navigation_context_intake.md`).
+- **Subject** — the project's accumulated navigation-related work: ~60 inquiry folders in `devdocs/inquiries/` whose names contain `navigation` / `navigate` / `wayfind` / `mapping`, plus the runtime artifacts at `cognitive_harness/navigation/` (SKILL.md + references/navigation.md + warmup/), the stable-view docs at `docs/nav.md` and `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`, and any navigation-related material in protocols (`multi_resolution_navigation.md`, `navigation_context_intake.md`).
 - **Action** — survey + synthesize (produce a historical/archaeological roll-up; not a redesign).
 - **Level** — cross-inquiry (spans inquiry folders, protocols, runtime artifacts, and stable-view docs).
 - **Observation targets** — multiple, preserved separately because the user's input has multiple clauses joined by "and":

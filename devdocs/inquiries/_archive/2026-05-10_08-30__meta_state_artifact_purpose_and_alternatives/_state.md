@@ -24,7 +24,7 @@ COMPLETE
 
 ## Relationships
 - BUILDS-ON: enes/loop_desing_ideas/meta_loop.md (meta-loop spec; L0-L4 level progression where _meta_state.md is introduced at L1)
-- BUILDS-ON: enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md (Navigator session concept)
+- BUILDS-ON: enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md (Navigator session concept)
 - RELATED: devdocs/inquiries/2026-05-10_01-30__metaloop_navigator_session_relationship/finding.md (recent meta-loop ↔ Navigator mapping)
 
 ## History

@@ -95,7 +95,7 @@ Each subsection is a structurally distinct architectural commitment. Items at D3
 *Confidence:* confirmed (ladder is canonically defined with PLACEHOLDER thresholds explicitly marked).
 
 **B7. Cross-run cognitive steering via isolated Navigator session.**
-*Source:* `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
+*Source:* `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
 *Surface form:* role separation between *Worker* (solves the current inquiry) and *Navigator* (reads completed artifacts and recommends next movement). The Navigator is the coordination layer that makes **multihead MVL+** plausible — without a Navigator, multiple MVL+ heads are "just parallel work; with a Navigator, they become coordinated probes moving through a shared thinking space." Navigator levels: Level 0 (human-guided) → Level 1 (protocol-first observer, manually invoked) → Level 1.5 (latest-aware) → Level 2 (persistent isolated) → Level 3 (graph-native) → Level 4 (constrained autonomous cognitive steering). Navigator Warming is a separate concern from Navigation itself (warming → navigation → selection → execution).
 *Confidence:* confirmed.
 

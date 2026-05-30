@@ -75,16 +75,20 @@ mkdir -p archived_skills/<sha>-hg
 git archive <sha> homegrown | tar -x --strip-components=1 -C archived_skills/<sha>-hg
 ```
 
-### 2. Rename the 11 skill folders
+### 2. Rename the install-relevant skill folders
+
+The current active layout has 6 disciplines + 2 runners = 8 install-relevant folders:
 
 ```bash
 cd archived_skills/<sha>-hg
-for s in sense-making innovate td-critique explore decompose comprehend reflect navigation MVL "MVL+" meta-loop; do
+for s in surfacing sense-making decompose innovate td-critique routeman MVL MVLw; do
   mv "$s" "<sha>-$s"
 done
 ```
 
-`protocols/`, `contracts/`, `_archive/` stay as-is.
+`protocols/`, `cognitive_fixes/`, and `non-active/` stay as-is — they aren't installed as slash commands, so they don't need renaming.
+
+**For snapshots of older commits**, the install set was different. For example, the bf4ae1f-era snapshot's install set was `sense-making innovate td-critique explore decompose comprehend reflect navigation MVL "MVL+" meta-loop` (11 folders) — it predated `surfacing`, `routeman`, and `MVLw`, and the disciplines now in `non-active/` (`explore`, `comprehend`, `reflect`, `navigation`, `meta-loop`) were still live. Adjust the rename loop to match the commit's actual install set — the safest way to discover it is to read that commit's `install_for_claude.sh`.
 
 Steps 3–5 below run from inside `archived_skills/<sha>-hg/`.
 
@@ -97,41 +101,50 @@ for d in <sha>-*/; do
 done
 ```
 
-Works for both frontmatter styles (with or without `---` delimiters); MVL/MVL+ use a bare `name:` first line, the other 9 use `---`-wrapped frontmatter.
+Works for both frontmatter styles (with or without `---` delimiters). In the current active layout, `MVL` uses a bare `name:` first line; the other 7 (`MVLw`, `surfacing`, `sense-making`, `decompose`, `innovate`, `td-critique`, `routeman`) use `---`-wrapped frontmatter. In older commits the split was different (bf4ae1f had `MVL` and `MVL+` bare, the other 9 wrapped).
 
-### 4. Rewrite cross-references in the 3 runner SKILLs
+### 4. Rewrite cross-references in the runner SKILLs
+
+For a current-layout snapshot (2 runners: `MVL`, `MVLw`):
 
 ```bash
-for f in <sha>-MVL/SKILL.md "<sha>-MVL+/SKILL.md" <sha>-meta-loop/SKILL.md; do
+for f in <sha>-MVL/SKILL.md <sha>-MVLw/SKILL.md; do
   sed -i '' \
+    -e 's|/surfacing|/<sha>-surfacing|g' \
     -e 's|/sense-making|/<sha>-sense-making|g' \
-    -e 's|/td-critique|/<sha>-td-critique|g' \
-    -e 's|/comprehend|/<sha>-comprehend|g' \
     -e 's|/decompose|/<sha>-decompose|g' \
-    -e 's|/meta-loop|/<sha>-meta-loop|g' \
-    -e 's|/navigation|/<sha>-navigation|g' \
-    -e 's|/navigate|/<sha>-navigate|g' \
     -e 's|/innovate|/<sha>-innovate|g' \
-    -e 's|/explore|/<sha>-explore|g' \
-    -e 's|/reflect|/<sha>-reflect|g' \
+    -e 's|/td-critique|/<sha>-td-critique|g' \
+    -e 's|/routeman|/<sha>-routeman|g' \
     -e 's|/MVL|/<sha>-MVL|g' \
     -e 's|/mvl|/<sha>-mvl|g' \
+    -e 's|`surfacing`|`<sha>-surfacing`|g' \
     -e 's|`sense-making`|`<sha>-sense-making`|g' \
+    -e 's|`decompose`|`<sha>-decompose`|g' \
     -e 's|`innovate`|`<sha>-innovate`|g' \
     -e 's|`td-critique`|`<sha>-td-critique`|g' \
-    -e 's|`explore`|`<sha>-explore`|g' \
-    -e 's|`decompose`|`<sha>-decompose`|g' \
-    -e 's|cognitive_harness/MVL+/|cognitive_harness/<sha>-MVL+/|g' \
-    -e 's|cognitive_harness/navigation/|cognitive_harness/<sha>-navigation/|g' \
+    -e 's|`routeman`|`<sha>-routeman`|g' \
+    -e 's|cognitive_harness/MVL/|cognitive_harness/<sha>-MVL/|g' \
+    -e 's|cognitive_harness/MVLw/|cognitive_harness/<sha>-MVLw/|g' \
     "$f"
 done
 ```
 
-### 5. Rewrite the warmup path in navigation SKILL
+The `/MVL` substitution implicitly handles `/MVLw` too (same trailing-char trick the original bf4ae1f recipe used for `/MVL+`). Same for `/mvl` if it appears.
+
+For snapshots of older commits with a different runner set (e.g., bf4ae1f included `MVL+` and `meta-loop` as runners), include those runner files in the loop and substitute on their discipline-name references (e.g., `/comprehend`, `/explore`, `/reflect`, `/navigation`/`/navigate`, `/meta-loop`, plus the bf4ae1f path references `cognitive_harness/MVL+/`, `cognitive_harness/navigation/`).
+
+### 5. (Conditional) Rewrite warmup paths
+
+The current active disciplines (`surfacing`, `sense-making`, `decompose`, `innovate`, `td-critique`, `routeman`) and runners (`MVL`, `MVLw`) do not have `warmup/` subdirectories — this step is a no-op for snapshots of recent commits.
+
+For snapshots of older commits where a discipline carried a `warmup/` subfolder with filesystem-relative paths embedded in its SKILL.md (notably the bf4ae1f-era `navigation`):
 
 ```bash
 sed -i '' 's|cognitive_harness/navigation/warmup/|cognitive_harness/<sha>-navigation/warmup/|g' <sha>-navigation/SKILL.md
 ```
+
+Generalize the pattern to whichever discipline had the warmup folder at the snapshot's commit.
 
 ### 6. Write the install script
 
@@ -154,15 +167,17 @@ Run from project root:
 # (a) current homegrown untouched
 git status --short -- cognitive_harness/                                            # expect empty
 
-# (b) all SKILL.md frontmatters prefixed
-grep -h '^name:' archived_skills/<sha>-hg/<sha>-*/SKILL.md | sort           # expect 11 lines, all <sha>-prefixed
+# (b) all SKILL.md frontmatters prefixed (current layout: 8 skills — 6 disciplines + 2 runners)
+grep -h '^name:' archived_skills/<sha>-hg/<sha>-*/SKILL.md | sort           # expect 8 lines, all <sha>-prefixed
 
 # (c) no unprefixed slash refs survived in runners
-grep -rnE '/(MVL|sense-making|innovate|td-critique|explore|decompose|comprehend|reflect|navigation|navigate|meta-loop)' \
+grep -rnE '/(MVL|MVLw|mvl|surfacing|sense-making|decompose|innovate|td-critique|routeman)' \
   archived_skills/<sha>-hg/<sha>-MVL/SKILL.md \
-  "archived_skills/<sha>-hg/<sha>-MVL+/SKILL.md" \
-  archived_skills/<sha>-hg/<sha>-meta-loop/SKILL.md \
+  archived_skills/<sha>-hg/<sha>-MVLw/SKILL.md \
   | grep -v '<sha>-'                                                         # expect no output
+
+# For a bf4ae1f-era snapshot, substitute the bf4ae1f discipline names in the regex
+# and add the bf4ae1f runner files (<sha>-MVL+/SKILL.md, <sha>-meta-loop/SKILL.md).
 
 # (d) dry-run install-time sed on a runner
 sed -e "s|cognitive_harness/protocols/|${HOME}/.claude/skills/<sha>-protocols/|g; s|cognitive_harness/<sha>-|${HOME}/.claude/skills/<sha>-|g" \
@@ -187,12 +202,18 @@ rm -rf ~/.claude/skills/<sha>-* ~/.claude/skills/<sha>-protocols
 | Where | Pattern | Why it matters |
 |---|---|---|
 | Every SKILL.md frontmatter | `name: X` | Slash-command identity Claude Code registers |
-| MVL/MVL+ skill table | `` `<discipline>` `` (backticked) | The runners read these to dispatch via Skill tool |
+| Runner skill tables (MVL, MVLw) | `` `<discipline>` `` (backticked) | The runners read these to dispatch via Skill tool |
 | Runner instruction prose | `/X` slash invocations | Self-references and recommendations to the user |
-| meta-loop SKILL | `cognitive_harness/MVL+/SKILL.md`, `cognitive_harness/navigation/SKILL.md` | meta-loop loads these by path |
-| navigation SKILL (~line 42) | `cognitive_harness/navigation/warmup/navigator-refresh.md` | navigation loads this by path on `refresh_needed` |
+| Runner SKILLs that load other skills by path | e.g., `cognitive_harness/MVLw/SKILL.md`, `cognitive_harness/protocols/*` | Runners cross-reference each other and the protocols folder by path |
 | All runner SKILLs (rewritten at install time) | `cognitive_harness/protocols/*` | Resolves to the renamed protocols install dir |
 | All SKILLs (rewritten at install time) | `cognitive_harness/<sha>-*` | Resolves cross-skill paths to absolute install dirs |
+
+**Historical bf4ae1f-era patterns** (not present in current layout — add to the rewrite list when snapshotting that era):
+
+| Where | Pattern | Why it matters |
+|---|---|---|
+| meta-loop SKILL | `cognitive_harness/MVL+/SKILL.md`, `cognitive_harness/navigation/SKILL.md` | meta-loop loaded these by path |
+| navigation SKILL (~line 42) | `cognitive_harness/navigation/warmup/navigator-refresh.md` | navigation loaded this by path on `refresh_needed` |
 
 What does NOT need rewriting (and why):
 

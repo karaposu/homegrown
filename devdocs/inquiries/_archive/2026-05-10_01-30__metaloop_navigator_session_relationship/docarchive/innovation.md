@@ -33,7 +33,7 @@ Per-piece concrete content proposals at depth. 7 mechanisms applied across piece
 
 #### Q1-A — Conversational compression (~3 paragraphs)
 
-> The relationship is **complementary layers, not alternatives.** The meta-loop is the WHOLE orchestration cycle (perceive → select → execute → loop across many probes); the isolated Navigator is the PERCEPTION COMPONENT of that cycle, with strict session-isolation from worker sessions as the load-bearing architectural commitment. The meta-loop document (`enes/loop_desing_ideas/meta_loop.md`) calls Navigation "the meta-loop's eyes." The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`) operationalizes how those eyes work — they need their own session, separate from any worker session, so worker's local-detail context doesn't distort Navigation.
+> The relationship is **complementary layers, not alternatives.** The meta-loop is the WHOLE orchestration cycle (perceive → select → execute → loop across many probes); the isolated Navigator is the PERCEPTION COMPONENT of that cycle, with strict session-isolation from worker sessions as the load-bearing architectural commitment. The meta-loop document (`enes/loop_desing_ideas/meta_loop.md`) calls Navigation "the meta-loop's eyes." The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`) operationalizes how those eyes work — they need their own session, separate from any worker session, so worker's local-detail context doesn't distort Navigation.
 >
 > Your second intuition is approximately correct, with two precisions. **Sequential meta-loop CAN run inside one Claude conversation** orchestrating worker probes one after another — that's the natural shape at Level 1. The worker session arrangement has two valid options the source documents don't strictly resolve: (Option A) single worker session across all probes (cheaper, but worker context accumulates and may bloat); (Option B) fresh worker session per probe, reading from saved artifacts (cleaner; aligns with the project's "state lives in files" principle). **Multi-head meta-loop DOES need multiple worker sessions** — N parallel worker sessions for N heads, by definition (parallel execution = separate streams). Plus one Navigator session reading across all heads. Plus one runner session orchestrating. So sequential is ~3 session roles (hostable in 1 Claude conversation); multi-head is N+2 concurrent sessions.
 >
@@ -50,7 +50,7 @@ Per-piece concrete content proposals at depth. 7 mechanisms applied across piece
 >
 > - **Complementary layers, not alternatives.** Meta-loop is the WHOLE orchestration cycle (perceive → select → execute → loop). Isolated Navigator is its PERCEPTION COMPONENT, operationalized with session-isolation.
 >
-> - **Source documents:** meta-loop concept lives in `enes/loop_desing_ideas/meta_loop.md` ("Navigation is the meta-loop's eyes"); session-isolation operationalization lives in `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
+> - **Source documents:** meta-loop concept lives in `enes/loop_desing_ideas/meta_loop.md` ("Navigation is the meta-loop's eyes"); session-isolation operationalization lives in `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
 >
 > - **Load-bearing invariant:** Navigator session is ALWAYS isolated from worker sessions, at Level 1 and above. Not a multi-head-only concern.
 >
@@ -125,7 +125,7 @@ The meta-loop document frames the cycle in terms of multiple cognitive operation
 | **Meta-loop runner** | "Run the chosen probe; persist what happened" | `_meta_state.md` updates |
 | **Evaluator** (L4+) | "Which branch produced better movement?" | comparison record |
 
-The meta-loop document earlier said "Navigation is the meta-loop's eyes, not its will" (`enes/loop_desing_ideas/meta_loop.md` §5). The isolated-Navigator document operationalizes this: the eyes ARE the Navigator, and the eyes need their own session to function correctly (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` §"What The Navigator Is").
+The meta-loop document earlier said "Navigation is the meta-loop's eyes, not its will" (`enes/loop_desing_ideas/meta_loop.md` §5). The isolated-Navigator document operationalizes this: the eyes ARE the Navigator, and the eyes need their own session to function correctly (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` §"What The Navigator Is").
 
 **Relationship:** the meta-loop names the roles; the isolated-Navigator document operationalizes the Navigator role specifically with session-isolation.
 
@@ -146,7 +146,7 @@ The isolated-Navigator document is the source of the explicit three-session arch
 Different context shapes serve different cognitive functions. This is the rationale for session-isolation:
 
 - **Worker context** is dense and local — full E/S/D/I/C in working memory, all the side-paths and intermediate decisions. This is the right context shape for solving the local inquiry well, but it bloats Navigation if Navigator inherits it.
-- **Navigator context** is structured-global — codebase orientation, fundamentals orientation, long-run trajectory, recent trajectory, target inquiry artifact. The isolated-Navigator document calls this "Navigator Warming" (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` §"Navigator Warming") and distinguishes it from Navigation itself.
+- **Navigator context** is structured-global — codebase orientation, fundamentals orientation, long-run trajectory, recent trajectory, target inquiry artifact. The isolated-Navigator document calls this "Navigator Warming" (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` §"Navigator Warming") and distinguishes it from Navigation itself.
 - **Runner context** is minimal — just the orchestration state needed to dispatch the next probe. The meta-loop document's `_meta_state.md` shape (`meta_loop.md` §6 "First Buildable Form") sketches this.
 
 **State persistence is file-based:** all sessions coordinate through artifacts (`_branch.md`, `_state.md`, `finding.md`, `navigation_observer.md`, `_meta_state.md`). No shared process memory. This is consistent with the project's "state lives in files" principle.
@@ -167,7 +167,7 @@ This is where the isolated Navigator becomes load-bearing per the project's stat
 > Which should be stopped because it's spinning?
 > Which branch should become the next main line?
 
-The isolated-Navigator document is explicit: "This is one of the strongest reasons to isolate Navigation. Multihead loops need a cross-head observer; otherwise the system has many probes but no shared sense of direction" (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` §"Why This Enables Multihead MVL+").
+The isolated-Navigator document is explicit: "This is one of the strongest reasons to isolate Navigation. Multihead loops need a cross-head observer; otherwise the system has many probes but no shared sense of direction" (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` §"Why This Enables Multihead MVL+").
 
 **Relationship:** meta-loop names multi-head as the end-goal architecture but defers it; isolated-Navigator IS the architecture that makes multi-head tractable.
 
@@ -199,7 +199,7 @@ Files as the synchronization substrate; per-component read/write rules:
 | **Meta-loop runner** | `_meta_state.md`, `navigation_observer.md`, selector decision | `_meta_state.md` updates; dispatches next probe |
 | **Selector** (separate role at L4+) | `navigation_observer.md` + policy/budget/risk-class | selection decision (commit) |
 
-**Relationship:** meta-loop names the artifacts; isolated-Navigator specifies the read-set per session role explicitly (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` §"What The Navigator Reads" + §"What The Navigator Writes").
+**Relationship:** meta-loop names the artifacts; isolated-Navigator specifies the read-set per session role explicitly (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` §"What The Navigator Reads" + §"What The Navigator Writes").
 
 ### Aspect 7 — Failure modes
 
@@ -214,7 +214,7 @@ Each session role has its own failure modes; cross-session failures emerge from 
 | **Multi-head** | *Branch-explosion* — heads multiply; outputs unconsolidated | Selector policy; explicit budget; merge logic at runner level |
 | **Cross-component** | *Context bleed* — worker context leaking into Navigator session via shared session | Session-isolation invariant — Navigator must be a separate session |
 
-**Critical insight:** session-isolation between Worker and Navigator is itself a failure-mode countermeasure. It's not just architectural elegance; it's specifically there to prevent worker's local-detail bloat from distorting Navigation (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` §"The Main Distinction").
+**Critical insight:** session-isolation between Worker and Navigator is itself a failure-mode countermeasure. It's not just architectural elegance; it's specifically there to prevent worker's local-detail bloat from distorting Navigation (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` §"The Main Distinction").
 
 **Relationship:** meta-loop hand-waves failure modes; isolated-Navigator names the Navigation-specific ones explicitly.
 

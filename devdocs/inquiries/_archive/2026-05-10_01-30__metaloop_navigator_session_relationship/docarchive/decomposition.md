@@ -98,7 +98,7 @@ Within Cluster C (session-architecture diagram):
 
 Within Cluster D (verdict artifact):
 - "Artifact shape (finding.md sections + structure)" → atom; D
-- "Citations to source documents (`enes/loop_desing_ideas/meta_loop.md` + `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`)" → atom; D
+- "Citations to source documents (`enes/loop_desing_ideas/meta_loop.md` + `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`)" → atom; D
 - "Navigator-always-isolated invariant placement (where in finding.md)" → atom; D
 - "User's conversational voice respected throughout" → atom; D
 
@@ -167,7 +167,7 @@ Atoms cluster cleanly with Step 2 boundaries. Each atom belongs unambiguously to
 - [ ] Standard CONCLUDE template: Question / Finding Summary / Finding / Reasoning / Open Questions / Source Input.
 - [ ] Finding Summary contains the direct answers (compressed Q1) as bullet points.
 - [ ] Finding body contains the per-aspect elaboration (Q2) + session diagrams (Q3) interleaved naturally.
-- [ ] Source documents cited explicitly with paths (`enes/loop_desing_ideas/meta_loop.md`; `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`).
+- [ ] Source documents cited explicitly with paths (`enes/loop_desing_ideas/meta_loop.md`; `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`).
 - [ ] Navigator-always-isolated invariant placed prominently (Finding Summary AND Finding body, not buried).
 - [ ] Option A vs Option B framed as design choice in both Finding Summary and Finding body.
 - [ ] User's conversational voice maintained — appropriate density for an architectural-elaboration question (~250-400 lines; substantive but not exhaustive).

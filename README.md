@@ -205,7 +205,7 @@ The scripts are idempotent — re-run them to update.
 - **`README.md`** — the project's original public framing (the bet, the two halves of ignition + loop, per-command reference).
 - **`docs/desc.md`** — the autonomous-consciousness north star: autonomy ladder, six observable indicators, Baldwin cycle, integrated test ladder.
 - **`docs/thinking_space_dynamics.md`** — the typed 11-primitive set, the three-layer quality-awareness architecture, `/intuit`'s grounding in CBR + SME.
-- **`docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`** — the Worker–Navigator role split, the Navigator levels, the multi-head MVL+ enabler.
+- **`docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`** — the Worker–Navigator role split, the Navigator levels, the multi-head MVL+ enabler.
 - **`docs/autonomy_ladder.md`** — the 6-level meta-loop ladder with 9 underlying axes, evidence gates, per-level failure modes.
 - **`docs/materialization_lifecycle.md`** — the 8-phase materialization lifecycle.
 - **`docs/regression/desc.md`** — the regression-symptom catalog (the load-bearing safety substrate).

@@ -5,7 +5,7 @@
 - **Mode:** Artifact (canonical sources are concrete) + light Possibility (categorizing items by strength).
 - **Entry:** Signal-first.
 
-**Anti-bloat constraint applied:** the corpus has ~25 navigation-related inquiry folders (empirically confirms user's "got bloated really quick" remark). This exploration uses the **canonical sources only** (`/Users/ns/.claude/skills/navigation/references/navigation.md`; `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`; `enes/loop_desing_ideas/meta_loop.md`; `enes/discipline_taxonomy.md`); it does NOT enumerate items by re-reading 25 inquiries (that would replicate the bloat). The 25 inquiries are evidence-of-bloat; the canonical files are evidence-of-claim.
+**Anti-bloat constraint applied:** the corpus has ~25 navigation-related inquiry folders (empirically confirms user's "got bloated really quick" remark). This exploration uses the **canonical sources only** (`/Users/ns/.claude/skills/navigation/references/navigation.md`; `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`; `enes/loop_desing_ideas/meta_loop.md`; `enes/discipline_taxonomy.md`); it does NOT enumerate items by re-reading 25 inquiries (that would replicate the bloat). The 25 inquiries are evidence-of-bloat; the canonical files are evidence-of-claim.
 
 ---
 

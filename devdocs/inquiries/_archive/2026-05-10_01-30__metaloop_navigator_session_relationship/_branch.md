@@ -2,7 +2,7 @@
 
 ## Question
 
-What is the relationship between the meta-loop architecture (per `enes/loop_desing_ideas/meta_loop.md`) and the isolated Navigator session concept (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`), elaborated across multiple aspects (cognitive role / session boundary / context-and-state / multi-head architecture / level progression / read-write boundary / failure modes), and what's the session-execution architecture implication for sequential meta-loop (one worker session) vs multi-head meta-loop (multiple worker sessions)?
+What is the relationship between the meta-loop architecture (per `enes/loop_desing_ideas/meta_loop.md`) and the isolated Navigator session concept (per `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`), elaborated across multiple aspects (cognitive role / session boundary / context-and-state / multi-head architecture / level progression / read-write boundary / failure modes), and what's the session-execution architecture implication for sequential meta-loop (one worker session) vs multi-head meta-loop (multiple worker sessions)?
 
 ## Goal
 
@@ -32,7 +32,7 @@ Question covers goal. Question explicitly enumerates aspects (cognitive role / s
 - BUILDS-ON: `devdocs/inquiries/2026-05-09_15-15__decomposition_pipeline_position/finding.md` (mapped meta-loop architecture + /navigation as eyes)
 - BUILDS-ON: `devdocs/inquiries/2026-05-09_23-15__top_3_capability_aims/finding.md` (sequential→multi-head meta-loop ranked #2; established prerequisite chain)
 - RELATED: `enes/loop_desing_ideas/meta_loop.md` (meta-loop concept; one source document for this inquiry)
-- RELATED: `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` (isolated Navigator concept; the other source document)
+- RELATED: `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (isolated Navigator concept; the other source document)
 - RELATED: source finding `devdocs/inquiries/2026-04-28_10-18__navigation_observer_session_architecture/finding.md` (the source inquiry for the isolated-Navigator concept)
 
 ## Source Input

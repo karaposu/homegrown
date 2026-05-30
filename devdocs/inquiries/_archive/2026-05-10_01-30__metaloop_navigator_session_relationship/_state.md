@@ -26,7 +26,7 @@ COMPLETE
 - BUILDS-ON: devdocs/inquiries/2026-05-09_15-15__decomposition_pipeline_position/finding.md (meta-loop architecture map)
 - BUILDS-ON: devdocs/inquiries/2026-05-09_23-15__top_3_capability_aims/finding.md (sequential→multi-head meta-loop ranked #2)
 - RELATED: enes/loop_desing_ideas/meta_loop.md (source document)
-- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md (source document)
+- RELATED: enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md (source document)
 
 ## History
 - 2026-05-10 01:30: Created. Question: relationship between meta-loop and isolated Navigator across aspects + session-execution implications for sequential vs multi-head. Two source documents stable; this inquiry articulates the relationship.

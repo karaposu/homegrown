@@ -43,8 +43,8 @@ This inquiry consumed commitments across 55 navigation-related findings + runtim
 ### Group B — Isolated Navigator session architecture (April 28; May 10)
 
 - **Commitment:** Navigation Observer is artifact-first, session-isolated, protocol-first at v1, persistent at v2+, with a 4-level autonomy ladder.
-- **Source:** `devdocs/inquiries/_archive/2026-04-28_10-18__navigation_observer_session_architecture/finding.md` + `devdocs/inquiries/2026-05-10_01-30__metaloop_navigator_session_relationship/finding.md` + `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
-- **Re-test status:** RE-TESTED. The commitment survives in `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`; the warmup architecture (`cognitive_harness/navigation/warmup/` with 5 files) is the v1 operational form.
+- **Source:** `devdocs/inquiries/_archive/2026-04-28_10-18__navigation_observer_session_architecture/finding.md` + `devdocs/inquiries/2026-05-10_01-30__metaloop_navigator_session_relationship/finding.md` + `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
+- **Re-test status:** RE-TESTED. The commitment survives in `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`; the warmup architecture (`cognitive_harness/navigation/warmup/` with 5 files) is the v1 operational form.
 - **Evidence:** finding 17, 18, 11 (Surfacing).
 
 ### Group C — Warmup + context intake (May 2–4)
@@ -112,7 +112,7 @@ This inquiry consumed commitments across 55 navigation-related findings + runtim
 
 The project's navigation discipline lives at `cognitive_harness/navigation/`. The current spec — `references/navigation.md` plus the SKILL.md frontmatter plus the `warmup/` folder of 5 files — commits navigation to enumeration of typed next directions, organized via a 16-type taxonomy (6 content-directed + 5 process-directed + 5 context-directed) and emitted as route-cards with 12 per-route fields. The Adaptive Guidance layer (4 modes: none / compact / full / expand-on-selection) is the discipline's distinguishing feature — prescriptive content that other disciplines' annotation layers don't produce.
 
-Two stable docs orient new readers: `docs/nav.md` (one-page concept-map framing) and `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` (4-level autonomy ladder for the isolated-Navigator architecture). One protocol — `cognitive_harness/protocols/multi_resolution_navigation.md` — handles staged / depth-parameterized navigation runs.
+Two stable docs orient new readers: `docs/nav.md` (one-page concept-map framing) and `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (4-level autonomy ladder for the isolated-Navigator architecture). One protocol — `cognitive_harness/protocols/multi_resolution_navigation.md` — handles staged / depth-parameterized navigation runs.
 
 The most recent settlements are: (a) navigation stays a separate discipline (May 14 verification verdict); (b) mapping is a purposive structure-preserving correspondence with a 4+8-axis paradigm framework, with the prior 7-kinds typology CORRECTED (May 13 12-45 finding); (c) the cross-discipline diagnostic chain produced a `/innovate` refinement (May 18 finding 60). Three threads remain open — the `/navigate` rename, the R3 north-star vision, and the mapping-spec-side action — and are named in §"Open threads" below.
 
@@ -126,7 +126,7 @@ The next morning's `2026-04-28_08-39__navigation_protocol_or_discipline` (a REFI
 
 `2026-04-28_09-19__navigation_depth_and_answer_production` and `2026-04-28_09-42__advanced_navigation_and_thinking_space_ui` explored depth + UI aspirations on the same day; both are scanned-but-shallow in the corpus (the UI vision in particular is aspirational, not implemented).
 
-The Phase I capstone is `2026-04-28_10-18__navigation_observer_session_architecture`: a separate Navigator session is the right shape for v1+ navigation; the better name is *Observer*, not *manager*; in v1 the Observer observes, maps, and recommends but does not autonomously launch the next MVL run. The Observer is artifact-first (reads `_branch.md`, `_state.md`, `finding.md`, archived discipline outputs) rather than chat-transcript-based. The first implementation should be protocol-first — produce a `navigation_observer.md` report before building a long-lived separate AI session. This Phase I architectural commitment is what later becomes the 4-level autonomy ladder in `docs/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`.
+The Phase I capstone is `2026-04-28_10-18__navigation_observer_session_architecture`: a separate Navigator session is the right shape for v1+ navigation; the better name is *Observer*, not *manager*; in v1 the Observer observes, maps, and recommends but does not autonomously launch the next MVL run. The Observer is artifact-first (reads `_branch.md`, `_state.md`, `finding.md`, archived discipline outputs) rather than chat-transcript-based. The first implementation should be protocol-first — produce a `navigation_observer.md` report before building a long-lived separate AI session. This Phase I architectural commitment is what later becomes the 4-level autonomy ladder in `docs/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`.
 
 ### Phase II — Machinery buildout, and the stuck point (May 2–7)
 

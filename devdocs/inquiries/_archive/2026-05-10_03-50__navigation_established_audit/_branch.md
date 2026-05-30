@@ -36,7 +36,7 @@ Question covers goal. Question explicitly asks for a list of established items +
 - BUILDS-ON: `devdocs/inquiries/2026-05-09_23-15__top_3_capability_aims/finding.md` (sequential→multi-head meta-loop ranked #2; navigation prerequisite implicit)
 - BUILDS-ON: `devdocs/inquiries/2026-05-09_15-15__decomposition_pipeline_position/finding.md` (mapped /navigation as Boundary discipline)
 - RELATED: `/Users/ns/.claude/skills/navigation/references/navigation.md` (the discipline spec)
-- RELATED: `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` (isolated Navigator concept)
+- RELATED: `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (isolated Navigator concept)
 - RELATED: `enes/loop_desing_ideas/meta_loop.md` (meta-loop ↔ navigation framing)
 - RELATED: `enes/discipline_taxonomy.md` (Boundary classification)
 - RELATED: source finding `devdocs/inquiries/2026-04-28_10-18__navigation_observer_session_architecture/finding.md` (origin of isolated-Navigator concept)

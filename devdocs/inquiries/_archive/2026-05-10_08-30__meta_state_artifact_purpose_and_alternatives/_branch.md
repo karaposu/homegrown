@@ -21,7 +21,7 @@ Question covers goal. The question explicitly asks for purpose + alternatives; t
 ## Relationships
 
 - BUILDS-ON: `enes/loop_desing_ideas/meta_loop.md` (the meta-loop spec; the L0-L4 level progression where `_meta_state.md` is introduced at L1)
-- BUILDS-ON: `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md` (Navigator session concept; related to but distinct from `_meta_state.md`)
+- BUILDS-ON: `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (Navigator session concept; related to but distinct from `_meta_state.md`)
 - RELATED: `devdocs/inquiries/2026-05-10_01-30__metaloop_navigator_session_relationship/finding.md` (the recent meta-loop ↔ Navigator mapping; should be consulted)
 - RELATED: per-inquiry `_state.md` and `finding.md` Relationships sections (existing artifacts that may already cover some `_meta_state.md` functions)
 

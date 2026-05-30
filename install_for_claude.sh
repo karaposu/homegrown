@@ -24,6 +24,7 @@ skills_with_refs=(
   "surfacing:surfacing.md"
   "decompose:decompose.md"
   "navigation:navigation.md"
+  "routelister:routelister.md"
 )
 
 skills_no_refs=(
@@ -80,7 +81,7 @@ echo "Done. Installed $skill_count skills + $proto_count protocols to $SKILLS_DI
 echo ""
 echo "Skills (invoke as /<skill-name>):"
 echo "  /MVL, /MVLw, /sense-making, /innovate, /td-critique,"
-echo "  /surfacing, /decompose, /navigation"
+echo "  /surfacing, /decompose, /navigation, /routelister"
 echo ""
 echo "Protocols (loaded by skills, not user-invoked):"
 for proto in "${protocols[@]}"; do

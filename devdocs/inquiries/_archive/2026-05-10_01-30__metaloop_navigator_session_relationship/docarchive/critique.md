@@ -85,7 +85,7 @@ Per the VETO dimension, each non-trivial claim must match source-doc text. Going
 
 #### Claim 1: "Navigator session is ALWAYS isolated from worker sessions, at Level 1+ onward."
 
-**Test against `enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`:**
+**Test against `enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`:**
 - Level 1 explicit: "still use an isolated Navigator session for each observer run." ✓
 - Level 1 explicit: "Level 1 should not run the observer protocol inside the worker session that produced the finding." ✓
 - Level 2 says: "promotes the protocol into a persistent or semi-persistent Navigator session" — still isolated, just persistent. ✓
@@ -344,7 +344,7 @@ Per-aspect adversarial check:
 
 **Complementary layers, not alternatives.** Meta-loop is the WHOLE orchestration cycle (perceive → select → execute → loop across many probes). Isolated Navigator is the PERCEPTION COMPONENT of that cycle, with strict session-isolation from worker sessions as the load-bearing architectural invariant.
 
-The meta-loop document (`enes/loop_desing_ideas/meta_loop.md`) calls Navigation "the meta-loop's eyes." The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigator_session.md`) operationalizes how those eyes work: they need their own session, separate from any worker session, so worker's local-detail context doesn't distort Navigation. Session-isolation is a failure-mode countermeasure (specifically against worker-context bloat), not just architectural elegance.
+The meta-loop document (`enes/loop_desing_ideas/meta_loop.md`) calls Navigation "the meta-loop's eyes." The isolated-Navigator document (`enes/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md`) operationalizes how those eyes work: they need their own session, separate from any worker session, so worker's local-detail context doesn't distort Navigation. Session-isolation is a failure-mode countermeasure (specifically against worker-context bloat), not just architectural elegance.
 
 **Q2: "Meta loop can run MVL loops in same session yes? for multihead loops we might needs more than one worker sessions."**
 
