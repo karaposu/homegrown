@@ -109,7 +109,7 @@ It terminates when the territory has been swept at *identity resolution*, uncert
 
 ## 6. What it produces (the output)
 
-A run produces **two artifacts**, mirroring routeman's `routeman.md` + `_route.md`:
+A run produces **two files, and routelister writes both itself — every run, standalone included** (routelister is cumulative *and* standalone, so it owns its own persistent state; nothing external is guaranteed to be present to write it). They mirror routeman's `routeman.md` + `_route.md`:
 
 ### 6.1 `routelister.md` — the Route-Map (the per-run output)
 
@@ -142,7 +142,7 @@ Guidance Mode:    compact
 Depth-link:       none (not yet drilled)
 ```
 
-### 6.2 The identity-set / index — the persistent concept-map
+### 6.2 `_route.md` — the identity-set / index (the persistent concept-map)
 
 A registry: `{ identity → { own-depth pointer, depth-signal, individuation history, first-seen / last-touched } }` plus an invocation log. This is **the project's persistent concept-map** — the same object that the listing builds, the output persists, and the cross-run model reads (see §7).
 
@@ -237,7 +237,7 @@ Routelister enumerates concepts-as-routes *standalone* — it doesn't need to de
 | **Route-type** | grain × kind × engagement-type (the 9-verb concept-engagement vocabulary) |
 | **Input contract** | a territory + a (possibly fuzzy) goal; folder-independent by construction |
 | **Listing mechanism** | sweep → individuate → frame; individuation = goal-relative online clustering, lean-to-split, incremental |
-| **Output** | `routelister.md` route-map + the identity-set/index (the persistent concept-map) |
+| **Output** | TWO files routelister writes itself every run (standalone included): `routelister.md` route-map + `_route.md` (the persistent concept-map index) |
 | **Cross-run** | load-modify-save the persistent index; idempotency-at-fixpoint; enrich-not-dump; stale-flag-not-delete |
 | **Boundary use** | a *composition*, not an identity: the meta-loop (controller) calls routelister (enumerator) at its boundary step; routelister produces the concept-field; the meta-loop *decides* the loop-control moves + selects. One enumerator, two controllers (§9). |
 

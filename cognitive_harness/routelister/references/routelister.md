@@ -82,7 +82,7 @@ Routelisting is a **self-contained individual**. Its definition references only 
 | **kind** | `teleological` (engaging advances the goal) / `epistemic` (engaging sharpens the understanding the goal rests on). |
 | **engagement-type** | A verb naming *how* to engage the concept, nested under `kind` (§2.2). |
 | **individuation** | The judgment "are these manifestations the same concept-identity, or different ones?" (§3.2). |
-| **the index** (identity-set) | The persistent concept-map a run loads, updates, and saves (§5.3). |
+| **the index** (identity-set) | The persistent concept-map a run loads, updates, and saves as the **`_route.md`** state file (§5.3). |
 | **attributive Priority / Confidence** | A per-route descriptive tag of perceived salience / formed-ness. Description, never a winner-ranking. |
 
 ### 1.6 Two run modes (the two axes of traversal)
@@ -172,7 +172,7 @@ Routelisting is **cumulative**: runs build on each other. The mechanism is that 
 
 - **LOAD** the index (scoped: a root run loads the whole index; a concept-target run loads one entry).
 - **INTEGRATE** — run the ordinary listing on the pre-seeded set: each swept item *matches* a loaded identity (re-confirm it; attach/refresh its depth-signal) or *starts a new one*; identities the sweep does not re-confirm are flagged **stale**; depth-revealed splits/merges re-individuate.
-- **PERSIST** — save the updated index + an invocation log + the run's route-map.
+- **PERSIST** — routelisting writes both its files itself: save the updated index + invocation log to **`_route.md`**, and write the run's route-map to **`routelister.md`** (every run, standalone included — §5).
 
 Three guarantees:
 - **Idempotency-at-fixpoint** — re-running on an unchanged territory + goal produces the same map (a no-op at the fixpoint). *Perception governs* (the current sweep re-confirms what is actually there); the loaded set only *assists* (matching + enrichment). It converges; it does not drift.
@@ -227,7 +227,7 @@ At the end of a run, routelisting reports one of:
 
 ## 5. Output
 
-A run produces **two artifacts**.
+**A run always produces TWO files, and routelisting writes both itself — on every run, standalone included:** the per-run **`routelister.md`** Route-Map (§5.1) and the persistent **`_route.md`** state file (§5.3). Both are core output, not optional. Because routelisting is *cumulative* (each run reads the prior state to enrich its map) **and** *standalone* (it runs on any territory, frequently with nothing else around it), it is the only component guaranteed present on every run — so it owns and writes its own persistent state. Nothing external (no runner, no surrounding process) can be relied on to write `_route.md`, because routelisting often runs without one.
 
 ### 5.1 `routelister.md` — the Route-Map (per-run output)
 
@@ -267,11 +267,13 @@ Guidance Mode:    compact
 Depth-link:       none (not yet drilled)
 ```
 
-### 5.3 The identity-set / index — the persistent concept-map
+### 5.3 `_route.md` — the identity-set / index (the persistent concept-map)
 
-A registry: `{ identity → { own-depth pointer, depth-signal, individuation history, first-seen / last-touched } }` plus an invocation log. This is the project's persistent concept-map — the same object the listing builds, the output persists, and the cross-run model reads (§3.5).
+The persistent state file routelisting writes (and the next run loads). A registry: `{ identity → { own-depth pointer, depth-signal, individuation history, first-seen / last-touched } }` plus an invocation log. This is the project's persistent concept-map — the same object the listing builds, the output persists, and the cross-run model reads (§3.5). Routelisting writes `_route.md` itself on every run (standalone included; see §5 intro).
 
 **The boundary that keeps it within identity:** *no field's value is a different concept-identity.* The depth-link points to the *same* identity's own depth; the index never records edges *between* concepts. (The inter-concept dependency graph is excluded — §1.3.)
+
+**The content boundary that keeps it within the discipline:** `_route.md` records **only this discipline's own concept-map** — identities and their *within-concept* depth/individuation/timestamps. It records **no process or control-flow state** of any kind (no notion of cycles, verdicts-over-time, terminate/widen/merge/revisit, or any "what was done across a larger process"). Routelisting writes and reads only its own `_route.md`; it does not read or write any other component's state file. (This is what keeps the discipline self-contained per §1.4 — `_route.md` is the discipline's own memory, not a process's memory.)
 
 ### 5.4 Telemetry
 
@@ -301,7 +303,7 @@ Determine the **entry point**: `fresh` (no prior index for this territory + goal
 
 ### 2. LOAD (cross-run)
 
-If an index exists for this territory + goal, LOAD it (scoped to the run mode). The loaded set pre-seeds the listing; perception still governs (§3.5).
+If a `_route.md` index exists for this territory + goal, LOAD it (scoped to the run mode). The loaded set pre-seeds the listing; perception still governs (§3.5).
 
 ### 3. Sweep → Individuate → Frame
 
@@ -313,7 +315,7 @@ Loop the sweep until convergence (§3.4).
 
 ### 4. PERSIST (cross-run) + Emit Output
 
-PERSIST the updated index + invocation log. Write the **route-map** (`routelister.md`): Map Header → Route Index → per-route records → Excluded → Telemetry. Enrich-not-dump (depth-signals, not manifestation dumps); stale-flag-not-delete (live routes in the map; stale entries in the index).
+PERSIST — routelisting writes **both** files itself, every run (standalone included): save the updated index + invocation log to **`_route.md`**, and write the **route-map** to **`routelister.md`** (Map Header → Route Index → per-route records → Excluded → Telemetry). Enrich-not-dump (depth-signals, not manifestation dumps); stale-flag-not-delete (live routes in the map; stale entries in `_route.md`). `_route.md` holds only the within-concept concept-map — never process/control-flow state (§5.3).
 
 Save the route-map as a markdown file (unless differently stated in additional instructions):
 - **If the input was a path** — save in the same folder as the input.
