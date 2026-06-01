@@ -23,7 +23,6 @@ skills_with_refs=(
   "td-critique:td-critique.md"
   "surfacing:surfacing.md"
   "decompose:decompose.md"
-  "navigation:navigation.md"
   "routelister:routelister.md"
 )
 
@@ -62,7 +61,6 @@ echo "Installing protocols..."
 protocols=(
   "branch_inquiry.md"
   "conclude.md"
-  "resume.md"
 )
 
 mkdir -p "$SKILLS_DIR/protocols"
