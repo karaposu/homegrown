@@ -150,6 +150,9 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
    This audit + the Source Input section + the Observation Targets meta-category together form a triple-mechanism redundancy at three different timings (write-time / post-write audit-time / downstream-discipline-read-time). The redundancy is mechanism-across-timings, not agent-redundancy — total agent non-compliance defeats all three. This is acceptable residual; user-interactive verification ("does this Question capture everything you meant?") would close the residual but adds a runner-interaction step out of scope for this rule.
 
 4. For ROOT NEW only, write `[inquiry_path]/_state.md`:
+
+   **Timestamp policy (applies to this write AND to every later `## History` append in EXECUTE PIPELINE step 5):** every `[date]` in a `## History` entry MUST be a **fresh `date +%Y-%m-%d_%H-%M` reading taken at the moment that entry is written**. Do NOT reuse the inquiry_id's date and do NOT reuse a previous entry's date. The inquiry_id's date is the *identity-stamp* (set once at folder creation); `## History` entries are a *timeline* (each entry stamped at its own write-time). A History whose entries all carry the same timestamp collapses the timeline and silently loses the per-discipline elapsed-time signal — that is the defect this rule prevents.
+
    ```markdown
    # State: [name]
    ## Flow-type
@@ -233,7 +236,7 @@ Run disciplines sequentially: Su → S → D → I → C. For each discipline th
    Discipline-to-name mapping: `surfacing.md → surfacing`, `sensemaking.md → sensemaking`, `decomposition.md → decomposition`, `innovation.md → innovation`, `critique.md → critique`.
    If any `[FAIL]` lines appear, fix the missing sections in the output and re-save. Re-run the check to confirm. Include the results in the next checkpoint display.
 
-5. **Update `_state.md`:** check off the completed discipline, set next discipline.
+5. **Update `_state.md`:** check off the completed discipline, set next discipline, **and append a `## History` entry** summarizing what just completed (which discipline; key telemetry; structural-check result; next discipline). The entry's `[date]` MUST be a **fresh `date +%Y-%m-%d_%H-%M` reading taken now** — run `date` again; do NOT reuse the inquiry_id's timestamp or any prior History entry's timestamp (per the Timestamp policy in step 4 of the NEW-inquiry section above). A quick self-check: if the new entry's timestamp equals any earlier entry's timestamp in the same `## History`, the rule was violated — re-run `date` and rewrite.
 
 6. **Continue immediately** to the next discipline in Su → S → D → I → C.
 
