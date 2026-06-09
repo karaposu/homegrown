@@ -1,14 +1,14 @@
-> **Loading note.** This file is loaded by a human or future MVL+ runner before starting a correction-chain diagnostic inquiry. Read it in full before LOOP_DIAGNOSE is used. Every section below - input contract, artifact reading, branch framing, output contract, confidence rules, and failure modes - is referenced by the procedure. Do not summarize or partial-load.
+> **Loading note.** This file is loaded by a human or future MVL runner before starting a correction-chain diagnostic inquiry. Read it in full before LOOP_DIAGNOSE is used. Every section below - input contract, artifact reading, branch framing, output contract, confidence rules, and failure modes - is referenced by the procedure. Do not summarize or partial-load.
 
 ---
 
 # LOOP_DIAGNOSE - The Correction-Chain Diagnostic Framing Protocol
 
-LOOP_DIAGNOSE is the operational protocol for turning a correction chain into a diagnostic MVL+ inquiry.
+LOOP_DIAGNOSE is the operational protocol for turning a correction chain into a diagnostic MVLw inquiry.
 
-LOOP_DIAGNOSE does not replace MVL+. It does not add a new cognitive discipline. It frames a special kind of MVL+ run whose purpose is to compare a weak prior inquiry, the human correction, and a later improved inquiry, then infer what the earlier loop likely missed.
+LOOP_DIAGNOSE does not replace MVLw. It does not add a new cognitive discipline. It frames a special kind of MVLw run whose purpose is to compare a weak prior inquiry, the human correction, and a later improved inquiry, then infer what the earlier loop likely missed.
 
-The reasoning engine remains MVL+:
+The reasoning engine remains MVLw:
 
 ```text
 Exploration -> Sensemaking -> Decomposition -> Innovation -> Critique
@@ -23,7 +23,7 @@ LOOP_DIAGNOSE only defines the input contract, required artifact reads, diagnost
 Use LOOP_DIAGNOSE when the user is asking a question like:
 
 ```text
-This later inquiry corrected an earlier bad MVL/MVL+ result.
+This later inquiry corrected an earlier bad MVL result.
 Read both inquiry folders and the user's correction.
 What went wrong in the earlier loop?
 Which discipline, stage, or framing step likely failed?
@@ -36,7 +36,7 @@ Typical trigger phrases:
 - correction-chain diagnosis
 - self-maintenance diagnosis
 - compare these two inquiries and find what went wrong
-- why did the earlier MVL/MVL+ loop fail?
+- why did the earlier MVL loop fail?
 
 Do not use LOOP_DIAGNOSE for ordinary comparison, ordinary review, or ordinary Resume. The key requirement is a correction chain: an earlier weak result, a human correction signal, and a later improved result.
 
@@ -44,7 +44,7 @@ Do not use LOOP_DIAGNOSE for ordinary comparison, ordinary review, or ordinary R
 
 ## Step 1 - Normalize the input contract
 
-Before starting the MVL+ inquiry, identify these fields:
+Before starting the MVL inquiry, identify these fields:
 
 ```text
 prior_path:
@@ -62,7 +62,7 @@ Field meanings:
 - `optional_context` is any extra surrounding information that helps interpret the correction chain.
 - `diagnostic_goal` is what the diagnosis should produce. Default: evidence-backed failure hypotheses and maintenance candidates.
 
-If `prior_path`, `corrected_path`, or `human_correction` is missing, do not proceed as LOOP_DIAGNOSE. Ask for the missing field or run a normal MVL+ inquiry instead.
+If `prior_path`, `corrected_path`, or `human_correction` is missing, do not proceed as LOOP_DIAGNOSE. Ask for the missing field or run a normal MVL inquiry instead.
 
 If the user names `path_A` and `path_B`, normalize them into semantic roles before proceeding. Do not assume alphabetical or chronological order. The key distinction is weak prior inquiry versus later corrected inquiry.
 
@@ -98,9 +98,9 @@ If either folder is missing, halt and report the missing path. Do not infer diag
 
 ---
 
-## Step 3 - Frame the diagnostic MVL+ inquiry
+## Step 3 - Frame the diagnostic  inquiry
 
-Create a normal MVL+ inquiry folder using the current MVL+ folder rule:
+Create a normal MVLw inquiry folder using the current MVLw folder rule:
 
 ```text
 devdocs/inquiries/<YYYY-MM-DD_HH-MM__slugified_name>/
@@ -160,7 +160,7 @@ For both inquiry folders, read `_branch.md`, `_state.md`, `finding.md`, root dis
 - COMPARES WITH: [corrected_path] (later corrected inquiry)
 ```
 
-Then run normal MVL+ from that `_branch.md`. Do not change the MVL+ pipeline.
+Then run normal MVLw from that `_branch.md`. Do not change the MVLw pipeline.
 
 ---
 
@@ -267,13 +267,13 @@ Do not propose broad fundamentals rewrites from one weak correction chain.
 
 Do not create a maintenance branch unless the diagnostic finding produces a specific source-change candidate and evaluation gate.
 
-Do not promote LOOP_DIAGNOSE into a standalone skill or discipline until 5 to 10 diagnostic MVL+ findings show a stable internal method that cannot be explained as ordinary MVL+ on a diagnostic question.
+Do not promote LOOP_DIAGNOSE into a standalone skill or discipline until 5 to 10 diagnostic MVLw findings show a stable internal method that cannot be explained as ordinary MVLw on a diagnostic question.
 
 ---
 
-## Step 6 - Optional future MVL+ hook
+## Step 6 - Optional future MVLw hook
 
-After `cognitive_harness/protocols/loop_diagnose.md` has been used successfully on at least one real correction chain, MVL+ may add this explicit hook before `_branch.md` creation:
+After `cognitive_harness/protocols/loop_diagnose.md` has been used successfully on at least one real correction chain, MVLw may add this explicit hook before `_branch.md` creation:
 
 ```text
 If NEW input explicitly asks for `loop_diagnose`, correction-chain diagnosis,
@@ -286,7 +286,7 @@ pipeline unchanged.
 Classic MVL may add a lighter note:
 
 ```text
-For correction-chain diagnosis or self-maintenance diagnosis, prefer MVL+,
+For correction-chain diagnosis or self-maintenance diagnosis, prefer MVLw,
 because the task usually requires reading multiple inquiry folders and
 separating possible failure locations before innovation and critique.
 ```
@@ -299,7 +299,7 @@ Do not add silent automatic diagnosis-mode inference until at least 10 explicit 
 
 - **Missing role assignment** - The user provides two paths but does not identify which is the weak prior inquiry and which is the corrected inquiry. Ask for role assignment before proceeding.
 
-- **Missing human correction** - Two inquiries differ, but no correction signal is provided. This is comparison, not LOOP_DIAGNOSE. Ask for the correction signal or run a normal comparative MVL+ inquiry.
+- **Missing human correction** - Two inquiries differ, but no correction signal is provided. This is comparison, not LOOP_DIAGNOSE. Ask for the correction signal or run a normal comparative MVLw inquiry.
 
 - **Finding-only diagnosis** - The diagnostic reads only `finding.md` and ignores `docarchive/`. This is incomplete when archived discipline outputs exist. Re-read the archived discipline outputs before concluding.
 
@@ -309,6 +309,6 @@ Do not add silent automatic diagnosis-mode inference until at least 10 explicit 
 
 - **Maintenance overreach** - The diagnostic proposes a broad protocol rewrite from one correction chain. Corrective action: narrow the candidate, add an evaluation gate, or defer source edits until more examples exist.
 
-- **Premature skill creation** - The diagnostic is implemented as a new `loop-diagnose` discipline. Corrective action: keep LOOP_DIAGNOSE as a protocol wrapper around MVL+ until repeated diagnostic findings prove a distinct method.
+- **Premature skill creation** - The diagnostic is implemented as a new `loop-diagnose` discipline. Corrective action: keep LOOP_DIAGNOSE as a protocol wrapper around MVLw until repeated diagnostic findings prove a distinct method.
 
-- **Silent mode switching** - MVL/MVL+ enters LOOP_DIAGNOSE based on vague wording. Corrective action: require explicit trigger language at the current stage.
+- **Silent mode switching** - MVL enters LOOP_DIAGNOSE based on vague wording. Corrective action: require explicit trigger language at the current stage.

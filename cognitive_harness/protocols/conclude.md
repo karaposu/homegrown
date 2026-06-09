@@ -1,4 +1,4 @@
-> **Loading note.** This file is loaded by `commands/MVL.md` and `commands/MVL+.md` at the iteration-complete-yes branch (and may be loaded by future loop runners that produce findings) and is intended to be read in full before CONCLUDE executes. Every section below — pipeline detection, finding template, style rules, size-adaptive application, post-finding steps — is referenced by the procedure. Do not summarize or partial-load; the procedure's instructions assume all sections are in context.
+> **Loading note.** This file is loaded by `commands/MVL.md` and `commands/MVLw.md` at the iteration-complete-yes branch (and may be loaded by future loop runners that produce findings) and is intended to be read in full before CONCLUDE executes. Every section below — pipeline detection, finding template, style rules, size-adaptive application, post-finding steps — is referenced by the procedure. Do not summarize or partial-load; the procedure's instructions assume all sections are in context.
 
 ---
 

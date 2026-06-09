@@ -1,0 +1,35 @@
+# State: Task-Define — Discipline Meaning Layer (Defined From Scratch)
+
+## Flow-type
+extended-surfacing
+
+## Pipeline
+Su → S → D → I → C (always)
+
+## Progress
+- [x] Surfacing
+- [x] Sensemaking
+- [x] Decomposition
+- [x] Innovation
+- [x] Critique
+
+## Iteration
+1
+
+## Status
+COMPLETE
+
+## Next Discipline
+—
+
+## Relationships
+- RELATED: devdocs/inquiries/2026-06-01_15-28__inquiry_elaboration_process_layer/ (and the rest of the prior IE arc — 22-30, 13-31, 20-08, 01-17, 09-54, 11-27, 11-46, 15-28) — this inquiry departs from and effectively supersedes the prior IE arc per the user's "from scratch" invocation; commitments are NOT inherited
+
+## History
+- 2026-06-03_15-39: Created. Question: from-scratch meaning-layer definition of Task-Define (a new lightweight discipline replacing the prior IE arc) — 8 observation targets covering identity / 5 operations / dynamic Meta-question role / ordering / dynamic Task-Define/Explore division / inputs / NOT-list / lightweight stance. Layer=MEANING; multi-layer plan = meaning → structural → process. No Synthesis Trigger (priors are predecessors being departed from, not synthesized). Pipeline starts at Surfacing.
+- 2026-06-03_15-44: Surfacing complete → surfacing.md (57 items: 28 core / 21 sub / 8 side + 7 confirmed-absent categories; 9 regions A-H + I confirmed-absent). Manual structural check PASS (10/10 — checker script unavailable). LOOP_DIAGNOSE MC-A obligations honored (D1 self-containment memory at CORE with load-bearing gloss; C1+C2+C3 self-contained discipline exemplars at CORE; F7 carries NOT-list intrinsic-grounding mandate to sensemaking). Key finds: G4 (surfacing's own Boundary-discovery conditional-gating is the closest analog for Meta-question-determines-Explore-handoff pattern); B5 (the 15-28 process design becomes largely obsolete because Task-Define drops the fidelity verdict). 9 frontier flags handed to sensemaking with F1 (lightweight enforcement) + F7 (NOT-list intrinsic grounding) flagged as load-bearing-first. Next: Sensemaking.
+- 2026-06-03_15-52: Sensemaking complete → sensemaking.md (SV1 → SV6; 10/10 ambiguities resolved A1–A10, 8 HIGH/2 MED; 8 perspectives including Frame-exit Completeness fired-on-"context" + Phase/Calibration-State; Load-bearing concept test + Specific-vs-pattern cue both fired and passed; Accommodation trigger did not fire). Manual structural check PASS (15/15). All 9 surfacing-frontier flags resolved: F1→K3 (5 enforcement criteria); F2→K8 (open-with-extension MQ set with 3 base + bounded extension); F3→K2 (Itemize → MQ per item → Deconstruct+MultiScope parallel → Rephrase); F4→K5 (meta-question answers ARE signal — no separate field); F5→K1 (expand-to-define synthesis); F6→K7 (1 input + LLM-as-substrate); F7→K4+SP6 (intrinsic NOT-list grounding + 5 load-bearing exclusion categories); F8→K6 (pre-pipeline; Exploration conditional); F9 confirmed (no recency filtering). SV6 commits 13 stabilized commitments. Self-reference check passed via external grounding (user choices + prior failures + sibling patterns). Next: Decomposition.
+- 2026-06-03_15-57: Decomposition complete → decomposition.md (7 authorable pieces + 1 shared anchor P0; clusters X/Y/Z/W/V + acknowledgement; dependency order P0 → {P1/P7/P8 parallel} → {P3/P5 parallel} → P6 → P9 terminal). Manual structural check PASS (8/8 — all 7 process steps + Assumptions-not-data + Determination-mechanism piece check + 7 failure-mode self-checks). Self-eval 3/3 PASS + 4 full-eval dimensions PASS (P1 heaviest at ~40% — that's where substance lives; balance acceptable). Determination-mechanism check passes for both runtime determinations (extension-rule firing → P3; Exploration-conditional dispatch deferred to process layer per P3+P6). Next: Innovation.
+- 2026-06-03_16-04: Innovation complete → innovation.md (production mode; Standard default methodology-mode inherited, Contrarian-rethink alternative considered and declined with reason; mechanism coverage FULL 4G+3F; convergence YES across multiple converging mechanisms; Inherited Frame Audit fired then resolved at single iteration via Absence Recognition redesign-level confirming SV6 elaborates latent IE-arc work). Manual structural check PASS (12/12). All 8 pieces have concrete authorable content; Piece-Level Inversion satisfied for all 8 meta-decision pieces; Intervention-Shape-Axis Inversion at all 4 property-(v) pieces (P3/P5/P7/P8) marked-inapplicable with specific structural+contextual overrides per Vocabulary. 5-test cycle: 8/8 ACTIONABLE. Assembly check SURVIVES with emergent value (journalism 5W+H Domain Transfer + gateway-middleware analog + conditional-gating pattern reuse). Axis coverage 10/10 axes have variants. Failure modes observed: none. Telemetry verdict PROCEED. 7 RE-TEST triggers handed to critique. Next: Critique.
+- 2026-06-03_16-10: Critique complete → critique.md (12 dimensions evaluated; 6 critical project-risk dimensions; clean SURVIVE on assembly + 7 of 8 pieces; 6 REFINEs R-1/R-2/R-3/R-5/R-7 + 1 RELOCATE R-4 + 0 KILLs; convergence telemetry STRONG / STABLE / CONVERGED). Critical finds: R-4 caught a meta-violation (P9 itself violates self-containment by being an outbound design-history pointer in the runtime reference file — relocates entire piece to docs/discipline_design_history/for_task-define.md per memory project_discipline_design_history_location); R-2 caught specific runner-naming in load-bearing positions at P6; R-5 closed an exploit path (auxiliary verification fields slipping through lightweight criteria); R-7 closed an exploit path (state-gathering meta-questions slipping through extension rule bullet a); R-1/R-3 are smaller authoring-cleanup. 7 td-critique failure modes self-checked = none observed. Pipeline complete. Next: CONCLUDE.
+- 2026-06-03_16-15: CONCLUDE complete → finding.md compiled with R-1/R-2/R-3/R-5/R-7 applied at compile-time + R-4 reflected as a separate MUST Next Action (predecessor-acknowledgement to docs/discipline_design_history/for_task-define.md instead of into the runtime spec). Frontmatter declares `supersedes: 2026-06-01_15-28` (the most recent prior IE-arc finding). No Synthesis Trigger declared in _branch.md → no Inherited Commitments Re-test obligation (priors are predecessors being departed-from per the from-scratch mandate, not synthesized). Pipeline outputs (surfacing.md / sensemaking.md / decomposition.md / innovation.md / critique.md) archived to docarchive/. Status → COMPLETE. **One-sentence answer:** Task-Define is the cognitive operation of expanding a task statement into a defined task via 5 operations (Itemize → Meta-question per item → Deconstruct + MultiScope parallel → Rephrase last), with 1 input + LLM-internal-context substrate, lightweight enforced via 6 concrete criteria, NOT-list grounded intrinsically in 5 exclusion categories, dynamic Task-Define / Exploration division signaled by meta-question answers (no separate field; perception/action split honored), pre-pipeline position, and self-containment preserved by relocating predecessor-acknowledgement out of the runtime spec.
