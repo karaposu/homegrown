@@ -7,7 +7,7 @@ description: Evaluates competing candidates (ideas, plans, approaches, designs) 
 
 ## Step 0 — Mandatory pre-read
 
-**Before reading anything else in this file, read `references/td-critique.md` in full.** The protocol below references concepts — the two operations (extraction + evaluation), evaluation dimensions, the fitness landscape (viable / dead / boundary / unexplored regions), adversarial structure (prosecution + defense + collision), the three verdict types with their constructive requirements, the accumulator, the five phases (0 dimension construction, 1 landscape, 2 adversarial, 3 verdict, 3.5 assembly check, 4 coverage + convergence), and the seven failure modes — that are defined ONLY in that file. Skipping this read produces shallow output that misses the discipline's actual mechanism.
+**Before reading anything else in this file, read `references/td-critique.md` in full.** The protocol below references concepts — the two operations (extraction + evaluation), evaluation dimensions, the fitness landscape (viable / dead / boundary / unexplored regions), adversarial structure (prosecution + defense + collision), the three verdict types with their constructive requirements, the accumulator, the five phases (0 dimension construction, 1 landscape, 2 adversarial, 3 verdict, 3.5 assembly check, 4 coverage + convergence), and the eight failure modes — that are defined ONLY in that file. Skipping this read produces shallow output that misses the discipline's actual mechanism.
 
 Do not proceed to Step 1 until the read completes.
 
@@ -39,4 +39,4 @@ $ARGUMENTS
 
 ---
 
-**Reference loading during execution.** When recognizing failure modes (wrong dimensions, rubber-stamping, nitpicking, dimension blindness, false convergence, evaluation drift, self-reference collapse), consult the "Failure Modes" section of `references/td-critique.md` for full descriptions and corrective actions. The framework's vocabulary (default vs problem-specific dimensions, burden-of-proof shifts by stake level, accumulator fields, convergence criteria) is canonically defined in that file.
+**Reference loading during execution.** When recognizing failure modes (wrong dimensions, rubber-stamping, nitpicking, dimension blindness, false convergence, evaluation drift, self-reference collapse, axis absence at the failure's actual plane), consult the "Failure Modes" section of `references/td-critique.md` for full descriptions and corrective actions. The framework's vocabulary (default vs problem-specific dimensions, burden-of-proof shifts by stake level, accumulator fields, convergence criteria) is canonically defined in that file.

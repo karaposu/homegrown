@@ -161,11 +161,15 @@ Anti-patterns to avoid:
 [For each commitment inherited from a prior output, list:
   - **Commitment:** [verbatim or short paraphrase of the inherited commitment]
   - **Source:** [path to the prior finding/spec + section]
-  - **Re-test status:** RE-TESTED / INHERITED-WITHOUT-RE-TEST
-  - **Evidence (if RE-TESTED):** [what this inquiry observed; cited]
+  - **Re-test status:** one of —
+      - **RE-TESTED — commitment confirmed** (with evidence cited; the commitment holds unchanged).
+      - **RE-TESTED — commitment confirmed but frame revised** (commitment holds, but the frame it rests on was found load-bearing in a different way than the prior assumed; cite which frame premise shifted and why).
+      - **RE-TESTED — commitment found INVALID** (commitment's load-bearing premise was tested and found wrong; commitment is dropped or refined; this finding's content reflects the dropped commitment, not the inherited version; cite the test evidence and the new conclusion).
+      - **INHERITED-WITHOUT-RE-TEST** (with reason).
+  - **Evidence (for any RE-TESTED status):** [what this inquiry observed; cited]
   - **Reason (if INHERITED-WITHOUT-RE-TEST):** [why the re-test was skipped — e.g., out of scope; trusted by independent priors; resource-constrained]
 
-A commitment cannot be silently absorbed. It is either re-justified by this inquiry's own work, or it is explicitly flagged as carried-forward-without-re-test with a reason. The flag is intentional friction — a future reviewer can spot weak inheritance.]
+A commitment cannot be silently absorbed. It is either RE-TESTED with evidence cited (commitment confirmed; commitment confirmed but frame revised; or commitment found INVALID), or it is explicitly flagged as INHERITED-WITHOUT-RE-TEST with a reason. The flag is intentional friction — a future reviewer can spot weak inheritance. The expanded RE-TESTED options make commitment-testing (not just preservation-verification) a first-class outcome: "commitment confirmed but frame revised" and "commitment found INVALID" surface frame-level reasoning explicitly. If all per-commitment statuses across a finding are "RE-TESTED — commitment confirmed" only, that pattern is a soft signal of unchallenged frame-inheritance worth a closer look.]
 
 
 ## Next Actions                                  [required when finding proposes changes; otherwise omit]

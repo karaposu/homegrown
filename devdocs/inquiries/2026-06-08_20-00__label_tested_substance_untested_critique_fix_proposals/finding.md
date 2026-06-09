@@ -13,6 +13,31 @@ What is the underlying structural mechanism of "Label-Tested, Substance-Untested
 
 ---
 
+## Update Note (added 2026-06-09)
+
+**This finding has been updated to comprehensively integrate findings from a NEW SIBLING inquiry chain that was completed AFTER this finding's original publication: the purpose-fitness meta-principle work.**
+
+The purpose-fitness sibling consists of two inquiries:
+
+- **`devdocs/inquiries/2026-06-09_08-14__critique_kill_severity_meta_principle/finding.md`** — the meaning-layer articulation of the PURPOSE-FITNESS meta-principle as the structural property distinguishing a kill-worthy issue from a minor / nitpick issue, expressible task-agnostically.
+- **`devdocs/inquiries/2026-06-09_10-13__encode_purpose_fitness_refinement_note_phase0/finding.md`** — the structural-layer follow-up encoding the principle as a Tier 1 Surgical SS refinement note at Phase 0 step 4 (Weight dimensions) of `td-critique.md`, plus mandatory ancillary edits.
+
+**Why this update fires.** The new sibling activates the third entry under this finding's Refinement Triggers (Open Questions §3): *"3-way composition matrix's recommended adoption sequences. Triggers re-open if a 4th sibling inquiry (top_7 failure type #4, #5, #6, or #7) joins the matrix as a 4th dimension; the matrix becomes 4-way and the recommended sequences need re-derivation."* The purpose-fitness sibling is not itself a top_7 failure-type inquiry (it is the meta-principle inquiry that grew out of the nitpicking-creep concern surfaced in this series), but it is structurally a 4th sibling: it engages with `#3 Nitpicking`, it modifies `td-critique.md`, it carries its own Tier-classified spec edit, and it must be incorporated into the composition matrix. The trigger fires.
+
+**Scope of update.** The integration is contained primarily in a NEW §9 (Integration with the purpose-fitness sibling), with propagation to:
+
+- The Finding Summary (3 new bullets at the end, marked as added in update).
+- §1's distinctness table (a new row for the purpose-fitness sibling).
+- §6's per-scenario picker (one new joint-minimum path).
+- §7's composition matrix preamble (a note that the matrix is now 4-way).
+- Open Questions / Monitoring (two new items on joint-adoption density at Phase 0 and at #3).
+- Open Questions / Refinement Triggers (Trigger #3 marked ACTIVATED).
+- Reasoning (a paragraph explaining the update's rationale).
+
+**All original content is preserved unchanged.** The update is ADDITIVE; nothing is rewritten or compacted. Readers consuming the finding cold can read top-to-bottom; readers familiar with the original can read this Update Note + §9 + the propagation points and skim the rest.
+
+---
+
 ## Finding Summary
 
 - **The mechanism is a STATED ≠ IMPLEMENTED scope gap inside critique's evaluation:** dimensions' stated scope often includes substance (meaning / content / within-category distinction / unit presupposition), but implementation operationally restricts evaluation to surface attributes (name / shape / classification / structural slot). The dimension passes at the surface; the substance goes unprobed.
@@ -39,6 +64,12 @@ What is the underlying structural mechanism of "Label-Tested, Substance-Untested
 
 - **Two REFINES from Critique are folded into the Tier 1 proposal and the assembly-level guidance.** (Detailed in §5 below.)
 
+- **(Added in update 2026-06-09)** **The purpose-fitness sibling integrates as a 4th member of this series.** The purpose-fitness work establishes a meta-principle for severity calibration in `/td-critique` (a defect is kill-worthy if, left in place, it fatally prevents the candidate from doing what it's supposed to do) and structurally encodes it as a Tier 1 Surgical SS refinement note at Phase 0 step 4 (Weight dimensions). The relationship to this finding is **COMPLEMENTARY-NOT-OVERLAPPING** — both engage with `#3 Nitpicking`, but along DIFFERENT structural axes: the purpose-fitness sibling frames `#2 Rubber-Stamping ↔ #3 Nitpicking` as opposite-direction violations of the SAME severity test; this finding frames `#3 Nitpicking ↔ Label-Tested` as INVERSE-COMPANION-PAIR on the detail-density axis. The two axes are orthogonal; the two pairings stack on `#3` without competing. See §9 for the full integration analysis.
+
+- **(Added in update 2026-06-09)** **`#3 Nitpicking` ends up at the intersection of TWO pairing structures** if both findings' edits ship: the severity axis (paired with `#2` under purpose-fitness) and the detail-density axis (paired with Label-Tested under this finding). Both pairings are structurally valid and coexist as distinct framings of the same failure mode. The `#3` entry would carry multiple additions — one per pairing — when the joint-adoption sequence is followed. Joint nitpicking-creep mitigation is enhanced because the two findings mitigate at two distinct loci (Phase 0 step 4 weighting semantics from purpose-fitness; Phase 0 success-criteria triage from this finding's Tier 1).
+
+- **(Added in update 2026-06-09)** **The composition matrix in §7 has been extended from 3-way to 4-way; recommended adoption sequences are updated.** Joint adoption sequences (MINIMAL / MID-COST / CUMULATIVE-DEEP) are extended to incorporate the purpose-fitness sibling's Tier 1 + mandatory ancillaries (Ancillary A: back-reference at `#2`; Ancillary B: back-reference at `#3`; Ancillary D: back-reference at the Phase 3 constructive-output refinement note — promoted from COULD to MUST by the purpose-fitness structural inquiry's critique frame-premise prosecution). Joint adoption is COMPOSE-NATURAL across all sequences; no edits conflict. The purpose-fitness sibling adds ~30 lines uniformly to each sequence (refinement note + 3 mandatory ancillaries; optional Ancillary C is a 4th ancillary deferred to user discretion).
+
 ---
 
 ## Finding
@@ -58,6 +89,7 @@ Label-Tested is the failure where critique's dimensions evaluate **surface attri
 | #4 Dimension Blindness | DIFFERENT GAP: Dimension Blindness = dimension MISSING entirely; Label-Tested = dimension PRESENT but restricted to surface. |
 | Axis Absence (sibling finding) | DIFFERENT LAYER: Axis Absence is precondition-violation at the within-spec layer (a within-failure-mode axis missing from the spec's enumeration). Label-Tested is at the dimension-evaluation-depth layer. |
 | Inherited-Frame Preservation (sibling finding) | DIFFERENT LAYER: Inherited-Frame Preservation is precondition-violation at the cross-spec layer (an upstream discipline's contract not preserved by a downstream consumer). Label-Tested is within `td-critique.md` only. |
+| **Purpose-fitness (newer sibling finding; added in update 2026-06-09)** | **DIFFERENT AXIS, OVERLAPPING TARGET:** Purpose-fitness operates at the SEVERITY axis (does the defect block purpose-fulfillment?), pairing `#2 Rubber-Stamping ↔ #3 Nitpicking` as opposite-direction violations of a single severity principle. Label-Tested operates at the DETAIL-DENSITY axis (does prosecution depth match substance?), pairing `#3 Nitpicking ↔ Label-Tested` as inverse-companions. BOTH pairings engage `#3`; both are structurally valid at different layers. The two findings are COMPLEMENTARY-NOT-OVERLAPPING. See §9 for the full integration analysis. |
 
 **The structural relationship — NOT precondition-violation.**
 
@@ -234,7 +266,13 @@ The 5 trade-off axes (inherited from Axis Absence + Inherited-Frame Preservation
 
 - **Cumulative-deep path:** Tier 1 + chosen Tier 2 sub-variant + Tier 3 cumulative HC10. ONLY when both prior siblings' Tier 3s have been adopted. Full long-term return on future-extensibility; significant up-front restructure.
 
+- **Comprehensive joint-minimum path (added in update 2026-06-09):** All four siblings' Tier 1 edits jointly + purpose-fitness's mandatory ancillaries (A + B + D). This includes Axis Absence Tier 1 + Inherited-Frame Preservation Tier 1 single-spec + this finding's Tier 1 unified + the purpose-fitness Tier 1 Surgical refinement note at Phase 0 step 4 + Ancillaries A (back-reference at `#2`) + B (back-reference at `#3`) + D (back-reference at the Phase 3 constructive-output refinement note). Optional Ancillary C (cross-reference at line 128's Adversarial structure final sentence) is user-discretion. Pick this for the cheapest joint coverage of all known failure types from the top-7 list §1-3 PLUS the meaning-layer meta-principle of severity (purpose-fitness). Total edit: ~110 lines (this finding's MINIMAL ~80 lines + ~30 lines from the purpose-fitness sibling). See §9.6 for the comprehensive joint-adoption sequence comparison.
+
+- **All other picker paths extend uniformly with purpose-fitness** (added in update 2026-06-09). Each of the original picker paths (Minimum-cost / Vocabulary-distinct / Minimum-vocab-growth / Cumulative-deep) extends naturally by adding the purpose-fitness Tier 1 + Ancillaries A + B + D to each path. The purpose-fitness sibling has no Tier 2 or Tier 3 of its own; the joint addition is uniformly the same across picker paths.
+
 ### 7. The 3-way composition matrix with prior siblings
+
+**Update note (2026-06-09):** This section's 3-way matrix is preserved as originally published for reference. The purpose-fitness sibling extends the matrix to 4-way; the comprehensive re-derivation lives in §9.6. For consumers reading top-to-bottom, this §7 describes the 3-way matrix; §9.6 describes the 4-way extension. The 3-way matrix's structure and adoption sequences remain valid as a sub-set of the 4-way; the 4-way adds purpose-fitness as a 4th dimension uniformly across all sequences.
 
 The matrix is this inquiry's 4 variants × Axis Absence's 3 tiers × Inherited-Frame Preservation's 6 variants = **72 cells**. The matrix's value is navigation: not every cell is meaningful, but every adoption combination has a single matrix coordinate where its composition properties are recorded.
 
@@ -263,6 +301,233 @@ The series produces an evolving meta-question if the cumulative-deep adoption se
 - **This inquiry** → "Are the dimension space AND its inherited frame AND its evaluation level all load-bearing and tested?" (three coordinates: dimension space, inherited frame, evaluation level).
 
 Three coordinates is approaching the upper limit of a single generative principle that can be applied in one cognitive pass. Future failure modes that broaden this meta-question further may need a different organizing pattern (e.g., the hook-table itself becomes the surface and the meta-question fades to a label).
+
+**Update note (2026-06-09):** The purpose-fitness sibling does NOT extend this meta-question. Purpose-fitness operates at the SEVERITY axis (does the defect block purpose-fulfillment?), which is a different structural axis than the dimension-space-and-frame-and-evaluation-level axes named here. The purpose-fitness sibling's analog of this section's meta-question — *"If this defect were left in place, would the candidate still do what it's supposed to do — sufficiently, not just degraded?"* — operates at a different layer (per-defect severity test rather than per-spec-section dimension/frame/level test). The two meta-questions coexist; they don't compose into a 4-coordinate joint meta-question because they fire at different operational moments. The hook-table from this finding's Tier 3 remains 3-coordinate; the purpose-fitness refinement note operates outside the hook-table.
+
+---
+
+### 9. Integration with the purpose-fitness sibling (added in update, 2026-06-09)
+
+After this finding's original publication on 2026-06-08, a NEW SIBLING inquiry chain on `/td-critique` failure modes was completed on 2026-06-09. This §9 comprehensively integrates the purpose-fitness sibling's commitments, re-derives the composition matrix from §7 (which becomes 4-way), and extends the per-scenario picker from §6. The §9 is the load-bearing structural locus for the update.
+
+#### 9.1 What the purpose-fitness sibling covers
+
+The purpose-fitness work is a two-inquiry chain:
+
+- **Meaning-layer:** `devdocs/inquiries/2026-06-09_08-14__critique_kill_severity_meta_principle/finding.md` — articulates the PURPOSE-FITNESS meta-principle as the structural property distinguishing a kill-worthy issue from a minor / nitpick issue, expressible task-agnostically across diverse evaluation domains (software design / research hypothesis / business strategy / spec-edit critique / legal contract review / scientific paper peer review / educational assessment / security review / ethics review).
+- **Structural-layer:** `devdocs/inquiries/2026-06-09_10-13__encode_purpose_fitness_refinement_note_phase0/finding.md` — encodes the principle as a Tier 1 Surgical SS refinement note at Phase 0 step 4 (Weight dimensions) of `td-critique.md`, plus mandatory and optional ancillary edits.
+
+**The meta-principle** (from the meaning-layer finding's §1):
+
+> A defect in a candidate is **kill-worthy** if, left in place, it fatally prevents the candidate from doing what the candidate is supposed to do. A defect is **minor / nitpick** if the candidate still does what it's supposed to do.
+
+The principle is single-axis at the meta-level. Per-task richness (what counts as fulfilling purpose for this specific candidate — reversibility, blast-radius, scope, fixability, evidence-strength, and any domain-specific axes) lives at the per-task calibration layer, not above the meta-principle.
+
+**The 1-question practitioner test** (from the meaning-layer finding's §2):
+
+> *"If this defect were left in place, would the candidate still do what it's supposed to do — sufficiently, not just degraded?"*
+
+YES → not kill-worthy (note as caveat on SURVIVE, or REFINE if a known better in-frame variant exists). NO → kill-worthy. Within kill-worthy, REFINE when the candidate's existing frame can absorb the fix; KILL when the fix requires replacing the candidate's frame entirely.
+
+**Structural commitments preserved by the encoding** (from the meaning-layer finding §§3-8):
+
+- Severity-calibration locus is Phase 0 step 4 (Weight dimensions). Per-task calibration is composite; meta is single-axis.
+- The constructive-output requirement on KILL (per `td-critique.md` lines 140-142) IS the structural test of whether a KILL is supported: a kill-worthy defect can be articulated as the specific reason the candidate's frame prevents purpose-fulfillment, and that articulation IS the seed. Inability to extract a seed signals the KILL is unsupported — re-examine before rendering.
+- Confidence is orthogonal to severity. Whether `/td-critique` should add an INTERIM verdict for insufficient-evidence cases (analogous to `/innovate`'s DEFERRED disposition) is a deferred structural question for a future inquiry.
+- `#2 Rubber-Stamping` and `#3 Nitpicking` are **opposite-direction violations of the same purpose-fitness principle** (`#2` = severe defect under-killed; `#3` = non-severe defect over-killed). Both are mismatches between defect-severity (under the purpose-fitness test) and the verdict rendered. ONE structural test prevents BOTH failure modes.
+- When a candidate's purpose is ambiguous (exploratory ideation; research-frontier candidates), `/td-critique` renders a **defer-with-direction verdict** naming the ambiguity and pointing back to upstream purpose-stabilization (e.g., `/sense-making` in the runner being used) rather than silently refusing or applying a modified test.
+
+**The structural-layer encoding** (from the structural-layer finding §§1-3): the spec edit ready to apply consists of one refinement-note insertion and four ancillary edits (three mandatory + one optional + two verified-no-edit confirmations):
+
+| Edit | Spec location | Status | Description |
+|---|---|---|---|
+| **Refinement note** | `td-critique.md` between line 190 and line 192 (Phase 0 step 4) | MUST | ~24 lines; 5 content blocks (semantics + 1-question test with REFINE/KILL boundary folded in + #2/#3 unification with cross-references folded in + ambiguous-purpose defer-with-direction fallback). |
+| **Ancillary A** | `td-critique.md` line 330 (#2's "How to prevent") | MUST | Back-reference to the new Phase 0 refinement note + naming `#2` as opposite-direction violation of `#3`. |
+| **Ancillary B** | `td-critique.md` line 338 (#3's "How to prevent") | MUST | Back-reference to the new Phase 0 refinement note + naming `#3` as opposite-direction violation of `#2`; uses the phrase *"nitpicking-creep at construction time"*. |
+| **Ancillary D** | `td-critique.md` lines 140-142 (Phase 3 constructive-output refinement note) | MUST (promoted from COULD by purpose-fitness structural inquiry's critique frame-premise prosecution) | Back-reference to the new Phase 0 refinement note + framing constructive-output as the structural test of severity. |
+| **Ancillary C** | `td-critique.md` line 128 (Adversarial structure final sentence) | COULD | Cross-reference to the new Phase 0 refinement note + surfacing `#2/#3` unification at the Adversarial structure paragraph. |
+| **Ancillary E (negative)** | `td-critique.md` §6 Summary table | VERIFIED-NO-EDIT | No new failure mode added; no new verdict type; no new phase. |
+| **Ancillary F (negative)** | `cognitive_harness/td-critique/SKILL.md` | VERIFIED-NO-EDIT | Description granularity doesn't include refinement notes. |
+
+The structural-layer finding's Tier classification per `docs/discipline_edit_tiers.md` is **Tier 1 Surgical SS** (single-spec; refinement-note pattern). The purpose-fitness sibling has no Tier 2 or Tier 3 variants of its own.
+
+#### 9.2 The two-axis analysis — purpose-fitness vs LTSU
+
+Both findings engage with `#3 Nitpicking` but along structurally distinct axes. The two axes are orthogonal:
+
+| Dimension | Purpose-fitness sibling | This finding (LTSU) |
+|---|---|---|
+| **The axis itself** | Severity axis: does the defect block purpose-fulfillment? | Detail-density axis: does prosecution depth match the substance? |
+| **`#3 Nitpicking` pairing** | `#2 Rubber-Stamping ↔ #3 Nitpicking` as opposite-direction violations of the SAME severity test | `#3 Nitpicking ↔ Label-Tested` as INVERSE-COMPANION-PAIR (Nitpicking = over-density; Label-Tested = under-density) |
+| **Operational locus** | Phase 0 step 4 (dimension weighting semantics) | Phase 0 (success-criteria construction) + Phase 2 (prosecution depth) |
+| **Layer of analysis** | META (what severity STRUCTURALLY IS) | OPERATIONAL (what prosecution DEPTH needs to be) |
+| **Edit at `#3` Prevention text** | Back-reference cross-reference framing `#3` as severity-axis opposite of `#2` (Ancillary B) | Tier 2 sub-variant (b) REPAIR adds inverse-companion failure note framing `#3` as detail-density-axis opposite of Label-Tested |
+| **Tier classification per `docs/discipline_edit_tiers.md`** | Tier 1 Surgical SS only (no Tier 2 or Tier 3 from this sibling) | Tier 1 unified (two-insertion-point) + Tier 2 sub-variants (a/b) + conditional Tier 3 cumulative |
+| **Joint nitpicking-creep mitigation locus** | Phase 0 step 4 (purpose-fitness test) | Phase 0 success-criteria triage + Phase 2 substance-axis sub-axis |
+| **Number of corpus instances** | 0 direct (the meaning-layer inquiry was triggered by the conversation around nitpicking-creep, not by corpus instances) | 6 corpus instances (per §§1-2 of this finding) |
+
+**The axes are orthogonal.** A dimension can be correctly identified as critical-weight under purpose-fitness AND still be implemented at surface-only depth under Label-Tested's gap. The two failures are on different layers of the same overall dimension-design problem.
+
+**The pairings stack on `#3 Nitpicking`.** If both findings' edits ship, `#3` carries two structurally distinct pairings simultaneously: the severity-axis pairing (`#2 ↔ #3` under purpose-fitness) and the detail-density-axis pairing (`#3 ↔ Label-Tested` under this finding). Both pairings are structurally valid and not in competition.
+
+#### 9.3 Per-edit composition analysis
+
+How does each purpose-fitness edit land relative to this finding's edits?
+
+| Purpose-fitness edit | Composition with LTSU's edits | Notes |
+|---|---|---|
+| Purpose-fitness Tier 1 refinement note at Phase 0 step 4 | **COMPOSE-NATURAL** with LTSU Tier 1's Phase 0 success-criteria sub-step | They sit at different positions within Phase 0: purpose-fitness at step 4 (weighting); LTSU at the success-criteria refinement note. No collision. Both add to Phase 0's information density (see §9.4). |
+| Purpose-fitness Tier 1 refinement note at Phase 0 step 4 | **COMPOSE-COHERENT** with LTSU Tier 1's Phase 2 substance-axis extension | Different phases; different concerns (semantics at Phase 0 vs depth at Phase 2). |
+| Purpose-fitness Ancillary A (back-reference at `#2`) | **COMPOSE-NATURAL** with all LTSU variants | LTSU has no edit at `#2` specifically; Ancillary A stands alone at `#2`. |
+| Purpose-fitness Ancillary B (back-reference at `#3`) | **COMPOSE-COHERENT** with LTSU Tier 2 sub-variant (b) REPAIR | Both add content to `#3 Nitpicking`'s Prevention text. If both adopted, `#3` carries two distinct additions (LTSU inverse-companion failure note on detail-density; purpose-fitness opposite-direction-violation back-reference on severity). The two pairings layer; they do not compete. See §9.5. |
+| Purpose-fitness Ancillary B (back-reference at `#3`) | **COMPOSE-COHERENT-with-substitution** with LTSU Tier 2 sub-variant (a) ADD-new-entry | If LTSU adopts (a), the `#3` entry is unchanged by LTSU; purpose-fitness Ancillary B is the only addition to `#3`. The `Label-Tested ↔ #3` inverse-companion-pair relationship is encoded in the NEW entry `#10`'s INVERSE-COMPANION cross-reference (per LTSU §4 Tier 2 sub-variant (a) Mechanism), not in `#3` directly. |
+| Purpose-fitness Ancillary D (back-reference at Phase 3 constructive-output note) | **COMPOSE-INDEPENDENT** with all LTSU variants | The Phase 3 edit is unrelated to LTSU's Phase 0/Phase 2 focus. Closes the structural gap that the purpose-fitness structural inquiry's critique frame-premise prosecution identified: practitioners reading Phase 3 cold need the back-reference to see the constructive-output as the structural test of severity (not as an isolated operational requirement). |
+| Purpose-fitness optional Ancillary C (cross-reference at line 128 Adversarial structure) | **COMPOSE-COHERENT** with LTSU's framing | The Adversarial structure paragraph's existing language *"prevents two of critique's worst failure modes: rubber-stamping... and nitpicking..."* is consistent with both purpose-fitness's severity-axis framing AND LTSU's detail-density-axis framing. The Ancillary C cross-reference points at purpose-fitness only; if LTSU edits should ALSO be surfaced at line 128, that's a separate (and presently un-proposed) ancillary. |
+
+**No edit is in conflict.** Every purpose-fitness edit composes either NATURAL, COHERENT, or INDEPENDENT with every LTSU edit. The two findings are fully joint-adoptable.
+
+#### 9.4 Phase 0 information density post-joint-adoption
+
+If both findings' Tier 1 edits + sibling Tier 1 edits (Axis Absence; Inherited-Frame Preservation) are all adopted, Phase 0 of `td-critique.md` will contain:
+
+1. **Project-specific risk dimension check** (existing — currently at line 178 of the spec).
+2. **Frame-premise test** (existing — added by IFP 4a; currently at lines 180-190 of the spec).
+3. **Purpose-fitness test** (added by purpose-fitness sibling; ~24 lines at step 4 — Weight dimensions; insertion between line 190 and line 192).
+4. **Substance-vs-Label success-criteria** (added by this finding's Tier 1 — appended to the existing Phase 0 success-criteria refinement note structure; precise insertion point depends on the current spec's structure at the time of LTSU Tier 1 adoption).
+
+That is **four refinement notes at Phase 0**. The structural risk is information density — when a practitioner reads Phase 0 in a real `/td-critique` invocation, do four refinement notes feel coherent and necessary, or do they feel like accumulated drift?
+
+Observable: monitor practitioner reception post-joint-adoption. If the four notes feel overloaded, candidate remediations include (a) consolidating two of them under a shared sub-section; (b) tightening one or more notes to reduce per-note length; (c) extracting one or more notes into a separate Phase 0 sub-section. Defer remediation until empirical evidence (≥5 real `/td-critique` invocations using the joint-adopted spec) shows overload. This concern is logged as a new Monitoring item in Open Questions.
+
+#### 9.5 `#3 Nitpicking` entry density post-joint-adoption
+
+The `#3` entry in `td-critique.md` §4 grows depending on which combination of edits is adopted:
+
+| Adoption combination | Result at `#3` | Length estimate |
+|---|---|---|
+| Neither finding adopted | Original `#3` entry unchanged | ~7 lines (current spec) |
+| Purpose-fitness Ancillary B only | One back-reference appended to `#3`'s "How to prevent" | ~9-10 lines |
+| LTSU Tier 2 sub-variant (b) REPAIR only | Inverse-companion failure note added to `#3` (sub-mode structure) | ~30-40 lines |
+| LTSU Tier 2 sub-variant (a) ADD-new-entry only | `#3` unchanged; Label-Tested goes to new `#10` entry | `#3` ~7 lines; `#10` ~25 lines |
+| **Joint: Purpose-fitness Ancillary B + LTSU Tier 2 sub-variant (b)** | TWO additions at `#3`: (1) the inverse-companion failure note from LTSU on detail-density axis; (2) the opposite-direction-violation back-reference from purpose-fitness on severity axis | ~40-50 lines at `#3` |
+| **Joint: Purpose-fitness Ancillary B + LTSU Tier 2 sub-variant (a)** | One addition at `#3` (purpose-fitness back-reference); separate `#10` entry for Label-Tested | `#3` ~10 lines; `#10` ~25 lines |
+
+The **joint adoption with LTSU sub-variant (b) REPAIR** produces the highest `#3` density (~40-50 lines). The two additions encode different pairings of `#3` along different axes; they coexist without contradiction. ~50 lines is at the upper-end of acceptable for a §4 entry but still readable. If `#3` exceeds ~50 lines, consider sub-section structuring within the entry (a sub-section for severity-axis pairing; a sub-section for detail-density-axis pairing).
+
+The **joint adoption with LTSU sub-variant (a) ADD-new-entry** is the lighter-density path: `#3` stays at ~10 lines (single back-reference); `#10` carries Label-Tested at ~25 lines. This path is recommended when `#3` length is a concern.
+
+This concern is logged as a new Monitoring item in Open Questions.
+
+#### 9.6 Joint adoption sequences (4-way matrix; updated from §7's 3-way)
+
+The original §7 had three adoption sequences. They are now extended to incorporate the purpose-fitness sibling:
+
+**MINIMAL (joint, all four siblings)** — Axis Absence Tier 1 + Inherited-Frame Preservation Tier 1 single-spec + this finding's Tier 1 unified + purpose-fitness Tier 1 + mandatory Ancillaries A + B + D.
+
+Phase 0 will contain four refinement notes (Project-specific risk + Frame-premise test from IFP + purpose-fitness + LTSU Tier 1 sub-step) plus Phase 2 multi-axis prosecution depth extension (from LTSU Tier 1) plus back-references at `#2` and `#3` (from purpose-fitness ancillaries) plus a back-reference at the Phase 3 constructive-output refinement note (purpose-fitness Ancillary D).
+
+Total edit: **~110 lines** (original MINIMAL ~80 lines + ~30 lines from purpose-fitness sibling). This is the cheapest joint coverage of all known failure types from the top-7 list §§1-3 PLUS the meaning-layer meta-principle of severity.
+
+**MID-COST (joint, vocabulary-distinct)** — MINIMAL + the three Tier 2 entries from this series's siblings (AA `#8` + IFP `#9` + LTSU `#10` via sub-variant (a)).
+
+The purpose-fitness sibling has no Tier 2; its content is encoded entirely in Tier 1 + ancillaries. `td-critique.md` §4 reaches **10 entries** (the same count as original MID-COST). Total edit: **~185 lines** (original MID-COST ~155 lines + ~30 lines from purpose-fitness).
+
+**CUMULATIVE-DEEP (joint, hook-table)** — MID-COST + the three Tier 3 hook-table extensions (AA Tier 3 with HC1-HC7 + IFP Tier 3 with HC8-HC9 + this finding's Tier 3 with HC10).
+
+The purpose-fitness sibling has no Tier 3; the hook-table reaches HC1-HC10 organized under the three-coordinate meta-question (per §8 of this finding). Total edit: **~310 lines** (original CUMULATIVE-DEEP ~280 lines + ~30 lines from purpose-fitness).
+
+**Across all three joint sequences,** the purpose-fitness sibling adds ~30 lines (refinement note + 3 mandatory ancillaries) as a uniform increment. The joint adoption sequences inherit all the per-sequence properties of the original sequences (MINIMAL = cheapest joint coverage; MID-COST = vocabulary-distinct; CUMULATIVE-DEEP = highest future-extensibility) AND add the purpose-fitness severity-meta-principle as a foundational layer.
+
+#### 9.7 Joint nitpicking-creep mitigation
+
+This finding's §4 explicitly named **Nitpicking-creep risk** as a CRITICAL 5th trade-off axis precisely because Label-Tested is `#3`'s inverse-companion on detail-density. The purpose-fitness sibling's encoding ALSO addresses nitpicking-creep — but at a different layer:
+
+- **LTSU mitigation (existing in this finding's §4 Tier 1):** load-bearing-claim-type triage at Phase 0. Only dimensions whose stated scope WILL test load-bearing substance carry mandatory substance criteria; purely-surface dimensions are exempt. The Phase 2 sub-axis fires only when a Phase 0 substance criterion exists. The two trigger conditions chain to bound substance-testing to dimensions where substance is genuinely load-bearing.
+
+- **Purpose-fitness mitigation (new from the sibling):** purpose-fitness test at Phase 0 step 4 (weighting semantics). The test asks "would the candidate still do its job?" — defects that don't block purpose-fulfillment are routed to SURVIVE-with-caveat or REFINE, not KILL. This structurally prevents nitpicking-creep at the verdict-judgment surface, not at the dimension-construction surface.
+
+**Joint mitigation pattern.** Adopting both findings produces nitpicking-creep mitigation at TWO loci covering TWO failure modes simultaneously:
+
+- LTSU's mitigation operates at the **construction stage** (Phase 0 success-criteria triage) addressing the STATED-vs-IMPLEMENTED scope gap (Label-Tested failure).
+- Purpose-fitness's mitigation operates at the **verdict-judgment stage** (Phase 0 step 4 weighting semantics applied through Phase 2 collision and Phase 3 verdict rendering) addressing the SEVERITY-vs-VERDICT mismatch (Rubber-Stamping and Nitpicking failures).
+
+The joint mitigation is structurally complementary; neither alone addresses both layers. The joint adoption produces **defense-in-depth against nitpicking-creep** at both the construction stage AND the verdict-judgment stage.
+
+#### 9.8 Updated cross-failure interactions
+
+The cross-failure interactions originally listed in this finding's §1 distinctness table are extended in §1 (a new row was added in this update). For navigation convenience, the full set of cross-failure pairings is also recorded here:
+
+| Failure relationship | Description |
+|---|---|
+| `#3 Nitpicking ↔ Label-Tested` | INVERSE-COMPANION-PAIR on detail-density axis (original framing from this finding). |
+| `#2 Rubber-Stamping ↔ #3 Nitpicking` | **OPPOSITE-DIRECTION-VIOLATION-PAIR on severity axis** (purpose-fitness framing, added by sibling). |
+| `Label-Tested ↔ #2 Rubber-Stamping` | INDIRECT relationship via `#3`: both are `#3`'s pair-partners on different axes. No direct pair-relationship; they don't engage each other except through `#3`. |
+| Purpose-fitness principle ↔ Substance-vs-Label test | **COMPLEMENTARY at the Phase 0 layer:** purpose-fitness clarifies what weighting MEANS (semantics); LTSU's Substance-vs-Label test clarifies what depth criteria must reach (operationalization). The two are at the meta-vs-operational layers respectively. |
+
+#### 9.9 Forward-integration of purpose-fitness commitments
+
+This finding was originally published BEFORE the purpose-fitness sibling chain. This update FORWARD-INTEGRATES the sibling's commitments — acknowledging them as related-sibling commitments rather than inherited-from-prior commitments. The structural-honest naming is **forward-integration** because the temporal direction is reversed: a later finding's commitments are being integrated into an earlier finding via update.
+
+**Forward-integrated commitments from `devdocs/inquiries/2026-06-09_08-14__critique_kill_severity_meta_principle/finding.md` (meaning-layer):**
+
+1. **Purpose-fitness as meta-principle of severity in `/td-critique`.** Compatibility with this finding: COMPATIBLE — purpose-fitness operates at a different structural axis than Label-Tested; both axes coexist on `#3 Nitpicking`.
+
+2. **Severity is single-axis at meta-level; per-task calibration is composite (reversibility × blast-radius × scope × fixability × evidence-strength × domain-specific axes).** Compatibility with this finding: COMPATIBLE — LTSU's Substance-vs-Label criteria is part of the per-task calibration layer (specifically, the success-criteria refinement note's content); not in conflict with the meta-principle.
+
+3. **Severity-calibration locus is Phase 0 step 4 (Weight dimensions).** Compatibility with this finding: COMPATIBLE — LTSU's Tier 1 attaches at the success-criteria refinement note (also Phase 0, different attachment point); doesn't conflict with the weighting locus.
+
+4. **Constructive-output on KILL is the structural test of severity.** Compatibility with this finding: COMPATIBLE — LTSU doesn't make claims about constructive-output. Forward-compatible.
+
+5. **Confidence is orthogonal to severity (INTERIM verdict deferred).** Compatibility with this finding: COMPATIBLE — LTSU doesn't claim a new verdict type.
+
+6. **`#2 Rubber-Stamping` and `#3 Nitpicking` are opposite-direction violations of the same purpose-fitness principle.** Compatibility with this finding: COMPATIBLE-with-extension — this finding's INVERSE-COMPANION-PAIR framing of `#3 ↔ Label-Tested` does not contradict the purpose-fitness framing of `#2 ↔ #3`; the two pairings are along different axes. See §9.2 for the two-axis analysis.
+
+7. **Defer-with-direction for ambiguous-purpose candidates.** Compatibility with this finding: COMPATIBLE — LTSU's intervention surface is within `td-critique.md`; the defer-with-direction operational fallback applies to all critique invocations including those addressing Label-Tested cases.
+
+**Forward-integrated commitments from `devdocs/inquiries/2026-06-09_10-13__encode_purpose_fitness_refinement_note_phase0/finding.md` (structural-layer):**
+
+1. **The structural encoding is Tier 1 Surgical SS at Phase 0 step 4 plus mandatory Ancillaries A + B + D.** Acknowledged — see §9.3 for the per-edit composition analysis with LTSU's variants.
+
+2. **Phase 0 will have 4 refinement notes post-joint-adoption.** Acknowledged — see §9.4 for information density implications.
+
+3. **`#3 Nitpicking` entry gains back-reference content via Ancillary B.** Acknowledged — see §9.3 for composition with LTSU Tier 2 sub-variants and §9.5 for entry-density implications.
+
+4. **Ancillary D (back-reference at Phase 3 constructive-output refinement note) was PROMOTED from COULD to MUST by the purpose-fitness structural inquiry's critique frame-premise prosecution** because single-locus encoding at Phase 0 alone was insufficient to make the constructive-output's structural-test framing visible to practitioners reading Phase 3 cold. Acknowledged — joint adoption sequences in §9.6 include Ancillary D as MUST.
+
+5. **`/sense-making` naming in the defer-with-direction clause is acceptable per `docs/discipline_edit_tiers.md`'s discipline-individual principle** (discipline NAMES are not internal artifacts; only internal artifacts are off-limits). Acknowledged — this finding's Tier 1 unified Phase 2 substance-axis extension also names `/sense-making`'s Load-bearing concept test as MANDATORY cross-discipline precedent, consistent with the same principle.
+
+#### 9.10 The honest tension — layering, not competing
+
+The purpose-fitness work and this finding both engage with `#3 Nitpicking`. There is a mild tension worth flagging honestly:
+
+- The purpose-fitness pairing is at the META layer (severity-calibration principle).
+- This finding's pairing is at the OPERATIONAL layer (prosecution depth).
+
+If both edits are adopted, `#3` gains multiple framings. The framings are STRUCTURALLY DISTINCT (different axes) and DO NOT COMPETE — they layer.
+
+If only one finding's edits are adopted, the OTHER finding's framing remains valid but unencoded. Either is structurally fine. The user's adoption decision is the load-bearing structural choice.
+
+**Why the tension is honest rather than defective.** `#3 Nitpicking` is fundamentally a failure mode that can fire FOR MULTIPLE REASONS (severity mis-calibration; over-density prosecution; substance under-probe). The single-failure-mode encoding in current `td-critique.md` §4 collapses these reasons into one entry. Both findings surface DIFFERENT reasons; the spec being able to carry multiple reason-framings is a feature, not a bug. The joint adoption produces a richer `#3` entry that names BOTH reasons; the partial adoption produces an entry that names ONE reason; the no-adoption preserves the original single-collapsed entry. All three states are structurally coherent.
+
+#### 9.11 What this update does NOT change
+
+For clarity about what's preserved unchanged from the original finding:
+
+- **§1's identification of the 5 sub-mechanisms** of Label-Tested (NAME / WORKED-EXAMPLE / CATEGORY / UNIT / ARTIFACT-TYPE) — UNCHANGED.
+- **§1's INVERSE-COMPANION-PAIR framing** of `#3 ↔ Label-Tested` — UNCHANGED.
+- **§2's five sub-mechanisms** with corpus-instance assignments — UNCHANGED.
+- **§3's tier-shape vocabulary** (the three tiers + sub-axes) — UNCHANGED.
+- **§4's four proposals** (Tier 1 unified; Tier 2 sub-variant (a); Tier 2 sub-variant (b); Tier 3 cumulative) — UNCHANGED; remains a 4-variant set.
+- **§5's two REFINES** (REFINE-A3 + REFINE-Assembly) — UNCHANGED.
+- **§7's 3-way composition matrix's 72-cell structure** — PRESERVED for reference; extended by §9.6 to a 4-way joint-adoption analysis.
+- **§8's meta-question evolution trajectory** — UNCHANGED; the purpose-fitness sibling does not extend the meta-question because purpose-fitness operates at a different axis (severity, not dimension-space-and-frame).
+- **§1's distinctness table** — EXTENDED by a new row for purpose-fitness sibling (added in update; original rows unchanged).
+- **§6's picker paths** — EXTENDED by one new path (Comprehensive joint-minimum path; added in update) and a uniform increment note for existing paths.
+- **Inherited Commitments Re-test** — original priors 1-6 UNCHANGED; the purpose-fitness sibling is acknowledged via forward-integration in §9.9 (a structural innovation that handles backward-in-time inheritance without violating the protocol's prior-only Re-test convention).
+- **Next Actions (MUST / COULD / DEFERRED)** — original items UNCHANGED.
+- **Reasoning (Kills from Innovation; Kills/refines from Critique; Contradictions reconciled)** — original content UNCHANGED.
+
+The update is ADDITIVE; original content is preserved.
 
 ---
 
@@ -431,6 +696,14 @@ All 8 primary survivors from Innovation SURVIVED Critique:
 
 **Sensemaking's MANDATORY external grounding citation** (sensemaking Load-bearing concept test) addressed the Self-Reference Collapse risk noted in the inquiry's own scope (this inquiry is critique applied to critique-spec design). Critique's D4 + D10 dimensions verified external grounding per candidate; Self-Reference Collapse was MITIGATED (not active).
 
+### Why the update was applied (added 2026-06-09)
+
+This finding was originally published on 2026-06-08. On 2026-06-09 a new sibling inquiry chain on critique severity (the purpose-fitness work) was completed; it grew out of the nitpicking-creep concern raised during conversations about this series's proposals. The purpose-fitness sibling carries spec edits to `td-critique.md` that engage with the same failure mode (`#3 Nitpicking`) that this finding's INVERSE-COMPANION-PAIR framing engages — but along a different structural axis (severity rather than detail-density). Reading the two findings without integration would leave the user with two separately-articulated `#3 Nitpicking` engagements without a clear composition rule.
+
+The update was triggered by the user's question *"is it relevant to devdocs/inquiries/2026-06-08_20-00__label_tested_substance_untested_critique_fix_proposals/finding.md? how?"* about the just-completed purpose-fitness structural-layer finding. The answer (yes; complementary at different axes) implied a structural debt: this finding's §7 had explicitly named a Refinement Trigger that fires when a 4th sibling joins the matrix. The trigger was activated; this update is the responsible-action discharge of that trigger.
+
+The update preserves all original content unchanged. Additions are clearly marked with *"(added in update 2026-06-09)"* where they appear in pre-existing sections. The new §9 (Integration with the purpose-fitness sibling) is the load-bearing locus for the comprehensive integration. The update protocol is structurally honest: forward-integration of a later sibling's commitments into an earlier finding's structural reasoning, without violating the prior-only Inherited Commitments Re-test convention.
+
 ---
 
 ## Open Questions
@@ -440,6 +713,12 @@ All 8 primary survivors from Innovation SURVIVED Critique:
 - **Three-coordinate meta-question composability upper limit.** This inquiry's Tier 3 broadens the cumulative hook-table's meta-question to three coordinates (dimension space AND inherited frame AND evaluation level). Three coordinates is approaching the upper limit of a single generative principle. Observable: if a 4th sibling inquiry needs to broaden further, the hook-table may need a different organizing pattern (e.g., the table itself becomes the surface and the meta-question fades to a label).
 
 - **Sub-mechanism (3) sub-case adequacy.** Sub-mechanism (3) has two sub-cases (within-category undifferentiation; candidate-set restriction by inherited taxonomy). Each is supported by one corpus instance. Observable: future corpus instances may surface a third sub-case (e.g., category-axis-orientation failure) that requires expanding (3)'s sub-case enumeration or splitting (3) into two distinct sub-mechanisms.
+
+- **(Added in update 2026-06-09) Phase 0 information density post-joint-adoption.** If both this finding and the purpose-fitness sibling's edits are adopted (along with the prior siblings' Tier 1s), Phase 0 will have FOUR refinement notes (Project-specific risk; Frame-premise test from IFP; Purpose-fitness test from purpose-fitness work; Substance-vs-Label success-criteria from this finding's Tier 1). Observable: if practitioners report Phase 0 feels overloaded after joint adoption (over ≥5 real `/td-critique` invocations using the joint-adopted spec), reconsider whether the four notes need consolidation or whether one of the notes can be tightened. Candidate remediations include (a) consolidating two notes under a shared sub-section; (b) tightening per-note length; (c) extracting one or more notes into a separate Phase 0 sub-section. See §9.4.
+
+- **(Added in update 2026-06-09) `#3 Nitpicking` entry density post-joint-adoption.** If both this finding's Tier 2 sub-variant (b) REPAIR AND the purpose-fitness work's Ancillary B back-reference are adopted, the `#3` entry gets two distinct additions (the inverse-companion failure note from this finding on detail-density axis; the opposite-direction-violation cross-reference from the purpose-fitness work on severity axis). Observable: monitor if the additions feel coherent or accumulated over ≥5 real invocations; tighten phrasing or introduce sub-section structure within `#3` if needed. Alternative path: if `#3` density is a concern, prefer LTSU Tier 2 sub-variant (a) ADD-new-entry (which keeps `#3` light and puts Label-Tested at `#10`) over sub-variant (b) REPAIR. See §9.5 for the density estimates per adoption combination.
+
+- **(Added in update 2026-06-09) Purpose-fitness adoption status.** Observable: whether the user adopts the purpose-fitness sibling's edits, partially or fully. The adoption decision is information about which structural layer (meta or operational) the user values surfacing in the spec. If purpose-fitness is adopted in full (with optional Ancillary C), the `#2/#3` unification is surfaced at FOUR locations (Phase 0 step 4 refinement note body; `#2` Prevention; `#3` Prevention; line 128 Adversarial structure). If only mandatory Ancillaries A+B+D are adopted, the unification is surfaced at THREE locations (Phase 0 step 4; `#2` Prevention; `#3` Prevention).
 
 ### Blocked
 
@@ -456,6 +735,12 @@ All 8 primary survivors from Innovation SURVIVED Critique:
 - **Tier 2 sub-variant choice.** Triggers re-open if the sibling Tier 2 entries' actual implementation status changes the sequential-numbering calculus (e.g., one sibling's Tier 2 is deferred or rejected; sequential numbering is no longer load-bearing).
 
 - **3-way composition matrix's recommended adoption sequences.** Triggers re-open if a 4th sibling inquiry (top_7 failure type #4, #5, #6, or #7) joins the matrix as a 4th dimension; the matrix becomes 4-way and the recommended sequences need re-derivation.
+
+  **STATUS UPDATE 2026-06-09: ACTIVATED.** The purpose-fitness sibling chain (`devdocs/inquiries/2026-06-09_08-14__critique_kill_severity_meta_principle/` meaning-layer + `devdocs/inquiries/2026-06-09_10-13__encode_purpose_fitness_refinement_note_phase0/` structural-layer) is the 4th sibling that fired this trigger. The trigger's original framing presupposed the 4th sibling would be one of top_7 failure types #4-#7; in practice, the 4th sibling is the meta-principle inquiry that grew out of the nitpicking-creep concern surfaced in this series. The structural firing condition (4th sibling joins the matrix) is satisfied; the framing-presupposition (top_7 type) is honestly refined. Re-derivation is captured in §9.6.
+
+- **(Added in update 2026-06-09) Purpose-fitness sibling adoption status as compositional dependency.** Triggers re-open if the purpose-fitness sibling's adoption status changes from undecided to (a) fully adopted, (b) partially adopted (e.g., Tier 1 refinement note + some ancillaries but not all), or (c) rejected. Each adoption-status change implies different joint-adoption sequences in §9.6 and different `#3 Nitpicking` entry density implications in §9.5.
+
+- **(Added in update 2026-06-09) Future meta-principle siblings beyond purpose-fitness.** Triggers re-open if a 5th sibling inquiry produces another meta-principle (e.g., a meta-principle for dimensional weighting beyond purpose-fitness; a meta-principle for adversarial-collision balance). The 4-way matrix becomes 5-way; §9 may need further extension. Anticipated possibilities: a meta-principle for cross-discipline calibration consistency (analogous to purpose-fitness's per-task calibration layer but operating cross-discipline rather than per-task); a meta-principle for verdict-shape (whether to introduce INTERIM verdict; what verdict-shapes critique should support). These are research-frontier inquiries; not currently triggered.
 
 ---
 

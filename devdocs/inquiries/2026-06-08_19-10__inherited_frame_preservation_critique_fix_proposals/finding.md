@@ -193,27 +193,27 @@ Both variants are Tier 1 surgical (refinement-note pattern). They differ on whic
 
 **What to add.** A new numbered failure-mode entry in `td-critique.md` §4 (after Axis Absence's #8 if Axis Absence Tier 2 is adopted; otherwise as #8).
 
-**Drafted entry text:**
+**Drafted entry text** (discipline-individual — same language principle as the 4a refinement note):
 
 > ### 9. Inherited-Frame Preservation
 >
-> A cross-inquiry critique failure: the dimension list is constructed FROM an inherited frame (the commitments carried forward from a prior inquiry's conclusion via CONCLUDE's Inherited Commitments Re-test mechanism at `cognitive_harness/protocols/conclude.md`) and treats the frame as a commitment-to-preserve rather than a candidate-to-test. The frame's own load-bearing premises are never re-questioned.
+> A cross-evaluation critique failure: the dimension list is constructed FROM a frame inherited from prior evaluation work — commitments carried forward into the current candidate-space — and treats the frame as a commitment-to-preserve rather than a candidate-to-test. The frame's own load-bearing premises are never re-questioned.
 >
 > **Sub-recognitions (five distinct sub-mechanisms with one shared symptom):**
 >
 > - **(i) Authoritative-baseline-preservation** — the inherited prior artifact is treated as an authoritative baseline; preservation = transmission of any contamination in the baseline.
 > - **(ii) Atomic-category-given** — an inherited category-definition is treated as primitive; its compositional structure or hidden assumption is not tested.
-> - **(iii) Accreted-commitments-inherited** — commitments accumulated across a chain of inquiries are inherited as a load-bearing assembly; the weight of each accreted commitment is not tested.
+> - **(iii) Accreted-commitments-inherited** — commitments accumulated across a chain of evaluations are inherited as a load-bearing assembly; the weight of each accreted commitment is not tested.
 > - **(iv) Frame-bound-attributes-portable** — attributes derived within a frame are treated as portable to new contexts; the frame-binding of the attributes is not tested.
 > - **(v) Frame-tested-within-not-itself** — the frame becomes the testing space; the frame's structural soundness is not testable from within.
 >
 > Shared symptom: the frame's load-bearing premise is unchallenged. Shared tendency: the inherited substrate is preservation-verified, not commitment-tested.
 >
-> **How to recognize.** Post-hoc, a later inquiry produces a `corrects:` or `refines:` finding showing the prior critique inherited the frame from an earlier inquiry's conclusion without testing the frame's load-bearing premises. The corrector typically refers to the inherited frame as "wrong," "contaminated," "narrower than the failure required," "carried forward unchallenged," or "preservation-for-preservation's-sake bias." Harm evidence often points to an external source (canon doc, sibling discipline spec, prior corpus pair) that was reachable but not surfaced.
+> **How to recognize.** Post-hoc, a later evaluation produces a correction showing the prior critique inherited the frame from earlier evaluation work without testing the frame's load-bearing premises. The corrector typically refers to the inherited frame as "wrong," "contaminated," "narrower than the failure required," "carried forward unchallenged," or "preservation-for-preservation's-sake bias." Harm evidence often points to a reachable canonical source, sister-discipline output, or prior evaluation chain that was not surfaced.
 >
-> **How to prevent.** Run the Phase 0 "Frame-premise test" refinement note at dimension construction time (cross-reference: see Phase 0 Dimension Construction's Frame-premise test refinement note). For inquiries declaring a Synthesis Trigger in `_branch.md` or `refines:` / `supersedes:` / `corrects:` frontmatter, the prevention is mandatory.
+> **How to prevent.** Run the Phase 0 "Frame-premise test" refinement note at dimension construction time (cross-reference: see Phase 0 Dimension Construction's Frame-premise test refinement note). When the candidate-space rests on inherited commitments, the prevention is mandatory.
 >
-> **Relationship to other modes.** Inherited-Frame Preservation is the precondition-violation of CONCLUDE protocol's Inherited Commitments Re-test enforcement mechanism (in `cognitive_harness/protocols/conclude.md`) — it fires when the Re-test's preservation-verification framing silently passes inherited commitments that have become wrong. Distinct from Failure Mode #8 Axis Absence at the Failure's Actual Plane: Axis Absence operates at within-spec layer (precondition-violation of #4 Dimension Blindness's prevention); Inherited-Frame Preservation operates at cross-spec layer.
+> **Relationship to other modes.** Inherited-Frame Preservation is a precondition-violation pattern at a cross-evaluation layer: the project's inheritance-handling machinery is structured to preserve commitments across evaluations; the failure fires when that preservation-machinery silently passes inherited commitments that have become wrong AND `/td-critique` has no compensating dimension that prosecutes the frame's premises. Distinct from Failure Mode #8 Axis Absence at the Failure's Actual Plane: Axis Absence operates at within-spec layer (precondition-violation of #4 Dimension Blindness's prevention); Inherited-Frame Preservation operates at cross-evaluation layer.
 
 **Sub-mechanism coverage:** STRONG on all 5 via sub-recognitions.
 
@@ -221,7 +221,7 @@ Both variants are Tier 1 surgical (refinement-note pattern). They differ on whic
 - **Plus — diagnostic vocabulary.** Names the failure as a category; corpus pairs can be retroactively labeled.
 - **Plus — preserves linear failure-modes structure** (codebase precedent: surfacing modes 8+9 + Axis Absence #8 entry).
 - **Plus — bounded scope** via Recognition wording.
-- **Minus — cross-mode dependency to CONCLUDE.** The entry references conclude.md; if conclude.md is later restructured, the entry needs updating. (Mitigated: precondition-violation relationships are stable structurally.)
+- **Minus — soft cross-evaluation dependency.** The entry's Relationship-to-other-modes paragraph describes a project-level inheritance-handling machinery without naming a specific protocol; if that machinery is later restructured, the paragraph stays valid in shape but the practitioner needs to map the abstract description to current concrete machinery. (Mitigated: precondition-violation relationships are stable structurally; the discipline-individual phrasing makes the entry robust against renames/restructures in the protocol/runner layers.)
 - **Minus — linear growth concern.** Adds §4 entry #9 after Axis Absence's #8; SKILL.md description grows. Bounded at current scale; becomes a real concern at ~12+ modes (where Tier 3 hook-table pays off).
 - **Minus — vocabulary alone, prevention requires Tier 1.** Adopting this proposal alone doesn't catch the failure at construction time; it provides naming + cross-reference to Tier 1 probe.
 
@@ -233,12 +233,12 @@ Both variants are Tier 1 surgical (refinement-note pattern). They differ on whic
 
 > ## Frame-Premise Re-test
 >
-> **REQUIRED when (a) the inquiry declared `## Synthesis Trigger` in `_branch.md` listing ≥1 prior whose commitments include explicit frame-shaping claims (named operations / named categories / named atomic concepts / named foundational principles), OR (b) the finding's frontmatter declares `refines:` / `supersedes:` / `corrects:` of a prior finding with N≥3 inherited commitments AND any of those commitments names a structural frame. OMIT entirely when neither trigger is met.**
+> **REQUIRED when the candidate-space rests on commitments inherited from prior evaluation work AND any of those commitments names a structural frame (operations / categories / atomic concepts / foundational principles). OMIT when neither condition is met.**
 >
 > When required, surface:
 >
 > - **Named frame premises:** list 2-3 load-bearing premises of the inherited frame (commitments from priors that, if wrong, would invalidate this finding's candidate-space).
-> - **Per-premise test status:** for each named premise, cite whether the premise was tested in this inquiry (sensemaking ambiguity collapse / critique adversarial evaluation / innovation inversion-candidate) and the outcome — premise confirmed; premise refined; premise dropped.
+> - **Per-premise test status:** for each named premise, cite whether the premise was tested in this inquiry's discipline work (the runner names which upstream disciplines fired and how each one tested the premise) and the outcome — premise confirmed; premise refined; premise dropped.
 > - **For untested premises:** cite the reason (frame not load-bearing for this inquiry's candidate-space; testing deferred to follow-up inquiry; out of scope).
 >
 > The Frame-Premise Re-test is intentional friction designed to expose Inherited-Frame Preservation (cf. `td-critique.md` §4 Failure Mode #9 if adopted). A future reviewer can spot weak frame-testing by checking the ratio of "tested" to "untested" frame premises across a finding's inheritance.
@@ -260,7 +260,7 @@ Both variants are Tier 1 surgical (refinement-note pattern). They differ on whic
 
 **Drafted HC9 hook entry:**
 
-> | **HC9 — Inherited-frame premise** | Whether the dimension list inherited a frame from a prior inquiry's commitments AND whether the frame's load-bearing premises are tested. Sub-aspects: (i) authoritative-baseline-preservation; (ii) atomic-category-given; (iii) accreted-commitments-inherited; (iv) frame-bound-attributes-portable; (v) frame-tested-within-not-itself. | Inherited-Frame Preservation (NEW) — corrective at Phase 0 Dimension Construction's Frame-premise test refinement note + cross-reference to `conclude.md` Inherited Commitments Re-test enforcement. Precondition-violation of `conclude.md`'s Re-test enforcement: fires when the Re-test's preservation-verification framing silently passes inherited commitments based on a wrong frame. |
+> | **HC9 — Inherited-frame premise** | Whether the dimension list inherited a frame from prior evaluation work AND whether the frame's load-bearing premises are tested. Sub-aspects: (i) authoritative-baseline-preservation; (ii) atomic-category-given; (iii) accreted-commitments-inherited; (iv) frame-bound-attributes-portable; (v) frame-tested-within-not-itself. | Inherited-Frame Preservation (NEW) — corrective at Phase 0 Dimension Construction's Frame-premise test refinement note. Precondition-violation pattern at cross-evaluation layer: the project's inheritance-handling preserves commitments across evaluations; the failure fires when that preservation silently passes commitments based on a wrong frame AND `/td-critique` has no compensating dimension. |
 
 **Proposed BROADENING of the Axis Absence meta-question:**
 
@@ -268,7 +268,7 @@ Both variants are Tier 1 surgical (refinement-note pattern). They differ on whic
 >
 > **NEW (broadened):** "Are the dimension space AND its inherited frame both load-bearing and tested?"
 >
-> The broadening preserves all original coverage. HC1 (Dimensions vs problem), HC4 (Dimension-space completeness), HC5 (Dimension-space construction) still ask about the dimension space. HC9 adds the frame-inheritance dimension. The new wording reads naturally across all 9 hooks. It is consistent with sensemaking's H2 (Frame scope) meta-question at the sensemaking discipline.
+> The broadening preserves all original coverage. HC1 (Dimensions vs problem), HC4 (Dimension-space completeness), HC5 (Dimension-space construction) still ask about the dimension space. HC9 adds the frame-inheritance dimension. The new wording reads naturally across all 9 hooks.
 
 **Sub-mechanism coverage:** STRONG on all 5 via HC9 sub-aspects.
 

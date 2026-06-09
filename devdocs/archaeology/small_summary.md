@@ -1,156 +1,87 @@
 # What This Project Is — A Plain-Language Summary
 
-*Written by reading the actual files in `cognitive_harness/`, the three canon documents in `docs/canon/`, and the install scripts — not by trusting what existing summaries claim. Overwrites any prior version.*
+*Written 2026-06-09 by reading the project's actual source (everything in `cognitive_harness/`, the install scripts, the settings and workflow files, the shape of the `devdocs/inquiries/` output archive) plus the full `docs/` tree. This replaces any prior version of this file.*
 
 ---
 
 ## The one-sentence version
 
-This project is a hand-built **"thinking kit" for AI assistants** — a collection of written instruction documents that teach an AI (Claude Code or OpenAI's Codex) how to perform specific kinds of careful, structured thinking on demand, and a long-running research program for figuring out how an AI could eventually do that thinking *and improve itself* with very little supervision.
+This project — called **Homegrown** (the local folder is named "native") — is a hand-built **thinking system for AI assistants**: a library of written playbooks that teach an AI like Claude Code *how to think through hard questions in a disciplined, repeatable way*, wrapped inside a long-term research program whose explicit end goal is a system that can **improve its own thinking with less and less human supervision**.
 
-## The most important thing to know first
+## The most important thing to understand first
 
-If you peek inside the repo you'll see a `.venv` folder full of Python files. **That is not the project.** It's a box of pre-built helpers the project deliberately ignores.
+There is almost no conventional software here. The repository contains exactly two small shell scripts (installers), one leftover GitHub workflow template, and a Python virtual environment that contains *zero* lines of project Python code. Everything else — thousands of files — is Markdown prose.
 
-The **real project is written almost entirely in Markdown** — well over five hundred instruction documents and only two short shell scripts. There is essentially **no traditional executable code here**. The "source code" of this project is *prose meant to be read by an AI assistant.*
+That is not an accident or an unfinished state. **The Markdown IS the source code.** The documents are written to be *executed by an AI assistant*: precise step-by-step procedures, required outputs, quality checks, and named failure modes. The install scripts copy these documents into the AI assistant's "skills" folder (`~/.claude/skills/` for Claude Code, `~/.codex/skills/` for OpenAI Codex), where each becomes a slash-command a user can invoke.
 
-Think of it less like an app and more like **a library of detailed playbooks** that get copied into the AI assistant's "skills" folder so the assistant knows how to perform specific careful operations on demand, plus a working archive of every time those playbooks have been used.
+So the right mental model is: **a methodology library plus its own laboratory notebook**, not an app.
 
 ---
 
-## What it actually is, in two layers
+## What it currently does (working today)
 
-### Layer 1 — the "thinking disciplines" (the working kit)
+### 1. Seven "thinking disciplines" — single thinking moves
 
-The kit is built around the idea of **disciplines**: each one a single, well-defined *kind of thinking* the AI can be told to perform. You invoke them by typing a slash-command (like `/sense-making` or `/innovate`) into the assistant. Each discipline has a short `SKILL.md` (the recipe) and a longer `references/` reference file (the deep background the assistant must read before executing).
+Each discipline formalizes one kind of thinking a person does naturally, written down so an AI performs it consistently every time instead of brilliantly one day and shallowly the next:
 
-The disciplines that are currently shipped by the installer:
-
-| Discipline (command) | What it does, in plain terms |
+| Command | Plain-language job |
 |---|---|
-| **Surfacing** (`/surfacing`) | Sweeps a big pile of material (a codebase, a doc set, a set of options) and pulls out the parts that bear on the question, labeling each piece by how relevant it is (core / sub / side / umbrella). It draws things into the AI's attention; it does not interpret them. |
-| **Sense-making** (`/sense-making`) | Takes a vague, ambiguous situation and pins it down. Pulls out the "anchors" (constraints, key insights, principles), checks it from six different perspectives, collapses ambiguities one by one, and arrives at a stable conceptual model — keeping track of six characteristic failure modes (status-quo bias, premature stabilization, etc.). |
-| **Decomposition** (`/decompose`) | Breaks a tangled whole into smaller pieces. Crucially it's framed as **perceiving where the natural seams are**, not just chopping arbitrarily — it produces a coupling map, a question tree with verification criteria, an interface map between pieces, and a dependency order. |
-| **Innovation** (`/innovate`) | Generates fresh ideas on purpose using seven explicit mechanisms — four "generators" (combination, absence recognition, domain transfer, extrapolation) and three "framers" (lens shifting, constraint manipulation, inversion). Tests each idea with a five-point survival check before declaring it useful. |
-| **Critique** (`/td-critique`) | Stress-tests competing ideas like a courtroom — prosecution + defense + collision — across weighted evaluation dimensions, building a "fitness landscape" map of the solution space and rendering each candidate as **SURVIVE / REFINE / KILL** with required constructive output. |
-| **Routelister** (`/routelister`) | Takes a body of work and a goal, and enumerates every direction you *could* move from it. Each direction gets a three-axis type tag (grain × kind × engagement-type, over a fixed nine-verb vocabulary). It writes two files itself: a per-run route map and a persistent concept-map index. It enumerates the field; it never picks the move. |
+| `/surfacing` | Sweep a bounded territory (a codebase, a pile of documents) and pull out everything relevant to a purpose, tagged by how relevant it is. |
+| `/sense-making` | Turn a vague, ambiguous question into a stable, clearly-structured understanding, by extracting "anchors," checking multiple perspectives, and explicitly resolving ambiguities. |
+| `/decompose` | Look at a big tangled problem, perceive where its natural seams are, and split it into independent pieces with clear connections between them. |
+| `/innovate` | Generate genuinely new ideas using seven named mechanisms (combining concepts, inverting assumptions, importing patterns from other fields, etc.), then stress-test what survives. |
+| `/td-critique` | Put competing ideas on trial — a prosecution argues against each, a defense argues for it — and rule SURVIVE / REFINE / KILL with reasons. |
+| `/articulate_simple` | Before doing anything, spell out what a request *actually asks* — listing every plausible reading instead of silently guessing one. |
+| `/routelister` | Look at any body of work and list "here are all the directions you could go next, typed and explained" — without picking one. |
 
-A consistent rule runs through the whole kit: **separate generating from choosing.** That's why innovation (generate ideas) and critique (judge ideas) are different commands, and why routelister explicitly never selects.
+Each discipline saves a Markdown report of what it did, every time. These are real and heavily exercised — the specs have accumulated layers of "refinement notes" born from observed failures.
 
-Each discipline has the same shape: a Step-0 mandatory pre-read of its reference file, then a procedure, then a self-assessment verdict (`PROCEED` / `FLAG` / `RE-RUN`). The reference files are heavy — sense-making is ~470 lines, innovate is ~750 — and they contain not just the procedure but a taxonomy of failure modes (six to ten per discipline, split between "operational" Layer 1 failures and "identity-eroding" Layer 2 failures) so the AI can recognize when it's failing in a known way.
+### 2. Three "loop runners" — assembly lines that chain the disciplines
 
-### Layer 2 — the "loops" and the protocol layer (the orchestration)
+- **`/MVL`** runs Sensemaking → Innovation → Critique on a question.
+- **`/MVLw`** (the workhorse) runs Surfacing → Sensemaking → Decomposition → Innovation → Critique.
+- **`/aMVLw`** adds Articulation at the front, so the pipeline works on an explicitly-mapped question instead of a guessed one.
 
-The disciplines **chain together into loops** that the user invokes as one big slash-command:
+A runner creates a timestamped **inquiry folder**, runs each discipline in order (each saving its output file), tracks progress in a state file, and finishes by compiling a **`finding.md`** — a self-contained plain-language report of the answer, the alternatives considered and rejected, and what's still open. Supporting protocols handle making sub-inquiries that branch off a parent (`branch_inquiry`), wrapping up (`conclude`), and diagnosing why an earlier run produced a bad answer (`loop_diagnose`).
 
-- **`/MVL`** — runs Sense-making → Innovation → Critique on one question. If the answer isn't good enough, it loops again with a tighter focus.
-- **`/MVLw`** — the extended loop: Surfacing → Sense-making → Decomposition → Innovation → Critique. For questions where the AI first needs to draw the right material into view and break it into pieces.
+A deliberate design rule makes all of this survivable across sessions: **the folder is the memory**. Any AI session (or human) can open an inquiry folder, read the state file, and continue exactly where things stopped. No database, no app — just files.
 
-Each loop run creates a timestamped folder under `devdocs/inquiries/` (there are already 95+ such folders, going back months — see "the recursive twist" below). That folder holds, as separate Markdown files, every artifact the loop produced: the question as understood (`_branch.md`), a live state tracker (`_state.md`), the output of each discipline, and eventually a clean compiled `finding.md`. Old discipline outputs get archived to a `docarchive/` subfolder once the loop concludes.
+### 3. A large, real body of output
 
-Both loops insist — in capital letters — that the disciplines run **one at a time, sequentially, no subagents, no parallelism**: each one must finish, write its file, and hand off via the state file before the next begins.
+`devdocs/inquiries/` holds **100+ inquiry folders and ~357 finished findings** (including branches). Strikingly, most inquiries are the system being pointed *at itself*: "what's wrong with the critique discipline," "how should spec text be organized," "why did this earlier run fail." The system is genuinely being used as its own improvement tool — which is precisely the project's stated strategy.
 
-The loops are supported by **operational protocols** (in `cognitive_harness/protocols/`):
-
-- **`branch_inquiry.md`** — for spawning a child inquiry from a finished one. Has its own input contract, validation rules, depth policy, and path-length safety check.
-- **`conclude.md`** — for compiling a finished loop into a clean `finding.md` using a strict template. Enforces things like "every borrowed commitment from a prior finding must be either re-tested with evidence or explicitly flagged as inherited-without-re-test."
-- **`loop_diagnose.md`** — for when an earlier loop produced a bad answer and a later loop fixed it. Frames the "what went wrong in the earlier run?" question as its own diagnostic loop, while resisting premature root-cause claims.
-
-### Layer 2.5 — the "spec governance" layer
-
-There's a small folder called **`cognitive_fixes/`** that's the kit's way of fixing itself. When a recurring AI failure pattern is identified (typically by `/loop_diagnose` finding the same gap in multiple runs), the fix is captured here using a 7-step methodology: identify → decompose → coverage-check → structural-fail-safe → meta-recursion-residual → branch-experiment → evidence-gate. There's currently one such documented fix (about how the AI tends to drop clauses joined by "and" when transcribing a user request), and the folder is explicitly self-limiting — it will be retired or promoted to a real protocol based on staged evidence gates.
+There is also working machinery for **regression safety**: snapshots of old versions of the skill set (under `archived_skills/`) can be reinstalled side-by-side under prefixed names, so an old version of a discipline can be run against the current one to check whether an "improvement" actually made things worse.
 
 ---
 
-## What's in `non-active/` — the research bench
+## What it's trying to become (the ambition, from the docs)
 
-About half of the `cognitive_harness/` folder is a separate subfolder called `non-active/`. **These pieces exist but are not shipped by the installer.** It's the project's working laboratory. Reading it gives the real picture of where the project is going.
+The `docs/canon/` papers lay out an unusually explicit north star: a **self-improving cognitive system** that gradually builds its own "consciousness layer" — noticing things unprompted, valuing what matters, steering itself in real time — with the human's role **monotonically shrinking** from hands-on operator (now, "Level 0") to optional observer ("Level 4+"). The underlying bet: AI models are converging in raw intelligence, so *the structure of thinking* — methodology — becomes the differentiator; a well-disciplined loop on today's models can outthink an undisciplined call to a smarter one.
 
-Highlights:
+Key planned pieces, all designed on paper but **not built**:
 
-- **`/comprehend`** — a fully-spec'd discipline for building tested working models of opaque artifacts (codebases, systems, contracts). Has a five-level depth hierarchy (Descriptive → Structural → Causal → Predictive → Generative), each level with a concrete test you must pass. Uses perturbation testing — actually changing something and watching what changes — to discover causality, and has an explicit "accommodation trigger" for noticing when the model needs to be rebuilt rather than patched.
-- **`/reflect`** — examines how a *completed loop* performed (not the problem it solved): where the human had to intervene, where information leaked backward in the pipeline, what surprised the system. Produces per-step observations and proposed "memory cells" for the human to confirm before they get persisted.
-- **`/routeman`** — a more sophisticated, richer cousin of routelister: enumerates possible next moves from a current state toward a goal, classified across a 16-type taxonomy organized in three Families (Progression / Re-orientation / Coordination), with per-route reachability evaluation and adaptive guidance allocation.
-- **`/MVL+`** — an alternative extended loop (Exploration → Sensemaking → Decomposition → Innovation → Critique). The `/MVLw` that shipped is its sibling, swapping Exploration for Surfacing.
-- **`/meta-loop`** — a stateful traversal engine that runs many `/MVL+` inquiries threaded together, using `/navigation` as the eyes, recording cross-run memory in a `_meta_state.md` file. Explicitly sequential and human-selected in v1.
-- A pile of **operational protocols** that are designed but not yet wired in:
-  - **`artifact_materialization.md`** — a controlled "decision-to-files" protocol (compact / standard / full lifecycle modes, depending on risk).
-  - **`outcome_review.md`** — an after-use review protocol (did the artifact actually do what we thought it would after we used it?).
-  - **`alignment_control.md`** — a shared contract defining seven "alignment layers" (workspace / task / scope / action-space / action-set / coherence / outcome) and a vocabulary for recording where things went wrong.
-  - **`spec_governance.md`** — cross-cutting rules that fire at "content-decision points" to prevent silent absorption of decisions (layer commitment, synthesis re-test enforcement, user-words-as-constraint, COULD-vs-MUST dependency gating).
-  - **`multi_resolution_navigation.md`** — a protocol for zooming a navigation map into selected regions while preserving the full expansion frontier.
-- A **`deprecated_navigation/`** folder retained for explicit historical reasons — the discipline that used to live here as `/navigation` has been renamed and rebuilt as `/routeman`, but the old spec is preserved with an archive note explaining why the rename was "structural, not cosmetic."
+- **`/intuit`** — a "hunch" discipline that matches a new problem against the archive of past findings by deep structure (not surface words) and predicts what will work, with its predictions later scored against reality.
+- **The meta-loop** — an orchestrator that runs *many* inquiry loops, in parallel "heads," compares them, decides what to pursue next, and eventually picks its own questions. A six-level autonomy ladder for this is specified in detail.
+- **Three-layer quality awareness** — automatic checks for "structurally broken," "feels off," and "actually turned out wrong over time," so the system can tell improvement from regression without a human. Today the human is all three layers.
+- **A measurable self-improvement rate** — 15 concrete measurement questions are already defined (how fast errors get fixed, how often "improvements" get reverted, etc.); collecting the data hasn't started.
+- **A materialization lifecycle** — a governed path from "the system decided something" to "files actually changed," with plans, critics, and validation. Practiced a few times in `devdocs/materializations/`, not yet routine.
 
-There's also an empty `articulate_simple/references/` folder — a placeholder for a discipline that hasn't been written yet, named in some of the design docs.
-
----
-
-## What this project is *really* trying to do (per the canon docs)
-
-Reading the three canon files in `docs/canon/` makes the broader ambition explicit. The current kit (six disciplines + two loops + a handful of protocols) is the **MVP for a much larger goal:** a self-improving cognitive system. Three pieces of vocabulary capture it.
-
-### "Thinking-space dynamics" — the cognitive model the AI is trying to approximate
-
-The canon doc `thinking_space_dynamics.md` works out what the AI's *internal* cognition should be modeled as: a set of eleven small **cognitive primitives** drawn from cognitive science (attention-pointer, working memory, salience, intuition-similarity, context-framing, inhibition, simulation, metacognition, motivation, evaluation, focus-deep), each with an operational definition. Each discipline in the kit is then built out of a deliberate composition of these primitives — `/surfacing` lists which primitives it uses and which are deliberately absent. The eventual goal is a discipline called `/intuit` that gives the AI real-time "intuitive hunches" about its own work, instead of waiting to find out retrospectively whether it was good. Most of `/intuit` is described in the doc but not yet built.
-
-### "Meaningful traversal" — the orchestration concept
-
-The canon doc `what_is_meaningful_traversal.md` admits openly that it doesn't yet know how to formally define this concept, but the *intuition* is the load-bearing one for the whole project: once you have many loops running in parallel, you need a way to tell **thinking from spinning** — to recognize when the system is genuinely making progress vs. just consuming compute. The doc lists five candidate signals (coverage, convergence, productivity, directedness, depth) but explicitly refuses to commit to a formula yet. "The failure modes are clearer than the success metric," it says.
-
-### "How a discipline should be" — the engineering discipline
-
-The third canon doc, `how_a_discipline_should_be.md`, is a short style guide that explains a real engineering constraint: there's a difference between **dev-history docs** (which describe how a discipline came to be the way it is, with inquiry citations and cascade-refinement labels) and the **runtime canonical spec** (which the AI loads at execution time and which must be free of project-internal scaffolding). The "distillation" step between them is what makes the runtime specs read cleanly — that step has to be deliberate.
-
-### Putting it together
-
-The picture that emerges:
-
-- The author is building a kit where **each unit of AI thinking is its own well-defined cognitive operation**, with a published failure-mode taxonomy.
-- These units **chain into loops** so the AI can attack one question structurally rather than off the cuff.
-- Multiple loops can eventually run in parallel and be **compared against each other** to ratchet quality up over time.
-- A **self-improvement loop** (the "Baldwin cycle" mentioned in the docs) is the long-term goal: the system makes real-time predictions about its own work, those predictions are compared against retrospective ground-truth, and the gap teaches the system to predict better next time.
-- A library of **protocols** handles the governance — when work becomes files, when files become decisions, when decisions need to be re-examined — so that the system can be trusted to act without sliding into chaos.
-
-The autonomy ladder (Level 0 = human picks every move; Level 3+ = system is mostly running itself) is the explicit framing of how far along the system is at any given moment. The shipping kit is roughly Level 0–1.
-
----
-
-## The recursive twist
-
-The `devdocs/inquiries/` folder has 95+ inquiries dating back to early 2026. Skimming them, the punchline is: **the author has been using the kit to develop itself.** Many of the inquiries are about how to improve a specific discipline, what the right shape for a new protocol should be, whether a recurring AI failure pattern justifies a permanent spec edit. The kit is its own primary user.
-
-This produces a recognizable rhythm in the repo:
-
-1. An AI run reveals a recurring failure mode.
-2. `/loop_diagnose` runs on the failure chain and writes a `finding.md`.
-3. That finding either (a) proposes a "cognitive fix" (small staged correction), (b) proposes a new protocol or a spec edit, or (c) gets deferred behind an explicit revival trigger ("revisit after 3 more matching cases").
-4. Repeat.
-
-There's a strong preference throughout the kit for **staged evidence gates** over speculative protocol-building: things are added to `non-active/` first and only promoted to the shipping kit when there's empirical evidence of recurring need. (For example: "Do not promote LOOP_DIAGNOSE into a standalone skill until 5 to 10 diagnostic findings show a stable internal method.")
+There are also "half-baked" seeds for a possible productized future (a multi-agent "alignment mesh" for autonomous software development), which read as early vision documents rather than active work.
 
 ---
 
 ## Who would use this, and why
 
-The shipping kit is for **someone who works with AI assistants on hard, fuzzy, open-ended problems** — design questions, research questions, deep system-understanding tasks — and who is dissatisfied with the off-the-cuff way assistants normally handle them. Instead of "think about X," the user types `/MVL "X"` and gets a structured pass — clarify the question, generate ideas, adversarially test them, conclude or iterate — with every step left as a re-readable file.
-
-The deeper layer (the canon docs, the non-active research, the inquiry archive) is for **someone building AI tooling and methodology itself**, treating "how the AI thinks" as a first-class engineering surface with its own specs, version history, failure-mode catalogue, and deprecation cycle. It's not a finished product so much as **an ongoing research program in how to make an AI think well, written out in real time as the author makes progress.**
+Today, realistically: **its author** — a solo developer-researcher using it daily as a thinking amplifier and as the subject of its own research. Anyone else could run one install script and get the slash-commands in their own Claude Code; the disciplines are deliberately domain-agnostic (they work on business questions or design problems as well as code). The output is always *reports and decisions*, not running software.
 
 ---
 
-## Shape of the project
+## Honest assessment of the state of things
 
-- **Form:** A library of Markdown instruction documents plus two install scripts. Not an app, not a service, not a code library you import.
-- **Surface to the user:** Slash-commands inside an AI assistant (`/MVL`, `/MVLw`, `/sense-making`, `/innovate`, `/td-critique`, `/surfacing`, `/decompose`, `/routelister`).
-- **Working artifacts:** A constantly-growing archive of timestamped inquiry folders under `devdocs/inquiries/`, each capturing the full record of one structured thinking session.
-- **State:** Shipping kit is **stable and consistent** — six disciplines all built on the same template, two loops, three loop-supporting protocols. Behind it, an actively-developed research lab in `non-active/` containing a comprehension discipline, a reflect discipline, a richer route-enumeration discipline, an extended loop, a meta-loop traversal engine, and roughly half a dozen designed-but-not-yet-shipped governance protocols. Plus canon docs spelling out a long-range goal (a self-improving cognitive system with real-time intuition) that the current kit is only the first installment toward.
+**Solid and real:** the discipline library, the three runners, the protocols, the folder-based inquiry system, the install scripts, the large self-referential archive of findings, the snapshot/regression recipe. This core has clearly been iterated hard (specs carry dated refinement layers; failed approaches are preserved in `non-active/` and `archived_skills/` rather than deleted — the project's own convention).
 
----
+**Aspirational / not built:** everything autonomous. There is no `/intuit`, no meta-loop runner (an old draft sits in `non-active/`), no automated quality checks (a `tools/structural_check.sh` script the runners reference **does not exist** — the specs anticipate this with a manual fallback), no measurement collection, no automation of any kind. The human types every command and judges every output. The docs themselves are candid about this — several openly mark concepts as "fuzzy," "placeholder," or "half-baked."
 
-## Honest read
+**Vestigial clutter:** a Python-publishing GitHub workflow with no Python package, a populated `.venv` with no project code using it, an out-of-date README alongside the current one, and a `docs/mixed/random_notes.md` scratchpad. None of it affects the working system.
 
-The shipping core looks careful and consistent. The reference files are dense but follow the same pattern: identity → components → process → quality / failure modes → output. Their internal vocabulary is closed (e.g., routelister's nine-verb engagement-type list, td-critique's three verdicts) and their failure-mode catalogues are split into "operational" (recoverable) and "identity-eroding" (drift over time) layers in a way that's coherent across disciplines.
-
-The non-active folder is messier and is **clearly an active research zone** — multiple competing versions of the same idea coexist (e.g., `routeman` vs. `routelister` solved the same problem two different ways; the deprecated_navigation archive note explains why one was rebuilt rather than edited). There are also half-finished design notes (multi-resolution navigation, alignment control, spec governance) sitting alongside fully-spec'd disciplines (comprehend, routeman).
-
-The honest characterization is: **the project is alive and self-aware about it.** There's significant churn in the research bench, deliberate guardrails on premature promotion of ideas into the shipping kit, and an explicit norm of "fix the spec to prevent the next failure, then file the fix with an evidence gate." Nothing here looks abandoned, but a non-trivial share of the codebase is **work in progress that hasn't been pulled into the shipped kit yet, and may not be for some time.**
+**Overall shape:** a serious, unusually self-aware, pre-product research system — about 7,300 lines of carefully-engineered "executable prose" plus a 3,000-file lab notebook — currently at the "manually-cranked engine that works" stage of a roadmap whose later stages (self-steering, self-measurement, self-modification) exist only as detailed blueprints.

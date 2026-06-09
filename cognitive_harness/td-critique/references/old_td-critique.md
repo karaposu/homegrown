@@ -154,7 +154,6 @@ The accumulator is critique's persistent memory across iterations of the SIC loo
 | **Refinement record** | What was sent for refinement, what the refinement target was, whether the refinement succeeded | Tracks whether refinement is converging or oscillating |
 | **Coverage map** | Which regions of the solution space have been evaluated, which remain unexplored | Prevents the "random travel" problem — ensures systematic coverage |
 | **Convergence trend** | Are new candidates landing in already-mapped regions? Is the rate of new information decreasing? | Provides the termination signal — when new iterations produce diminishing new information, the loop has converged |
-| **Mechanism-independence status** | Per-candidate flag: `validated` when the candidate's evidence cites an external anchor (canonical source text, empirical artifact, or downstream-consumer behavior); `quarantined` when convergence is reached without external-anchor evidence. Lifts only via explicit re-evaluation providing such evidence. | Carries the structurally-grounded-only marker forward to the verdict adjective; prevents silent mechanism-independence overclaim |
 
 The accumulator is what makes critique loop-aware rather than one-shot. It transforms "evaluate this idea" into "evaluate this idea in the context of everything we've already evaluated."
 
@@ -208,44 +207,6 @@ The downstream evaluation of substance criteria fires at Phase 2 / Adversarial E
 
 Failing to add substance-level success criteria when the dimension's stated scope includes substance is an instance of Label-Tested, Substance-Untested (see §4 if a corresponding failure-mode entry has been adopted). Cross-discipline precedent for the substance-vs-label distinction exists at `/sense-making`'s Load-bearing concept test (the proxy-vs-structural sub-aspect is the same structural pattern at the sensemaking layer) — the substance-vs-label distinction is a cross-discipline structural pattern, not ad-hoc.
 
-*Refinement note (applies at Phase 0 Dimension Construction's step 5 — Define success criteria per dimension):*
-
-**External-anchor dimension requirement.** Each dimension whose stated scope will test load-bearing claims with potential external anchors — claims about CANONICAL SOURCE TEXT (a specific document with literal content), an EMPIRICAL ARTIFACT (an observable file / configuration / outcome), or a DOWNSTREAM-CONSUMER BEHAVIOR (verifiable observation of what consumers do) — must include at least one dimension demanding the external anchor be checked. Claims purely about internal-consistency (e.g., theorem proofs whose validation is purely deductive) need not include external-anchor dimensions. The triage-by-claim-type prevents requiring external-anchor dimensions on candidates where no external anchor exists.
-
-The downstream evaluation of the external-anchor criterion fires at Phase 2 / Adversarial Evaluation → Multi-axis prosecution depth check → External-anchor sub-axis. The two refinements chain to close the stated-vs-implemented scope gap on both sides: this Phase 0 refinement ensures external-anchor criteria are stated when load-bearing; the Phase 2 sub-axis ensures they are operationally probed when stated. The convergence-time check fires at Phase 4 / Coverage + Convergence Assessment → Mechanism-Independence Quarantine refinement note, which flags any convergence reached without external-anchor evidence in the surviving candidates.
-
-*Failure mode (recognizable at Phase 0 Dimension Construction):*
-
-**1. Wrong Dimensions.** Evaluation dimensions don't match the actual problem. The critique runs rigorously but against criteria that don't matter, producing false confidence.
-
-**How to recognize:** Candidates "pass" critique but fail in practice. The critique document looks thorough but somehow the real risks were missed. Retrospectively, the risks that materialized were on dimensions that weren't checked.
-
-**How to prevent:** Phase 0 (Dimension Construction). Validate dimensions against the sensemaking output before evaluating anything. Ask: "If a candidate passed all these dimensions perfectly, would it actually solve the problem?"
-
-*Failure mode (recognizable at Phase 0 Dimension Construction's validate-dimensions sub-step):*
-
-**4. Dimension Blindness.** A critical dimension is missing entirely. The critique evaluates thoroughly on the dimensions it has, but a category of risk is completely invisible because no dimension covers it.
-
-**How to recognize:** Hard to recognize during critique (by definition, you don't check what you don't check). Recognized retrospectively when a failure occurs on an axis that critique never considered. In the accumulator, recognized when the landscape has a region that feels "thin" — coverage is technically complete but something seems unexamined.
-
-**How to prevent:** Phase 0 dimension validation against multiple perspectives (from sensemaking). Cross-reference dimensions against the sensemaking perspectives: if sensemaking checked a technical perspective, a human perspective, and a risk perspective, critique dimensions should cover all three. If a sensemaking perspective has no corresponding critique dimension, something is missing. For project-specific risk axis coverage when the candidate set involves project artifacts/operations/state, see Phase 0 / Dimension Construction → Project-specific risk dimension check.
-
-*Failure mode (recognizable at Phase 0 Dimension Construction's validate-dimensions sub-step):*
-
-**8. Axis Absence at the Failure's Actual Plane.** A construction-stage failure: the dimension space's CONSTRUCTION fails to span the failure space. The right axis for the actual failure was reachable from inside the inquiry but was not in the dimension list. Distinct from Failure Mode #4 Dimension Blindness — Axis Absence fires when #4's preventive mechanism's precondition (upstream output covered the territory at the relevant axis) silently fails.
-
-**Sub-recognitions (three distinct sub-mechanisms with one shared symptom):**
-
-- **(i) Upstream-inheritance** — upstream output under-covered the relevant axis; critique inherited the gap as the dimension space.
-- **(ii) Narrowest-reading** — a project-canonical principle was applied at its narrowest scope; the failure rode on the broader scope.
-- **(iii) Self-defeating-wording** — a dimension's check wording forces performing the property it's meant to test for; the dimension performs the violation while testing it.
-
-**How to recognize:** Post-hoc, a later evaluation surfaces that the prior critique passed without testing on the axis where the failure actually rode. The harm evidence is in the prior critique's own artifact (or in a project-internal source the prior could have consulted). The cluster property is **missed-not-didn't-know** — the right axis was reachable; it just wasn't constructed into the dimension space.
-
-**How to prevent:** Active prevention belongs at Phase 0 Dimension Construction's validate-dimensions sub-step — explicitly interrogate whether the dimension space spans the failure space across the three sub-mechanisms above: (i) trace whether each load-bearing failure axis from upstream output is represented in the dimension list; (ii) for each project-canonical principle applied as a dimension, state both the narrowest and broadest sensible readings and adopt the broadest sensible reading when structurally supported; (iii) re-read each dimension's wording for whether its check requires PERFORMING the property it tests for. Without a dedicated Phase 0 refinement note that operationalizes these sub-checks, this entry alone provides diagnostic vocabulary for retroactive labeling but doesn't actively prevent construction-time recurrence — practitioner judgment at the validate-dimensions sub-step is the prevention surface.
-
-**Relationship to other modes:** Axis Absence fires when Dimension Blindness's preventive mechanism ("cross-reference dimensions against the sensemaking perspectives") silently fails because the precondition (sensemaking covered the territory at the relevant axis) was not verified. The two modes are vocabulary-distinct but mechanically related at the precondition layer.
-
 Phase 0 is the meta-critique component. It evaluates the evaluation framework before the evaluation framework is applied. This prevents the failure mode of evaluating confidently on irrelevant dimensions.
 
 **When to re-run Phase 0:** If the sensemaking output changes (problem was re-understood), or if critique reveals that a dimension is producing only noise (no candidates fail or pass meaningfully on it — the dimension isn't discriminating).
@@ -281,25 +242,8 @@ For each candidate from innovation's output, conduct adversarial testing:
 - **Specific failure-case scenario** — for candidates with conditional or trigger-based behavior, construct at least one concrete edge case where the candidate's logic might fail to prevent the issue it's meant to prevent. Abstract "could fail" prosecution is weaker than concrete failure-case construction.
 - **Specification-gap probe** — for candidates whose runtime behavior depends on load-bearing concepts (e.g., "skip if X exists"), probe whether the candidate specifies HOW the load-bearing concept's runtime state is determined. Candidates that presuppose the determination without specifying the mechanism have an operational gap.
 - **Substance-axis prosecution** — for dimensions whose Phase 0 success criteria include a substance-level criterion (per the Substance-vs-Label success criteria refinement note at Phase 0 step 5), construct at least one prosecution that applies the candidate's own mechanism to the candidate's worked examples and primary unit *literally*, not via intuitive reading. Substance-axis prosecution closes the implemented-evaluation side of the stated-vs-implemented scope gap; it fires only when Phase 0 has surfaced substance criteria, bounding the check to dimensions where substance is genuinely load-bearing.
-- **External-anchor sub-axis** — for dimensions whose Phase 0 success criteria include an external-anchor criterion (per the External-anchor dimension requirement refinement note at Phase 0 step 5), construct at least one prosecution that quotes the canonical source text verbatim, cites the empirical artifact's actual content, or tests the downstream-consumer behavior directly. Structural arguments about what the source "should" say do not satisfy this sub-axis. The external-anchor sub-axis closes the implemented-evaluation side of the stated-vs-implemented scope gap for externally-grounded claims; it fires only when Phase 0 has surfaced external-anchor criteria, bounding the check to dimensions where external grounding is genuinely load-bearing.
 
 The runner picks the depth-axes most relevant to the candidate's risk surface; not every axis applies to every candidate. Prosecution that constructs only dimension-level objections without considering relevant depth-axes is shallow.
-
-*Failure mode (recognizable at Phase 2 Adversarial Evaluation — Prosecution):*
-
-**2. Rubber-Stamping.** Prosecution is too weak. Everything passes because the adversarial testing wasn't genuinely adversarial. The critic finds only minor issues and declares success.
-
-**How to recognize:** Every candidate gets a SURVIVE verdict. No kills, no refinements. The critique reads like a review, not an adversarial test. The feeling is "this all looks fine."
-
-**How to prevent:** Require prosecution to construct the *strongest possible* objection, not just any objection. If prosecution can't find a killer objection, that's meaningful — but only if prosecution genuinely tried. Quality check: is the prosecution argument something that would make the candidate's strongest advocate pause? For multi-axis prosecution depth (user-perspective, failure-case scenario, specification-gap probe), see Phase 2 / Adversarial Evaluation → Prosecution → Multi-axis prosecution depth check. For the underlying severity-calibration that makes prosecution-strength meaningful, see Phase 0 / Dimension Construction → Purpose-fitness test refinement note — Rubber-Stamping is the opposite-direction violation of #3 Nitpicking under the same principle (severe defect under-killed vs non-severe defect over-killed).
-
-*Failure mode (recognizable at Phase 2 Adversarial Evaluation — Defense):*
-
-**3. Nitpicking.** Every candidate gets killed on minor issues. Defense is absent or too weak. The critique produces an impressive list of problems, but none are evaluated for actual severity. The forest is missed for the trees.
-
-**How to recognize:** Many KILLs, no SURVIVEs. Every risk is treated as critical. The critique document is long and detailed but doesn't distinguish between "this will cause a data breach" and "this variable name is unclear."
-
-**How to prevent:** Require defense for every candidate. Require severity-weighted dimensions. A candidate should only be KILLed if prosecution wins on a *critical-weight* dimension, not just any dimension. For the underlying severity-calibration that makes critical-weight meaningful (and prevents nitpicking-creep at construction time), see Phase 0 / Dimension Construction → Purpose-fitness test refinement note — Nitpicking is the opposite-direction violation of #2 Rubber-Stamping under the same principle (non-severe defect over-killed vs severe defect under-killed).
 
 ### Phase 3 — Verdict + Constructive Output
 
@@ -352,47 +296,6 @@ After all candidates in this iteration are evaluated, assess the loop state:
 - No unexplored regions remain that are topologically likely to contain viable candidates
 - The accumulator shows a decreasing rate of new information per iteration
 
-*Refinement note (applies at Phase 4 Coverage + Convergence Assessment):*
-
-**Mechanism-Independence Quarantine.** When the surviving candidates' evidence does NOT include ≥1 of the 3 external-anchor sub-types (per the External-anchor dimension requirement refinement note at Phase 0 step 5), the Convergence Telemetry must flag the convergence as "structurally-grounded only — confidence reduced; mechanism-independence claim quarantined until external evidence cites." The quarantine state lifts only when an explicit re-evaluation by this discipline provides external-anchor evidence: a canonical source text quote, an empirical artifact test result, or a downstream-consumer behavior observation. The quarantine does not auto-lift over time; without explicit re-evaluation providing external evidence, the quarantine state persists.
-
-The quarantine state is tracked in the accumulator's `mechanism_independence_status` field (see The Accumulator). When the field is `quarantined`, the candidate's verdict adjective at Phase 3 carries the structurally-grounded-only marker; when `validated`, the standard verdict adjective applies.
-
-*Failure mode (recognizable at Phase 4 Coverage + Convergence Assessment):*
-
-**5. False Convergence.** The loop terminates too early. Convergence is declared because recent iterations didn't produce new information — but the real reason is that innovation exhausted its mechanisms too early, not that the solution space was actually explored.
-
-**How to recognize:** Convergence criteria are technically met, but the surviving candidate feels unsatisfying. The coverage map shows "explored" regions that were only lightly tested. The accumulator shows few total iterations.
-
-**How to prevent:** Convergence requires both stabilization (no new landscape changes) AND sufficiency (at least one SURVIVE with no critical-dimension caveats). If stabilization is reached but no clean SURVIVE exists, the signal is not "terminate" but "the current candidates are exhausted — generate new ones from a different seed."
-
-*Failure mode (recognizable at Phase 4 Coverage + Convergence Assessment — cross-iteration):*
-
-**6. Evaluation Drift.** Dimensions or weights shift silently between iterations. What counted as a KILL in iteration 1 would pass in iteration 3 because the evaluator's standards relaxed. Or the opposite — standards tighten as fatigue sets in, killing candidates that would have survived earlier.
-
-**How to recognize:** Comparing accumulator records across iterations reveals inconsistent verdicts on similar candidates. A candidate refined and resubmitted gets a different verdict than expected based on the refinement changes.
-
-**How to prevent:** Dimension definitions and weights are fixed in Phase 0 and persist across iterations via the accumulator. If dimensions need to change (because sensemaking updated the problem understanding), this is an explicit Phase 0 re-run, not a silent drift.
-
-*Failure mode (recognizable at Phase 4 Coverage + Convergence Assessment, with construction-time prevention at Phase 0):*
-
-**9. External-Grounding Absence.** When critique evaluates structural mechanism (internal consistency, candidate coherence, mechanism-independence) without testing against external grounding — a canonical source text, an empirical artifact, or actual downstream-consumer behavior — the convergence rests entirely on structural-argument agreement. Distinct from #7 Self-Reference Collapse (different triggers / different mechanisms; can co-fire). Self-Reference Collapse fires when the SUBJECT of critique is critique itself (special case); External-Grounding Absence fires when ANY critique relies on structural-argument convergence regardless of subject (general case).
-
-**Sub-mechanisms (six distinct sub-shapes with one shared symptom):**
-
-- **(1) Canonical-source-text not quoted** — the claim is about a specific document with literal content; the critique's evidence argues structurally about what the document "must" say without quoting it verbatim.
-- **(2) Project-wide canon not cross-checked** — the claim rests on a project-wide commitment; the critique evaluates the candidate without verifying the commitment's current state across the project.
-- **(3) Discipline-spec literal text not quoted** — the claim is about what a discipline-spec does; the critique paraphrases the spec rather than quoting its operative text.
-- **(4) User-stated anchor not used as constraint test** — the user's source input contains an explicit anchor (a stated requirement, a preserved phrase); the critique doesn't apply the anchor as a constraint test against candidates.
-- **(5) Canonical-pattern template not applied** — there is a canonical pattern template (a structural shape recurring across the project's accepted designs); the critique does not test whether the candidate matches the template.
-- **(6) Candidate-set internal disambiguation impossible without external anchor** — two or more candidates are equally defensible on internal-consistency grounds; the critique converges without a tie-breaker that only an external anchor could provide.
-
-**How to recognize:** Multiple mechanisms converge on a verdict; the convergence rests entirely on structural-argument agreement; no candidate's evidence cites any of the 6 sub-mechanism's external-grounding sub-types.
-
-**How to prevent:** Require ≥1 dimension demanding an external anchor in Phase 0 for claims with potential external anchors (per the External-anchor dimension requirement refinement note at Phase 0 step 5). At Phase 2, the External-anchor sub-axis of the Multi-axis prosecution depth check must fire when Phase 0 has surfaced external-anchor criteria. At Phase 4, when no surviving candidate's evidence cites external grounding, apply the Mechanism-Independence Quarantine (see refinement note above).
-
-**Relationship to other modes:** Related to but distinct from #7 Self-Reference Collapse (different triggers/mechanisms; can co-fire). Cross-failure-interaction with #1 Wrong Dimensions: when external-anchor dimensions are absent at Phase 0, the dimension space silently under-covers external-grounded failure axes — both modes can fire together at convergence.
-
 ---
 
 ## Coverage Strategy
@@ -427,33 +330,79 @@ Critique's coverage operates at two levels: **per-candidate** (did we check this
 
 ## Failure Modes
 
-Critique fails in predictable, structural ways. Each failure mode is recognizable at a specific phase of the discipline (or cross-cutting across phases). The detailed description for each mode lives inline at the phase where the mode fires, using the *Failure mode* prefix pattern that mirrors the *Refinement note* prefix used for positive guidance at the same loci. Modes without single-phase affinity live in the Cross-cutting failure modes section at the end of this document. The overview below points to where each mode's full description can be found.
+Critique fails in predictable, structural ways:
 
-| # | Name | Fires at | Inverse-of |
-|---|---|---|---|
-| 1 | Wrong Dimensions | Phase 0 (Dimension Construction) | — |
-| 2 | Rubber-Stamping | Phase 2 (Adversarial Evaluation — Prosecution) | #3 Nitpicking |
-| 3 | Nitpicking | Phase 2 (Adversarial Evaluation — Defense) | #2 Rubber-Stamping |
-| 4 | Dimension Blindness | Phase 0 (Dimension Construction — validate-dimensions) | — |
-| 5 | False Convergence | Phase 4 (Coverage + Convergence Assessment) | — |
-| 6 | Evaluation Drift | Phase 4 (Coverage + Convergence Assessment — cross-iteration) | — |
-| 7 | Self-Reference Collapse | Cross-cutting (no single-phase affinity) | — |
-| 8 | Axis Absence at the Failure's Actual Plane | Phase 0 (Dimension Construction — validate-dimensions) | — |
-| 9 | External-Grounding Absence | Phase 4 (Coverage + Convergence Assessment), with construction-time prevention at Phase 0 | — |
+### 1. Wrong Dimensions
 
----
+Evaluation dimensions don't match the actual problem. The critique runs rigorously but against criteria that don't matter, producing false confidence.
 
-## Cross-cutting failure modes
+**How to recognize:** Candidates "pass" critique but fail in practice. The critique document looks thorough but somehow the real risks were missed. Retrospectively, the risks that materialized were on dimensions that weren't checked.
 
-Some failure modes don't have a single-phase firing locus — they emerge from how the discipline is being used overall (e.g., when critique is applied to evaluate critique itself, the firing surface is the entire critique operation rather than any one phase). These cross-cutting modes are documented here.
+**How to prevent:** Phase 0 (Dimension Construction). Validate dimensions against the sensemaking output before evaluating anything. Ask: "If a candidate passed all these dimensions perfectly, would it actually solve the problem?"
 
-*Failure mode (cross-cutting):*
+### 2. Rubber-Stamping
 
-**7. Self-Reference Collapse.** When critique is used to evaluate critique itself (self-improvement, discipline development), the evaluation can become circular. The criteria for evaluating critique are produced by critique, leading to a system that validates itself regardless of quality.
+Prosecution is too weak. Everything passes because the adversarial testing wasn't genuinely adversarial. The critic finds only minor issues and declares success.
+
+**How to recognize:** Every candidate gets a SURVIVE verdict. No kills, no refinements. The critique reads like a review, not an adversarial test. The feeling is "this all looks fine."
+
+**How to prevent:** Require prosecution to construct the *strongest possible* objection, not just any objection. If prosecution can't find a killer objection, that's meaningful — but only if prosecution genuinely tried. Quality check: is the prosecution argument something that would make the candidate's strongest advocate pause? For multi-axis prosecution depth (user-perspective, failure-case scenario, specification-gap probe), see Phase 2 / Adversarial Evaluation → Prosecution → Multi-axis prosecution depth check. For the underlying severity-calibration that makes prosecution-strength meaningful, see Phase 0 / Dimension Construction → Purpose-fitness test refinement note — Rubber-Stamping is the opposite-direction violation of #3 Nitpicking under the same principle (severe defect under-killed vs non-severe defect over-killed).
+
+### 3. Nitpicking
+
+Every candidate gets killed on minor issues. Defense is absent or too weak. The critique produces an impressive list of problems, but none are evaluated for actual severity. The forest is missed for the trees.
+
+**How to recognize:** Many KILLs, no SURVIVEs. Every risk is treated as critical. The critique document is long and detailed but doesn't distinguish between "this will cause a data breach" and "this variable name is unclear."
+
+**How to prevent:** Require defense for every candidate. Require severity-weighted dimensions. A candidate should only be KILLed if prosecution wins on a *critical-weight* dimension, not just any dimension. For the underlying severity-calibration that makes critical-weight meaningful (and prevents nitpicking-creep at construction time), see Phase 0 / Dimension Construction → Purpose-fitness test refinement note — Nitpicking is the opposite-direction violation of #2 Rubber-Stamping under the same principle (non-severe defect over-killed vs severe defect under-killed).
+
+### 4. Dimension Blindness
+
+A critical dimension is missing entirely. The critique evaluates thoroughly on the dimensions it has, but a category of risk is completely invisible because no dimension covers it.
+
+**How to recognize:** Hard to recognize during critique (by definition, you don't check what you don't check). Recognized retrospectively when a failure occurs on an axis that critique never considered. In the accumulator, recognized when the landscape has a region that feels "thin" — coverage is technically complete but something seems unexamined.
+
+**How to prevent:** Phase 0 dimension validation against multiple perspectives (from sensemaking). Cross-reference dimensions against the sensemaking perspectives: if sensemaking checked a technical perspective, a human perspective, and a risk perspective, critique dimensions should cover all three. If a sensemaking perspective has no corresponding critique dimension, something is missing. For project-specific risk axis coverage when the candidate set involves project artifacts/operations/state, see Phase 0 / Dimension Construction → Project-specific risk dimension check.
+
+### 5. False Convergence
+
+The loop terminates too early. Convergence is declared because recent iterations didn't produce new information — but the real reason is that innovation exhausted its mechanisms too early, not that the solution space was actually explored.
+
+**How to recognize:** Convergence criteria are technically met, but the surviving candidate feels unsatisfying. The coverage map shows "explored" regions that were only lightly tested. The accumulator shows few total iterations.
+
+**How to prevent:** Convergence requires both stabilization (no new landscape changes) AND sufficiency (at least one SURVIVE with no critical-dimension caveats). If stabilization is reached but no clean SURVIVE exists, the signal is not "terminate" but "the current candidates are exhausted — generate new ones from a different seed."
+
+### 6. Evaluation Drift
+
+Dimensions or weights shift silently between iterations. What counted as a KILL in iteration 1 would pass in iteration 3 because the evaluator's standards relaxed. Or the opposite — standards tighten as fatigue sets in, killing candidates that would have survived earlier.
+
+**How to recognize:** Comparing accumulator records across iterations reveals inconsistent verdicts on similar candidates. A candidate refined and resubmitted gets a different verdict than expected based on the refinement changes.
+
+**How to prevent:** Dimension definitions and weights are fixed in Phase 0 and persist across iterations via the accumulator. If dimensions need to change (because sensemaking updated the problem understanding), this is an explicit Phase 0 re-run, not a silent drift.
+
+### 7. Self-Reference Collapse
+
+When critique is used to evaluate critique itself (self-improvement, discipline development), the evaluation can become circular. The criteria for evaluating critique are produced by critique, leading to a system that validates itself regardless of quality.
 
 **How to recognize:** The discipline "passes" its own evaluation trivially. Every self-critique produces minor refinements but no structural challenges. The feeling is "this is good because it says it's good."
 
 **How to prevent:** When critiquing critique, bring in external reference points: empirical evidence (did the critique's verdicts predict real outcomes?), cross-discipline evaluation (does the critique discipline have the same structural rigor as sensemaking and innovation?), and human judgment (does the output of critique actually help a human make better decisions?). Self-reference is valuable but must be grounded in external validation.
+
+### 8. Axis Absence at the Failure's Actual Plane
+
+A construction-stage failure: the dimension space's CONSTRUCTION fails to span the failure space. The right axis for the actual failure was reachable from inside the inquiry but was not in the dimension list. Distinct from Failure Mode #4 Dimension Blindness — Axis Absence fires when #4's preventive mechanism's precondition (upstream output covered the territory at the relevant axis) silently fails.
+
+**Sub-recognitions (three distinct sub-mechanisms with one shared symptom):**
+
+- **(i) Upstream-inheritance** — upstream output under-covered the relevant axis; critique inherited the gap as the dimension space.
+- **(ii) Narrowest-reading** — a project-canonical principle was applied at its narrowest scope; the failure rode on the broader scope.
+- **(iii) Self-defeating-wording** — a dimension's check wording forces performing the property it's meant to test for; the dimension performs the violation while testing it.
+
+**How to recognize:** Post-hoc, a later evaluation surfaces that the prior critique passed without testing on the axis where the failure actually rode. The harm evidence is in the prior critique's own artifact (or in a project-internal source the prior could have consulted). The cluster property is **missed-not-didn't-know** — the right axis was reachable; it just wasn't constructed into the dimension space.
+
+**How to prevent:** Active prevention belongs at Phase 0 Dimension Construction's validate-dimensions sub-step — explicitly interrogate whether the dimension space spans the failure space across the three sub-mechanisms above: (i) trace whether each load-bearing failure axis from upstream output is represented in the dimension list; (ii) for each project-canonical principle applied as a dimension, state both the narrowest and broadest sensible readings and adopt the broadest sensible reading when structurally supported; (iii) re-read each dimension's wording for whether its check requires PERFORMING the property it tests for. Without a dedicated Phase 0 refinement note that operationalizes these sub-checks, this entry alone provides diagnostic vocabulary for retroactive labeling but doesn't actively prevent construction-time recurrence — practitioner judgment at the validate-dimensions sub-step is the prevention surface.
+
+**Relationship to other modes:** Axis Absence fires when Dimension Blindness's preventive mechanism ("cross-reference dimensions against the sensemaking perspectives") silently fails because the precondition (sensemaking covered the territory at the relevant axis) was not verified. The two modes are vocabulary-distinct but mechanically related at the precondition layer.
 
 ---
 
@@ -467,9 +416,9 @@ Some failure modes don't have a single-phase firing locus — they emerge from h
 | **Adversarial structure** | Prosecution (strongest case against) + Defense (strongest case for) + Collision (what survives?) | 3 roles per candidate |
 | **Verdicts** | SURVIVE / REFINE / KILL — positional, with constructive output | 3 types |
 | **Process** | Phase 0 (dimensions) → Phase 1 (landscape) → Phase 2 (adversarial) → Phase 3 (verdict) → Phase 4 (coverage + convergence) | 5 phases |
-| **Accumulator** | Persistent memory across SIC loop iterations — evaluations, verdicts, coverage, convergence trend, mechanism-independence status | 1, grows over iterations |
+| **Accumulator** | Persistent memory across SIC loop iterations — evaluations, verdicts, coverage, convergence trend | 1, grows over iterations |
 | **Coverage** | Per-candidate (all critical dimensions tested) + Per-solution-space (landscape sufficiently mapped) | 2 levels |
-| **Failure modes** | Wrong dimensions, rubber-stamping, nitpicking, dimension blindness, false convergence, evaluation drift, self-reference collapse, axis absence at the failure's actual plane, external-grounding absence | 9 identified (8 phase-affined + 1 cross-cutting) |
+| **Failure modes** | Wrong dimensions, rubber-stamping, nitpicking, dimension blindness, false convergence, evaluation drift, self-reference collapse, axis absence at the failure's actual plane | 8 identified |
 
 This thinking discipline is domain-agnostic. It works for evaluating business strategies, software architectures, research hypotheses, design proposals, or any set of candidates that need systematic evaluation. It does not prescribe WHAT to evaluate — it provides the structural tools for HOW to evaluate systematically, with coverage awareness and convergence detection.
 
