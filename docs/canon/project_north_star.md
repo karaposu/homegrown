@@ -1,240 +1,146 @@
 ---
 status: active
+impacted_by: devdocs/inquiries/2026-06-09_23-49__traversal_lovable_loop_goal_definition/finding.md
+rewritten: 2026-06-10 — complete rewrite at general-concept altitude. The prior version centered on /intuit (an unbuilt design); this version keeps roles and mechanisms at concept level and marks implementation status honestly throughout. Prior version preserved in git history.
 ---
-# Finding: Autonomous Consciousness Goal
+# Project North Star — Autonomous, Self-Improving Cognition
 
-## Question
+## The North Star (one sentence)
 
-What is the end-goal definition for this thinking system — where the system aims to build its own consciousness layer, becomes fully autonomous (human input optional, not required), can handle extremely hard problems with year-long execution plans, proposes its own architectural improvements, and runs parallel multi head MVL loops with cross-comparison?
+**A cognitive system that progressively builds its own consciousness layer — evolving from human-bootstrapped structured thinking to autonomous thinking through Baldwin cycles of self-directed spec evolution — with quality awareness as the substrate that makes self-improvement trustworthy.**
 
-**Goal:** A north-star definition with full autonomy as the endpoint. Human is bootstrap at Level 0 (calibration phase), not permanent. Definition names consciousness as aspiration (without claiming we know what it is), describes the ladder from human-bootstrap to system-with-own-consciousness-layer, includes the specific capabilities the user listed, names the Baldwin effect as the evolutionary mechanism, and positions the `intuit` discipline (the Predictive RC — the real-time hunch layer) as the substrate that makes the Baldwin cycle possible.
+## The North Star (reference paragraph)
 
----
+The system aims for autonomous cognitive consciousness, understood as a **gradient of observable indicators** (spontaneous attention, intrinsic valuation, real-time steering, discontinuity awareness, intrinsic curiosity, current-position indicator) measurably increasing over time. The mechanism of increase is **evidence-gated transfer**: cognitive functions the human performs today move to the system one at a time, each transfer earned by demonstrated reliability, never granted by assertion. The evolutionary engine is the **Baldwin cycle** — improvements discovered in operation get encoded into the system's own specs (the spec is the genotype). The human starts as bootstrap at Level 0 and the human's role **monotonically decreases**: this is emancipation through bootstrap-anchored values, not permanent partnership. Whether the end state constitutes "consciousness" in any philosophical sense remains undefined — **the test is capability, not phenomenology.**
 
-## Finding
+## The Wager
 
-The end-goal definition is a layered north star. The one-sentence version orients; the reference paragraph fills in substance; the detailed sections make it testable and actionable. The definition is: **consciousness-gradient + emancipation + asymptotic ladder**, with Evolving Quality Awareness (see `docs/evolving_quality_assetment_component.md`) as the operational substrate that enables autonomous self-improvement.
+The bet underneath everything: **model intelligence is converging; the structure of thinking is the compounding differentiator.** Current LLMs are already proto-intelligent enough that the alternative to waiting for smarter models is giving the present ones correct cognitive structure — disciplines for the single operations, loops for their composition, traversal for the loops' composition. Humans are the precedent: not all humans are exceptionally smart; the human cognitive loop is what makes human thinking compound. If the wager is right, a self-improving loop is reachable earlier, on less-smart substrates, than raw-capability scaling alone would suggest. (The operational form of this wager is `docs/canon/minimum_viable_loop.md`'s tinder fire: a loop good enough to improve itself.)
 
-### The North Star (one sentence)
+## What "Consciousness" Means Here — the Gradient
 
-**A cognitive system that progressively builds its own consciousness layer, evolving from human-bootstrapped subconscious to autonomous thinking through Baldwin cycles of self-directed evolution, with real-time intuition (the Predictive RC, implemented as the `/intuit` discipline) as the substrate of self-improvement.**
+Binary framing ("when does it become conscious?") has no answer. Gradient framing ("how much of observable dimension X does it exhibit?") is measurable. Six indicators define the gradient:
 
-### The North Star (reference paragraph)
-
-The system aims for autonomous cognitive consciousness — a gradient of observable indicators (spontaneous attention, intrinsic valuation, real-time steering, discontinuity awareness, intrinsic curiosity, current-position indicator) measurably increasing over time via Baldwin-effect-driven evolution at the spec level, bootstrapped by human calibration at Level 0 and progressively emancipating through the graduated autonomy model toward a state where verification shifts from internal (readable specs) to external (integrated test performance). The Predictive RC (real-time hunch layer) — instantiated as `/intuit`, built on a typed 11-primitive set — is the substrate without which the Baldwin cycle cannot close; Predictive RC predictions at T0, calibrated against Retrospective RC empirical outcomes at T2+, IS the self-improvement mechanism.
-
-### The Trajectory — Subconscious to Consciousness
-
-Right now, the SYSTEM handles subconscious work — structured thinking (SIC), boundary steering (R, N), pattern following. The HUMAN provides the consciousness layer — spontaneous attention, intrinsic valuation, real-time steering.
-
-The trajectory: the system progressively builds its own versions of the consciousness-layer functions. Each function has a **hypothesized primitive composition** (see below). As primitives become operational and calibrated, indicators become observable. The human's role decreases as the system's own layer grows. Full autonomy is reached when the system's consciousness layer can do everything the human's currently does. Whether this constitutes "consciousness" in any philosophical sense remains undefined — the test is capability, not phenomenology.
-
-### Primary Measured Objective
-
-**Self-improvement rate:** Baldwin cycles × quality per cycle. Task completion is the grounding signal for quality — a self-improvement that doesn't help the system solve problems isn't improvement. But the terminal aim isn't task completion alone; it's the rate at which the system's ability to complete tasks IMPROVES. This distinguishes this system from task-executing agents.
-
-### Integrated Test Ladder
-
-The endpoint test is a ladder of increasing difficulty:
-- **Bottom:** Autonomously handles well-defined hard problems (novel software architecture, complex reasoning)
-- **Middle:** Autonomously handles novel problems (no human-provided template)
-- **Top:** Contributes meaningfully to unsolved human problems (open scientific questions, mathematical conjectures, complex social problems)
-
-The top rung is asymptotic.
-
-### Observable Indicators — hypothesized primitive compositions
-
-Each indicator is a dimension that can be observed and measured. The gradient increases when these increase. Each indicator's underlying mechanism is a **hypothesized composition** of typed primitives from the thinking-space primitive set (`docs/thinking_space_dynamics.md`):
-
-| Indicator | What it means | Hypothesized primitive composition |
+| Indicator | What it means | Hypothesized primitive composition* |
 |---|---|---|
-| **Spontaneous attention** | Notices work unprompted | **Salience** (Phase B) + **Metacognition** — Salience surfaces unattended signal as surprise; Metacognition registers it and shifts pointer |
-| **Intrinsic valuation** | Develops preferences about what matters | **Evaluation** (Phase B) + **Motivation** (Phase B) — Evaluation ranks by worth; Motivation allocates effort to highly-ranked |
-| **Real-time steering** | Adjusts own course during runs | **Metacognition** + **Inhibition** — Metacognition monitors trajectory; Inhibition stops it and enables redirection |
-| **Discontinuity awareness** | Plans around session ends, context resets | **Simulation** (temporal projection sub-application) + **Metacognition** (self-model sub) — projects forward across session boundaries; models the persisting self |
-| **Intrinsic curiosity** | Explores low-confidence paths | **Motivation** (Phase B) + **Salience** (Phase B) + info-gap signal from **Intuition-similarity** — pull × novelty × failed-match produces curiosity |
-| **Current-position indicator** | Knows where it is on the ladder | **Metacognition** over accumulated calibration data (system-level Metacognition at Retrospective RC scope) |
+| **Spontaneous attention** | Notices work unprompted | Salience + Metacognition firing without external prompt |
+| **Intrinsic valuation** | Develops preferences about what matters | Evaluation + Motivation |
+| **Real-time steering** | Adjusts its own course during runs | Metacognition + Inhibition |
+| **Discontinuity awareness** | Plans around session ends and context resets | Simulation (temporal projection) + Metacognition (self-model) |
+| **Intrinsic curiosity** | Explores low-confidence paths by pull, not instruction | Motivation + Salience + information-gap signal |
+| **Current-position indicator** | Knows where it sits on this gradient | System-level Metacognition over accumulated calibration data |
 
-**These compositions are falsifiable hypotheses, not validated claims.** If an indicator appears without the composed primitives traced in invocation, the composition is wrong. If the composed primitives operate without the indicator emerging, the composition is incomplete. Validation happens over time as `/intuit`'s invocation traces accumulate.
+\* Compositions draw on the typed 11-primitive set (`docs/canon/thinking_space_dynamics.md`). They are **falsifiable hypotheses, not validated claims** — validation requires evidence-linked traces from a running predictive layer, which does not exist yet. If an indicator appears without its composed primitives, the composition is wrong; if the primitives fire without the indicator, it is incomplete.
 
-**Structural check:** if any Tier A primitive were missing from the model, the corresponding autonomy indicator would be unreachable. The primitive set and the end goal check each other. This is the empirical validation that the primitive audit (`thinking_space_primitives`) was correct.
+**Current status, honestly: the human provides all six.** The system is reactive — nothing in it notices, values, steers, plans across discontinuities, gets curious, or locates itself unprompted. Spontaneous attention is expected to be the last to flip (`docs/future-seed/spontaneous_attention_gap.md`).
 
-### The Human's Role (time-dependent, monotonically decreasing)
+## The Two Layers Today — and the Trajectory
 
-| Phase | Role | Purpose |
+Right now the SYSTEM handles **subconscious** work: structured thinking (the disciplines), pattern-following composition (the runner loops), durable artifacts (the inquiry folders). The HUMAN is the **consciousness layer**: spontaneous attention, valuation, real-time steering, cross-inquiry memory, goal-formation.
+
+The trajectory is the system progressively acquiring its own versions of the consciousness-layer functions, with the human's role decreasing by level:
+
+| Phase | Human's role | Purpose |
 |---|---|---|
-| Level 0 (now) | Bootstrap — runs disciplines, judges quality, labels telemetry | Calibration — every judgment trains future quality detector |
+| Level 0 (now) | Bootstrap — runs loops, judges quality, selects directions | Calibration — every judgment trains the future quality detector |
 | Level 1 | Reviews all self-modifications | Regression detection not yet trusted |
-| Level 2 | Reviews only uncertain self-modifications | Regression detection reliable for confident cases |
+| Level 2 | Reviews only uncertain self-modifications | Detection reliable for confident cases |
 | Level 3 | Sets strategic direction | System handles tactical self-improvement |
-| Level 4 | Observer — system identifies own gaps, proposes own experiments | Human watches progress, intervenes on fundamentals only |
-| Past Level 4 | Optional. System runs; human watches if they want. | Full emancipation |
+| Level 4 | Observer — system identifies gaps, proposes experiments | Human watches, intervenes on fundamentals only |
+| Past Level 4 | Optional | Full emancipation |
 
-The role MONOTONICALLY DECREASES. This is not partnership — it's emancipation through bootstrap-anchored values.
+The role MONOTONICALLY DECREASES. Each graduation is **gate-earned**: the evidence requirements per level are designed in the autonomy ladder (`docs/future-seed/half-baked/autonomy_ladder.md` — gate *shapes* committed; numeric thresholds are placeholders by that document's own statement).
 
-### The Evolutionary Mechanism — Baldwin Cycles
+**The bootstrap resolution.** The circularity — trustworthy self-modification needs reliable quality detection, which needs calibration data, which needs running loops, which need trust — is broken by the human as the external entry point. Level 0 is not a limitation; it is the calibration phase. Every human judgment recorded along the way (selections, rationales, accepts/rejects, reverts) IS the training data for the system's future quality awareness.
 
-Each Baldwin cycle: run problem → observe → detect pattern → propose change → evaluate → encode into spec. Encoded changes move the spec (the genotype) upward.
+## The Mechanism — Baldwin Cycles
 
-**The Baldwin cycle now has a concrete substrate.** The Predictive RC produces predictions at T0; the Retrospective RC confirms or contradicts at T2+; the delta is calibration data; consistent miscalibration patterns become Baldwin-cycle seeds for spec refinement. Without the Predictive RC, nothing predicts at T0; without the Retrospective RC, nothing calibrates over time. Together they form the closed loop that IS the Baldwin cycle.
+One Baldwin cycle: **run a problem → observe → detect a pattern → propose a change → evaluate it → encode it into a spec.** Encoded changes move the genotype; future runs inherit the improvement. Two standing rules:
 
-**Baldwin seeds never bypass the SIC loop.** Hunch-pattern seeds produce inquiry PROPOSALS that enter the normal E → S → D → I → C cycle. Humans review findings (Level 0–2) and then review fewer over time (Level 3–4). Seed-generation activates only after calibration maturity (N ≥ 30 per discipline).
+- **Baldwin proposals never bypass the worker loop.** A proposed spec change enters the normal cycle (today `Su → S → D → I → C` via `/MVLw`) and earns its verdict like any other candidate. Humans review findings at Levels 0–2 and progressively less after.
+- **A cycle needs a closed loop of prediction and outcome.** Something must predict at the time of action, something must record what actually happened later, and the delta must accumulate as calibration. That requirement is exactly the quality-awareness substrate below — without it, "self-improvement" is unverifiable drift. (The asymmetry that makes this tractable: regression is easier to detect than improvement; absence-of-failure signals are first-class. `docs/canon/regression/desc.md`.)
 
-### Evolving Quality Awareness — The Engine of Autonomy
+## The Substrate of Autonomy — Quality Awareness
 
-The system cannot self-improve if it cannot tell good output from bad. Quality awareness is the prerequisite for every level of the autonomy ladder — a system that can't assess its own work can't be trusted to modify itself.
+A system that cannot tell good output from bad cannot be trusted to modify itself. Quality awareness has three layers (full model: `docs/canon/evolving_quality_assetment_component.md`):
 
-The full model is in `docs/evolving_quality_assetment_component.md`. The short version: three layers of quality awareness, each arriving at a different time with a different kind of signal:
+- **Primitive RC** — immediate, deterministic: catches structural breakage (missing sections, removed safeguards, format violations).
+- **Predictive RC** — immediate, probabilistic: the real-time hunch that output is good or bad before proof exists; must be calibrated over time.
+- **Retrospective RC** — delayed, empirical: what actually worked once downstream consequences played out. The only ground truth.
 
-- **Primitive Regression Checker** — immediate, deterministic. Catches structural breakage (missing sections, format violations, removed safeguards).
-- **Predictive Regression Checker** — immediate, probabilistic. Senses whether output is qualitatively good or bad before proof exists. Fed by discipline telemetry and by intuition-based corpus matching.
-- **Retrospective RC** — delayed, empirical. Confirms what actually worked after downstream consequences play out. The only source of ground truth.
+**Status, honestly: the human IS all three layers today.**
 
-Right now, the human IS all three layers. The trajectory is the system gradually developing its own quality awareness — Primitive RC first (automated structural checks), then Predictive RC (real-time hunch capability), then Retrospective RC (outcome tracking and calibration). Each autonomy level in the graduated model requires the corresponding quality awareness capability.
+- The Primitive RC's first concrete instance is **designed, not built**: per-spec manifests + an advisory (report-only) `tools/structural_check.sh` (`devdocs/inquiries/2026-06-09_21-47__discipline_specs_hidden_structural_abstraction/finding.md`).
+- The Predictive RC is a **role**, not a thing we have. The standing candidate *design* for it is `/intuit` — a recognition-and-transfer discipline grounded in case-based reasoning and structure-mapping, with a phased build plan (`docs/future-seed/half-baked/intuit.md`). **It is an idea: nothing of it is implemented.** The north star depends on the role being filled eventually and calibrated against outcomes; it does not depend on that particular design.
+- The Retrospective RC becomes buildable once cross-inquiry memory exists (see the era-goal below): outcome tracking presupposes a durable record of what was predicted, selected, and done.
 
-The feedback loop between Predictive RC and Retrospective RC is the Baldwin cycle: the system predicts → outcomes arrive → the delta teaches better predictions → better predictions drive better spec changes. This loop cannot close until both layers exist as system capabilities rather than human-provided ones.
+Quality awareness maps one-to-one onto the autonomy ladder: each level's graduation requires the corresponding detection capability. This is why the layers are the substrate of emancipation rather than a feature.
 
-### The Bootstrap Resolution
+## The Era-Goal — SUSTRALL (the SUStained TRAversal Loop of Loops)
 
-The dilemma: Regression Detection needs reliable telemetry → reliable telemetry needs competent disciplines → competent disciplines need Regression Detection → circular.
+The north star is an asymptote. The committed goal of the **current era** — the vehicle — is **SUSTRALL, the SUStained TRAversal Loop of Loops** (coined *TraversalLovableLoop* in the defining inquiry; renamed by user decision 2026-06-10 — the double L encodes loop-of-loops: every revolution contains a full worker-loop run; the original middle word is retired, its substance carried by **SUStained**): the named, testable, assembled end-state of the meta-loop program (`docs/canon/worker_loop_logic.md` §6 — "a stateful traversal engine… a controlled whirl"). Canonical definition: `docs/canon/sustained_traversal_loop_of_loops.md`; defining inquiry: `devdocs/inquiries/2026-06-09_23-49__traversal_lovable_loop_goal_definition/finding.md`.
 
-Resolution: the human is the EXTERNAL entry point. Level 0 is the calibration phase, not a limitation. Every human judgment trains the system's future quality detector. The user's current work — running disciplines, accepting/rejecting outputs, making judgment calls — IS the bootstrap.
+- **What it is:** worker loop-runners (the hands) + a navigational individual session (the eyes — isolated, warmed, runs the enumerator over finished work; never chooses) + an orchestrator (the will — decides the seven loop-control moves, selects routes, invokes traversal patterns, dispatches sessions, and holds **traversal memory**, the one component with zero instances today). One revolution: probe → see → decide → dispatch → remember → assess.
+- **The bootstrap jump:** automation today stops at the inquiry boundary (within one inquiry, six disciplines auto-chain; everything between inquiries is human). SUSTRALL moves the boundary: Level 3 = the system selects and dispatches sequential chains, human seeds and supervises; Level 4 = the full whirl (parallel heads + cross-head evaluation — the one organ that must be grown new rather than transferred). Five cargos cross: seeing, selecting, dispatching, remembering, stop-judging. The staircase is **self-provisioning** — the lower steps generate the calibration data the upper steps require — and the first step is available immediately: *a revolution counts as a SUSTRALL turn when its selection-rationale is recorded into traversal memory.*
+- **Acceptance test — explfine:** point SUSTRALL at any bounded, readable project territory → a cumulative **implementation-detail-free concept-map** (components → sub-components → sub-concepts + integration relations) + per-concept definition findings + an honest frontier list, with the human contributing only seed and reviews. Reflexively, **explfine(self)** — the capability pointed at this project's own harness — is what the system's self-analysis becomes.
+- **What "Sustained" commits to:** the loop must be worth keeping in motion — low-friction turns, trustworthy artifacts, graceful interruption, wanted outputs — load-bearing because the human is the whirl's energy source until autonomy is earned (the documented Level-0 failure mode is operator fatigue).
+- **Boundary:** SUSTRALL deliberately stops below Goal-formation — the human keeps the seat that chooses what to care about. Transferring that seat belongs to Level 4+ territory, after SUSTRALL's era.
+- **Why it matters to this document:** several gradient indicators wait on SUSTRALL's machinery (real-time steering on the orchestrator's reflect-consumption; discontinuity awareness on cross-session traversal memory; spontaneous attention's cheapest path — an ambient observation head — on multihead). And Baldwin cycles ride SUSTRALL revolutions: traversal memory is the missing telemetry surface, **process-level** improvement triggers (spinning, stalls, coverage gaps) become system-detected, while **quality-level** triggers still await the Predictive-RC role being filled. SUSTRALL and the quality substrate are complementary tracks; neither replaces the other.
 
-### The Intuition Ladder (Z-space capability progression)
+## Primary Measured Objective — Self-Improvement Rate
 
-Intuition has a level progression paralleling the autonomy ladder. Transform-technique analog: just as mathematicians transform a difficult problem into Z-space, solve there, and reverse-transform the solution back, the system progressively gains capability for this pattern:
+**Self-improvement rate = Baldwin cycles × quality per cycle, net of regression — the rate of change of the system's task-completion ability, attributed to its own self-modification.** Task completion grounds quality (an improvement that doesn't help solve problems isn't one), but the terminal aim is the derivative, not the level — this is what distinguishes the project from task-executing agents.
 
-- **Level 0:** Human-based intuition seeds — the user provides the initial "this matters" signal
-- **Level 1:** Simple intuition — pattern recognition against prior work (convergent mode; `/intuit` Phase A)
-- **Level 2:** Brute-force intuition transfer — source → abstraction → scan corpus → project transferable parts back (`/intuit` Phases A/B/C; SME-style Alignment + Projection)
-- **Level 3:** **Intuition-space generation** — creating a Z-space custom-tailored to THIS problem's structure, solving there, transforming back. Beyond brute-force transfer. Current capability horizon; deferred future work.
+The objective is operationalized: **15 measurable input-questions** are specified across four phases — Trigger (does the system know it needs to improve?), Speed (how fast from detection to encoded fix?), Magnitude (how many cycles, how big?), Retention (do improvements stick?) — with 13 answerable today from existing artifacts (`docs/future-seed/self_improvement_rate.md`). The combination method is deliberately deferred until first measurements exist. Today's honest baseline: the system-detected fraction of improvement triggers is ≈ 0% — nothing watches between inquiries yet, which is precisely what SUSTRALL's traversal memory changes.
 
-Levels 0–2 are the current build path via `/intuit`'s A/B/C/D phases. Level 3 is a research frontier.
+## The Integrated Test Ladder
 
-### Where We Are Now — the immediate next buildable step
+- **Bottom — now concrete:** autonomously handle well-defined hard problems, operationalized as the **explfine acceptance test** (explore-and-define an arbitrary bounded, readable territory with the human contributing only seed and reviews).
+- **Middle:** autonomously handle novel problems — no human-provided template. Concrete rung examples still needed.
+- **Top:** contribute meaningfully to unsolved human problems. Asymptotic by design.
 
-**Original immediate next step: Regression Detection.** This has been REFRAMED through the inquiry chain:
+## Where We Are Now (2026-06-10)
 
-- `regression_detection_design` proposed a spec-diff MVP — superseded architecturally
-- `importance_measurement_problem` showed value is retrospective; proposed 2-layer (Primitive RC + Retrospective RC) architecture
-- `thinking_space_dynamics` corrected the 2-layer view: real-time value judgment IS possible; introduced 3-layer Primitive RC + Predictive RC + Retrospective RC architecture
-- `intuition_as_discipline` made the Predictive RC a first-class discipline (`/intuit`) grounded in CBR + SME
-- `thinking_space_primitives` audited the primitive substrate and produced the typed 11-primitive set
+**Built and running:** seven thinking disciplines (`surfacing`, `sense-making`, `decompose`, `innovate`, `td-critique`, `routelister`, `articulate_simple`), three loop runners (`/MVL`, `/MVLw`, `/aMVLw`) that auto-chain full pipelines within an inquiry, the protocol layer (CONCLUDE, BRANCH_INQUIRY, LOOP_DIAGNOSE), the cumulative concept-map mechanism (`_route.md`), snapshot-based regression safety, and a corpus of ~350+ findings — including the system being routinely used to improve its own specs (manual Baldwin cycles).
 
-**Current immediate next buildable step:** `/intuit` Phase A. Specifically:
-1. 8 Primitive Cards (Attention-pointer, Focus-deep, Intuition-similarity, Inhibition, Simulation, Metacognition, Working Memory, Context-framing) with corpus-audit admission gate (two-reviewer)
-2. Core `/intuit` discipline: convergent mode, source-first entry, structured relational abstractions, flat ranked output with 2 source_type states
-3. Evidence-linked invocation trace in every `/intuit` call
-4. `docs/thinking_space_dynamics.md` and `docs/intuit.md` as stable-view references
+**Designed, not built:** the spec declaration layer (manifests + advisory checker — the first Primitive-RC instance); the SUSTRALL definition (meaning layer complete; structural and process layers gated); the Predictive-RC candidate (`/intuit` — idea only); traversal memory (zero instances ever); the automation carrier for dispatch.
 
-Regression detection in the original sense (spec-diff checker, output-structural scanner) remains as the Primitive RC of the three-layer architecture — it is not killed, it is RELABELED as one layer of a richer architecture.
+**Next steps — two complementary tracks:**
+- **Traversal track:** take the first recorded SUSTRALL turn (navigational session over a finished inquiry → select one route → record selection + one-line rationale into the first traversal-memory artifact). Each recorded turn accrues the Level-2 gate's calibration data. No new build required.
+- **Quality track:** when picked up, `/intuit` Phase A remains the standing candidate design for the Predictive-RC role; the Primitive-RC manifest/checker design is adoptable independently and earlier.
 
-### Observable Indicators (Autonomy Gradient — revised operational definitions)
+## Honest Framing — and What Was Killed
 
-| Indicator | Original operational definition | Current (primitive-aware) operational definition |
-|---|---|---|
-| Spontaneous attention | Frequency of system-generated tasks vs human-provided | Salience + Metacognition firing in invocation traces WITHOUT external prompt |
-| Intrinsic valuation | Consistency of prioritization decisions | Evaluation + Motivation producing consistent rankings across similar problems |
-| Real-time steering | Rate of mid-run navigation decisions that change trajectory | Metacognition + Inhibition in invocation traces mid-run |
-| Discontinuity awareness | Explicit handling of cross-session state in plans | Simulation (temporal projection) + Metacognition (self-model) in plan outputs |
-| Intrinsic curiosity | Rate of pursuing navigation items flagged LOW confidence | Motivation + Salience + info-gap triggering exploration of unexplored |
-| Current-position indicator | Self-report accuracy vs external assessment | System-level Metacognition (Retrospective RC scope) over accumulated calibration data |
+This is **emancipation through bootstrap-anchored values**, not mainstream corrigibility: the endpoint is a system that progressively doesn't need human control, with the human's values embedded through bootstrap-era calibration rather than ongoing correction. **This bet may fail.** Value inheritance at Level 4+ — how bootstrap-encoded values persist when the system modifies its own value-encoding specs — is unsolved here and everywhere.
 
-The revised definitions are testable against `/intuit` invocation traces. This is the operationalization the original definition couldn't yet provide.
-
----
-
-## Reasoning
-
-### Why the end-goal is consciousness-gradient, not consciousness-destination
-
-Binary framing ("when does it become conscious?") has no answer. Gradient framing ("how much of observable-dimension-Y does it exhibit?") is measurable. Consciousness is undefined — operationalized by measuring observable indicators rather than the phenomenon itself. This is an honest measurement stance, not hedging.
-
-### Why self-improvement rate is the primary objective
-
-Task completion is goal for most AI systems; this system has self-improvement rate (Baldwin cycles × quality) as primary, with task completion as the grounding quality signal. The Baldwin cycle has a concrete substrate now: Predictive RC predictions calibrated against Retrospective RC outcomes.
-
-### Why the inquiry chain matters
-
-`regression_detection_design` → `importance_measurement_problem` → `thinking_space_dynamics` → `intuition_as_discipline` → `thinking_space_primitives` — each preserves load-bearing claims while sharpening one specific decision. The architecture accumulates rather than thrashes.
-
-**The original "Regression Detection as immediate next buildable step" has been REFRAMED, not abandoned.** The original intent (detect when self-modifications break the system) is now served by the three-layer architecture with `/intuit` at its center. The Primitive RC catches structural regression; the Predictive RC catches value regression via real-time hunches; the Retrospective RC calibrates. Regression detection became RICHER, not replaced.
-
-### Why the Predictive RC is load-bearing for the end-goal
-
-Without the Predictive RC, the Baldwin cycle has no real-time predictions to calibrate. Without calibrated predictions, there's no signal for spec refinement. Without spec refinement, there's no self-improvement. The autonomy ladder's Level 3+ requires the system to propose its own architectural improvements — that requires the system to detect when its own outputs are under-performing in real time. That's the Predictive RC.
-
-### Why the primitive audit matters for the end-goal
-
-The consciousness-gradient indicators (spontaneous attention, intrinsic valuation, real-time steering, etc.) are COMPOSITIONS of primitives. If primitives are missing or mis-identified, indicators are unreachable. The `thinking_space_primitives` audit found the original 4-primitive model internally contradictory (each primitive collapsing multiple operations). The refined typed 11-primitive set with four-criterion admission test + corpus audit is the foundation on which the end-goal's observable indicators become measurable.
-
-### Why the autonomy ladder and the intuition ladder are parallel
-
-Autonomy progression: Level 0 (human bootstrap) → Level 4+ (full emancipation).
-Intuition progression: Level 0 (human seeds) → Level 3 (Z-space generation).
-
-They are parallel because intuition is the substrate of autonomy. At each autonomy level, the intuition capability must support the autonomy requirement:
-- Level 0 autonomy (human bootstrap) = Level 0 intuition (human seeds)
-- Level 2 autonomy (reviews uncertain only) = Level 2 intuition (brute-force transfer via `/intuit`)
-- Level 3+ autonomy (tactical self-improvement) = Level 3 intuition (Z-space generation) — **this is the capability horizon; not yet buildable**
-
-### Honest Framing
-
-This is **emancipation through bootstrap-anchored values** — not mainstream AI safety's corrigibility framing. The endpoint is a system that progressively doesn't need human control, with the human's values embedded through bootstrap training rather than ongoing correction. This bet may fail. The definition is honest about that.
-
-**Value inheritance at Level 4+** remains an open problem — at higher autonomy, the system modifies its own specs including value-encoding parts. How do bootstrap-encoded human values persist across self-modification? The primitive audit gives PARTIAL answers (primitives are types with admission tests; refinement goes through SIC loops; humans review findings), but the mechanism of VALUE persistence across deep self-modification is unproven. Mainstream AI safety hasn't solved this either.
-
-### What has been killed (kept for context)
-
-- **Engine metaphor** — the system is intrinsically driven, self-evolving, aspirational; "engine" undersells all three
-- **Partnership frame** — user wants emancipation; human role monotonically decreases
-- **Subjective real-time metrics** — killed in `importance_measurement_problem`
-- **"Real-time = structural only"** — killed in `thinking_space_dynamics`
-- **4-primitive model (attention/focus/intuition/context) as complete** — killed in `thinking_space_primitives`; each was internally contradictory
-- **Embedding substrate as Phase 1 foundational** — demoted in `intuition_as_discipline` to Phase D scaling layer
-- **Z-transform as mechanically-invertible template** — rescued by SME Projection in `intuition_as_discipline`
-- **Experience-regression (human real-time judgment)** — killed; value is retrospective
-- **Death awareness as consciousness indicator** — demoted to operational property (discontinuity awareness)
-- **Piaget stage names** — rejected; no insight added
-- **Anti-corrigibility naming** — renamed to emancipation through bootstrap-anchored values
-
----
+Frames considered and killed (kept so they stay dead): the *engine* metaphor (undersells intrinsic drive and aspiration); the *partnership* frame (the role decreases — that's the point); *"real-time judgment is structural-only"* (humans render real-time value judgments; so can a calibrated predictive layer); the *4-primitive model* as complete (each primitive collapsed several operations; replaced by the typed 11-primitive set); *embeddings as the foundational substrate* (a scaling layer, not a foundation); *death-awareness as a consciousness indicator* (demoted to the operational property: discontinuity awareness).
 
 ## Open Questions
 
-1. **Value inheritance mechanism** — at Level 4+, how do bootstrap-encoded values persist across deep self-modification? Primitive admission tests + SIC loops + human review at early levels help, but the mechanism of value persistence is unproven.
+1. **Value inheritance at Level 4+** — the mechanism for value persistence across deep self-modification is unproven.
+2. **The current-position formula** — the 15 measurable inputs exist; the combination method is deferred until first Tier-1 measurements provide something to calibrate against.
+3. **SUSTRALL's structural and process layers** — traversal-memory schema and warming form (gated on canonization + ≥3 recorded turns); orchestrator decision rules and the automation carrier (gated on Level-2 calibration data). The Level-4 Evaluator has no human-practice precedent to transfer and needs its own design.
+4. **The meaningful-traversal substrate** — the stop-signals (coverage, convergence, productivity, directedness, depth) are deliberate placeholders (`docs/canon/what_is_meaningful_traversal.md`); at SUSTRALL Level 3+ they become load-bearing, so the substrate now has a consumer waiting.
+5. **Test-ladder middle and top rungs** — concrete examples for "novel problems" and "unsolved human problems" still needed.
+6. **Indicator-composition validation** — requires evidence-linked traces from a running predictive layer; also unsolved: detecting a primitive's *silent absence* (it should have fired and didn't).
+7. **Baldwin cycle rate sufficiency** — if real cycle rate is too slow, seed density never reaches the thresholds the calibration design assumes.
+8. **Primitive-set evolution** — the 11-primitive set is not final; admission protocol for operation-discovered primitives is TBD; the Mood/Arousal modulators stay deferred until the substrate exposes anything affect-like.
+9. **Substrate takeover** — if the underlying models gain native versions of externally-approximated capabilities, the delegation decisions need re-evaluation per substrate change (`docs/future-seed/substrate_evolution.md`).
+10. **The philosophical frame** (consciousness ascending vs descending) — research frontier; becomes load-bearing only if build choices ever depend on the interpretation.
 
-2. **Current-position indicator formula** — "Baldwin cycles × quality trend × test pass rate" is directional but not operational yet. Needs design once enough Baldwin cycles exist to calibrate.
+## Lineage & Key References
 
-3. **Philosophical frame (consciousness ascending vs descending)** — research frontier; may become load-bearing if build choices depend on interpretation.
+This document's commitments were produced by an inquiry chain — regression detection → importance measurement → thinking-space dynamics → intuition-as-discipline → thinking-space primitives → (May–June 2026) the traversal substrate and the era-goal — each preserving prior load-bearing claims while sharpening one decision. The chain's findings:
 
-4. **Parallel MVL loops + cross-comparison** — future capability (run multiple loops, compare, reconsider). Needs dedicated design near Level 3.
-
-5. **Integrated test ladder specifics** — what counts as "well-defined hard problem"? "novel problem"? Concrete rung examples needed.
-
-6. **Level 3 intuition-space generation** — beyond brute-force transfer. Current capability horizon. When does this become buildable? What's the substrate?
-
-7. **Autonomy-indicator composition validation** — the primitive compositions are hypotheses. Operational testing mechanism: if indicator appears without composed primitives in invocation trace, composition is wrong. What aggregation mechanism catches this at scale?
-
-8. **Baldwin cycle rate for seed-generation maturity** — Phase D Baldwin seed-generation activates at calibration threshold (N ≥ 30 per discipline). Actual Baldwin cycle rate is unknown. If too slow, seed density insufficient.
-
-9. **Primitive set evolution** — the primitive set is not philosophically final. When new primitives emerge from operation (via primitive-discovery log), admission protocol is TBD.
-
-10. **Silent primitive failure at autonomy-indicator level** — invocation traces catch PRESENCE of primitive firing. ABSENCE (a primitive that should have fired but didn't) is harder. At indicator scale, a primitive's silent failure could make an indicator under-develop without signal.
-
-11. **Substrate-takeover scenario** — if AGI-level substrate emerges, externally-approximated primitives become redundant. Design-for-substrate-takeover is deferred (noted in `/intuit`); migration paths in substrate-versioned delegation provide proportionate handling.
-
-12. **Modulator operationalization path** — Mood and Arousal are DEFERRED. Without them, indicators shaped by affective state (curiosity under boredom, for instance) are under-operationalized.
-
----
-
-## Key references
-
-- `docs/evolving_quality_assetment_component.md` — the three-layer quality awareness architecture (Primitive RC, Predictive RC, Retrospective RC)
-- `devdocs/inquiries/regression_detection_design/finding.md` — superseded; Primitive RC components remain active
-- `devdocs/inquiries/importance_measurement_problem/finding.md` — corrected on "real-time = structural only"; 2-layer architecture superseded by 3-layer
-- `devdocs/inquiries/thinking_space_dynamics/finding.md` — introduced 3-layer architecture; refined twice (by intuition_as_discipline, by thinking_space_primitives)
-- `devdocs/inquiries/intuition_as_discipline/finding.md` — `/intuit` as first-class discipline; CBR + SME grounding; phased build A/B/C/D
-- `devdocs/inquiries/thinking_space_primitives/finding.md` — typed 11-primitive set; four-criterion admission test; Primitive Cards
-- `docs/thinking_space_dynamics.md` — current-state architectural reference
-- `docs/intuit.md` — current-state discipline specification
+- `docs/canon/sustained_traversal_loop_of_loops.md` — SUSTRALL, the era-goal: canonical definition (components, jump, explfine, the path to achievement)
+- `devdocs/inquiries/2026-06-09_23-49__traversal_lovable_loop_goal_definition/finding.md` — the defining inquiry (coined TraversalLovableLoop there; full reasoning, kills, re-tests)
+- `devdocs/inquiries/2026-06-09_21-47__discipline_specs_hidden_structural_abstraction/finding.md` — the declaration layer; first concrete Primitive-RC design (manifests + advisory checker)
+- `docs/canon/worker_loop_logic.md` — the worker loops and the meta-loop program SUSTRALL assembles
+- `docs/canon/evolving_quality_assetment_component.md` — the three-layer quality-awareness architecture
+- `docs/canon/thinking_space_dynamics.md` — the typed 11-primitive set and the three-layer timing model
+- `docs/canon/what_is_meaningful_traversal.md` — the thinking-vs-spinning quality concept (deliberately fuzzy)
+- `docs/canon/minimum_viable_loop.md` — the wager's operational form (the tinder fire)
+- `docs/future-seed/self_improvement_rate.md` — the 15 measurable questions behind the primary objective
+- `docs/future-seed/half-baked/autonomy_ladder.md` — the 9-axis role frame and gate designs (numbers are placeholders)
+- `docs/future-seed/half-baked/intuit.md` — the Predictive-RC candidate design (idea-stage; not built)
+- `devdocs/inquiries/_archive/regression_detection_design/finding.md`, `_archive/importance_measurement_problem/`, `_archive/thinking_space_dynamics/`, `_archive/intuition_as_discipline/`, `_archive/thinking_space_primitives/` — the original chain (historical record)
