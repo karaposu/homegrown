@@ -28,9 +28,8 @@ skills_with_refs=(
 )
 
 skills_no_refs=(
-  "MVL"
-  "MVLw"
-  "aMVLw"
+  "traverse"
+  "routelog"
 )
 
 for entry in "${skills_with_refs[@]}"; do
@@ -47,7 +46,7 @@ for skill in "${skills_no_refs[@]}"; do
   mkdir -p "$SKILLS_DIR/$skill"
   # URL-encode '+' as %2B for safety (some HTTP clients/servers treat literal '+' as space)
   url_skill="${skill//+/%2B}"
-  # MVL/MVLw reference cognitive_harness/protocols/<file>.md; substitute with install target path.
+  # traverse references cognitive_harness/protocols/<file>.md; substitute with install target path.
   # Using ${HOME} (not literal ~) so the resulting installed SKILL.md contains an absolute
   # path that doesn't depend on tilde expansion at agent read-time.
   curl -fsSL "$REPO_URL/cognitive_harness/$url_skill/SKILL.md" \
@@ -55,7 +54,7 @@ for skill in "${skills_no_refs[@]}"; do
     > "$SKILLS_DIR/$skill/SKILL.md"
 done
 
-# --- Protocols (loaded by /MVL, /MVLw, future runners) ---
+# --- Protocols (loaded by /traverse and future runners) ---
 # Installed alongside skills under ~/.claude/skills/protocols/ for a single canonical location.
 
 echo "Installing protocols..."
@@ -63,6 +62,7 @@ echo "Installing protocols..."
 protocols=(
   "branch_inquiry.md"
   "conclude.md"
+  "loop_diagnose.md"
 )
 
 mkdir -p "$SKILLS_DIR/protocols"
@@ -80,8 +80,8 @@ echo ""
 echo "Done. Installed $skill_count skills + $proto_count protocols to $SKILLS_DIR"
 echo ""
 echo "Skills (invoke as /<skill-name>):"
-echo "  /MVL, /MVLw, /aMVLw, /sense-making, /innovate, /td-critique,"
-echo "  /surfacing, /decompose, /routelister, /articulate_simple"
+echo "  /traverse, /sense-making, /innovate, /td-critique,"
+echo "  /surfacing, /decompose, /routelister, /articulate_simple, /routelog"
 echo ""
 echo "Protocols (loaded by skills, not user-invoked):"
 for proto in "${protocols[@]}"; do

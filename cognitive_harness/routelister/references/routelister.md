@@ -157,6 +157,12 @@ Individuation is structurally the same judgment library cataloging makes (is thi
 
 Cast each individuated identity as a typed route: assign `grain × kind × engagement-type`, write the prescriptive guidance, and attach the attributive Priority/Confidence. Framing is where item-level perception becomes identity-level prescription.
 
+*Refinement note (applies at §3.3 Frame — meaning-gaps authoring, on DEVELOP / CONSOLIDATE routes):*
+
+**Emit meaning-gaps as a by-product of Confidence.** On a `DEVELOP` or `CONSOLIDATE` route (the meaning-*consuming* engagement-types), framing additionally emits a **meaning-gaps** list — the target concept's under-understood facets, each rated for *vitality* (low/mid/high) — into the route's Guidance (the `Meaning-gaps:` sub-block, §5.2.1). This is **not a separate pass.** Framing already assigns the route's **Confidence** (perceived formed-ness of the target), and to rate Confidence below "full" the framer has already perceived *why* the target is not fully understood. **Those reasons are the meaning-gaps.** So the framer itemizes the facets that account for the Confidence shortfall and rates each in the *same glance* it perceives it (the vitality rubric, §5.2.1, is glance-decidable by design).
+
+Three bounds keep it first-pass and lightweight: (i) **first-pass depth** — name the facets a framing perception surfaces; do NOT run a full, systematic decomposition of the target (the first-pass list defers to and is *refinable by* that deeper analysis); (ii) **lean-to-list** — under uncertainty, include a facet at low confidence rather than omit it (§4.4); (iii) **per-route degradation** — if the framer cannot confidently name even one facet (the target is too opaque), emit just a bare `meaning-unready` marker instead of a list; if it cannot assess the target at all, emit nothing. The list is a *soft* readiness signal that informs a consumer's develop-vs-deepen choice — it never gates, sequences, or decides (per §1.3). Across re-runs, perception governs (§3.5): the list refreshes and resolved gaps drop as the target is deepened.
+
 ### 3.4 When a breadth run is "done" (convergence)
 
 A breadth run terminates when:
@@ -248,7 +254,7 @@ Each route record carries:
 | **Route Meaning** | Movement (what engaging it does) |
 | **Route Reasoning** | WHY (territory-evidence) · why-this-might-be-important |
 | **Route Attribution** | Priority · Confidence *(attributive — perceived salience / formed-ness; not a winner-ranking)* |
-| **Route Guidance** | Guidance Mode (none / compact / full / expand-on-drill) · Pointers, each with its own WHY |
+| **Route Guidance** | Guidance Mode (none / compact / full / expand-on-drill) · Pointers, each with its own WHY · *(on DEVELOP/CONSOLIDATE routes) an optional `Meaning-gaps:` sub-block (§5.2.1)* |
 | **Route Depth-link** | a *within-concept* pointer to this identity's own depth run (if drilled) + a compact depth-signal |
 
 Worked example:
@@ -266,6 +272,32 @@ Guidance Mode:    compact
   · "start from the token-issuance path"  (bc that's where the goal's risk concentrates)
 Depth-link:       none (not yet drilled)
 ```
+
+### 5.2.1 The Meaning-gaps sub-block (DEVELOP / CONSOLIDATE routes)
+
+On routes whose engagement-type is `DEVELOP` or `CONSOLIDATE`, the **Route Guidance** field may carry an optional, labeled **`Meaning-gaps:`** sub-block — a structured, multi-item form of the depth-signal (§5.2 Route Depth-link). It records the target concept's under-understood **facets** (descriptive gaps, *not* sub-concept-identities — §5.3's no-other-identity boundary holds), each with a **vitality** rating telling a consumer how much closing the gap matters before building. It is authored as a by-product of framing (§3.3 refinement note) and is a *soft* signal — a prompt to the consumer's develop-vs-deepen choice, never a gate. Vitality is *per-gap* and distinct from the route's *per-route* Priority.
+
+**Container.** The sub-block lives **inside Guidance as structured text**, not as a dedicated typed field — one line per gap:
+
+```
+Guidance Mode:    compact
+  · "<existing pointer>"  (bc ...)
+  Meaning-gaps:
+    - <under-understood facet> — [low|mid|high] — <why it matters>
+    - ...
+```
+
+The inline `[low|mid|high]` tag is human-readable and trivially machine-parseable. *Promotion rule:* keep it as this text convention until a consumer needs **reliable structured or cross-route-aggregate extraction** (a deterministic / non-LLM parser, or an aggregator across many routes) — only then promote it to a dedicated typed field. An LLM consumer reading one route's prose does not trip this, so text may be permanent.
+
+**Vitality = the risk of building on a wrong/unresolved understanding of the gap = impact × likelihood.** Decide each gap's tag with three glance yes/no questions:
+
+1. **Impact** — if this gap is left unresolved or guessed wrong, would the build come out structurally wrong or need significant rework? *(Weigh — don't separately compute — the sub-signals: how much resolving it constrains other parts, and how costly a wrong build is to undo.)*
+2. **Likelihood** — are there multiple genuinely-different plausible readings of this gap (not one obvious one)?
+3. **Deferability** — can you safely stub/placeholder it and resolve it after building? *(a low-cap, not a third axis; "safely" is load-bearing.)*
+
+**Mapping** — impact gates, likelihood escalates, deferability caps: **LOW** = Impact NO *or* Deferability YES · **MID** = Impact YES + Likelihood NO + not deferable · **HIGH** = Impact YES + Likelihood YES + not deferable. (All eight yes/no combinations are covered.)
+
+**Usage-note (keeps it lightweight — carry it, do not drop it).** The frame is *risk of building wrong*, not abstract importance (this is why likelihood belongs); impact's sub-signals are *weighed, not computed* (answer from the first-pass perception — no dependency-graph trace); a *first-pass, low-confidence, possibly-wrong* rating is acceptable (it nudges the consumer, never gates). Keep to these **three** questions — promoting impact's sub-signals into their own questions turns a glance into a checklist and defeats the field.
 
 ### 5.3 `_route.md` — the identity-set / index (the persistent concept-map)
 

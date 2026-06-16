@@ -152,7 +152,7 @@ The sub-status approach prefers per-pattern qualification within the admitted ti
 
 ### 5. Named members + Horizontal Dive + Vertical Refinement + Synthesis's location
 
-The class currently has five named members across the three tiers.
+The class currently has six named members across the three tiers. *(Catalog note: **Meaning-First Staged Development** was added as a research-frontier member on 2026-06-16, post-finding, per `devdocs/inquiries/2026-06-16_12-45__safe_develop_meaning_unlocking_route_type/finding.md`. This finding's original conclusions are unchanged — the class is OPEN by design (§1) and grows by admitting members; the Finding Summary's "1 admitted + 2 candidates + 2 research frontiers" counts reflect the original finding moment, and this §5 member-list is the living catalog.)*
 
 #### Admitted (1 member)
 
@@ -176,7 +176,7 @@ The class currently has five named members across the three tiers.
 - **Specialty:** any problem amenable to "spawn N sub-inquiries from a parent + roll up via synthesis," where the sub-inquiries don't satisfy Horizontal Dive + Vertical Refinement + Synthesis's specific 4-condition coordinate-space gate.
 - **Provenance:** the parent-child mechanism is operationally specified in `cognitive_harness/protocols/branch_inquiry.md`; the synthesis-and-re-test mechanism is in `cognitive_harness/protocols/conclude.md`. Horizontal Dive + Vertical Refinement + Synthesis is one specific instance of this generic shape. Other instances (e.g., exploratory branching during open-ended research) are conceivable but not yet enumerated; the generic pattern itself awaits an instance that exercises the SHAPE outside of Horizontal Dive + Vertical Refinement + Synthesis's specific specialty.
 
-#### Research frontiers (2 members)
+#### Research frontiers (3 members)
 
 **Multihead Parallel Comparison.**
 
@@ -189,6 +189,13 @@ The class currently has five named members across the three tiers.
 - **Shape:** temporally-sequential refinement — one inquiry's finding triggers exactly one follow-up inquiry that `refines:` it, producing a linear chain rather than a fan-out.
 - **Specialty:** problems where the answer evolves over time through successive refinements, each picking up where the previous left off (rather than fanning into independent sub-problems).
 - **Provenance:** the SHAPE is observed across homegrown's inquiry archive (many inquiry chains exist via `refines:` lineage), but it hasn't been formalized as a named pattern with explicit applicability gate, mechanism, or failure modes. Formalization would promote to candidate.
+
+**Meaning-First Staged Development.**
+
+- **Shape:** a meaning-building fan-out + a build fan-in — given a DEVELOP target whose meaning-layer is under-ready ("defined, but not defined well"), decompose it into sub-concepts, run meaning-building loops (traverse) on the sub-concepts to raise the meaning layer, *then* develop/build. Interleaves meaning-work and structure-work across loops (meaning → structure → more meaning → more structure) instead of collapsing them into one overloaded build.
+- **Specialty:** large or meaning-unready DEVELOP routes, where issuing a bare "build it" would force the model to do large meaning-work and large build-work simultaneously — an overload of the "one cognitive operation at a time" principle. The trigger is **meaning-readiness, not size**. It is the severe end of a spectrum whose mild end is simply "run one full loop instead of a bare build."
+- **Relation to Branch-and-Synthesize (generic):** a **specialization**. The branches exist specifically to *raise meaning-readiness so a following build is safe* — fan-out = meaning-building traverses on sub-concepts; fan-in = the development. This distinguishes it from the generic shape, whose fan-in is a *synthesis* (rolling priors into an artifact) rather than a build.
+- **Provenance:** articulated in `devdocs/inquiries/2026-06-16_12-45__safe_develop_meaning_unlocking_route_type/finding.md` (the user's "safe develop / meaning-unlocking develop" proposal). The mechanism is composable from existing primitives (`/decompose` + `branch_inquiry` + `/traverse` + a final develop), so it has an operational basis — but **zero run instances** yet, so it sits at research-frontier; the first actual run promotes it toward candidate/admitted. Characterization notes from the finding: it is best framed as a *staged execution mode of the existing DEVELOP route* (an executor convention, **not** a tenth route-verb and **not** a redefinition of the DEVELOP verb); its route-side trigger is a **meaning-readiness signal distinct from `Confidence`** (the routelister route is the trigger-site, this pattern is the executor).
 
 #### Tentative pattern families (provisional)
 

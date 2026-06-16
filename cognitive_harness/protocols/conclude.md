@@ -312,7 +312,7 @@ Move discipline output files to a `docarchive/` subfolder inside the inquiry fol
 
 - **Classic pipeline:** archive `sensemaking.md`, `innovation.md`, `critique.md`. (Three files.)
 - **Extended pipeline:** archive `exploration.md`, `sensemaking.md`, `decomposition.md`, `innovation.md`, `critique.md`. (Five files.)
-- **Other pipelines:** archive all discipline output files identified in Step 1 (everything read except `_branch.md`).
+- **Other pipelines:** archive all discipline output files identified in Step 1 (everything read except `_branch.md`) — **EXCEPT `routelister.md`, which is NOT archived; it stays in the inquiry root** (see below). For the routed pipeline (`articulated-surfacing-routed`, produced by `/traverse`), that means the six upstream outputs `articulate_simple.md` … `critique.md` are archived, while `routelister.md` is read for the finding but left in root.
 
 Use:
 ```bash
@@ -320,7 +320,7 @@ mkdir -p [inquiry_path]/docarchive/
 # move the appropriate files based on pipeline
 ```
 
-`_branch.md`, `_state.md`, and the newly-written `finding.md` stay in the inquiry folder root.
+`_branch.md`, `_state.md`, and the newly-written `finding.md` stay in the inquiry folder root. **`routelister.md` also stays in the root** when present — it is the inquiry's onward route-map, consumed *after* the inquiry concludes (by the between-inquiry / next-step layer), unlike the inward-looking discipline outputs; it sits beside routelister's persistent `_route.md` (already a `_*.md` root file). The two routelister outputs (`routelister.md` + `_route.md`) are the only non-`_branch` discipline-stage artifacts that are NOT archived.
 
 ---
 

@@ -128,11 +128,25 @@ Baldwin cycles ride SUSTRALL revolutions:
 **Tier 0 — decisions:** done (this document is the canonization step).
 **Tier 1 — the climb starts (habits + one artifact; = L1):** create the first traversal-memory artifact ever; adopt the turn-invariant; run the eyes as designed (fresh warmed session per finding); accumulate ~10 recorded turns with rationales.
 **Tier 2 — earned graduations:** refresh the dormant meta-loop skeleton against current names (gate: ≥3 recorded turns); Selector graduation — system proposes, human approves, agreement recorded (gate: agreement reliably high); selector-side memory schema (memory advances with its consumer).
-**Tier 3 — the L3 threshold (two real builds):** the automation carrier (the one genuinely new infrastructure); orchestrator decision rules derived from recorded choices (gate: L2 data); stop-judgment v1 (signal placeholders + hard budget cap); the quality floor — per-spec manifests + advisory `tools/structural_check.sh` (already designed: `devdocs/inquiries/2026-06-09_21-47__discipline_specs_hidden_structural_abstraction/finding.md`).
+**Tier 3 — the L3 threshold (two real builds):** the automation carrier (the one genuinely new infrastructure); orchestrator decision rules derived from recorded choices (gate: L2 data); stop-judgment v1 (signal placeholders + hard budget cap); the quality floor — per-spec manifests + the advisory `tools/structural_check.sh` checker (design complete; build pending).
 **Tier 4 — the full whirl (L4):** multihead dispatch with per-head budgets; the Evaluator (the grown-new organ — needs its own design inquiry); pattern invocation in practice.
 **Acceptance:** the explfine demo on fresh territory.
 
 Minimum critical path: first memory artifact → turn-invariant → ~10 recorded turns → Selector graduation → carrier → stop-judgment v1 → explfine demo.
+
+## The Allocation Rule (v1 — adopted 2026-06-10, under practice)
+
+How effort is allocated between improving the worker loop and climbing the tiers above. The rule is a state-reader, not a ruling: it binds effort to named signals, in both directions.
+
+- **The default session is climbing** (the path-to-achievement tiers above). Rationale: "is the loop good enough?" is unanswerable until the instruments exist, and the instruments — traversal memory, telemetry — ARE the higher tiers. The loop's quality-for-its-consumer (the artifact contract: stable formats, honest state, resumable inquiries, self-contained findings) is checkable today and largely satisfied; its cognitive quality is an open bet with its own named test, not a gate on the climb.
+- **Loop work is demand-driven**, triggered only by a tripwire:
+  1. a consumer fails on a loop artifact (e.g., the navigation session cannot use a finding) — *fix-grade: one repair session*;
+  2. the same discipline failure-mode class appears in three or more inquiries' outputs — *fix-grade, now data-driven*;
+  3. a gate-climb stalls attributably to worker-output quality — *fix-grade, escalating*;
+  4. a baseline comparison (when run) shows the loop losing to skilled plain prompting on a task class — *redesign-grade: a redesign inquiry, not polish*.
+- **Open-ended spec-refinement pauses** until failure data exists. **Joy-exception:** a genuinely exciting discipline idea may be pursued — costed (knowingly spends a session), logged (the run-end observation line), capped (visible at the next consultation).
+- **Consultation cadence:** re-read the signals after every ~5 completed inquiries, or immediately on any tripwire.
+- **Status:** v1, under practice. The cadence and thresholds are hyperparameters-with-defaults — committed shape, placeholder values (`docs/canon/algorithm_family.md`); revise after the first consultations or the first tripwire fire. At Level 3 the allocation question itself migrates to the orchestrator.
 
 ## Open edges
 
@@ -142,12 +156,15 @@ Minimum critical path: first memory artifact → turn-invariant → ~10 recorded
 
 ## References
 
-- `devdocs/inquiries/2026-06-09_23-49__traversal_lovable_loop_goal_definition/finding.md` — the defining inquiry (full reasoning, adversarial kills, the seven inherited-commitment re-tests)
+*(Canon and stable-view documents only; the defining inquiry and its full adversarial record are linked from this document's frontmatter `source:` field.)*
+
 - `docs/canon/project_north_star.md` — the asymptote this era-goal serves
 - `docs/canon/worker_loop_logic.md` — the worker loops and the meta-loop program SUSTRALL assembles
 - `docs/canon/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` — the eyes' session-isolation and warming doctrine
 - `docs/canon/what_is_meaningful_traversal.md` — the stop-judgment substrate (deliberately fuzzy)
+- `docs/canon/algorithm_family.md` — the optimization-family classification of the traversal this loop runs
 - `docs/future-seed/half-baked/autonomy_ladder.md` — the nine-axis frame and gate designs (numbers are placeholders)
 - `docs/future-seed/Major_Thinking_Space_Traversal_Patterns.md` — the orchestrator's open pattern library
-- `devdocs/inquiries/2026-05-30_09-49__loop_control_moves_metaloop_decisions_not_enumerated/finding.md` — one enumerator, two controllers; the seven moves are decisions
 - `cognitive_harness/non-active/meta-loop/SKILL.md` — the dormant v1 skeleton (stale names; revival gated on practiced turns)
+
+One architectural commitment carried from the loop-control design history: **one enumerator, two controllers** — routelister enumerates; the runner (per-cycle) and the orchestrator (cross-inquiry) decide; the seven loop-control moves are controller decisions, never an enumerated menu.
