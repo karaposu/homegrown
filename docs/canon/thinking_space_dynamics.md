@@ -115,6 +115,32 @@ Structurally inaccessible to the LLM substrate; named-but-unoperationalized:
 - **Level 3+ custom intuition-space generation** — brute-force transfer at Level 2; future capability
 - **Predictive processing as substrate** — alternative architecture; noted as research frontier, out of current MVP
 
+#### The apparatus and the territory — two senses of "thinking-space," and the movement vocabulary the primitives execute
+
+The project uses "thinking-space" at two grains, and this document owns only one of them. **Here, thinking-space dynamics are the within-act APPARATUS** — the typed primitive set above, operating over a representation space: the walker's anatomy. **The traversal sense — thinking-space as the territory the loops walk — lives in `docs/canon/what_is_meaningful_traversal.md`**, whose points are questions (clusters, regions, dead zones). The two senses relate as mover and terrain: the primitives are not places or moves; they are the organs every act is executed with.
+
+Four space-words now operate in the project; they are distinct objects:
+
+| Space-word | What it is | Its points |
+|---|---|---|
+| **representation space** | what the primitives operate over, within one cognitive act (this document) | representations |
+| **thinking-space (territory)** | what the loops traverse (`what_is_meaningful_traversal.md`) | questions |
+| **approach-space** | what a PRACTICE-shaped question opens into | ways of doing — its named attractors are *paradigms* (a paradigm: a coherent, generative bundle of commitments about how a practice is done) |
+| **answer-space** | what a CONFIGURATION-shaped question opens into | positions along the answer's own dimensions |
+
+The general principle behind the last two rows: **every question opens into its own answer-structure** — practice-questions into approach-spaces, configuration-questions into answer-spaces, bare fact-questions into thin verification-structures. An approach-space exists as soon as the practice admits genuine choice; a young practice's approach-space is simply attractor-sparse (paradigm formation is a community's sedimentation inside a space that pre-exists the sediment).
+
+**What the anatomy executes.** Movement in the territory and its opened-into spaces comes in category-distinct kinds, all executed by the primitives above:
+
+- **Steps** — position acts. Within an approach-space, ordered by what they change relative to the current paradigm chart: *in-place production* (new instances inside one paradigm; no commitments change), *an axis step* (one commitment changes), *a family jump* (several change together; landing at another attractor). In the territory: typed engagements of one question after another.
+- **Cartographic acts** — acts on a space's CHART rather than in the space: *chart acquisition* (a paradigm-sweep: position unchanged; the map of the ways comes into existence), *chart extension* (a new axis or family joins the live chart; old positions keep their addresses), *chart replacement* (a paradigm shift: the axes and success-criteria themselves are replaced, and positions under the old chart no longer translate — incommensurability, stated in movement terms).
+- **Steering decisions** — loop-boundary decisions about the walk (terminate / widen / merge and kin); decided, not stepped.
+- **Itineraries** — composed multi-loop journeys (the multi-loop pattern vocabulary); many steps with a shape, not one step.
+
+Two anatomy-level notes. *Re-viewing acts* — attention shifts, re-orientations, evaluation-frame changes — can change the walker's NOTICING without changing any position or chart; they live here, in the apparatus (Attention-pointer + Salience), which is why a perspective change alone is not a paradigm shift. And the apparatus is level-uniform: the same primitives execute a single axis step and a whole itinerary — what differs across levels is what changes, not what executes.
+
+**Boundary.** This vocabulary TYPES steps; it never SCORES walks. Traversal quality — whether a walk was worth walking — remains the deliberately-open question of `what_is_meaningful_traversal.md`; the step-vocabulary is available raw material for that document's planned v1 placeholder signals, and nothing more.
+
 ### 3. Two kinds of similarity, not one
 
 The signature claim — "geometrical similarities between shapes even if they are irrelevant, the angle might be the same" — points at a specific kind of intuition that generic embedding similarity does NOT capture:

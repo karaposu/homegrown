@@ -305,9 +305,9 @@ Together with the Inherited Frame Audit (between Phase 2 and Phase 3), the metho
 
 Apply mechanisms to the seed to produce novel outputs. This is where coverage matters.
 
-**Minimum coverage:** Apply at least one Generator and one Framer to the same seed. This ensures you've both created novel content and found viable conditions for it.
+**Coverage standard (full scale, always):** Every run fires all seven mechanisms; no exception the run can grant itself. Each mechanism produces at least one variation that enters the 5-test cycle — *tested, not necessarily kept*: a variation generated, tested, and killed at its first test is recorded work (two lines in the telemetry), never omitted work. The spread is the point — kills are recorded, not hidden. At the run's core — the seed itself in idea-mode; every meta-decision piece in Production-task mode — produce the full three-variation set (one **generic**, one **focused**, one **contrarian**) before testing. Coverage below seven fired exists only when the user's own raw input asks for it, and the telemetry quotes those words verbatim. The per-seed minimum (1 Generator + 1 Framer) remains defined as the Coverage Strategy's floor-concept that methodology-modes reference; invoking a below-full mode (e.g., Minimum-mechanism) is itself a user-words event under this standard — the telemetry quotes the user's invocation. <!-- TOGGLE: to require the three-variation set at ALL pieces/mechanisms (the literal 7×3 grid, ~300–450 lines/run), replace "At the run's core …" with "For every mechanism, produce the full three-variation set before testing." -->
 
-**Systematic coverage:** For high-stakes innovation, apply all seven mechanisms. Each produces a different view:
+All seven mechanisms, each producing a different view:
 
 ```
 Seed: "AI methodology as a business"

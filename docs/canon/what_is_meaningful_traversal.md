@@ -40,15 +40,17 @@ These are clearly overlapping. Coverage and depth sit in tension (coverage rewar
 
 The honest position right now is: **the failure modes are clearer than the success metric.** We can identify when a traversal *isn't* meaningful (it's stuck, drifting, mode-collapsing, scattered, shallow) more easily than we can define when it *is*. That's true for many quality concepts and may be permanent.
 
+One of those failure modes now has a typed description available (from the movement vocabulary in `docs/canon/thinking_space_dynamics.md`): *stuck-in-a-rut* reads as **iterating below the needed rung** — in-place production inside one paradigm where an axis step or a family jump was needed. A description, not a detector: it names what the stuckness IS in step terms; it doesn't compute when to call it.
+
 ---
 
 ## Why "thinking space" is in the framing
 
-`docs/thinking_space_dynamics.md` introduces the idea of thinking space as the territory the loops traverse. Meaningful traversal is the verb form of that noun. If thinking space is the where, meaningful traversal is the *was-this-walk-worth-walking*.
+`docs/canon/thinking_space_dynamics.md` holds the working model of thinking space; this note owns the **territory sense** — thinking space as the terrain the loops traverse, whose points are questions. (The other sense — the within-act apparatus of cognitive primitives — is that document's; the two relate as terrain and mover, and it carries the disambiguation.) Meaningful traversal is the verb form of the territory noun. If thinking space is the where, meaningful traversal is the *was-this-walk-worth-walking*.
 
-The framing is metaphorical but not vacuous. Thinking space has a topology — there are clusters of related questions, regions where multiple disciplines apply, dead zones where the question doesn't admit useful structure. A traversal is meaningful when it actually moves through this topology — visits new clusters, descends into a region with depth, returns from dead zones rather than getting trapped. A traversal is meaningless when it walks in circles, stays in dead zones, or pretends to move while standing still.
+The framing is metaphorical but not vacuous. Thinking space has a topology — there are clusters of related questions, regions where multiple disciplines apply, dead zones where the question doesn't admit useful structure. And the points themselves have insides: a practice-shaped question opens into its own approach-space (the space of ways to do that practice, whose named attractors are paradigms); a configuration-shaped question opens into an answer-space. A traversal is meaningful when it actually moves through this topology — visits new clusters, descends into a region with depth, returns from dead zones rather than getting trapped. A traversal is meaningless when it walks in circles, stays in dead zones, or pretends to move while standing still.
 
-The metaphor will eventually need operational counterparts. For now it's enough to say: the metaphor is what makes the multi-head architecture coherent. Without a notion of traversal, "multi-head" is just "parallel duplication." With it, multi-head heads are exploring different paths through a shared space, and the system has a reason to combine their results.
+The metaphor will eventually need operational counterparts, and a first one now exists: `docs/canon/thinking_space_dynamics.md` carries a movement vocabulary that TYPES the steps a traversal makes (steps within an approach-space; cartographic acts on its chart — sweep, extension, shift; steering decisions; itineraries). Typing steps is not scoring walks — the quality question this note owns remains open. Beyond that: the metaphor is what makes the multi-head architecture coherent. Without a notion of traversal, "multi-head" is just "parallel duplication." With it, multi-head heads are exploring different paths through a shared space, and the system has a reason to combine their results.
 
 ---
 
@@ -56,7 +58,7 @@ The metaphor will eventually need operational counterparts. For now it's enough 
 
 Two reasons.
 
-First, the project doesn't need the formal definition to *start* the buildout. The continuous-loop runner v1 (Item 3 of the roadmap) just needs a working v1 of the signals — operational placeholders that compute *something* and can be evaluated for whether they fire usefully. The v1 placeholders (coverage as a `navigate`-type ratio, convergence as an open-question count delta, productivity as new-material count) are explicitly *first attempts*, not the answer. The answer evolves with use.
+First, the project doesn't need the formal definition to *start* the buildout. The continuous-loop runner v1 (Item 3 of the roadmap) just needs a working v1 of the signals — operational placeholders that compute *something* and can be evaluated for whether they fire usefully. The v1 placeholders (coverage as a `navigate`-type ratio, convergence as an open-question count delta, productivity as new-material count) are explicitly *first attempts*, not the answer. A fourth candidate is now on the table from the movement vocabulary: consecutive same-rung iterations as a coverage-adjacent placeholder — offered as raw material only; the formal spec adjudicates whether it earns a slot. The answer evolves with use.
 
 Second, premature formalization is itself a failure mode. If we commit now to a specific formula — "meaningful = 0.4×coverage + 0.4×convergence + 0.2×productivity" — we'll spend Item 5's mechanics test fighting the formula instead of the mechanics. The formula gets locked in by being implemented; replacing it later is harder than starting fuzzy and tightening as evidence accumulates.
 

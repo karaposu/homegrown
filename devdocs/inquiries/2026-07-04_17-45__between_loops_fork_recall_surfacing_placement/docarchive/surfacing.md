@@ -1,0 +1,74 @@
+# Surfacing — The Between-Loops Fork-Recall Operation (Placement + Mechanism)
+
+## User Input
+
+`_branch.md` (this inquiry). Territory: the between-traverse memory operation's design-space + the REAL architecture (the traverse loop, the navigation session, routelister/`_route.md`) + the analogy chain as design intuition. Possibility case with an artifact component — the structure is grounded in the actual specs (read this session), honesty-bounded where the current architecture is only partly specified.
+
+**Grounding read this session:** `docs/canon/towards_cross_run_cognitive_steering_with_isolated_navigation_session.md` (the worker/navigation split; the 3-stage warming; what the navigation session reads). The 11-24 SEED-2 origin folder confirmed: `devdocs/inquiries/2026-07-04_11-24__massage_brainstorm_traversal_theory_seed_map/`.
+
+---
+
+## Cluster A — The REAL current architecture (grounded, aptness-marked)
+
+- **A1 · The worker/navigation split** [TEXTBOOK-SOLID, load-bearing]. Two cognitive jobs: the **worker session** (the traverse loop) solves ONE local inquiry → `finding.md` (+ now `routelister.md` + `_route.md`); the **navigation session** is a context-ISOLATED session running `/routeman` that reads completed artifacts ACROSS many inquiries, maps movement-space, and recommends the next move. The split exists to protect "movement-space attention" from being distorted by one worker's local detail. → This is the exact frame the user's work-split question lives in.
+- **A2 · The routelister-moved-into-the-loop precedent** [CONFIRMED, the user's own analogy]. `/traverse` added routelister as the LOOP's exhaust step "instead of constantly running it in navigational isolated session after each traverse." So there is ALREADY one migration of work: route-enumeration moved from the navigation session INTO the loop. The user's proposal is a SECOND migration of the same shape (move the "bring past up" write-work into the loop). → The precedent is real and directly analogous; it makes the proposal structurally continuous, not novel.
+- **A3 · The 3-stage warming = the BROAD read** [CONFIRMED]. Navigation-session warming is generic → technical → short-term-goal; it is direction-AGNOSTIC ("understand the terrain"). This is SEED 2's "warm-up reads broadly at session-start." → CONFIRMS the exclusion: the fork-recall is NOT the warm-up (warm-up is broad/agnostic; fork-recall is direction-TARGETED).
+- **A4 · What the navigation session reads** [CONFIRMED]. `_branch.md`, `_state.md`, `finding.md`, `docarchive/`, **relationship links between inquiries**, "future navigation memory or graph files." → The navigation session ALREADY consumes relationship links + wants a graph. The post-loop write-half would PRODUCE exactly this graph — feeding a consumer that already exists and already wants it.
+- **A5 · The improvised fork-recall today** [from SEED 2, plausible]. A warm runner "improvises direction-relevant context when composing the next inquiry" — i.e., the READ-half happens ad-hoc, inside the navigation session, recomputed each time. Cold sessions have no spec'd home. → The gap the whole inquiry targets.
+
+## Cluster B — The operation's SHAPE: one operation, or two halves? (surface sharply)
+
+- **B1 · The READ-half (SEED 2's fork-recall)** [CENTRAL candidate]. Between traverses, holding a candidate direction, SURFACE past experience relevant to that direction — a READ that FEEDS the next traverse's start. Data-flow: past record → new traverse. This is the direction-TARGETED, PRE-loop operation SEED 2 named.
+- **B2 · The WRITE-half (the user's new post-routelister angle)** [CENTRAL candidate]. After routelister writes THIS traverse's paths, surface past similar paths/traverses and RECORD the cross-connection — a WRITE that ENRICHES the record for future consumers. Data-flow: this traverse → the record. This is the POST-loop operation the user proposes.
+- **B3 · The two-halves reading** [STRONG structural candidate — for sensemaking to adjudicate]. B1 and B2 are NOT the same operation and NOT unrelated: they are the **write-half and read-half of ONE between-traverse memory mechanism**, sharing the `_route.md` path-graph as substrate. B2 WRITES the anastomosis links; B1 READS them when choosing the next direction. SEED 2 said "no third shape has appeared" — the two-halves reading IS the third shape: not "topic-read IS it" nor "a new pre-protocol," but "a post-loop WRITE-half + a pre-loop READ-half, and the write-half is what was missing." → If this holds, it dissolves the either/or of SEED 2's decidability by adding the axis SEED 2 didn't have (write vs read).
+- **B4 · The collapse reading** [held, weaker]. Alternatively the post-loop surfacing IS just the pre-loop fork-recall relocated earlier (do it at the END of traverse N instead of the START of traverse N+1). → But this conflates a WRITE (record links) with a READ (surface for a direction) — likely a category slip; surface for the record to reject or refine.
+
+## Cluster C — The analogies as DESIGN INTUITION (the "new understanding" the user invoked)
+
+- **C1 · Anastomosis = grow-a-link, in the loop** [15-56, load-bearing]. The mycelium finding committed: separate traverses CONNECT via the refines/supersedes graph = anastomosis (hyphae of the same body fusing). The post-loop write-half (B2) is LITERALLY anastomosis performed by the loop: the finishing traverse grows a fusion-link to the past traverses it connects to. → The strongest analogy-warrant for putting the write-half in the loop: anastomosis is a local act each hypha does as it grows, not a central mapping done afterward.
+- **C2 · The slime-trail = APPEND, never rewrite** [16-25, decisive for the mechanism axis]. Physarum's external memory is LAID DOWN as it goes and read back later; it is not edited. `_route.md` FUNCTIONS AS that trail. → Strong intuition that the write-half should APPEND-FORWARD (each traverse lays its own links) rather than MUTATE old traverses' routelisters (rewriting the trail behind you has no analogy — the trail is a deposit, not a document you go back and revise).
+- **C3 · Reinforcement = thicken-by-accumulation** [16-25/15-56]. Physarum thickens a productive tube; the mycelium thickens a cord toward good resources. This IS an update to the existing network — so "reactivation of old paths" has SOME analogy-warrant. BUT the thickening is by FLOW accumulating, not by an external editor rewriting the tube. → Resolves the tension: an old path gets "reactivated" when MANY forward-links accumulate pointing at it (it thickens by accumulation), NOT when the loop edits the old file. Reactivation = an emergent property of append-forward links + a consumer reading them, not a mutation.
+- **C4 · Backtrack / fork-recall = re-enter a prior fork** [15-11, the home]. The fungus homes the fork-recall: abandon a starved tunnel, push out from an OLDER junction. Re-entering a prior fork requires KNOWING the prior fork exists and what it held — which is exactly what the READ-half (B1) surfaces and the WRITE-half (B2) records. → The fork-recall HOME (15-11) IS this operation; the dive keeps faith with it by making the fork's record explicit (write) and re-readable (read).
+- **C5 · The ant's POSITIVE trail** [16-51, design-question]. The brute-force finding flagged: ants keep a "go here" positive trail, where the project's records lean anti-redundancy "avoid here." The post-loop link is a POSITIVE recommendation ("this past path is relevant to that direction — go here"), the ant-trail flavor, distinct from `_route.md`'s Excluded-section "avoid" flavor. → Surfaces that the write-half produces a POSITIVE cross-link (a recommendation), complementing the existing anti-redundancy record.
+
+## Cluster D — The PLACEMENT design-space (held open)
+
+- **D1 · PRE-loop only** — home the READ-half at the topic-read / context-assembly (SEED 2's "topic-read IS it → one doctrine line"). Leaves the write-work in the navigation session.
+- **D2 · POST-loop only** — add the write-half after routelister; leave all reading to the navigation session (the user's minimal "just surfacing of old similar paths is enough").
+- **D3 · BOTH (write-half in loop + read-half homed)** [the two-halves design, B3] — post-loop WRITE (grow links) + pre-loop READ (consume links), each homed to its moment.
+- **D4 · Something genuinely precedes articulation** (SEED 2's second horn) — a small pre-loop protocol distinct from the topic-read. → Surface: with the write-half in place, the "pre-loop protocol" may reduce to "read the links" (a doctrine line), NOT a new protocol — weakening D4.
+
+## Cluster E — The MECHANISM-depth design-space (held open, cost-marked)
+
+- **E1 · Surface-only** [lowest cost]. The post-loop step surfaces past similar paths into the finding's context; records nothing durable. → Cheap but LOSES the efficiency benefit (nothing persists for the navigation session to consume — it would recompute).
+- **E2 · Append-forward links** [C2-favored, moderate benefit, LOW cost]. The post-loop step writes cross-links into THIS traverse's `_route.md` (backward-pointing: "connects to past traverse X, path Y"). Append-only; each traverse owns its own record; the navigation session reads the UNION. No old artifact touched. → The analogy-clean option (slime-trail deposit; anastomosis growth).
+- **E3 · Mutate old routelisters / bidirectional** [HIGHEST cost, the watch-note]. The post-loop step ALSO edits OLD traverses' `_route.md` to point forward to this one. → Benefits: old paths carry live forward-pointers. COSTS: breaks the append-only record (C2 has no warrant for it); risk of index drift / history corruption; concurrency hazard under multihead (A1's multiple worker heads); re-introduces the OVER-INTEGRATION WRINKLE (15-56 — fusing the write-role into mutation of the shared corpus). → Surface as the option the analogies and the wrinkle argue AGAINST.
+- **E4 · Reactivation as a NAVIGATION act, fed by E2** [candidate resolution]. "Reactivate old paths" = the navigation session (or a future traverse's read-half) CHOOSES to re-enter an old path, reading the accumulated forward-links (C3 thicken-by-accumulation). The loop does NOT reactivate; it makes reactivation POSSIBLE by writing links. → Keeps reactivation where A1 puts selection (the navigation/selector role), fed cheaply by the loop.
+
+## Cluster F — The WORK-SPLIT evidence (the efficiency principle)
+
+- **F1 · The principle stated** [user's, load-bearing]. "Anything we can efficiently add from navigational session to traverse loop makes the navigational loop less complex, easier to develop, and better." Precedent = A2 (routelister already migrated). → A real design driver, backed by a real prior migration.
+- **F2 · What the loop CAN cheaply own** [candidate]. The WRITE-half: the finishing traverse already has its own territory loaded (it just ran); surfacing "which past traverses does THIS one connect to" is cheap AT THAT MOMENT (the context is warm) and expensive later (the navigation session must reload it cold). → Strong efficiency argument for E2-in-the-loop: write the links while the context is warm.
+- **F3 · What should STAY in navigation** [candidate, A1-backed]. CONSUMING the links + comparing across heads + committing the next move (selection). A1 says selection is the navigation/selector role; the loop should not steer the whole system. → Boundary: the loop WRITES its own links (local, cheap); the navigation session READS the union + steers (global). The over-integration wrinkle (15-56) reinforces: don't let the loop's write-role bleed into the navigation's consume/steer-role.
+- **F4 · The cold-session fix** [SEED 2's motivation]. With the write-half in the loop, even a COLD navigation session inherits an explicit link-graph (A4's "graph files") instead of improvising it (A5). → The write-half directly fixes the cold-navigation failure mode the steering doc names.
+
+## Cluster G — Boundaries + costs to hold (honesty)
+
+- **G1 · NOT the spec-slot** [MQ4]. This is the OPERATION (write + read the links), not the DEFINITION of meaningful traversal. Connected-not-contained; dives independently. Hold.
+- **G2 · NOT the watcher's push-alerts** [MQ4]. Direction-agnostic pushes are a different neighbor; the fork-recall is direction-targeted (pull). Hold.
+- **G3 · The mutation risk** [the watch-note, → E3]. Do not assume the fuller mechanism is better; E3's cost is real and analogy-unwarranted. Surface prominently for sensemaking.
+- **G4 · Honesty bound on the current architecture** — the navigation session is only PARTLY specified (the steering doc is a concept note; the exact topic-read/context-assembly step of `/traverse` is the CONTEXT blocks a runner composes, not a formal protocol). The design should say what SHOULD be, bounded by what is confirmed (A1-A4) vs inferred (A5, the improvised read-half).
+
+---
+
+## Relevance Summary (thin artifact)
+
+**HIGH / load-bearing:** A1 (worker/navigation split — the frame), A2 (routelister-migration precedent — the proposal's warrant), B3 (the two-halves reading — the likely SHAPE), C1 (anastomosis = grow-a-link-in-loop), C2 (slime-trail = append-not-rewrite — decides the mechanism axis), E2 (append-forward — the analogy-clean mechanism), E4 (reactivation = a navigation act fed by E2), F2/F3 (write-while-warm / consume-and-steer split).
+
+**MEDIUM:** A3/A4/A5 (warming, what-nav-reads, the improvised read-half), B1/B2 (the two halves), C3 (thicken-by-accumulation → reactivation resolution), C4 (fork-recall home), C5 (ant positive-trail), D1-D4 (placement options), F1/F4 (the principle + cold-fix), E1/E3 (the low and high-cost mechanism ends).
+
+**BOUNDING:** B4 (the collapse reading — likely a category slip), D4 (a new pre-protocol — likely weakened to a doctrine line), G1/G2 (spec-slot / watcher exclusions), G3 (the mutation risk — E3), G4 (architecture honesty-bound).
+
+**Deep pattern surfaced:** the between-traverse memory operation is a **write-then-read pair over the path-graph** — the loop should WRITE its anastomosis links while its context is warm (append-forward, slime-trail style), and the navigation session should READ the union and steer; "reactivation" is an emergent consumer act (thicken-by-accumulation), not a loop mutation. The user's efficiency insight is affirmed for the WRITE-half; the riskiest sub-option (mutate old routelisters) is what the analogies argue against.
+
+**For Sensemaking:** adjudicate (1) the two-halves SHAPE (B3) vs collapse (B4) vs SEED-2's original either/or; (2) the mechanism axis (E2 append-forward vs E3 mutate-old) on the analogy's own logic (C2/C3); (3) the work-split boundary (F2/F3) against the over-integration wrinkle; (4) whether the pre-loop READ-half homes to a doctrine line (D1) or needs a protocol (D4); (5) faithfulness to the fork-recall HOME (15-11) and the inherited commitments.

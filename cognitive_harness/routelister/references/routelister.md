@@ -53,13 +53,13 @@ Each exclusion grounds in an intrinsic feature of the operation. Holding these i
 
 | Excluded | Intrinsic ground |
 |---|---|
-| **A selection / a chosen move** | Routelisting enumerates the full field; choosing among the field is single-move-decisive, a different operation. It may attach an *attributive* Priority/Confidence to a route (description), but never a ranking that picks a winner. |
+| **A selection / a chosen move** | Routelisting enumerates the full field; choosing among the field is single-move-decisive, a different operation. It may attach an *attributive* Priority/Confidence/Essentiality to a route (description), but never a ranking that picks a winner. |
 | **An executed move** | The verb is "list, typed"; performing a listed route (doing the refinement, running the test) is a different operation. |
 | **A descriptive model** | Routelisting emits *prescriptive routes* (directions framed as moves); explaining how the territory works is a different operation. |
 | **Relevance-only tags** | Routelisting individuates items into concept-identities and prescribes each; tagging items by bare relevance, without individuation or prescription, is a different operation. |
 | **The goal** | Routelisting is purposive but the goal is exogenous; it is received, never invented. |
 | **Control-flow / process-control moves** | Routelisting lists *concept*-directions (engage *this concept* this way). Moves that act on a process rather than a concept — conclude the line, broaden the scope, redo a cycle, combine branches, clear a process gate, re-open a prior verdict — are control-flow decisions, not concept-directions; routelisting does not produce them. (These presuppose a running process; routelisting presupposes only a territory + goal.) |
-| **A priority / disposition decision** | "Do this, defer that, drop the other" is a decision about *what to do with* routes; routelisting perceives each route's salience as an *attribute* (Priority/Confidence) but does not decide the disposition. |
+| **A priority / disposition decision** | "Do this, defer that, drop the other" is a decision about *what to do with* routes; routelisting perceives each route's salience and goal-coreness as *attributes* (Priority/Confidence/Essentiality) but does not decide the disposition. (An `Essentiality` of `core` describes a route↔*goal* relation — it never selects or sequences the route; §5.2.2.) |
 | **An inter-concept dependency graph** | Routelisting never records "concept A depends on concept B." Its only structure is *within-concept*: an identity contains its own manifestations (see §5.3). |
 | **A loop position / a between-process role** | Routelisting is not defined by sitting at any point in any larger process. It runs on a territory, full stop. *(How a caller uses its output is the caller's concern, not part of this discipline.)* |
 
@@ -83,7 +83,7 @@ Routelisting is a **self-contained individual**. Its definition references only 
 | **engagement-type** | A verb naming *how* to engage the concept, nested under `kind` (§2.2). |
 | **individuation** | The judgment "are these manifestations the same concept-identity, or different ones?" (§3.2). |
 | **the index** (identity-set) | The persistent concept-map a run loads, updates, and saves as the **`_route.md`** state file (§5.3). |
-| **attributive Priority / Confidence** | A per-route descriptive tag of perceived salience / formed-ness. Description, never a winner-ranking. |
+| **attributive Priority / Confidence / Essentiality** | The three per-route descriptive tags — all *attributive* (a property of the route, never a winner-ranking). **Priority** = perceived salience / pressingness (*how loud* — how much the route stands out). **Confidence** = perceived formed-ness. **Essentiality** = goal-coreness (*how load-bearing* — can the goal land without this route?). Priority and Essentiality are orthogonal: a route can be quiet (low Priority) yet load-bearing (`core`), or loud yet `peripheral` (§5.2.2). |
 
 ### 1.6 Two run modes (the two axes of traversal)
 
@@ -155,7 +155,7 @@ Individuation is structurally the same judgment library cataloging makes (is thi
 
 ### 3.3 Frame
 
-Cast each individuated identity as a typed route: assign `grain × kind × engagement-type`, write the prescriptive guidance, and attach the attributive Priority/Confidence. Framing is where item-level perception becomes identity-level prescription.
+Cast each individuated identity as a typed route: assign `grain × kind × engagement-type`, write the prescriptive guidance, and attach the attributive Priority/Confidence/Essentiality. Framing is where item-level perception becomes identity-level prescription. Essentiality (goal-coreness, §5.2.2) is decided in the same framing glance — it needs no separate pass.
 
 *Refinement note (applies at §3.3 Frame — meaning-gaps authoring, on DEVELOP / CONSOLIDATE routes):*
 
@@ -238,8 +238,8 @@ At the end of a run, routelisting reports one of:
 ### 5.1 `routelister.md` — the Route-Map (per-run output)
 
 Contains:
-- a **Map Header** — identity count + high-priority count (an at-a-glance triage signal);
-- a **Route Index** — a scannable table summarizing each route by ordinal + Direction + grain + kind + engagement-type + Priority (included when the route count exceeds the index-threshold, default 10);
+- a **Map Header** — identity count + high-priority count + **essential-count** (the number of `core` routes — the "what can't I skip?" triage number, which a raw high-priority count cannot give, since Priority fuses loudness with coreness);
+- a **Route Index** — a scannable table summarizing each route by ordinal + Direction + engagement-type + Priority + Essentiality + a `✓` done/explored column (included when the route count exceeds the index-threshold, default 10). The index is **lean** — it shows only fields that *vary and inform*: `grain` is omitted (it is constant across a single-grain map) and `kind` is omitted (it is derivable from engagement-type); both remain in the record's type-signature (§2.1), they are simply not displayed. **Priority and Essentiality are both shown** — they are the two *triage attributes* (how-loud and how-load-bearing), and each carries information the other does not (a quiet route can be `core`; §5.2.2); `Essentiality` earns its column by the same "vary and inform" rule that omits `grain`/`kind`. **Confidence is not shown** in the index — it is route formed-ness, not a triage signal — it stays on the record. `Direction` is a **self-explanatory noun-phrase** (understandable without opening the record). The `✓` column is a **consumer-filled done/explored mark**: routelisting authors it **empty and never reads it** — which routes were run is not routelisting's to track (it enumerates the field of routes; a consumer records engagement), so the column is filled by the consumer (or ticked by hand), never by routelisting. The mark is **durable because a per-run map over a *concluded* territory is a static piece** — no longer re-surveyed, so not regenerated, so a tick on it persists; on a still-active territory a fresh run re-authors the map with the column empty, and done-state lives with whatever consumer tracks it, not on the transient map. (This is what keeps the mark identity-clean: routelisting neither authors nor reads it, so "enumerate, don't track" holds even though the column rides its output — §4.3.);
 - the **per-route records** (§5.2);
 - an **Excluded section** — notable candidate-concepts considered and rejected, *with reasons* — never silently dropped (this is where "engaging it does nothing toward the goal" non-routes go);
 - **Telemetry** (§5.4).
@@ -250,10 +250,10 @@ Each route record carries:
 
 | Group | Fields |
 |---|---|
-| **Route Identity** | Direction (the concept as a direction) · Goal · grain · kind · engagement-type |
-| **Route Meaning** | Movement (what engaging it does) |
-| **Route Reasoning** | WHY (territory-evidence) · why-this-might-be-important |
-| **Route Attribution** | Priority · Confidence *(attributive — perceived salience / formed-ness; not a winner-ranking)* |
+| **Route Identity** | Direction (a self-explanatory noun-phrase) · Goal · engagement-type *(grain + kind belong to the type-signature §2.1 but are not re-displayed when constant or derivable from engagement-type)* |
+| **Route Meaning** | **Move** (what engaging the concept does) · **Lands** (the state it results in) · *(optional)* **Touches** (the concrete artifacts / identifiers it acts on, each with its load-bearing qualifier) |
+| **Route Reasoning** | WHY — a *line of sight* that climbs from the local (already in Move/Lands) to **what the end goal gains** (the goal rung, mandatory), with an optional neighbourhood rung between (§5.2 WHY refinement note) |
+| **Route Attribution** | Priority · Confidence · Essentiality *(all attributive — perceived salience / formed-ness / goal-coreness; not a winner-ranking; §5.2.2)* |
 | **Route Guidance** | Guidance Mode (none / compact / full / expand-on-drill) · Pointers, each with its own WHY · *(on DEVELOP/CONSOLIDATE routes) an optional `Meaning-gaps:` sub-block (§5.2.1)* |
 | **Route Depth-link** | a *within-concept* pointer to this identity's own depth run (if drilled) + a compact depth-signal |
 
@@ -262,16 +262,44 @@ Worked example:
 ```
 Direction:        the authentication mechanism
 Goal:             a hardened, understood auth path
-grain:            project-space
-kind:             epistemic
 engagement-type:  DIAGNOSE
-Movement:         examine why auth has its current shape
-WHY:              the goal (harden auth) rests on understanding the current mechanism
-Priority:         HIGH    Confidence: MED
+Move:             examine why auth has its current shape
+Lands:            a clear account of why auth is shaped as it is — the basis for hardening it
+WHY:              understanding the current mechanism is what the hardened-auth goal rests on — without it the goal can't be reached safely
+Priority:         HIGH    Confidence: MED    Essentiality: core
 Guidance Mode:    compact
   · "start from the token-issuance path"  (bc that's where the goal's risk concentrates)
 Depth-link:       none (not yet drilled)
 ```
+
+*Refinement note (applies at §5.2 — the Move / Lands / Touches subfields):*
+
+**Move / Lands are the shape; Touches is the quarantine; the subfields are a ceiling, not a floor.** A route's Meaning is a *change the route effects*, which always has two plain parts — what you **Move** (the action) and what it **Lands** (the resulting state). `Lands` is meaningful for every engagement-type: a built code-state for a `DEVELOP`, a settled decision for a `PURSUE-SEED`, a passing check for a `TEST`, an agreement reached for a `CONSOLIDATE`. `Touches` is **optional** — present only when there are concrete identifiers (files, symbols, endpoints, config) to list, and each carries its **load-bearing qualifier** (not a bare name-list — `the operator-queue endpoint (items awaiting action)`, not just `the endpoint`). The subfields exist to **un-cram a dense Meaning, not to inflate a simple one**: a short Move stays a single line; only when the action carries code-level detail do `Lands` and `Touches` earn their place. Reflow the content into labelled lines; do not add content. A dense build route reads:
+
+```
+Move:    add a per-item auto/manual switch and the manual path
+Lands:   each item either auto-completes or waits in an operator queue for a manual action — manual is the default
+Touches: the per-item mode flag (← a global default) · the dispatch branch (auto → act inline / manual → defer) ·
+         the operator-queue endpoint (items awaiting action) · the action endpoint
+```
+
+A reader gets the whole route from `Move` + `Lands` (two plain lines) and drops into `Touches` for the identifiers.
+
+*Refinement note (applies at §5.2 — the Guidance field):*
+
+**Keep Guidance in its shape consistently.** Guidance is a Guidance Mode plus **Pointers, each carrying its own short `(bc …)` reason**; optionally type a pointer by its move (reuse-X / avoid-Y / sequence-after-Z). The fix is consistency — always Mode + reasoned pointers — not a new structure.
+
+*Refinement note (applies at §5.2 — the WHY field):*
+
+**WHY is a line of sight to the goal.** A route's WHY is its *reasoning*, and it must **climb to the goal** — not stop at the local justification. It spans up to three rungs, but only two live in WHY:
+
+- the **local** rung (what the route does) is already `Move`/`Lands` — WHY does **not** restate it; it climbs *from* there;
+- an **optional neighbourhood** rung — what the route unblocks or protects *around it*, stated as an **area-property** of the route (its blast radius / what it isolates or protects), **never** as a route↔route dependency edge (that would build the forbidden inter-concept dependency graph, §1.3);
+- a **mandatory goal** rung — **what the end goal gains** from the route (its *line of sight* to the goal).
+
+Two glance questions generate it: *(optional)* "what does this unblock or protect around it?" and *(mandatory)* "what does the end goal gain?" A short route answers in one climbing clause (`does X locally, so the end goal gains Y`); only a dense route earns labelled rungs (a **ceiling, not a floor** — the same rule as Move/Lands). **Mandatory means state the line of sight even when it is weak** — a `peripheral` route's honest goal rung reads "indirect — a later-phase nice-to-have," which is *why* it is peripheral; do not manufacture a strong benefit.
+
+**The goal rung is Essentiality's reasoning — each rating has its reasoning.** The schema pairs every attributive *rating* with prose *reasoning*: **Priority** is justified by **WHY** (why it is pressing), **Confidence** by the **`Meaning-gaps:`** sub-block (why it is not fully formed — §5.2.1), and **Essentiality** by **WHY's goal rung** (what the goal gains → why it is `core` — §5.2.2). The goal rung is the caption that justifies the Essentiality token; only that top rung is Essentiality's reasoning (the neighbourhood rung is WHY's own).
 
 ### 5.2.1 The Meaning-gaps sub-block (DEVELOP / CONSOLIDATE routes)
 
@@ -299,6 +327,28 @@ The inline `[low|mid|high]` tag is human-readable and trivially machine-parseabl
 
 **Usage-note (keeps it lightweight — carry it, do not drop it).** The frame is *risk of building wrong*, not abstract importance (this is why likelihood belongs); impact's sub-signals are *weighed, not computed* (answer from the first-pass perception — no dependency-graph trace); a *first-pass, low-confidence, possibly-wrong* rating is acceptable (it nudges the consumer, never gates). Keep to these **three** questions — promoting impact's sub-signals into their own questions turns a glance into a checklist and defeats the field.
 
+### 5.2.2 The Essentiality field (goal-coreness)
+
+Every route carries an **`Essentiality`** tag — a third attributive field beside Priority and Confidence — answering one glance, domain-agnostic question: **"can the goal land without this route?"**
+
+- **core** — *no.* The goal fails or is incomplete without it (it is on the critical path to the goal).
+- **supporting** — *yes, but weaker / rougher.* It helps; the goal still lands without it (it has slack).
+- **peripheral** — *yes.* It is off the critical path — optional, exploratory, or a nice-to-have.
+
+It is decided in the same framing glance that assigns Priority/Confidence (§3.3) — no separate pass.
+
+**Why it is distinct from Priority (loud vs load-bearing).** Priority measures *how loud* a route is (salience / pressingness); Essentiality measures *how load-bearing* it is (goal-coreness). They are orthogonal: a light, low-Priority route can be `core` (the goal needs it but it is a quick build), and a loud, high-Priority route can be `peripheral`. A reader cannot recover coreness from Priority — which is why Essentiality is its own field and its own triage column (§5.1).
+
+**Optional goal-phase qualifier.** On a `core` route whose coreness only activates in a later phase of the goal, append `· @<goal-phase>` (e.g., `core · @real-money`). This describes *which phase of the goal* the route's coreness activates in — a fact about the goal's own phase structure — **not** a "do it later" disposition (routelisting never decides disposition, §1.3). It is opt-in; the default (no qualifier) means the current phase. A `core · @<later-phase>` route is genuinely core, but its line of sight is phase-deferred.
+
+**Identity bounds (carry them).**
+- **Attributive only.** Essentiality describes a route's relation to the goal; it never selects, sequences, or decides act/defer/drop — that would be Selection-creep (§4.3).
+- **Direct goal-relation, not a dependency trace.** The question is *"is the **goal** load-bearing on this route?"* perceived in one glance — **route↔goal**. It is **not** a transitive route↔route trace ("the goal needs X, X needs this route"), which would build the forbidden inter-concept dependency graph (§1.3).
+- **State it even when weak.** A `peripheral` route's reasoning (its WHY goal rung) honestly reads "indirect / a later-phase nice-to-have" — that *is* why it is peripheral; do not manufacture coreness.
+- **Lean to core under doubt.** When unsure between `core` and `supporting`, choose `core` — under-marking a load-bearing route is the worse failure (§4.4).
+
+Essentiality is the *rating*; its *reasoning* is the WHY goal rung — what the goal gains (§5.2 WHY refinement note). The two are read together: the token says *whether* the goal needs the route, the goal rung says *what* the goal gains.
+
 ### 5.3 `_route.md` — the identity-set / index (the persistent concept-map)
 
 The persistent state file routelisting writes (and the next run loads). A registry: `{ identity → { own-depth pointer, depth-signal, individuation history, first-seen / last-touched } }` plus an invocation log. This is the project's persistent concept-map — the same object the listing builds, the output persists, and the cross-run model reads (§3.5). Routelisting writes `_route.md` itself on every run (standalone included; see §5 intro).
@@ -311,7 +361,7 @@ The persistent state file routelisting writes (and the next run loads). A regist
 
 Reported with the output:
 - mode (`root / project-space` | `concept-target / concept-space`) + entry point (`fresh` | `index-extending`);
-- identities enumerated; routes at each `kind`; high-priority count;
+- identities enumerated; routes at each `kind`; high-priority count; essential-count (routes at each `Essentiality`);
 - individuations made; uncertain-individuations flagged; stale entries flagged;
 - convergence status; frontier flags emitted;
 - LAYER 1 / LAYER 2 failure modes checked;
@@ -341,7 +391,7 @@ If a `_route.md` index exists for this territory + goal, LOAD it (scoped to the 
 
 - **Sweep** the goal-relevant territory (perceive by enumerating; do not invent).
 - **Individuate** the swept items into concept-identities — goal-relative, signal-guided, lean-to-split, incremental (§3.2). Re-confirm loaded identities or start new ones; flag non-re-confirmed loaded identities **stale**.
-- **Frame** each identity as a typed route (`grain × kind × engagement-type`), with Movement, WHY, attributive Priority/Confidence, and guidance (§5.2). Route candidate-concepts that advance/sharpen nothing into the **Excluded** section with reasons.
+- **Frame** each identity as a typed route (`grain × kind × engagement-type`), with Move/Lands (+ optional Touches), WHY (a *line of sight* that climbs to what the goal gains, §5.2), attributive Priority/Confidence/Essentiality (§5.2.2), and guidance (§5.2). Route candidate-concepts that advance/sharpen nothing into the **Excluded** section with reasons.
 
 Loop the sweep until convergence (§3.4).
 
