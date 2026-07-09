@@ -156,6 +156,23 @@ Anti-patterns to avoid:
  exceeds ~100 lines.]
 
 
+## Seeds                                         [REQUIRED — even if empty — when the inquiry ran the seed-harvester protocol (cognitive_harness/protocols/seed_harvester.md); OPTIONAL for any other inquiry that yielded a gated seed; otherwise omit]
+
+[The dive's seed-yield, declared. One compact seed-record per gated
+ seed, per the seed-harvester protocol's schema (§7): hypothesis
+ ("maybe our X could be Y") · type (inspiration/affirmation/provocation
+ + kind if inspiration) · anchor (the project concept — required) ·
+ source + source-support (what in the material licensed it — required) ·
+ door · grade (live/nascent) · maturation-trigger (required for nascent).
+ Explicit-empty form when a harvest dive yielded none: "No seeds passed
+ the gate this dive" + one line naming the strongest failed candidate
+ and why it failed. The section is ADDITIVE — it changes no other
+ section. Each recorded seed is ALSO appended, one line, to the global
+ index `devdocs/seeds/_seed.md` (id | hypothesis-short | type/kind |
+ grade | anchor | dive-path | date): the finding declares, the index
+ accumulates — that is what makes seeds findable and usable later.]
+
+
 ## Inherited Commitments Re-test                 [required when `_branch.md` declared a Synthesis Trigger OR when the finding's frontmatter declares `refines:` / `supersedes:` / `corrects:` of a prior finding and inherits N≥3 commitments from it; otherwise omit]
 
 [For each commitment inherited from a prior output, list:
@@ -215,7 +232,9 @@ A commitment cannot be silently absorbed. It is either RE-TESTED with evidence c
 
 ### Refinement Triggers
 [Specific conditions (time-bound / condition-bound / observable) under
- which a locked decision in this finding re-opens.]
+ which a locked decision in this finding re-opens. Where the decision
+ rests on a specific blocking feature, NAME that feature — re-open on
+ its neutralization, not on generic "if context changes".]
 
 ## Source Input                                 [required for correction/refinement findings unless omitted/redacted with reason; optional otherwise]
 

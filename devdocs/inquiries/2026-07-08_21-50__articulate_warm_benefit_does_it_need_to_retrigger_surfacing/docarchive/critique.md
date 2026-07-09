@@ -1,0 +1,59 @@
+## User Input
+
+devdocs/inquiries/2026-07-08_21-50__articulate_warm_benefit_does_it_need_to_retrigger_surfacing/_branch.md — (DESIGN dive, Critique = THE GATE (P7): prosecute the fixpoint-loop design + the decoupling spine + the termination criterion + the promote-to-core; backstop (material-change detection); guard both ways (CAVING); seed adjudication (fixpoint-composition). Full spec in the instruction.)
+
+---
+
+# Critique — THE GATE on the fixpoint-loop design
+
+## Phase 0 — dimensions
+| D | Condition | Weight |
+|---|---|---|
+| D1 | **evidence-grounded** — rests on the surfacing/articulate_simple spec text, not a plausible story | critical |
+| D2 | **honest sizing** — the change kept at its true size (reframe+minimal-add), the commit-value neither zeroed nor oversold | critical (the CAVING risk) |
+| D3 | **terminates** — the loop provably stops | critical (a loop that might not halt is a real defect) |
+| D4 | **applicable** — the doc edits concrete + user-gated | high |
+| D5 | **both-ways guard** — neither caves to "useless" nor deflates the correct promote-to-core | critical |
+
+## Phase 1 — landscape
+- **Viable:** the decoupling spine, the reuse finding, the fixpoint loop with cap-guaranteed termination, the conditional-but-core reframe — all spec-grounded.
+- **Dead:** "articulate_warm is useless without re-surface" (commit-value non-zero); "re-surface is new machinery" (§3.6/§3.7 reuse); "re-surface stays optional" (it's the load-bearing mechanism).
+- **Boundary:** C-INERT (inert vs yields-the-trigger), C-TERMINATE (fixpoint vs cap-as-guarantee), C-PROMOTE (core vs conditional-but-core).
+
+## Phase 2/3 — candidate verdicts
+
+**C-INERT (re-anchor is inert without re-surface — the spine) → SURVIVE + REFINE.**
+Prosecution: the LLM might re-anchor usefully on partial/adjacent cues of T2 already in the T1 material, so re-anchor isn't *fully* inert without re-surface. Defense: it can *name* T2 from cues, but the downstream payoff (a frame/seed-questions **grounded in T2's actual material**) can't be produced from cues. Collision → **REFINE:** re-anchor without re-surface yields the **trigger** (the revised context-need) but **not the payoff** (the T2-grounded frame). "Inert" is too strong; the precise claim is **"produces the trigger, not the payoff."** This **strengthens** promote-to-core — the payoff is exactly what requires re-surface. **Survives, sharpened.**
+
+**C-REUSE (the mechanism is reuse, not new machinery) → SURVIVE.**
+Prosecution: the runner's "if MQ2 moved, re-surface" rule + the termination criterion *are* new orchestration; "reuse" undersells them. Defense: the split was already drawn honestly — the **surfacing capability** is reuse (§3.6 `refined-sub-purpose` + incremental; §3.7 runner-owns-re-invocation); the **control logic** (runner rule + termination) is **new-but-small**. Collision → **SURVIVE:** "reuse" applies to the mechanism, "new" to the control logic; innovation stated both. No inflation, no undersell. **Survives — the honest split holds.**
+
+**C-TERMINATE (the fixpoint loop terminates) → SURVIVE + REFINE (load-bearing refinement).**
+Prosecution: MQ2 might not converge — slow drift, or oscillation the guard mis-detects; can termination be *guaranteed*? Defense: yes, but not by the fixpoint alone. Collision → **REFINE:** the **round cap is the termination GUARANTEE** (the loop halts in ≤cap rounds regardless of whether MQ2 converges); the **fixpoint (MQ2 stabilizes) is the FAST path**; the oscillation guard is a quality-flag, not the halt-guarantee. **Elevate the cap from "backstop" to "the termination guarantee"** — since we cannot prove MQ2 always converges, the cap is load-bearing, not decorative. **Survives — and this refinement matters for the doc edit (the cap must be stated as the guarantee).**
+
+**C-PROMOTE (promote re-surface from optional to core) → SURVIVE + REFINE (the precise word).**
+Prosecution: re-surface fires rarely (typical 0–1×) — is "core" overclaiming for something usually skipped? Defense: "core" is about **structural role**, not firing frequency. Collision → **REFINE the word:** re-surface is **conditional-but-core** — **core-role** (structurally, it is the mechanism that makes the load-bearing re-anchor actionable) but **conditionally-fired** (0–1× in practice, when the anchor moves). The right replacement for §4's **"optional"** is **"conditional,"** not "always-on." "Optional" wrongly implies *leave it out of the design*; "conditional" means *in the design, fires when needed*. **Survives — and sharpens the doc edit to "conditional-but-core."**
+
+**C-COMMIT-VALUE (the terminal rephrase is weak-but-real, autonomy-scaled) → SURVIVE (anti-caving anchor).**
+Prosecution: is the standalone commit-value anything, or zero (the LLM always holds the workspace)? Defense: surfacing §5.2 — the workspace is **session-local and lost at session-end**; cross-session / autonomous consumers get **only the thin artifact** (no item content). Collision → **SURVIVE:** the explicit committed re-articulation is then the **only durable carrier** of the warm frame — **weak in one warm session** (user's premise has force), **real across sessions / under autonomy.** **Not zero.** This is the anti-caving anchor: it blocks "useless without re-surface." **Survives.**
+
+## Phase 3.5 — the backstop ("what does the design miss?")
+
+- **(i) THE MATERIAL-CHANGE DETECTION → GENUINE ADDITION (the main backstop yield).** The termination rule rests on *"warm MQ2's context-need **unchanged** from the prior round."* But comparing two context-needs for **material** change is itself a judgment the design left implicit — and if "unchanged" is undefined, the fixpoint criterion is undefined. So the design needs a **new judgment edge: "did the context-need materially change? — names a *different territory/kinds*, not merely reworded."** This is analogous to `articulate_simple`'s existing cold-vs-warm edge (an authorized LLM-judgment point). **Added: the termination criterion must include the material-change comparison rule** (material = a different territory or kinds; cosmetic rewording = unchanged = terminate). Without it the loop can't tell "moved" from "restated." **Genuine addition — folds into the doc's new Termination section.**
+- **(ii) premature verdict=no (warm MQ2 mis-terminating early) → guarded by an existing bias.** A warm MQ2 that jumps to verdict=no too soon would skip a needed re-surface. But `articulate_simple`'s **existing asymmetric-failure bias** (prefer identified-ambiguities / more-context under uncertainty) already leans *against* premature "no." So the risk is covered by an existing mechanism, not a new gap. **Noted; not a new add** (but worth a one-line cross-reference in the doc so the bias is known to apply at the warm pass too).
+- **(iii) does re-surfacing on T2 lose T1? → no.** surfacing §3.6's Trace-as-exclusion-filter **adds** T2 and **skips** (keeps) the already-surfaced T1 — the workspace **accumulates**. So the warm frame after a re-surface has T1+T2, not T2-instead-of-T1. **Confirmed not-a-miss.**
+
+## Phase 4 — coverage + seed + close
+
+**COVERAGE:** the four surfacing threads are resolved — **HA** (already-in-context) → weak-but-real, autonomy-scaled (C-COMMIT-VALUE); **HB** (the decoupling) → the spine, sharpened (C-INERT: trigger-not-payoff); **HC** (uniform mechanism) → reuse confirmed (C-REUSE); **HD** (termination/cost) → cap-as-guarantee + material-change edge (C-TERMINATE + backstop-i). The design is applicable and **user-gated** (doc edits recommended, not applied; naming pending articulate_cold/warm). **Inherited-Commitments re-test — SOUND:** the canon doc's **§7 "optional re-surface" commitment** is **RE-TESTED and resolved** — re-surface is **conditional-but-core**, not optional; the **§4 "[c] optional" vs §7 "the general case" contradiction** is **confirmed and resolved toward §7** (re-surface core, single-pass the special case). The re-test *changed* the inherited commitment (optional → conditional-but-core), with the decoupling + §5.2 as the structural evidence, not precedent.
+
+**★ SEED ADJUDICATION → ONE NASCENT frame-seed (recorded, sized thin).**
+The **fixpoint-composition** pattern: *iterate a discipline-**pair** until the driving signal stabilizes* — maybe **other** harness discipline-pairs have a latent re-fetch fixpoint (e.g., sensemaking reveals a new context-need → re-surface; or any discipline that emits a context-need can drive an upstream fetch to a fixpoint). Gate: **novelty door OPEN** (the two-pass design named a *linear* front; fixpoint-*composition* across discipline-pairs is not stated harness-wide); **deferred-payoff OPEN** (pays off when another discipline-pair is examined for a re-fetch loop). Anchor = the harness's discipline-composition generally. Type = inspiration/frame. Grade = **NASCENT**. Trigger = another discipline is found to emit a context-need that could re-drive an upstream fetch, OR the loop architecture is next revised. **Distinct from `diag-S2`** (cold-step-double-duty = a *single* step's timing); this is a *pair's iterative composition* — cross-referenced, not merged. **Sized thin** (one instance so far — articulate↔surface); class-population monitor. Cleared the gate on structural reality + a plausible second site (sensemaking↔surface); **not KILLed** but flagged thin.
+
+**Calibration close:**
+- **Verdicts:** 5 candidates → 5 SURVIVE, **4 REFINED** (C-INERT trigger-not-payoff · C-TERMINATE cap-as-guarantee · C-PROMOTE conditional-but-core · [C-REUSE clean]) + the backstop **added the material-change edge**. Zero kills — but strong bite: the refinements *changed the design's wording in load-bearing ways* (the halt-guarantee is the cap not the fixpoint; the word is "conditional" not "core-always" and not "optional"; the spine is "trigger-not-payoff" not "inert"; and a whole judgment edge was missing).
+- **Guard BOTH ways:** anti-CAVING — C-COMMIT-VALUE kept the standalone value non-zero (blocks "useless"); C-PROMOTE kept the change honest ("conditional," not an inflated "always-core"); the reuse split resisted over-claiming a big build. Anti-DEFLATION — the user's core insight (promote re-surface off "optional") is **confirmed** (the decoupling + §5.2 + the material payoff all demand it); not waved off.
+- **Self-reference (external grounding):** the verdicts rest on **checkable spec text** (§3.6/§3.7/§5.2, MQ2 verdict axis) + the **live datum** (this dive's cold-articulate + warm-operator, flagged in the cold bundle's Edge-1 note) — not on framework-agreement. Self-reference-collapse guarded.
+- **Anti-inflation on the emergent:** the fixpoint-bootstrap lens held as a **same-evidence design-hypothesis** extending the prior finding, not an independent result.
+
+**Signal: TERMINATE.** The design is gated and sound: articulate_warm is a surfacing-loop controller (fixpoint iteration on the context-need); re-anchor produces the trigger, re-surface produces the payoff (so re-surface is conditional-but-core); the mechanism is reuse, the control logic is the small new content; termination is guaranteed by the round cap (fixpoint = fast path) and now requires an explicit **material-change judgment edge**; the terminal commit is weak-but-real / autonomy-scaled. The user is right to promote re-surface off "optional," and "useless without re-surface" is resized down. **Convergence Telemetry: PROCEED** — dimensions fit; adversarial STRONG (4 material REFINEs + a backstop addition that changes the spec content); landscape CHANGED (optional→conditional-but-core; backstop→guarantee; inert→trigger-not-payoff; + the material-change edge); failure modes checked (rubber-stamping refuted via the REFINEs; self-reference-collapse guarded by spec-text + the live datum; clean-resolution-trap avoided — the fixpoint's elegance held at size). Next: Routelister.

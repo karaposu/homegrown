@@ -1,0 +1,78 @@
+## User Input
+
+devdocs/inquiries/2026-07-06_23-52__paper_seed_17_metacognitive_monitoring_measures__breakthrough_seed_check/_branch.md — Decomposition step. Consume _branch.md + articulate_simple.md + surfacing.md + sensemaking.md. Decompose the SV6 stabilized TWO-reading answer (STANDARD = NOT a breakthrough; SEED = YES-but-qualified research-frontier refinement-seed) into finding-ready pieces-as-questions. MEANING LAYER ONLY. Full 5-piece plan + coupling + interfaces + Synthesis-Trigger note + Innovation seed preserved in the Decomposition invocation.
+
+---
+
+# Decomposition — Paper 17 (metacognitive-monitoring measures) breakthrough-seed-check
+
+## Step 1 — Coupling topology (coupling map)
+
+The whole is a TWO-reading verdict (standard + seed) that diverge. Five clusters, one clear center:
+
+- **Q2 — the SEED CRUX [CENTER].** The whole's distinctive content: is the multi-facet calibration dissociation a live frontier refinement-seed, or does it collapse to confirming+mirror? Everything attaches here — the standard verdict frames it, the mirror/quarantine bounds it, the confirming substrate + un-built discount qualify it, the routes carry it onward.
+- **Q1 — the STANDARD VERDICT + GATE + the FORK [FRAME].** The headline (standard-NO; confirming+refinement+mirror; below 15) + the standard-vs-seed fork stated up front. Tightly coupled to Q2 (the standard verdict cites the seed adjudication) but must come FIRST (frame against both manufacture pulls AND make the fork explicit).
+- **Q3 — the MIRROR + QUARANTINE.** Bounds what transfers; the mirror (zero-built-quality-awareness-now) lives here. Couples to Q2 (the mirror is the seed's context — measures for a not-yet-built capability).
+- **Q4 — the CONFIRMING SUBSTRATE + the UN-BUILT DISCOUNT.** The confirming maps (M-1/M-2/M-3) + the discount (far-future/un-built target) that keeps the seed QUALIFIED. Couples to Q2 (the discount is what qualifies the seed) but separable (it's the rest-of-mapping).
+- **Q5 — ROUTES + METHOD-YIELDS [onward].** The onward field. Couples LOOSELY to the verdict — method-yields deliberately quarantined from the grade (anti-flow).
+
+**High-coupling bonds (keep within a piece):** the change-a-decision adjudication + both inversions stay inside Q2 (splitting them breaks the crux). **Low-coupling valleys (cut here):** standard-verdict/fork (Q1) | seed-crux (Q2) | mirror+quarantine (Q3) | confirming+discount (Q4) | onward (Q5).
+
+## Step 2-3 — Boundaries (top-down) + validation (bottom-up)
+
+Top-down cut points: Q1|Q2|Q3|Q4|Q5 (5 pieces). Bottom-up check — the irreducible atoms group cleanly: {standard-NO, below-15, the-fork, both-pulls-resisted} → Q1; {change-a-decision test, seed-live, both-inversions, refinement-not-breakthrough} → Q2; {zero-built-quality-awareness mirror, the paper's measurement-frontier mirror, the LARGE formula quarantine} → Q3; {three-layer-architecture owned, calibration-ladder=relative-accuracy, bias-owned-finer, the un-built discount, for-un-built-component-not-breakthrough-seed} → Q4; {refinement-seed route, mirror-note route, E-sharpened, paradigm-neutral-can-seed, vein=target-space-coverage-depletion, self-referential mirror} → Q5. No atom split; no independent atoms forced together. **Confidence: HIGH** (top-down and bottom-up agree). Watch-item: Q3's mirror and Q4's un-built discount are close (both about the harness NOT having the built capability) — kept separate because Q3 answers "what doesn't transfer + the mirror content" (the reverse-lens bounding) and Q4 answers "what confirms + why the seed is discounted" (the qualification); the interface carries the un-built fact from Q4 to Q3.
+
+## Step 4 — Question tree (pieces-as-questions + verification criteria)
+
+### Q1 [FRAME, first] — What are the two verdicts, and did the gate work both ways?
+- **Answer:** STANDARD = NOT a breakthrough (CONFIRMING + a modest frontier refinement + a sharp MIRROR; below paper 15; ~co-equal with paper 16, different shapes). SEED = YES-but-qualified (a real research-frontier refinement-seed). The fork is stated up front. The import test did real work both ways: credited the rich confirming substrate + the genuine frontier seed WITHOUT inflating to a breakthrough; graded below paper 15; resisted DEFLATION ("just a measurement review" — the early file-check found MORE, the un-built quality-awareness architecture) AND INFLATION (the seed-framing + easy confidence-mapping — held the seed to qualified).
+- **Verification:** [ ] BOTH verdicts stated first (standard-NO + seed-YES-qualified); [ ] the standard-vs-seed FORK explicit; [ ] "below paper 15 / co-equal-different-shape vs 16" stated; [ ] both manufacture pulls (inflation: seed-framing+easy-mapping; deflation: 3rd-metacognition+weak-source+large-quarantine) named + resisted; [ ] neither manufactured-seed nor reflexive-dismissal.
+
+### Q2 [CENTER] — Is the multi-facet calibration dissociation a LIVE seed or does it collapse?
+- **Answer:** LIVE but QUALIFIED. It CHANGES a future design decision for the harness's un-built Predictive-RC layer (measure calibration as DISSOCIABLE facets — a hunch can rank outcomes well yet be systematically over-confident, needing DIFFERENT corrections; ranking-signal fixes ≠ confidence-scale fixes) → so it does NOT collapse to pure confirming+mirror (the dissociation is a genuine addition to the harness's single-word "calibration"). BUT heavily discounted: the target component is "far future"/un-built; it sharpens a PLANNED component rather than seeding a NEW frame; the absolute-vs-relative / calibration-vs-resolution split is a psychometric COMMONPLACE paper 17 merely CARRIES → a REFINEMENT-seed, NOT a "breakthrough seed."
+- **Verification:** [ ] the change-a-decision standard applied explicitly (the determination mechanism for "live"); [ ] BOTH inversions run — (i) "seed collapses to confirming+mirror" defeated (the dissociation is a real addition to single-word "calibration"), (ii) "seed is a full breakthrough seed" defeated (refines a planned/un-built component, not a new frame; commonplace carried); [ ] landed at LIVE-but-QUALIFIED (refinement-seed, not breakthrough-seed); [ ] the seed kept live before qualifying (anti-overcorrection) AND qualified honestly (anti-inflation).
+
+### Q3 — What is the mirror, and what quarantines?
+- **Answer:** The MIRROR (sharp): the harness has "zero quality awareness" NOW — Retrospective RC (the only ground-truth layer) is un-built; there is no oracle for "was this finding actually a breakthrough?" So paper 17's five measures catalog a capability the harness ASPIRES TO but structurally lacks; and the paper's own frontier ("no theory links the monitoring PROCESS to how you MEASURE it") mirrors the harness's exact un-built situation (its three-layer architecture is a nascent version of the very model the paper calls "indispensable"). The QUARANTINE (LARGE): all five formulae + the Brier hybrid + reliability statistics + the empirical apparatus (1-100 scales, item-level correct/incorrect, delayed-JOL) — non-transferable (no numeric confidence-performance data). Transfers: only the qualitative multi-facet frame (the Q2 seed).
+- **Verification:** [ ] the mirror stated (zero-built-quality-awareness-now + the paper's measurement-frontier mirrors the harness's); [ ] the quarantine list precise + reason (no numeric data / no ground-truth oracle); [ ] the transferable qualitative frame distinguished from the quarantined psychometric rigor.
+
+### Q4 — How does the confirming substrate map, and why is the seed discounted?
+- **Answer:** Confirming maps: M-1 (paper 17's whole domain = the harness's already-owned calibrate-hunches-against-outcomes relationship, Predictive-RC vs Retrospective-RC — CONFIRMING, the strongest map); M-2 (relative accuracy ↔ the REAL already-named "calibration ladder" instrument); M-3 (bias ↔ the non-sycophancy guards, owned MORE finely than paper 17's single index — the harness out-resolves the paper). The UN-BUILT DISCOUNT: the seed's target (the quality-awareness component) is explicitly "far future"/un-built → the seed is a could-build, not a live import; and a seed for an un-built component that sharpens a PLANNED design is NOT a "breakthrough seed." grasp/two-frames note: the two-frames "map" (control vs memory) is a harvest-construct, NOT canon; paper 17 sits on a monitoring/self-assessment axis (the quality-awareness component) — a real harness activity, already-owned.
+- **Verification:** [ ] M-1/M-2/M-3 stated (domain-owned; ladder=relative-accuracy; bias-owned-finer); [ ] the un-built discount stated as what qualifies the seed; [ ] "for-an-un-built-component-seed ≠ breakthrough-seed" explicit; [ ] two-frames = harvest-construct-not-canon flagged (no verdict rests on a "third canon frame").
+
+### Q5 [onward] — What are the routes and the provisional method-yields?
+- **Answer:** Routes: (a) the refinement-seed as a RESEARCH-FRONTIER route (when the Predictive/Retrospective RC layers get built, measure calibration as dissociable facets — relative/discrimination separate from bias/absolute — with separate corrections); (b) the mirror-note (the harness structurally can't measure absolute accuracy without a ground-truth oracle — a standing limitation tied to Retrospective RC being the only ground-truth layer). Method-yields (PROVISIONAL, NOT graded): E SHARPENED (coverage not binary — the uncovered SUB-region is where the yield sits); paradigm-neutral-can-seed (a RIVAL paradigm mirrors [paper 16 RL]; a PARADIGM-NEUTRAL tool [paper 17 measurement] can seed in an uncovered sub-region); vein = target-space-coverage-depletion (shift the target-space — control→monitoring-measurement — and the vein yields again); self-referential mirror (this dive IS a Predictive-RC hunch with no ground truth).
+- **Verification:** [ ] routes onward + typed (research-frontier refinement-seed / mirror-note limitation); [ ] the refinement-seed marked frontier/could-build not import; [ ] method-yields explicitly PROVISIONAL + NOT graded; [ ] E-sharpened + paradigm-neutral-can-seed + vein-refinement + self-referential-mirror all present.
+
+## Step 5 — Interface map
+
+- **Q2 → Q1** (provides: the seed adjudication [live-but-qualified] → Q1's seed verdict). One-way.
+- **Q2 → Q3** (provides: the seed = the one transferable frame → Q3 states what transfers vs quarantines around it). One-way.
+- **Q4 → Q2** (provides: the un-built fact + the commonplace-carried fact → Q2's qualification/discount). One-way — Q4 supplies what keeps the seed from rising to a breakthrough-seed.
+- **Q4 → Q1** (provides: the confirming maps → Q1's "CONFIRMING" clause + the below-15 grade). One-way.
+- **Q3 → Q1** (provides: the mirror + quarantine → Q1's "sharp mirror" clause). One-way.
+- **Q1/Q2 ⇄ Q5 — ANTI-FLOW (load-bearing quarantine):** the method-yields (E-sharpened, paradigm-neutral-can-seed, vein-refinement) flow to Q5 as ONWARD observations and MUST NOT flow back into the paper-17 grade. Assumption check: Q5 assumes the two verdicts are settled independently of the method-yields; Q1/Q2 assume nothing from Q5. This anti-flow keeps the harvest's method-learning from inflating paper 17's grade.
+
+## Step 6 — Dependency order
+
+1. **Q2 first** (the center — the seed adjudication everything cites), but it consumes Q4's un-built/commonplace facts for its qualification.
+2. **Q3, Q4 in parallel** (both bound/qualify the seed; independent of each other — Q3 bounds transfer, Q4 supplies confirming + discount). Q4 feeds Q2's qualification; Q2's core adjudication (change-a-decision) is independent.
+3. **Q1** (the frame — written FIRST in the finding, but logically DEPENDS on Q2+Q3+Q4; the synthesis-that-leads, stating both verdicts).
+4. **Q5 last** (onward; consumes the settled verdicts; must not feed back).
+No circular dependencies (Q2↔Q4 is a one-way supply of qualifying facts, not a cycle; Q1↔Q5 is an explicit ANTI-flow).
+
+## Step 7 — Self-evaluation (3 minimum + determination-mechanism check)
+
+- **Independence:** PASS. Each question is answerable through defined interfaces (Q2 the crux; Q3 the transfer-boundary; Q4 confirming+discount; Q5 onward; Q1 the synthesis-frame). No piece requires reading a sibling except through stated interfaces.
+- **Completeness:** PASS. The pieces cover the whole: both-verdicts+fork (Q1), the seed crux (Q2), mirror+quarantine (Q3), confirming+discount (Q4), onward+method-yields (Q5). Nothing in SV6 falls through the gaps.
+- **Reassembly:** PASS. Q1(standard-NO + seed-YES-qualified + both-ways) + Q2(seed live-but-qualified) + Q3(mirror+quarantine) + Q4(confirming maps + un-built discount) + Q5(routes + provisional method-yields) → reconstructs the stabilized two-reading verdict exactly.
+- **Determination-mechanism check (decompose refinement):** the finding's load-bearing concept "the seed is LIVE" depends on a determination ("does the multi-facet decomposition CHANGE a future design decision?"). Q2 explicitly ADDRESSES the determination mechanism (the change-a-decision standard applied to the un-built RC layer) — it does not presuppose the seed is live; it shows HOW that is determined. PASS (no missing-piece).
+- **Balance note:** Q2 carries the most weight (the center, with both inversions + the change-a-decision test) — appropriate for a single-center decomposition; not imbalanced (Q1/Q3/Q4/Q5 each carry distinct real content — the fork+gate, the mirror+quarantine, the confirming+discount, the onward field). No piece is 80% with trivial others.
+
+## Handoff notes
+
+- **Interfaces to preserve into the finding:** Q1 states BOTH verdicts + credits confirming + refuses both over-claim and dismissal; Q2 runs the seed adjudication at force (change-a-decision standard + both inversions); Q3 quarantines + states the mirror; Q4 supplies the confirming maps + the un-built discount that qualifies the seed; Q5 lists the onward refinement-seed route + PROVISIONAL method-yields. Explicit ANTI-flow Q1↔Q5.
+- **Note for CONCLUDE (Synthesis Trigger DECLARED → Inherited Commitments Re-test REQUIRED):** re-test — paper 15's finding (modest import; 17 sits below it); paper 16's finding (confirming+mirror; E two-sided-predictor → SHARPENED to sub-region + paradigm-neutral-can-seed; vein-depletion → refined to target-space-coverage-depletion); the non-sycophancy/calibration-ladder memory (calibration ladder is a REAL relative-accuracy instrument — CONFIRMED; bias owned finer — CONFIRMED); the quality-awareness architecture (evolving_quality_assetment_component.md — the seed's un-built target).
+- **Innovation seed:** PROPORTIONATE (a NO-standard / YES-qualified-seed verdict; substance = the seed adjudication + the mirror + the method-refinements). All 7 mechanisms fire; core-3× at Q2 only (single center); Piece-Level Inversion REQUIRED at Q1 (invert "NOT a breakthrough" → "it names our un-named monitoring-quality dimensions" → re-defeat: frame already owned [three-layer architecture]; constructs map to owned practice [calibration ladder, non-sycophancy-finer]; formulae quarantine → confirming+mirror, NO) and Q2 (invert BOTH ways: (i) "seed collapses to confirming+mirror" → re-defeat: the dissociation is a genuine addition to single-word "calibration", changes a future decision → live; (ii) "seed is a full breakthrough seed" → re-defeat: sharpens a planned/un-built component, not a new frame; commonplace carried → qualified).
+
+**Self-assessment: PROCEED.** 5 pieces, HIGH-confidence boundaries (top-down + bottom-up agree), self-eval 3/3 + determination-mechanism check PASS, explicit anti-flow (method-yields quarantined from grade), no circular deps. Next: Innovation.
