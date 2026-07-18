@@ -141,6 +141,14 @@ Two anatomy-level notes. *Re-viewing acts* — attention shifts, re-orientations
 
 **Boundary.** This vocabulary TYPES steps; it never SCORES walks. Traversal quality — whether a walk was worth walking — remains the deliberately-open question of `what_is_meaningful_traversal.md`; the step-vocabulary is available raw material for that document's planned v1 placeholder signals, and nothing more.
 
+**Where time lives.** The four space-words above locate each space's points by structure — questions, ways, positions — and none of those is a clock. Time is not thereby banished from the picture; it sits in three places, all outside the terrain's own geometry.
+
+- **Not an axis of the territory.** A question's place in the space is its *adjacency* to other questions — the cluster and region it sits among — not *when* it was asked. Two questions can be immediate neighbours and have been reached a year apart. A map of the territory is organized by adjacency; time is not one of its coordinates.
+- **In the mover, not the terrain.** The walk through the space is fully temporal: an ordered sequence of engagements, one question after another (the steps and itineraries above). Time is a property of that walk — which question was reached when, and in what order — not of the ground it crosses. A view of the *walk* is naturally ordered by time; a view of the *territory* is ordered by adjacency. Same underlying material, different organizing law, different object.
+- **As the map's own history.** The territory is non-stationary — *the map is built by traversing it* — so the known region grows through time: new questions at the frontier, dark ground coming into view, clusters thickening. This is time as the map's *growth* parameter, not as a position within it; replaying that growth (watching the known region expand) changes the map's *state*, not the *places* of its points, which keeps it consistent with the territory having no time axis. Each visited point also carries honest dates — when it was first reached, when it was last worked — usable to annotate the point (how long since it was last touched); those are facts about the visit, not a coordinate of the space.
+
+In this section's terms: time belongs to the mover and to the map's own evolution — never to the terrain's geometry.
+
 ### 3. Two kinds of similarity, not one
 
 The signature claim — "geometrical similarities between shapes even if they are irrelevant, the angle might be the same" — points at a specific kind of intuition that generic embedding similarity does NOT capture:

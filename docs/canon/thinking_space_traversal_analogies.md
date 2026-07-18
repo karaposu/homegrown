@@ -1,4 +1,4 @@
-# Thinking-Space Traversal, and Three Ways to Picture It
+# Thinking-Space Traversal, and Five Ways to Picture It
 
 ## What thinking-space traversal is
 
@@ -6,7 +6,7 @@ Imagine you're trying to understand something hard — not look up a fact, but a
 
 The word *traversal* is doing real work. You're not teleporting to the answer and you're not deducing it in one clean step. You're moving: trying a direction, seeing whether it pays off, following it further or giving up on it, and carrying what you learn forward. It looks less like solving an equation and more like foraging.
 
-A few things are true of any honest version of this, and they're worth naming plainly, because the three pictures below are each vivid about a different one.
+A few things are true of any honest version of this, and they're worth naming plainly, because the five pictures below are each vivid about a different one.
 
 **You search without a map.** At the start you genuinely don't know which direction holds the good idea. So you have to pick one and go, on partial evidence, and stay willing to be wrong. When a direction starts paying off — the thinking feels like it's fitting the problem — you lean into it and go deeper. When a direction dead-ends, the smart move isn't to keep grinding; it's to back up to an earlier fork, a place where you could have gone another way, and try that branch instead. Explore, commit to what's working, back up when stuck. That's the *movement* itself.
 
@@ -16,11 +16,11 @@ A few things are true of any honest version of this, and they're worth naming pl
 
 **And no single viewpoint sees the whole thing.** This is the subtle one. Real understanding of anything large isn't held complete in one head at one moment. It's approached across many partial passes — many separate attempts, none of which sees everything — held together by the shared record they all read from and write to. The record is what makes the many partial searches add up to something none of them contained alone.
 
-Underneath all of it is a surprisingly simple engine: **search without knowing, reinforce what pays, prune what doesn't, and keep a record so the next pass starts ahead of the last.** That's the pattern. Now here are three ways to see it.
+Underneath all of it is a surprisingly simple engine: **search without knowing, reinforce what pays, prune what doesn't, and keep a record so the next pass starts ahead of the last.** That's the pattern. Now here are five ways to see it.
 
 ---
 
-## Three ways to picture it
+## Five ways to picture it
 
 ### 1. A fungus foraging underground
 
@@ -40,12 +40,24 @@ Step all the way back. No single person figured out modern medicine, or physics,
 
 **How it maps.** Each individual mind is one pass through the thinking space — partial, limited, and mortal; nobody holds the whole thing. The shared literature is the record that outlives any single searcher, the thing that makes the many partial passes add up. Whole disciplines reinforcing fruitful directions and dropping dead ones is the reinforce-and-prune engine running at the scale of a civilization. This is the picture to hold for the two things the small-scale pictures can't show: first, the plain proof that many mortal, partial searches bridged by a durable record genuinely *arrive* at understanding — it's not a hope, it's history. And second, an honest note the tidier pictures gloss over — the individual searchers are finite and, in a sense, disposable; it's the *record* that persists and carries the work, not any one of the minds that contributed to it.
 
+### 4. A nuclear reactor holding its chain reaction
+
+Inside a reactor, an atom splits and throws off a few fresh neutrons. If, on average, at least one of them goes on to split the next atom, the reaction feeds itself — the threshold physicists call criticality. Below that threshold the reaction is real but borrowed: it runs only while an external source keeps injecting neutrons, and it dies the moment the source stops. Above it, unrestrained, it is a bomb — a chain reaction that is self-sufficient for a few microseconds and then ends by blowing apart the very assembly that made it possible. The reactor is the third thing: the same physics held *exactly at the threshold*, indefinitely, by control and feedback. The first human-made sustained chain reaction — Fermi's pile, 1942 — ran for about half an hour at about half a watt: the achievement was the threshold itself, not the power. And the word is doing precise work: **"sustained" means both that the reaction feeds itself AND that it does not destroy its own means of continuing.** The whole discipline of reactor engineering is holding that line.
+
+**How it maps.** One fission is one pass of thinking: it consumes a question and releases yield — an answer plus a few new questions, each of which *could* fire the next pass. Today the traversal runs sub-critical: a person is the external source, injecting the next prompt every time, and the walking dies the moment they stop — real work, but source-fed. Going critical is the aspiration: the walk's own yield — carried by the record, prepared, and chosen well — firing the next step without external re-ignition. The bomb is the standing warning: output alone is not the goal. A torrent of junk steps is "self-sustaining" by count and destroys the thing that makes walking possible at all — the record's trustworthiness, and the trust of whoever reads it. This is the picture to hold for **continuation** — the one thing the other three pictures don't teach: what it means for the next step to be fired by the last step's yield, and what it costs to keep that controlled.
+
+### 5. A player automating their game
+
+Watch someone a hundred hours into a factory-building game like Factorio. They started by hand — mining ore, crafting each item, every action manual. Then they built machines to do the mining, belts to move the material, and eventually robots that do the building itself. Here's the thing worth dwelling on: at every step of that hand-over, the player didn't play *less* — their decisions climbed. Hand-crafting became belt-laying became blueprint-designing became running a production empire, always deciding what to scale next, never again touching the ore. Other corners of game culture show the same shape from different angles. Speedrunning communities refine a *route* across thousands of runs — a written, argued-over, versioned record that outlives any single runner. Roguelike players lose everything each run except what they learned, and the learning is the point. And every one of these communities polices a single line without ever having compared notes: tools that automate your *execution* are tolerated or celebrated; bots that make your *decisions* are cheating. The idle-game genre even knows the endpoint by heart — automate everything, and the game "plays itself," which is precisely the moment people stop playing. A game that plays itself is dead.
+
+**How it maps.** A game is a genuine traversal, not a metaphor for one: its possibility space is a real terrain, the player a real mover, and the analogy runs on the player's side of the screen — the terrain they *discover*, which genuinely grows by moving (speedrunners still find new ground in twenty-year-old games their designers never knew was there). Held honestly, with its limits stated in the same breath: game terrain is authored by a designer who guarantees a path exists, the win conditions are fixed, the score is visible, and a run restarts identically — thinking-space has none of those comforts. What earns games their place is something no other picture has: this is the family's only **practice** member — the one picture where the searchers *automate their own searching*, at mass scale, for fun. And what millions of players discovered by living it is the same law the reactor picture reaches by reasoning: automate the executing, and the practice deepens — the player's judgment climbs a ladder instead of vanishing; automate the deciding, and the practice dies. This is the picture to hold for **automation of the walking itself** — which parts of a traversal can be handed to machinery, in what order (execution first, decisions last or never), and how you can tell the hand-over has gone one step too far: the walk starts playing itself.
+
 ---
 
-## Why three, and not one
+## Why five, and not one
 
-You might reasonably ask why we keep three pictures instead of picking the best. It's because each one is vivid about a different part of the same simple engine, and no single picture carries all of them without going blurry.
+You might reasonably ask why we keep five pictures instead of picking the best. It's because each one is vivid about a different part of the same simple engine, and no single picture carries all of them without going blurry.
 
-The fungus is the clearest picture of a **record that accumulates** — you grow a body, and the body is what you've learned, kept and added to. The slime mold is the clearest picture of a search that **re-decides** and of a **memory kept outside** the search so you don't repeat yourself. And humanity is the clearest picture of the **whole thing actually working** across many finite, partial minds — the proof, and the honest reminder that the record outlasts the searchers.
+The fungus is the clearest picture of a **record that accumulates** — you grow a body, and the body is what you've learned, kept and added to. The slime mold is the clearest picture of a search that **re-decides** and of a **memory kept outside** the search so you don't repeat yourself. Humanity is the clearest picture of the **whole thing actually working** across many finite, partial minds — the proof, and the honest reminder that the record outlasts the searchers. The reactor is the clearest picture of **continuation under control** — the next step fired by the last step's yield, held at the threshold: self-feeding without self-destroying. And the player automating their game is the clearest picture of **automation of the walking itself** — the only picture whose subjects hand parts of their own search to machinery, teaching which parts can be handed over, in what order, and the line that must never be crossed: the deciding.
 
-Hold all three loosely and together, and you have a rounded feel for what thinking-space traversal is: not a leap to the answer, but a long foraging walk through a space you can't see the far side of — pushing into the dark, leaning into what pays, backing up when it doesn't, and leaving a good enough trail that the next walk, whoever takes it, starts further along than the last.
+Hold all five loosely and together, and you have a rounded feel for what thinking-space traversal is: not a leap to the answer, but a long foraging walk through a space you can't see the far side of — pushing into the dark, leaning into what pays, backing up when it doesn't, and leaving a good enough trail that the next walk, whoever takes it, starts further along than the last — until, one day, the walk's own findings are what set the next walk going.

@@ -246,6 +246,8 @@ The five verdicts:
 
 The confidence axis (HIGH / MED / LOW) is readable from the verdict's prefix; a consumer that wants only the confidence reads the prefix. The action axis (PROCEED / FLAG / RE-RUN) is readable from the suffix. Neither axis is emitted independently — the discipline emits the compound.
 
+**The `content-conflict` flag-type (warm pass only).** The five pairings above are keyed to the LAYER 1 self-check — *operational* conditions (a mode fired, friction was felt). The **warm** second pass (`articulate_warm`, which inherits this verdict system unchanged) can additionally attach a **`content-conflict` flag-type** to a FLAG verdict: a *content* condition — the warm pass detected an incompatibility between the request's premise and the surfaced project reality (see `docs/how_articulate_warm_should_be.md` §4). The discriminator lets a consumer (the runner) tell a **content-conflict** flag from an **operational** flag and act differently — e.g. surface a clarifying question, or block a severe conflict before spending the downstream pipeline, rather than merely noting friction. It is **defined here but emitted only by the warm pass**: the cold pass has no surfaced reality to conflict against, so a cold invocation never emits `content-conflict`. The five verdict pairings are unchanged; the flag-type is an optional discriminator carried alongside a FLAG.
+
 ---
 
 ## Output Contract

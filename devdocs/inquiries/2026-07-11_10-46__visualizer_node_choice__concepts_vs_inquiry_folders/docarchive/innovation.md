@@ -1,0 +1,88 @@
+# Innovation — the option-field for the visualizer node-choice
+
+## User Input
+
+devdocs/inquiries/2026-07-11_10-46__visualizer_node_choice__concepts_vs_inquiry_folders/decomposition.md — read with sensemaking.md fully. Generate the option-field per piece P1–P4 for Critique to rank; span alternatives WIDE incl. contrarians (explicitly marked when challenging a collapse); grounded in the measured corpus (227 folders / 33 chains / 75% / 3 concept layers / 202 cross-edges); do not rank. Run the assembly check. Save with mechanism logs + light 5-test results + telemetry.
+
+---
+
+## Seed + methodology mode (Phase 1)
+
+**Seed:** the piece-list P1–P4 (production-task mode) — the substrate / module-tier / overlay / staging questions for the Atlas-style map over this project.
+**Inherited mode:** Generator-weighted exploration ("span the alternatives WIDE"). **Alternative considered:** Contrarian-rethink (Framer-weighted) — under it the run would center on attacking sensemaking's collapses rather than filling the option space; but the collapses are one-step-old, already counter-tested at Phase 3, and the deliverable is an option-FIELD (the user explicitly asked "are there any alternatives?"). **Decision: inherited mode (default)** — with the framing's per-piece contrarian requirement absorbed (each piece gets at least one collapse-challenger).
+
+---
+
+## P1 — Substrate candidates
+
+**S1 — Folder-nodes, parse-only (the baseline, fully specified).** [Combination: demo contract × counted corpus] Node = one inquiry folder. `id`/`createdAt` ← folder name; `title` ← prettified slug (truncate ~40 chars); `lastWorkedAt` ← last `- YYYY-MM-DD_HH-MM` History stamp; `md` ← finding.md, or `_branch.md` Question while ACTIVE; color/badge ← Status + flow-type; edges ← Relationships lines (CONTINUES-FROM solid, RELATED thin, SUPERSEDED dashed). Adapter ≈ 100-line script → one static JSON; the demo's `NODES` builder is replaced by a loader.
+*Tests:* novelty — modest (the point is fit, not novelty); scrutiny — survives (every field verified against counts; the two "made" bits are a prettify rule and the ACTIVE fallback); fertility — high (every later option builds on it); actionability — immediate; mechanism-independence — reached by Combination, Domain Transfer (D1, D2), and Absence-direction-b independently. **Disposition: ACTIONABLE.**
+
+**S2 — Canon-rooted map (concepts as spine).** [Lens shift, focused: knowledge-view purpose] Nodes = 38 canon docs as the modules; inquiry folders attach beneath the canon doc their RELATED lines point at. *Tests:* scrutiny — partial fail: only 202 cross-layer lines exist and they cover a fraction of folders (most folders would orphan or need a MADE folder→domain mapping — the exact machinery the user flagged); canon docs lack native timestamps (git-derivable, extra work); fertility — real for knowledge-view. **Disposition: DEFERRED** — revival trigger: knowledge-view becomes the primary purpose (then compare against O1/O3 first, which get there cheaper).
+
+**S3 — Seed-rooted map.** [Lens shift, focused] Nodes = the 38 seeds (ids, dates, grades, anchors native in `_seed.md`); edges = seed→origin-inquiry + seed→consumer cross-refs; color = LIVE/NASCENT. A small, semantically dense map — "what the project is germinating." *Tests:* scrutiny — survives as a SECONDARY view (38 nodes is a poster, not an atlas; md body = index entry + §7 pointer, thin but real); actionability — high (one index file to parse). **Disposition: ACTIONABLE as a view within O3, not as THE substrate.**
+
+**S4 — Mixed-kind substrate (full graph v1).** [Combination] Folders + canon + seeds as three node-kinds with native edges, all at once. *Tests:* scrutiny — survives technically (all data native) but fails staging prudence (three parse targets + three body rules + layout for ~300 mixed nodes before ANY version has been exercised — the designed-or-dead risk concentrated); mechanism-independence — same content as S1+O1 staged. **Disposition: DEFERRED** — this is O1/G1's stage-2, not a v1.
+
+**S5 — Extraction substrate (CONTRARIAN — explicitly challenges collapse C5).** [Inversion of the aversion + Constraint REMOVE "no generation machinery"] Free-floating concepts extracted per inquiry, merged cross-inquiry, each with a generated md body. Taken seriously it requires: an extraction protocol (LLM pass per folder), a cross-inquiry identity resolver (unsolved — same concept, different names), generated bodies (fabrication surface; nothing native to render), and a re-run schedule (decay otherwise). *Tests:* scrutiny — fails as FIRST build on the project's own record (habit-end decay; confirmed-absent native bodies); fertility — genuine IF the knowledge-view purpose dominates AND existing layers prove insufficient. **Disposition: DEFERRED with C5's trigger verbatim** (knowledge-view primary AND canon/seed overlay insufficient). Not killed — gated.
+
+**S6 — Finding-files-as-nodes.** [Inversion at P1, identity-axis: "the node is the DOCUMENT, not the folder"] *Tests:* mechanism-independence — collapses into S1 (the folder IS the finding's container; the body rule already renders finding.md; they differ only for the 2 finding-less folders). **Disposition: folded into S1** as its body rule — logged, not a separate option.
+
+**S7 — Pure-graph, no hierarchy (CONTRARIAN — explicitly challenges collapse C1).** [Inversion, system-level: "the spine is the distortion"] Force-directed graph of all folders + all edge types, no root/module/sub. *Tests:* scrutiny — fails against the chosen component (fly-to, roll-up, module chips, detail panels are spine-defined — C1's structural ground restated); what SURVIVES from it: cross-link rendering as additive edge sets (absorbed into S1) + a physics-layout option for `pos`. **Disposition: killed as substrate; its two fragments absorbed.**
+
+## P2 — Module-tier candidates (conditional on S1)
+
+**M1 — Chain-components as modules (primary).** [Extrapolation of canon vocabulary onto the measured 33 components + Combination] Modules = CONTINUES-FROM components (union-find at load). Naming rule: the EARLIEST member's prettified slug + member count ("venture: routelister format… ×23") — hand-renameable later via an optional tiny overrides file (explicitly a human-written nicety, not required). Residual rule: the 57 standalones form one "standalone" module (optionally month-sub-grouped inside its detail list). Rendering ergonomics: top ~12 components by (size, recency) as first-class modules; remaining small chains join "standalone." Module md body = MEMBER LIST + stamps (mechanical roll-up; no prose synthesis — no fabrication). effLast roll-up = venture recency, exactly the demo's feature made meaningful.
+*Tests:* scrutiny — survives (native edges, measured coverage; the ergonomics objection answered by the top-N rule); fertility — high (venture map; bar-i kinship); actionability — immediate. **Disposition: ACTIONABLE.**
+
+**M-inv — Modules as LENSES, not containers (Inversion at P2, meta-decision compliance).** Assumption reversed: "the middle tier is a fixed containment." Reversed: grouping is a PARAMETER — the adapter emits flat nodes + edge lists, and the component computes modules per selected lens (chains / months / status / flow-type). *Tests:* scrutiny — survives cleanly (grouping IS a choice; exposing it is honest and cheap — one `groupBy` function); refines M1 rather than replacing it: **chains = the DEFAULT lens; time/status = toggleable lenses.** **Disposition: ACTIONABLE (as M1's refinement).**
+
+**M2 — Time-buckets.** [Generic] Month (3 fat) or week (~13) modules. *Tests:* semantically thin (sensemaking C3); survives only as a lens under M-inv. **Disposition: absorbed as a lens.**
+
+**M3 — Status/flow-type lens.** [Generic] COMPLETE/ACTIVE/SUPERSEDED, or flow-type families. Thin as spine; useful as color/filter. **Disposition: absorbed as color + filter.**
+
+**M4 — Canon-domain assignment (LLM-light CONTRARIAN).** [Domain transfer: library subject-classification] Map each folder to its nearest canon doc(s) (keyword/slug heuristics or one LLM pass); modules = knowledge domains. *Tests:* scrutiny — the mapping is MADE and decays as canon evolves (a maintained artifact — doctrine's dying end unless regenerated per view); fertility — real for knowledge-view. **Disposition: DEFERRED** — trigger: knowledge-view priority; note it becomes parse-only the day folders carry native domain links (which the 202 RELATED→canon lines partially are — a future convention could finish this for free).
+
+## P3 — Overlay candidates
+
+**O1 — Concept-nodes-now.** [Combination] Canon docs + seeds join v1 as first-class node-kinds; edges = the 202 native folder→canon/seed lines + `_seed.md` cross-refs. *Tests:* scrutiny — data-honest but stages the S4 risk (bigger v1 before any exercise). **Disposition: DEFERRED to stage-2 (= G1's v2).**
+
+**O2 — Stage-2 overlay.** [Constraint ADD: "v1 ships this week"] Base map first; concepts join AFTER the base map is exercised (suspicion-principle: trust through use). **Disposition: ACTIONABLE (as G1's structure).**
+
+**O3 — Lens-toggle (two views, one data file).** [Lens shift] The same JSON carries all three kinds; the UI offers "workyard" (folders+chains, concepts hidden) and "knowledge" (canon+seeds foregrounded, folders as satellites) views. *Tests:* survives; ships the knowledge-view without a second data pipeline; natural home for S3. **Disposition: ACTIONABLE at stage-2 (the overlay's best form).**
+
+**O4 — `_route`-identity lens.** [Extrapolation] The 490 per-inquiry concept-identities as small satellite nodes around their inquiry (per-inquiry only; NO cross-inquiry merge — the identity problem stays unsolved and unfaked). *Tests:* scrutiny — honest only if strictly local; fertility — modest (decorative until identity is solved). **Disposition: RESEARCH FRONTIER** — notes that p29-S1's structure-propagation seed and any future identity-resolution work would consume exactly this lens.
+
+**O5 — No overlay ever (CONTRARIAN-minimal).** [Constraint ADD extreme] Folders only, permanently. *Tests:* fails fertility (the knowledge-view purpose gets nothing, and the native cross-edges already paid for more); survives only as v1's scope — which O2 already states. **Disposition: absorbed into O2's v1.**
+
+## P4 — Staging + governance candidates
+
+**G1 — The staged path.** [Combination of survivors] **v1:** S1 + M1 + M-inv lens parameter, one static JSON, no server, no LLM (Constraint ADD sharpening) — build, USE IT, let use decide v2. **v2 (earned by v1 exercise):** O3 lens-toggle with canon+seed nodes (O1's content in O3's form). **v3 (gated):** S5 extraction — trigger verbatim from C5: *knowledge-view becomes the primary purpose AND the canon/seed overlay proves insufficient for it.* **Disposition: ACTIONABLE.**
+
+**G2 — The ranking dimensions (for Critique).** [Evaluation-criterion piece] maintenance-mode (parse-only / regenerated / hand-kept) · survival-shape (writer-scale position) · fabrication-surface (does any rendered text lack a real author?) · purpose-fit (per the four WHY-motivations, priority user-held) · build-cost-to-first-light. **Disposition: ACTIONABLE (Critique's dimension set).**
+
+**G-inv — Rank by purpose-value, not maintenance (Inversion at P4 on the evaluation-criterion commitment).** Assumption reversed: "survival-shape ranks first." Reversed: build what is most WANTED even if it needs upkeep — enjoyment/knowledge-value first. *Tests:* scrutiny — partially survives: purpose-fit is already IN G2, and the user may consciously accept upkeep for a view they love; but as PRIMARY ranker it contradicts the project's own measured record (the habit-kept artifact died; the tool must survive its owner's attention cycles). Resolution that survives: **lexicographic ranking — survival-shape filters, purpose-fit orders within the survivors** — with the honest note that the user can override the lexicon knowingly. **Disposition: ACTIONABLE (as G2's ordering rule + the override note).**
+
+**G3 — v1 scope-guard.** [Suspicion-principle applied to the tool] The visualizer is a between-loop support: keep v1 read-only, static, zero-upkeep, so that if it goes unused it costs nothing and lies about nothing; extension is EARNED by observed use, never scheduled. **Disposition: ACTIONABLE (rides G1).**
+
+## Mechanism evidence (feeding the candidates)
+
+- **D1 Domain transfer (native: PKM/Obsidian ecosystem):** file-as-node graph views work at exactly this scale and are the ecosystem default; auto-extracted concept views exist there and are mostly unused — supports S1; cautions S5.
+- **D2 Domain transfer (deliberately different: ARCHIVAL SCIENCE — the strongest import):** archives resolved this exact question centuries ago — *provenance-first* ("respect des fonds": keep records grouped by origin and order of creation, never re-classify the originals by subject) with *subject indexes layered on top*. Mapping: chains/folders = the fonds; the concept overlay = the subject index; extraction-first = the discredited re-classification. Supports G1's ORDER as a structural principle, independently of our doctrine. (Theorems-never rider: an organizing heuristic imported, not an authority claim.)
+- **D3 Domain transfer (contrarian: Roam/semantic-web knowledge graphs):** concept-first DOES work — when links are written AT AUTHORING TIME by the author. Mapping: the project already half-does this (`_route.md`, RELATED→canon lines, `[[name]]` links in memory files); if authoring-time concept-links ever become a folder convention, the concept map turns parse-only and S2/M4 revive for free. Logged as a forward-note (any protocol change is user-gated and out of this dive's scope).
+- **A1 Absence, patch-level:** no adapter exists (the build gap); chains are UNNAMED (M1's naming rule fills it); no prettify rule for slugs.
+- **A2 Absence, redesign-level, both directions:** (missing) a machine-readable per-inquiry manifest would exist if designed for tooling from scratch; (already-present) `_state.md` IS that manifest in markdown form — parse it, add nothing. Also already-present: the project's derived-view adjudication means the visualizer's design pattern PRE-EXISTS — this dive instantiates it in 3D, it doesn't invent it.
+- **E1 Extrapolation (scale):** ~90 folders/month → ≈1,300 in a year; flat rendering degrades → M1's top-N + M-inv's lenses become necessary, and level-of-detail (cluster far chains) is v2+ work; parse-only scales, hand-curation doesn't — supports S1/M-inv, cautions any hand-kept mapping.
+- **E2 Extrapolation (kinship, named not claimed):** once ventures run with recorded turns, per-chain telemetry (e.g., a judged k-readout per venture) has a natural HOME on chain-modules — the map is a candidate renderer for bar-i data. Frontier note only.
+
+## Inherited Frame Audit
+
+Seed's central assumption: "the answer stages existing artifacts under the doctrine (sensemaking's collapses hold)." Challenge scan: S7 explicitly challenges C1 (spine); S5 explicitly challenges C5 (extraction gate); G-inv explicitly challenges the doctrine-primacy ranking; M-inv challenges the containment framing; D3 challenges "concept-first can't be native." Every load-bearing commitment has an explicit challenger in the set → **the audit does not fire.** Piece-level: P1–P4 each carry a generated-and-tested Inversion-candidate (S6/S7, M-inv, O5 + the O-inversion noted as equal to S2/S4 — cross-logged, no duplicate minted, G-inv).
+
+## Assembly check
+
+Combining the ACTIONABLE survivors (S1 + M1 + M-inv + S3-in-O3 + O2 + G1/G2/G3) produces something none contains alone: **a Venture Atlas** — a zero-upkeep 3D derived view whose v1 IS canon's own model rendered (modules = ventures, subnodes = traverse-records, body = the real finding, roll-up = venture recency), whose lenses make grouping an honest parameter, and whose staging follows the archival provenance-then-subject-index order — with the knowledge view arriving as a lens over data the corpus already links, and extraction remaining a named, triggered far-pole. Emergent value: the map doubles as a live demonstration that the record layer is machine-readable — the derived-view adjudication made visible. **RE-TEST TRIGGER check:** no survivor contradicts a committed claim; the assembly is consistent with all five collapses.
+
+## Telemetry
+
+Generators 4/4 (Combination S1/S4/G1 · Absence A1/A2 · Domain-transfer D1–D3 w/ native-domain guard satisfied · Extrapolation E1/E2/M1) · Framers 3/3 (Lens S2/S3/O3 · Constraint ADD "static v1"/O5 + REMOVE "no-machinery" S5 + REMOVE "3-level limit" → depth-4 discipline-file leaves logged as v2+ frontier · Inversion S6/S7/M-inv/G-inv w/ depth-check: S7 and M-inv reached system-level statements). Convergence: **YES — 4 mechanisms independently land on staged-folder-substrate** (Combination, D1, D2, A2-direction-b, E1) — and NOT all from the same upstream input (D1/D2 are external-domain grounds; shared-input check passed). Survivors tested 19/19 (light cycle). Per-piece log: P1 [Comb, Lens, Inv×2, ConstraintREMOVE] meta-decision, inversion satisfied · P2 [Extrap, Comb, Inv, DomTransfer] meta-decision, inversion satisfied · P3 [Comb, Lens, Extrap, ConstraintADD] meta-decision, inversion satisfied (cross-logged to S2/S4) · P4 [Comb, Inv, ConstraintADD] meta-decision (evaluation-criterion), inversion satisfied. Failure modes: none observed (contrarians generated BEFORE testing; no early frame lock — the first survivor S1 was followed by 6 more mechanisms; survival-bias guard: the most uncomfortable candidate S5 was gated-not-killed, and G-inv partially survived INTO the dimension set). **Overall: PROCEED.** Verdicts are Critique's.

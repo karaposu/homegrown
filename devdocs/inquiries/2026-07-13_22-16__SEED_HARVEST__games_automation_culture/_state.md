@@ -1,0 +1,44 @@
+# State: SEED_HARVEST — games-automation-culture, the full pass
+
+## Flow-type
+articulated-surfacing-routed
+
+## Pipeline
+A → Su → W → S → D → I → C → R (always) — seed_harvester protocol riding (§6 composition)
+
+## Progress
+- [x] Articulate-Simple
+- [x] Surfacing
+- [x] Warm
+- [x] Sensemaking
+- [x] Decomposition
+- [x] Innovation
+- [x] Critique
+- [x] Routelister
+
+## Warm Loop
+round: 0/2 | last-anchor: table over 16+12 rows × hot columns (measure/termination-family · baseline-bet+native-kin · unbuilt organs · gate-practice · record · cargos · pipeline) w/ the REPEATABILITY DISANALOGY flagged as the likely kill-axis — settled, FIXPOINT round 0 | status: SETTLED — no re-surface
+
+## Iteration
+1
+
+## Status
+COMPLETE
+
+## Relationships
+- CONTINUES FROM: `devdocs/inquiries/2026-07-13_14-53__games_as_thinking_space_traversal__automatizer_navigator_seed/` (the bounded gate-now baseline; this = its named onward, the full harvester pass)
+- RELATED: `cognitive_harness/protocols/seed_harvester.md` (the riding protocol) · `devdocs/seeds/_seed.md` (the index)
+
+## Next Discipline
+—
+
+## History
+- 2026-07-13_22-38: CONCLUDE complete. finding.md written (## Seeds w/ 6 full records + 3 enrichments + kills + backstop note + §10 telemetry; ## Inherited Commitments Re-test: 14-53 baseline consumed-not-regraded / protocol rules held / index enriched-not-duplicated). RECORD done: 6 index lines appended (gh-S1..S6) + 3 in-place enrichments applied (g-S3 +DDA-backlash/visible-by-default · rx-S3 +replay-review clause · termq-S1 +SQ4 end-to-compound). One-sentence answer: the full table over the once-bounded games source yielded SIX nascent mechanism-seeds on previously-empty canon anchors (seeded-baseline-race · branch-from-checkpoint · scouting-budget warming · venture-splits · GOAP-composing · raid-multi-head) + three standing-seed enrichments — above-band gate-clean, declared. 7 upstream outputs archived. Status COMPLETE. Wrap: 14-53 R2 mark + memory mirror next.
+- 2026-07-13_22-35: Routelister complete (exhaust; fresh iteration 1; PROCEED). 5 routes: R1 the six trigger-watches (clustered: measurement gh-S4/S1 · orchestration gh-S5/S6 · record+warming gh-S2/S3) · R2 the spectator ride-along (g-S2 note) · R3 the comparison-datum delivery (bounded-4 vs full-6+3, confound-labeled → diag-S1's line) · R4 the 14-53 R2 mark · R5 memory mirror. Excluded ×3 (RECORD-step = protocol's; no development at harvest; no third pass w/o a new anchor region). core 0 (goal landed in-dive). Next: CONCLUDE (RECORD).
+- 2026-07-13_22-33: Critique complete — THE GATE (TERMINATE; PROCEED — STRONG; guards both ways held). ★YIELD: 6 MINTS (gh-S1 seeded-baseline-race [C2 absorbed w/ justification] · gh-S2 branch-from-checkpoint [C4's no-scumming rider preserved] · gh-S3 scouting-budget warming [C14 risk-face absorbed; p29-S6 cross-ref] · gh-S4 venture splits [REFINED by prosecution: PROFILES-not-PBs, deviation-flags-not-scores] · gh-S5 GOAP composing [lands on REAL structure: route Lands-fields = effects] · gh-S6 raid-shaped multi-head [p29-S4 distinct-action: FORM vs content-mechanism]) + 3 ENRICHMENTS in-place (g-S3 +DDA-backlash/visible-by-default · rx-S3 +replay-review clause · termq-S1 +SQ4 end-to-compound note) + 3 KILLS (C11 decorative-speculation/owned-fragment-p16-S1 · C12 decorative-speculation · C15 decorative-agreement) + 4 killed-as-separate (absorbed). All 6 NASCENT/novelty-door w/ checkable triggers. ★SECOND-HARVEST backstop: one un-tabled layer found (the SPECTATOR/watch-to-learn layer) — below gate strength, noted for g-S2's development, NOT minted. Band: 6 vs 1-4 = ABOVE-BAND GATE-CLEAN, declared, never trimmed. Frame held (no buried region). Next: Routelister.
+- 2026-07-13_22-29: Innovation complete (HARVEST-GENERATE; the §2 table run UNGATED; 5-tests protocol-delegated to the gate). ★COVERAGE: 84 cells possible · 17 ATTEMPTED → 15 numbered candidates (2 folds) · 67 skipped ALL-REASONED (baseline-crossed 34 / same-phenomenon 15 / cold 14 / no-support 2 / banned-layer 1 / owned 1). Candidates: C1 seeded baseline RACE (dispatch-parallel) · C2 daily calibration probe · C3 branch-from-checkpoint · C4 no-verdict-scumming · C5 scouting-budget warming · C6 VENTURE SPLITS (segment-structure home; bands generalized) · C7 GOAP composition · C8 raid-shaped multi-head (p29-S4 adjacency noted) · C9 venture replay-review (rx-S3/p23-S1 adjacency) · C10 visible-adaptation (g-S3 ENRICH-suspected) · C11 offline-sim (kill-suspected, attempted honestly) · C12 ELO-matching (kill-suspected) · C13 prestige-as-stop-economics (baseline re-attempt, NEW anchor termq-SQ4) · C14 scouting failure-modes (thin, C5-foldable) · C15 HTN echo (decorative-risk, attempted for coverage). One-to-many honored; no singularization; kill-suspicions = gate-notes only. Moves: transfer 13 / extrapolate 2 / combine 1. Next: Critique (THE GATE).
+- 2026-07-13_22-26: Decomposition complete (lean — confirms the protocol's own joints). P1 TABLE (28 rows × 3 hot regions; attempt=hypothesis-sentence / skip=legal-reason; repeatability NAMING only) → P2 GATE (P-D-C both ways; repeatability ADJUDICATION; fold-reopen; enrich-vs-mint w/ distinct-action; backstop; grades+triggers EMITTED WITH survivors) → P3 RECORDS (## Seeds schema; index; in-place enrichments; §10 telemetry) → P4 ONWARD (routes; the comparison-datum [method note unless independently gated]; 14-53 R2 mark; mirror). The HARD boundary = table→gate (no gating upstream). Self-eval 3/3 PASS. Next: Innovation (GENERATE — the table).
+- 2026-07-13_22-24: Sensemaking complete (LEAN per protocol — stabilizes, NEVER closes; PROCEED). ★TEN source-claims stabilized for provenance (controlled-comparison-by-fixed-terrain · in-run splits · information-purchase · offline models · decisions-as-study-objects · negative-feedback-w/-hidden-trust-price · return-points-w/-priced-abuse · shipped choice-architectures · raid coordination · instrumented labs — each named-system-backed). Hot flags: region 1 = confirmed-absent anchors × sanctioned-open canon (measure/termination + baseline-bet w/ git native-kin) · region 2 = unbuilt organs · region 3 = gate/record practices. ★THE REPEATABILITY TEST fixed 3-way (same-question-parallel-dispatch / pipeline-segment-structure / dies). Enrich-vs-mint fate-frame set (distinct-action test; baseline hits = re-confirmations). Collapses 4/4 (first-full-pass band-descriptive · table-COMPLETE 28 rows · rows×hot-columns w/ legal cold-skips · ten-claim major set). Definitional catch: DDA-challenge ≠ rx-S2-scrutiny (different objects — anchor precisely). Field left OPEN for Innovation's table. Next: Decomposition.
+- 2026-07-13_22-22: Warm complete (inline; FIXPOINT round 0; no re-surface; HIGH-PROCEED). ★Verification PAID twice: the measure-crossing lands on genuinely OPEN canon ground (v1 placeholders sanctioned) + the seeded-comparison crossing = extension-of-an-OWNED-pattern (git spec-layer save-states), not foreign import. Hot columns sharpened; confirmed-absent = mint territory at comparison/measurement/scouting/simulator anchors. ★One flag to generation: the REPEATABILITY disanalogy (questions don't re-pose) = the likely dominant kill-axis — crossings must engage it, not transfer around it. Next: Sensemaking.
+- 2026-07-13_22-21: Surfacing complete (22 items; PROCEED; manual check PASS). ★ANCHORS VERIFIED AT SOURCE: the 5 meaningful-traversal signals verbatim (coverage/convergence/productivity/directedness/depth; "failure modes clearer than the success metric"; v1 placeholders SANCTIONED) + ★the git-stability pattern (the project already builds SAVE-STATES for specs — same-input/two-version comparison exists at the SPEC layer) + the baseline-bet verbatim ("never yet baseline-tested"). ★16 UNSWEPT ROWS engaged (10 core: seeded-runs/dailies · saves-checkpoints-scumming [consequence-weight] · fog-of-war+scouting [information-purchase] · DDA [★the backlash: hidden adaptation erodes trust] · splits [per-segment self-measurement] · theorycrafting sims [offline model-optimization] · game-AI architectures [GOAP backward-chaining] · raid coordination [trinity+caller] · replay analysis [decisions-as-study-objects] · practice rooms [instrumented space]; 3 sub: NG+/tutorials/matchmaking; 3 side: auctions/editors/challenge-runs [category-kin pre-flagged]). Confirmed-absent: NO standing seed at comparison/measurement/scouting/simulator anchors — mint territory. Provenance floor held (all mainstream-documented; zero uncertainty flags). Next: Warm.
+- 2026-07-13_22-19: Created (SEED_HARVEST marker; identity-check done — duplicate-aware full pass vs the 14-53 baseline, enrich-in-place/no-double-grading). Question: run the harvester's full pass over games-automation culture. Articulation: HIGH-PROCEED (count=1; MQA reconciled: table-COMPLETE [all rows, baseline cells skip-reasoned], generation-open). _branch.md derived (Synthesis Trigger: 14-53 baseline + protocol + index); fail-safe PASS.
