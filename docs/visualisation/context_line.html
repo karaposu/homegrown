@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Context Line</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #070b12; }
+  body { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #8b98ad; }
+  canvas { display: block; position: fixed; inset: 0; width: 100%; height: 100%; outline: none; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+
+  .card {
+    position: fixed; z-index: 2;
+    background: rgba(10, 15, 24, 0.72);
+    border: 1px solid rgba(120, 140, 180, 0.15);
+    border-radius: 9px;
+    padding: 7px 10px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: 10px; line-height: 1.5;
+    max-width: 300px;
+  }
+  #hud { top: 10px; left: 10px; }
+  #hud h1 {
+    font-size: 11px; letter-spacing: 0.16em; font-weight: 600;
+    color: #dfe7f3; margin-bottom: 1px; cursor: pointer; user-select: none;
+  }
+  #hud h1 .fold { color: #5f6c80; font-weight: 400; letter-spacing: 0; font-size: 9px; }
+  #hud .gloss { color: #aab6c8; font-size: 10px; margin-bottom: 5px; }
+  #hud .legend { color: #7e8ba0; font-size: 9.5px; }
+  #hud .legend b { color: #a8b6cc; font-weight: 600; }
+  #hud.mini .gloss, #hud.mini .legend { display: none; }
+  #stats { margin-top: 5px; color: #93c9d8; font-size: 9.5px; }
+
+  #controls { bottom: 10px; left: 10px; color: #76839a; font-size: 9.5px; max-width: 340px; }
+  #controls kbd {
+    display: inline-block; padding: 0 4px; border-radius: 4px;
+    border: 1px solid rgba(140,160,195,0.25); background: rgba(120,140,180,0.08);
+    color: #b9c4d6; font-family: inherit; font-size: 9px; margin: 0 1px;
+  }
+
+  #panel { bottom: 10px; right: 10px; width: 172px; }
+  #panel label { display: block; color: #93a0b5; font-size: 9.5px; margin-top: 4px; }
+  #panel label:first-child { margin-top: 0; }
+  #panel .val { color: #cfd9e8; float: right; }
+  #panel input[type=range] { width: 100%; accent-color: #67b7d8; height: 15px; }
+  #panel .views { display: flex; gap: 4px; margin-top: 2px; }
+  #panel .views button {
+    flex: 1; font: inherit; font-size: 9.5px; color: #9fb0c8;
+    background: rgba(120,140,180,0.08); border: 1px solid rgba(140,160,195,0.22);
+    border-radius: 6px; padding: 3px 0; cursor: pointer;
+  }
+  #panel .views button.on { color: #eaf4ff; border-color: rgba(126,232,255,0.55); background: rgba(103,183,216,0.16); }
+  #panel .foot { margin-top: 6px; color: #5d6a7d; font-size: 8.5px; border-top: 1px solid rgba(120,140,180,0.12); padding-top: 5px; }
+
+  @media (max-width: 700px), (max-height: 600px) {
+    #hud { max-width: 230px; }
+    #panel { width: 150px; }
+    #controls { max-width: 250px; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c" tabindex="0"></canvas>
+
+<div class="card" id="hud">
+  <h1>THE CONTEXT LINE <span class="fold">· click to fold</span></h1>
+  <div class="gloss">the finite span of live context, moving through thinking space — it advances by dissolving at the tail</div>
+  <div class="legend">
+    <b>▦</b> the cube = the bounded space — it stays fixed; only the line moves&ensp;·&ensp;
+    <b>—</b> the line = the traversal context (grasp; finite)&ensp;·&ensp;
+    <b>●</b> nodes = questions in the space&ensp;·&ensp;
+    <b>📁</b> = artifacts left by traversal (the record — permanent)&ensp;·&ensp;
+    <b>∴</b> the fading tail = context lost to summarization — <i>reachable after, not held</i>
+  </div>
+  <div id="stats">context: — · nodes touched: 0 · artifacts: 0</div>
+</div>
+
+<div class="card" id="controls">
+  <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> steer the line &ensp; <kbd>V</kbd> view &ensp; <kbd>space</kbd> pause<br>
+  cube view: drag rotates it, scroll zooms — the view stays fixed. first person: you ride the head; drag also steers.<br>
+  not a game — nothing to win; it just moves. near the walls it curves gently back inside.
+</div>
+
+<div class="card" id="panel">
+  <label>view</label>
+  <div class="views">
+    <button id="vCube" class="on">cube</button>
+    <button id="vFp">first person</button>
+  </div>
+  <label>context length <span class="val" id="lenVal">10.0 cm</span></label>
+  <input type="range" id="lenSlider" min="4" max="14" step="0.5" value="10">
+  <label>speed <span class="val" id="spdVal">1.0×</span></label>
+  <input type="range" id="spdSlider" min="0.4" max="2" step="0.1" value="1">
+  <div class="foot">illustrative — generated nodes, not project data. every moving thing here is the mover; the space itself never moves.</div>
+</div>
+
+<script>
+"use strict";
+/* ---------- tiny vector kit ---------- */
+const V = {
+  add:(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],
+  sub:(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],
+  mul:(a,s)=>[a[0]*s,a[1]*s,a[2]*s],
+  dot:(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],
+  cross:(a,b)=>[a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]],
+  len:(a)=>Math.hypot(a[0],a[1],a[2]),
+  norm:(a)=>{const l=Math.hypot(a[0],a[1],a[2])||1; return [a[0]/l,a[1]/l,a[2]/l];},
+  lerp:(a,b,t)=>[a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t],
+  rot:(v,k,t)=>{ // Rodrigues rotation of v around unit axis k by angle t
+    const c=Math.cos(t), s=Math.sin(t), kv=V.cross(k,v), d=V.dot(k,v)*(1-c);
+    return [v[0]*c+kv[0]*s+k[0]*d, v[1]*c+kv[1]*s+k[1]*d, v[2]*c+kv[2]*s+k[2]*d];
+  }
+};
+
+/* ---------- the space: a fixed cube ---------- */
+const UNITS_PER_CM = 55;          // "10 centimeters" → 550 world units
+const H = 560;                    // cube half-size (side = 1120), centered at the origin
+const SOFT = H * 0.72;            // where the gentle curve-back from a wall begins
+
+// deterministic-ish RNG so the space is stable per load
+let _seed = 20260718;
+function rnd(){ _seed = (_seed * 1664525 + 1013904223) >>> 0; return _seed / 4294967296; }
+
+// nodes: fixed points inside the cube (questions) — a homogeneous 4×4×4 lattice
+// (evenly spaced through the whole volume, with a whisper of jitter so grid columns
+//  don't perfectly occlude each other when viewed along an axis)
+const nodes = [];
+(function placeNodes(){
+  const G = 4, M = H * 0.8;
+  const spacing = 2 * M / (G - 1);
+  const JIT = spacing * 0.09;
+  for (let ix = 0; ix < G; ix++)
+    for (let iy = 0; iy < G; iy++)
+      for (let iz = 0; iz < G; iz++){
+        nodes.push({ p: [
+          -M + ix * spacing + (rnd()*2-1)*JIT,
+          -M + iy * spacing + (rnd()*2-1)*JIT,
+          -M + iz * spacing + (rnd()*2-1)*JIT
+        ], visits: 0, flash: 0 });
+      }
+})();
+
+// static dust inside the cube for depth parallax (part of the space; never moves)
+const dust = [];
+for (let i=0;i<230;i++){
+  dust.push([ (rnd()*2-1)*H*0.95, (rnd()*2-1)*H*0.95, (rnd()*2-1)*H*0.95 ]);
+}
+
+// the cube's 12 edges, subdivided for correct depth-sorting and fog
+const cubeSegs = [];
+(function buildCube(){
+  const c = [];
+  for (const sx of [-1,1]) for (const sy of [-1,1]) for (const sz of [-1,1]) c.push([sx*H, sy*H, sz*H]);
+  const E = [[0,1],[0,2],[0,4],[1,3],[1,5],[2,3],[2,6],[3,7],[4,5],[4,6],[5,7],[6,7]];
+  const SUB = 6;
+  for (const [i,j] of E){
+    for (let k=0;k<SUB;k++){
+      cubeSegs.push([ V.lerp(c[i], c[j], k/SUB), V.lerp(c[i], c[j], (k+1)/SUB) ]);
+    }
+  }
+})();
+const corners = [];
+for (const sx of [-1,1]) for (const sy of [-1,1]) for (const sz of [-1,1]) corners.push([sx*H, sy*H, sz*H]);
+
+/* ---------- the line (the mover's live context) ---------- */
+const head = {
+  p: [-H*0.5, 0, H*0.25],
+  f: V.norm([1, 0.05, -0.3]),   // forward
+  u: [0,1,0],                   // up
+};
+let maxLenCm = 10, speedMult = 1, paused = false;
+const BASE_SPEED = 92;          // units/sec
+const SAMPLE_D = 2.4;           // trail sampling distance
+
+const trail = [ head.p.slice() ];   // head at END; tail at index 0
+let segLens = [];
+let trailLen = 0;
+
+const particles = [];               // the dissolve
+const flashes = [];                 // node-hit rings
+let lastNode = null, insideNode = null;
+let artifactCount = 0;
+
+function maxLenUnits(){ return maxLenCm * UNITS_PER_CM; }
+
+/* ---------- input: keys steer the LINE ---------- */
+const keys = {};
+addEventListener('keydown', e => {
+  if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
+  if (e.key === ' ') { paused = !paused; return; }
+  if (e.key.toLowerCase() === 'v') { toggleMode(); return; }
+  keys[e.key.toLowerCase()] = true; keys[e.key] = true;
+});
+addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; keys[e.key] = false; });
+
+/* ---------- input: mouse rotates the VIEW (optional), scroll zooms ---------- */
+const canvas = document.getElementById('c');
+let mode = 'cube';                  // 'cube' (fixed view) | 'fp' (ride the head)
+const view = {                      // fixed orbital viewpoint around the cube's center
+  th: 0.65, ph: 0.40, d: H * 5.0,   // yaw, pitch, distance
+  thT: 0.65, phT: 0.40, dT: H * 5.0
+};
+let dragging = false, lastX = 0, lastY = 0, dragCurX = 0, dragCurY = 0;
+canvas.addEventListener('pointerdown', e => {
+  dragging = true; lastX = e.clientX; lastY = e.clientY;
+  dragCurX = e.clientX; dragCurY = e.clientY;
+  canvas.classList.add('dragging'); canvas.focus(); canvas.setPointerCapture(e.pointerId);
+});
+canvas.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  dragCurX = e.clientX; dragCurY = e.clientY;
+  if (mode === 'cube'){
+    view.thT -= (e.clientX - lastX) * 0.005;
+    view.phT += (e.clientY - lastY) * 0.005;
+    view.phT = Math.max(-1.25, Math.min(1.25, view.phT));
+  }
+  lastX = e.clientX; lastY = e.clientY;
+});
+canvas.addEventListener('pointerup',   () => { dragging = false; canvas.classList.remove('dragging'); });
+canvas.addEventListener('pointercancel', () => { dragging = false; canvas.classList.remove('dragging'); });
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (mode === 'cube')
+    view.dT = Math.max(H*2.2, Math.min(H*8, view.dT * Math.exp(e.deltaY * 0.0011)));
+}, { passive: false });
+
+/* ---------- HUD fold ---------- */
+const hud = document.getElementById('hud');
+hud.querySelector('h1').addEventListener('click', () => hud.classList.toggle('mini'));
+if (innerWidth < 980 || innerHeight < 640) hud.classList.add('mini');   // small window → start folded
+
+/* ---------- view toggle ---------- */
+const modeBtns = { cube: document.getElementById('vCube'), fp: document.getElementById('vFp') };
+function setMode(m){
+  mode = m;
+  for (const k in modeBtns) modeBtns[k].classList.toggle('on', k === m);
+}
+for (const k in modeBtns) modeBtns[k].addEventListener('click', () => { setMode(k); canvas.focus(); });
+function toggleMode(){ setMode(mode === 'cube' ? 'fp' : 'cube'); }
+
+/* ---------- sliders ---------- */
+const lenSlider = document.getElementById('lenSlider'), lenVal = document.getElementById('lenVal');
+const spdSlider = document.getElementById('spdSlider'), spdVal = document.getElementById('spdVal');
+lenSlider.addEventListener('input', () => { maxLenCm = +lenSlider.value; lenVal.textContent = maxLenCm.toFixed(1)+' cm'; });
+spdSlider.addEventListener('input', () => { speedMult = +spdSlider.value; spdVal.textContent = speedMult.toFixed(1)+'×'; });
+
+/* ---------- simulation ---------- */
+function steer(dt){
+  const YAW = 1.5, PITCH = 1.25;   // rad/sec
+  let yaw = 0, pitch = 0;
+  if (keys['ArrowLeft']  || keys['a']) yaw += 1;
+  if (keys['ArrowRight'] || keys['d']) yaw -= 1;
+  if (keys['ArrowUp']    || keys['w']) pitch += 1;
+  if (keys['ArrowDown']  || keys['s']) pitch -= 1;
+  if (dragging && mode === 'fp'){     // in first person, dragging steers the line
+    const nx = (dragCurX - W/2) / (W/2);
+    const ny = (dragCurY - Hh/2) / (Hh/2);
+    if (Math.abs(nx) > 0.06) yaw   -= nx * 1.15;
+    if (Math.abs(ny) > 0.06) pitch -= ny * 1.0;
+  }
+  if (yaw)   head.f = V.rot(head.f, head.u, yaw * YAW * dt);
+  if (pitch){
+    const r = V.norm(V.cross(head.f, head.u));
+    head.f = V.rot(head.f, r, pitch * PITCH * dt);
+    head.u = V.rot(head.u, r, pitch * PITCH * dt);
+  }
+  // gentle curve-back near the cube's walls (per axis; not a wall-hit, a preference)
+  const push = [0,0,0];
+  for (let ax = 0; ax < 3; ax++){
+    const v = head.p[ax];
+    if (Math.abs(v) > SOFT){
+      const t = Math.min(1, (Math.abs(v) - SOFT) / (H - SOFT));
+      push[ax] = -Math.sign(v) * t * t;
+    }
+  }
+  if (push[0] || push[1] || push[2]){
+    head.f = V.norm(V.add(head.f, V.mul(push, 3.0 * dt)));
+  }
+  // hard safety clamp (should never be needed)
+  for (let ax = 0; ax < 3; ax++) head.p[ax] = Math.max(-H*0.99, Math.min(H*0.99, head.p[ax]));
+  // re-orthonormalize the frame
+  const r = V.norm(V.cross(head.f, head.u));
+  head.u = V.norm(V.cross(r, head.f));
+  head.f = V.norm(head.f);
+}
+
+function advance(dt){
+  const step = BASE_SPEED * speedMult * dt;
+  head.p = V.add(head.p, V.mul(head.f, step));
+
+  // sample the trail
+  const last = trail[trail.length-1];
+  if (V.len(V.sub(head.p, last)) >= SAMPLE_D){
+    trail.push(head.p.slice());
+    const L = V.len(V.sub(trail[trail.length-1], trail[trail.length-2]));
+    segLens.push(L); trailLen += L;
+  }
+
+  // the conservation: trim the tail to the finite length — it dissolves
+  const cap = maxLenUnits();
+  while (trailLen > cap && trail.length > 2){
+    const removed = trail.shift();
+    trailLen -= segLens.shift();
+    if (rnd() < 0.65 && particles.length < 90){
+      particles.push({ p: removed.slice(),
+        v: [ (rnd()-0.5)*7, (rnd()-0.5)*7, (rnd()-0.5)*7 ], life: 1 });
+    }
+  }
+
+  // node hits → artifacts
+  for (const n of nodes){
+    const dist = V.len(V.sub(head.p, n.p));
+    if (dist < 34){
+      if (insideNode !== n){
+        insideNode = n;
+        if (lastNode !== n){
+          n.visits++; n.flash = 1; artifactCount++;
+          flashes.push({ p: n.p, t: 0 });
+          lastNode = n;
+        }
+      }
+    } else if (insideNode === n && dist > 54){
+      insideNode = null;
+    }
+  }
+
+  // particles + flashes decay
+  for (let i = particles.length-1; i >= 0; i--){
+    const q = particles[i];
+    q.life -= dt * 0.9;
+    if (q.life <= 0){ particles.splice(i,1); continue; }
+    q.p = V.add(q.p, V.mul(q.v, dt));
+  }
+  for (let i = flashes.length-1; i >= 0; i--){
+    flashes[i].t += dt;
+    if (flashes[i].t > 0.8) flashes.splice(i,1);
+  }
+  for (const n of nodes) n.flash = Math.max(0, n.flash - dt*1.6);
+}
+
+/* ---------- the fixed camera (orbits only when YOU drag) ---------- */
+const cam = { p:[0,0,0], f:[0,0,-1], r:[1,0,0], u:[0,1,0] };
+let FOG0 = 1000, FOG1 = 4000;
+function updateCamera(dt){
+  if (mode === 'fp'){
+    // first person — you are the head, looking along its forward
+    cam.p = V.add(V.add(head.p, V.mul(head.f, -16)), V.mul(head.u, 8));
+    cam.f = head.f.slice();
+    cam.r = V.norm(V.cross(cam.f, head.u));
+    cam.u = V.norm(V.cross(cam.r, cam.f));
+    FOG0 = 240; FOG1 = 1750;
+    return;
+  }
+  const k = 1 - Math.exp(-dt * 7);
+  view.th += (view.thT - view.th) * k;
+  view.ph += (view.phT - view.ph) * k;
+  view.d  += (view.dT  - view.d ) * k;
+  const cp = Math.cos(view.ph), sp = Math.sin(view.ph);
+  cam.p = [ view.d * cp * Math.sin(view.th), view.d * sp, view.d * cp * Math.cos(view.th) ];
+  cam.f = V.norm(V.mul(cam.p, -1));            // always looking at the cube's center
+  cam.r = V.norm(V.cross(cam.f, [0,1,0]));
+  cam.u = V.norm(V.cross(cam.r, cam.f));
+  FOG0 = view.d - H * 1.2;                      // fog scaled to the cube, whatever the zoom
+  FOG1 = view.d + H * 3.4;
+}
+
+/* ---------- rendering ---------- */
+const ctx = canvas.getContext('2d');
+let W = 0, Hh = 0, DPR = 1, FL = 900;
+function resize(){
+  DPR = Math.min(2, devicePixelRatio || 1);
+  W = innerWidth; Hh = innerHeight;
+  canvas.width = W * DPR; canvas.height = Hh * DPR;
+  canvas.style.width = W + 'px'; canvas.style.height = Hh + 'px';   // replaced element: must be sized explicitly
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  FL = Math.min(W, Hh) * 1.02;   // wider apparent field of view — the cube sits with room around it
+}
+addEventListener('resize', resize); resize();
+
+const NEAR = 10;
+function project(q){
+  const d = V.sub(q, cam.p);
+  const z = V.dot(d, cam.f);
+  if (z < NEAR) return null;
+  return { x: W/2 + V.dot(d, cam.r) * FL / z,
+           y: Hh/2 - V.dot(d, cam.u) * FL / z,
+           s: FL / z, z };
+}
+const fog = z => Math.max(0.08, Math.min(1, 1 - (z - FOG0) / (FOG1 - FOG0)));
+
+function render(){
+  ctx.fillStyle = '#070b12';
+  ctx.fillRect(0, 0, W, Hh);
+  const vg = ctx.createRadialGradient(W/2, Hh/2, Math.min(W,Hh)*0.28, W/2, Hh/2, Math.max(W,Hh)*0.75);
+  vg.addColorStop(0, 'rgba(16,24,40,0.22)'); vg.addColorStop(1, 'rgba(0,0,0,0.32)');
+  ctx.fillStyle = vg; ctx.fillRect(0,0,W,Hh);
+
+  const items = [];  // depth-sorted display list
+
+  // the cube — the fixed frame of the space
+  for (const [a3, b3] of cubeSegs){
+    const a = project(a3), b = project(b3);
+    if (!a || !b) continue;
+    const zm = (a.z + b.z) / 2;
+    items.push({ z: zm, draw(){
+      ctx.globalAlpha = 0.34 * fog(zm) + 0.05;
+      ctx.strokeStyle = '#6e82a8';
+      ctx.lineWidth = Math.max(0.6, 1.1 * ((a.s+b.s)/2) * 0.5);
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }});
+  }
+  for (const c3 of corners){
+    const s = project(c3); if (!s) continue;
+    items.push({ z: s.z, draw(){
+      ctx.globalAlpha = 0.5 * fog(s.z) + 0.08;
+      ctx.fillStyle = '#8fa3c8';
+      ctx.beginPath(); ctx.arc(s.x, s.y, Math.min(8, Math.max(1.4, 6*s.s)), 0, 7); ctx.fill();
+    }});
+  }
+
+  // dust
+  for (const p of dust){
+    const s = project(p); if (!s) continue;
+    items.push({ z: s.z, draw(){
+      ctx.globalAlpha = 0.16 * fog(s.z);
+      ctx.fillStyle = '#94a3b8';
+      ctx.beginPath(); ctx.arc(s.x, s.y, Math.max(0.4, 1.3*s.s*0.1), 0, 7); ctx.fill();
+    }});
+  }
+
+  // nodes + artifacts
+  for (const n of nodes){
+    const s = project(n.p); if (!s) continue;
+    const visited = n.visits > 0, flash = n.flash, visits = n.visits;
+    items.push({ z: s.z, draw(){
+      const f = Math.max(0.3, fog(s.z));            // nodes never fade below a visibility floor
+      // a node is a real ~30-unit sphere in the space — its size scales truly with distance
+      const r = Math.min(120, Math.max(6.5, 30 * s.s)) * (1 + flash*0.4);
+      const gr = Math.min(260, r*3);
+      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, gr);
+      g.addColorStop(0, `rgba(150,168,255,${Math.min(0.85, 0.62*f*(1+flash))})`);
+      g.addColorStop(1, 'rgba(150,168,255,0)');
+      ctx.globalAlpha = 1; ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(s.x, s.y, gr, 0, 7); ctx.fill();
+      ctx.globalAlpha = (0.85 + flash*0.15) * f;
+      ctx.fillStyle = visited ? '#cdd8ff' : '#aebfff';
+      ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, 7); ctx.fill();
+      ctx.globalAlpha = 0.55 * f;
+      ctx.strokeStyle = '#dfe7ff'; ctx.lineWidth = Math.max(0.7, r*0.12);
+      ctx.beginPath(); ctx.arc(s.x, s.y, r*1.16, 0, 7); ctx.stroke();
+      if (visited){
+        ctx.globalAlpha = 0.8 * f;
+        ctx.strokeStyle = '#f0c766'; ctx.lineWidth = Math.max(0.9, r*0.16);
+        ctx.beginPath(); ctx.arc(s.x, s.y, r*1.55, 0, 7); ctx.stroke();
+        const fs = Math.max(14, Math.min(52, 92 * s.s));
+        ctx.globalAlpha = Math.max(0.5, f);
+        ctx.font = fs + 'px system-ui, sans-serif';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+        ctx.fillText('📁', s.x + r*1.35, s.y - r*1.05);
+        if (visits > 1){
+          ctx.font = Math.max(10, fs*0.52) + 'px ui-monospace, monospace';
+          ctx.fillStyle = '#e8d9a8';
+          ctx.fillText('×' + visits, s.x + r*1.35 + fs*1.05, s.y - r*1.05 - fs*0.1);
+        }
+      }
+    }});
+  }
+
+  // hit rings
+  for (const fl of flashes){
+    const s = project(fl.p); if (!s) continue;
+    const t = fl.t / 0.8;
+    items.push({ z: s.z, draw(){
+      ctx.globalAlpha = (1-t) * 0.55 * fog(s.z);
+      ctx.strokeStyle = '#ffe9a8';
+      ctx.lineWidth = Math.max(1, 7 * s.s * (1-t));
+      const r = Math.min(300, (34 + t*130) * s.s);
+      ctx.beginPath(); ctx.arc(s.x, s.y, Math.max(1.5,r), 0, 7); ctx.stroke();
+    }});
+  }
+
+  // dissolve particles
+  for (const q of particles){
+    const s = project(q.p); if (!s) continue;
+    const life = q.life;
+    items.push({ z: s.z, draw(){
+      ctx.globalAlpha = life * 0.5 * fog(s.z);
+      ctx.fillStyle = '#b1a8f5';
+      ctx.beginPath(); ctx.arc(s.x, s.y, Math.min(12, Math.max(0.8, 6*s.s*life)), 0, 7); ctx.fill();
+    }});
+  }
+
+  // the line — segments, alpha ramping tail→head (the tail is mid-dissolve)
+  let acc = 0;
+  const total = Math.max(1, trailLen);
+  for (let i = 0; i < trail.length - 1; i++){
+    const a = project(trail[i]), b = project(trail[i+1]);
+    const segL = segLens[i] || SAMPLE_D;
+    const t = acc / total; acc += segL;            // 0 at tail → 1 at head
+    if (!a || !b) continue;
+    const tailRamp = Math.min(1, t / 0.22);
+    const alpha = (0.16 + 0.84 * t) * tailRamp;
+    const cr = Math.round(124 + (126-124)*t);
+    const cg = Math.round(108 + (243-108)*t);
+    const cb = Math.round(240 + (255-240)*t);
+    const zm = (a.z + b.z) / 2;
+    if (mode === 'fp' && zm < 30) continue;        // don't smear the neck across the lens
+    items.push({ z: zm, draw(){
+      ctx.globalAlpha = alpha * Math.max(0.25, fog(zm));
+      ctx.strokeStyle = `rgb(${cr},${cg},${cb})`;
+      ctx.lineWidth = Math.max(1.4, Math.min(36, 11 * ((a.s+b.s)/2) * (0.35 + 0.65*t)));
+      ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }});
+  }
+
+  // the head — live grasp, glowing (not drawn in first person: you ARE it)
+  const hs = mode === 'fp' ? null : project(head.p);
+  if (hs){
+    items.push({ z: hs.z, draw(){
+      const r = Math.min(60, Math.max(3.5, 15 * hs.s));
+      const g = ctx.createRadialGradient(hs.x, hs.y, 0, hs.x, hs.y, r*4);
+      g.addColorStop(0, 'rgba(223,245,255,0.95)');
+      g.addColorStop(0.35, 'rgba(126,232,255,0.5)');
+      g.addColorStop(1, 'rgba(126,232,255,0)');
+      ctx.globalAlpha = 1; ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(hs.x, hs.y, r*4, 0, 7); ctx.fill();
+      ctx.fillStyle = '#eefbff';
+      ctx.beginPath(); ctx.arc(hs.x, hs.y, r, 0, 7); ctx.fill();
+    }});
+  }
+
+  // painter's algorithm
+  items.sort((p,q) => q.z - p.z);
+  for (const it of items) it.draw();
+  ctx.globalAlpha = 1;
+}
+
+/* ---------- stats ---------- */
+const statsEl = document.getElementById('stats');
+function updateStats(){
+  const usedCm = trailLen / UNITS_PER_CM;
+  const touched = nodes.filter(n => n.visits > 0).length;
+  statsEl.textContent =
+    `context: ${usedCm.toFixed(1)} / ${maxLenCm.toFixed(1)} cm · nodes touched: ${touched} · artifacts: ${artifactCount}` +
+    (paused ? '  — paused' : '');
+}
+
+/* ---------- main loop ---------- */
+let lastT = performance.now();
+function frame(now){
+  const dt = Math.min(0.05, (now - lastT) / 1000);
+  lastT = now;
+  if (!paused){
+    steer(dt);
+    advance(dt);
+  }
+  updateCamera(dt);
+  render();
+  updateStats();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+canvas.focus();
+</script>
+</body>
+</html>

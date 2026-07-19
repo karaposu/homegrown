@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Context Line — 2D</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #070b12; }
+  body { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #8b98ad; }
+  canvas { display: block; position: fixed; inset: 0; width: 100%; height: 100%; outline: none; cursor: crosshair; }
+
+  .card {
+    position: fixed; z-index: 2;
+    background: rgba(10, 15, 24, 0.72);
+    border: 1px solid rgba(120, 140, 180, 0.15);
+    border-radius: 9px;
+    padding: 7px 10px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: 10px; line-height: 1.5;
+    max-width: 300px;
+  }
+  #hud { top: 10px; left: 10px; }
+  #hud h1 {
+    font-size: 11px; letter-spacing: 0.16em; font-weight: 600;
+    color: #dfe7f3; margin-bottom: 1px; cursor: pointer; user-select: none;
+  }
+  #hud h1 .fold { color: #5f6c80; font-weight: 400; letter-spacing: 0; font-size: 9px; }
+  #hud .gloss { color: #aab6c8; font-size: 10px; margin-bottom: 5px; }
+  #hud .legend { color: #7e8ba0; font-size: 9.5px; }
+  #hud .legend b { color: #a8b6cc; font-weight: 600; }
+  #hud.mini .gloss, #hud.mini .legend { display: none; }
+  #stats { margin-top: 5px; color: #93c9d8; font-size: 9.5px; }
+
+  #controls { bottom: 10px; left: 10px; color: #76839a; font-size: 9.5px; max-width: 340px; }
+  #controls kbd {
+    display: inline-block; padding: 0 4px; border-radius: 4px;
+    border: 1px solid rgba(140,160,195,0.25); background: rgba(120,140,180,0.08);
+    color: #b9c4d6; font-family: inherit; font-size: 9px; margin: 0 1px;
+  }
+
+  #panel { bottom: 10px; right: 10px; width: 172px; }
+  #panel label { display: block; color: #93a0b5; font-size: 9.5px; margin-top: 4px; }
+  #panel label:first-child { margin-top: 0; }
+  #panel .val { color: #cfd9e8; float: right; }
+  #panel input[type=range] { width: 100%; accent-color: #67b7d8; height: 15px; }
+  #panel .foot { margin-top: 6px; color: #5d6a7d; font-size: 8.5px; border-top: 1px solid rgba(120,140,180,0.12); padding-top: 5px; }
+
+  @media (max-width: 700px), (max-height: 600px) {
+    #hud { max-width: 230px; }
+    #panel { width: 150px; }
+    #controls { max-width: 250px; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c" tabindex="0"></canvas>
+
+<div class="card" id="hud">
+  <h1>THE CONTEXT LINE — 2D <span class="fold">· click to fold</span></h1>
+  <div class="gloss">the finite span of live context, moving through thinking space — it advances by dissolving at the tail</div>
+  <div class="legend">
+    <b>▭</b> the frame = the bounded space — fixed; only the line moves&ensp;·&ensp;
+    <b>—</b> the line = the traversal context (grasp; finite)&ensp;·&ensp;
+    <b>●</b> nodes = questions in the space&ensp;·&ensp;
+    <b>📁</b> = artifacts left by traversal (the record — permanent)&ensp;·&ensp;
+    <b>∴</b> the fading tail = context lost to summarization — <i>reachable after, not held</i>
+  </div>
+  <div id="stats">context: — · nodes touched: 0 · artifacts: 0</div>
+</div>
+
+<div class="card" id="controls">
+  <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> steer — the head turns toward the pressed direction &ensp; <kbd>space</kbd> pause<br>
+  or hold the pointer anywhere: the head turns toward it. the view is the whole space — nothing to rotate.<br>
+  not a game — nothing to win; it just moves. near the walls it curves gently back inside.
+</div>
+
+<div class="card" id="panel">
+  <label>context length <span class="val" id="lenVal">10.0 cm</span></label>
+  <input type="range" id="lenSlider" min="4" max="14" step="0.5" value="10">
+  <label>speed <span class="val" id="spdVal">1.0×</span></label>
+  <input type="range" id="spdSlider" min="0.4" max="2" step="0.1" value="1">
+  <div class="foot">illustrative — generated nodes, not project data. every moving thing here is the mover; the space itself never moves.</div>
+</div>
+
+<script>
+"use strict";
+/* ---------- the space: a fixed rectangle ---------- */
+const UNITS_PER_CM = 55;              // "10 centimeters" → 550 world units
+const WW = 1600, WH = 1000;           // world size (fixed logical space)
+const HX = WW/2, HY = WH/2;
+const SOFTX = HX * 0.80, SOFTY = HY * 0.76;   // where the gentle curve-back begins
+
+let _seed = 20260718;
+function rnd(){ _seed = (_seed * 1664525 + 1013904223) >>> 0; return _seed / 4294967296; }
+
+// nodes — a homogeneous 6×4 lattice (evenly spaced, slight jitter)
+const nodes = [];
+(function placeNodes(){
+  const GX = 6, GY = 4, MX = HX * 0.82, MY = HY * 0.76;
+  const sx = 2*MX/(GX-1), sy = 2*MY/(GY-1);
+  const JIT = Math.min(sx, sy) * 0.09;
+  for (let ix = 0; ix < GX; ix++)
+    for (let iy = 0; iy < GY; iy++)
+      nodes.push({ x: -MX + ix*sx + (rnd()*2-1)*JIT,
+                   y: -MY + iy*sy + (rnd()*2-1)*JIT,
+                   visits: 0, flash: 0 });
+})();
+const NODE_R = 26;                    // a node's visual radius (world units)
+
+// static dust for texture (part of the space; never moves)
+const dust = [];
+for (let i=0;i<120;i++) dust.push([ (rnd()*2-1)*HX*0.97, (rnd()*2-1)*HY*0.95 ]);
+
+/* ---------- the line (the mover's live context) ---------- */
+const head = { x: -HX*0.6, y: HY*0.35, a: -0.35 };   // position + heading angle
+let maxLenCm = 10, speedMult = 1, paused = false;
+const BASE_SPEED = 150;               // units/sec
+const TURN = 2.6;                     // rad/sec toward the desired direction
+const SAMPLE_D = 3;
+
+const trail = [ [head.x, head.y] ];   // head at END; tail at index 0
+let segLens = [], trailLen = 0;
+
+const particles = [], flashes = [];
+let lastNode = null, insideNode = null, artifactCount = 0;
+const maxLenUnits = () => maxLenCm * UNITS_PER_CM;
+
+/* ---------- input ---------- */
+const keys = {};
+addEventListener('keydown', e => {
+  if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
+  if (e.key === ' ') { paused = !paused; return; }
+  keys[e.key.toLowerCase()] = true; keys[e.key] = true;
+});
+addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; keys[e.key] = false; });
+
+const canvas = document.getElementById('c');
+let pointerHeld = false, ptrX = 0, ptrY = 0;
+canvas.addEventListener('pointerdown', e => { pointerHeld = true; ptrX = e.clientX; ptrY = e.clientY; canvas.focus(); canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointermove', e => { if (pointerHeld){ ptrX = e.clientX; ptrY = e.clientY; } });
+canvas.addEventListener('pointerup',   () => { pointerHeld = false; });
+canvas.addEventListener('pointercancel', () => { pointerHeld = false; });
+
+/* ---------- HUD fold + sliders ---------- */
+const hud = document.getElementById('hud');
+hud.querySelector('h1').addEventListener('click', () => hud.classList.toggle('mini'));
+if (innerWidth < 980 || innerHeight < 640) hud.classList.add('mini');
+
+const lenSlider = document.getElementById('lenSlider'), lenVal = document.getElementById('lenVal');
+const spdSlider = document.getElementById('spdSlider'), spdVal = document.getElementById('spdVal');
+lenSlider.addEventListener('input', () => { maxLenCm = +lenSlider.value; lenVal.textContent = maxLenCm.toFixed(1)+' cm'; });
+spdSlider.addEventListener('input', () => { speedMult = +spdSlider.value; spdVal.textContent = speedMult.toFixed(1)+'×'; });
+
+/* ---------- world ↔ screen ---------- */
+const ctx = canvas.getContext('2d');
+let W = 0, Hh = 0, DPR = 1, S = 1;    // S = world→screen scale
+function resize(){
+  DPR = Math.min(2, devicePixelRatio || 1);
+  W = innerWidth; Hh = innerHeight;
+  canvas.width = W * DPR; canvas.height = Hh * DPR;
+  canvas.style.width = W + 'px'; canvas.style.height = Hh + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  S = Math.min((W - 56) / WW, (Hh - 56) / WH);
+}
+addEventListener('resize', resize); resize();
+const sx = x => W/2 + x * S;
+const sy = y => Hh/2 + y * S;
+
+/* ---------- simulation ---------- */
+function turnToward(target, dt){
+  let d = target - head.a;
+  while (d >  Math.PI) d -= 2*Math.PI;
+  while (d < -Math.PI) d += 2*Math.PI;
+  const step = TURN * dt;
+  head.a += Math.abs(d) <= step ? d : Math.sign(d) * step;
+}
+
+function steer(dt){
+  // keys: the head turns toward the pressed (absolute) direction; combinable for diagonals
+  let dx = 0, dy = 0;
+  if (keys['ArrowLeft']  || keys['a']) dx -= 1;
+  if (keys['ArrowRight'] || keys['d']) dx += 1;
+  if (keys['ArrowUp']    || keys['w']) dy -= 1;
+  if (keys['ArrowDown']  || keys['s']) dy += 1;
+  if (dx || dy){
+    turnToward(Math.atan2(dy, dx), dt);
+  } else if (pointerHeld){
+    // held pointer: turn toward it
+    const wx = (ptrX - W/2) / S, wy = (ptrY - Hh/2) / S;
+    turnToward(Math.atan2(wy - head.y, wx - head.x), dt);
+  }
+  // gentle curve-back near the walls
+  let px = 0, py = 0;
+  if (Math.abs(head.x) > SOFTX){
+    const t = Math.min(1, (Math.abs(head.x) - SOFTX) / (HX - SOFTX));
+    px = -Math.sign(head.x) * t * t;
+  }
+  if (Math.abs(head.y) > SOFTY){
+    const t = Math.min(1, (Math.abs(head.y) - SOFTY) / (HY - SOFTY));
+    py = -Math.sign(head.y) * t * t;
+  }
+  if (px || py){
+    const fx = Math.cos(head.a) + px * 3.2 * dt * 60 * 0.05;
+    const fy = Math.sin(head.a) + py * 3.2 * dt * 60 * 0.05;
+    head.a = Math.atan2(fy, fx);
+  }
+  head.x = Math.max(-HX*0.99, Math.min(HX*0.99, head.x));
+  head.y = Math.max(-HY*0.99, Math.min(HY*0.99, head.y));
+}
+
+function advance(dt){
+  const step = BASE_SPEED * speedMult * dt;
+  head.x += Math.cos(head.a) * step;
+  head.y += Math.sin(head.a) * step;
+
+  const last = trail[trail.length-1];
+  const dl = Math.hypot(head.x - last[0], head.y - last[1]);
+  if (dl >= SAMPLE_D){
+    trail.push([head.x, head.y]);
+    segLens.push(dl); trailLen += dl;
+  }
+
+  // the conservation: trim the tail — it dissolves
+  const cap = maxLenUnits();
+  while (trailLen > cap && trail.length > 2){
+    const rm = trail.shift();
+    trailLen -= segLens.shift();
+    if (rnd() < 0.6 && particles.length < 80){
+      particles.push({ x: rm[0], y: rm[1],
+        vx: (rnd()-0.5)*16, vy: (rnd()-0.5)*16, life: 1 });
+    }
+  }
+
+  // node hits → artifacts
+  for (const n of nodes){
+    const dist = Math.hypot(head.x - n.x, head.y - n.y);
+    if (dist < NODE_R + 8){
+      if (insideNode !== n){
+        insideNode = n;
+        if (lastNode !== n){
+          n.visits++; n.flash = 1; artifactCount++;
+          flashes.push({ x: n.x, y: n.y, t: 0 });
+          lastNode = n;
+        }
+      }
+    } else if (insideNode === n && dist > NODE_R + 34){
+      insideNode = null;
+    }
+  }
+
+  for (let i = particles.length-1; i >= 0; i--){
+    const q = particles[i];
+    q.life -= dt * 0.9;
+    if (q.life <= 0){ particles.splice(i,1); continue; }
+    q.x += q.vx * dt; q.y += q.vy * dt;
+  }
+  for (let i = flashes.length-1; i >= 0; i--){
+    flashes[i].t += dt;
+    if (flashes[i].t > 0.8) flashes.splice(i,1);
+  }
+  for (const n of nodes) n.flash = Math.max(0, n.flash - dt*1.6);
+}
+
+/* ---------- rendering ---------- */
+function render(){
+  ctx.fillStyle = '#070b12';
+  ctx.fillRect(0, 0, W, Hh);
+  const vg = ctx.createRadialGradient(W/2, Hh/2, Math.min(W,Hh)*0.3, W/2, Hh/2, Math.max(W,Hh)*0.75);
+  vg.addColorStop(0, 'rgba(16,24,40,0.20)'); vg.addColorStop(1, 'rgba(0,0,0,0.30)');
+  ctx.fillStyle = vg; ctx.fillRect(0,0,W,Hh);
+
+  // the frame — the bounded space, fixed
+  ctx.globalAlpha = 0.45;
+  ctx.strokeStyle = '#6e82a8'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(sx(-HX), sy(-HY), WW*S, WH*S);
+  ctx.globalAlpha = 0.8; ctx.fillStyle = '#8fa3c8';
+  for (const cx of [-HX, HX]) for (const cy of [-HY, HY]){
+    ctx.beginPath(); ctx.arc(sx(cx), sy(cy), 2.4, 0, 7); ctx.fill();
+  }
+
+  // dust
+  ctx.fillStyle = '#94a3b8';
+  for (const [x, y] of dust){
+    ctx.globalAlpha = 0.13;
+    ctx.beginPath(); ctx.arc(sx(x), sy(y), 1.1, 0, 7); ctx.fill();
+  }
+
+  // nodes
+  for (const n of nodes){
+    const x = sx(n.x), y = sy(n.y), r = NODE_R * S * (1 + n.flash*0.35);
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r*2.8);
+    g.addColorStop(0, `rgba(150,168,255,${Math.min(0.8, 0.5*(1 + n.flash))})`);
+    g.addColorStop(1, 'rgba(150,168,255,0)');
+    ctx.globalAlpha = 1; ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r*2.8, 0, 7); ctx.fill();
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = n.visits > 0 ? '#cdd8ff' : '#aebfff';
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    ctx.globalAlpha = 0.5;
+    ctx.strokeStyle = '#dfe7ff'; ctx.lineWidth = Math.max(0.8, r*0.1);
+    ctx.beginPath(); ctx.arc(x, y, r*1.16, 0, 7); ctx.stroke();
+    if (n.visits > 0){
+      ctx.globalAlpha = 0.8;
+      ctx.strokeStyle = '#f0c766'; ctx.lineWidth = Math.max(1, r*0.14);
+      ctx.beginPath(); ctx.arc(x, y, r*1.5, 0, 7); ctx.stroke();
+    }
+  }
+
+  // hit rings
+  for (const fl of flashes){
+    const t = fl.t / 0.8;
+    ctx.globalAlpha = (1-t) * 0.5;
+    ctx.strokeStyle = '#ffe9a8';
+    ctx.lineWidth = Math.max(1, 5*(1-t));
+    ctx.beginPath(); ctx.arc(sx(fl.x), sy(fl.y), (NODE_R + t*120) * S, 0, 7); ctx.stroke();
+  }
+
+  // dissolve particles
+  ctx.fillStyle = '#b1a8f5';
+  for (const q of particles){
+    ctx.globalAlpha = q.life * 0.5;
+    ctx.beginPath(); ctx.arc(sx(q.x), sy(q.y), Math.max(0.8, 4.5*S*q.life + 0.5), 0, 7); ctx.fill();
+  }
+
+  // the line — tail dissolving → head bright
+  let acc = 0;
+  const total = Math.max(1, trailLen);
+  for (let i = 0; i < trail.length - 1; i++){
+    const t = acc / total; acc += segLens[i] || SAMPLE_D;
+    const tailRamp = Math.min(1, t / 0.22);
+    ctx.globalAlpha = (0.15 + 0.85*t) * tailRamp;
+    const cr = Math.round(124 + 2*t), cg = Math.round(108 + 135*t), cb = Math.round(240 + 15*t);
+    ctx.strokeStyle = `rgb(${cr},${cg},${cb})`;
+    ctx.lineWidth = Math.max(1.4, 7 * S * (0.35 + 0.65*t) * 1.6);
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(sx(trail[i][0]), sy(trail[i][1]));
+    ctx.lineTo(sx(trail[i+1][0]), sy(trail[i+1][1]));
+    ctx.stroke();
+  }
+
+  // the head — live grasp
+  {
+    const x = sx(head.x), y = sy(head.y), r = Math.max(3.5, 9 * S * 1.4);
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r*4);
+    g.addColorStop(0, 'rgba(223,245,255,0.95)');
+    g.addColorStop(0.35, 'rgba(126,232,255,0.5)');
+    g.addColorStop(1, 'rgba(126,232,255,0)');
+    ctx.globalAlpha = 1; ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r*4, 0, 7); ctx.fill();
+    ctx.fillStyle = '#eefbff';
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+  }
+
+  // folders — on top, always readable
+  for (const n of nodes){
+    if (n.visits === 0) continue;
+    const x = sx(n.x), y = sy(n.y), r = NODE_R * S;
+    const fs = Math.max(14, Math.min(40, 34 * S * 1.5));
+    ctx.globalAlpha = 0.95;
+    ctx.font = fs + 'px system-ui, sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText('📁', x + r*1.2, y - r*0.9);
+    if (n.visits > 1){
+      ctx.font = Math.max(10, fs*0.5) + 'px ui-monospace, monospace';
+      ctx.fillStyle = '#e8d9a8';
+      ctx.fillText('×' + n.visits, x + r*1.2 + fs*1.05, y - r*0.9 - fs*0.12);
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ---------- stats ---------- */
+const statsEl = document.getElementById('stats');
+function updateStats(){
+  const usedCm = trailLen / UNITS_PER_CM;
+  const touched = nodes.filter(n => n.visits > 0).length;
+  statsEl.textContent =
+    `context: ${usedCm.toFixed(1)} / ${maxLenCm.toFixed(1)} cm · nodes touched: ${touched} · artifacts: ${artifactCount}` +
+    (paused ? '  — paused' : '');
+}
+
+/* ---------- main loop ---------- */
+let lastT = performance.now();
+function frame(now){
+  const dt = Math.min(0.05, (now - lastT) / 1000);
+  lastT = now;
+  if (!paused){ steer(dt); advance(dt); }
+  render();
+  updateStats();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+canvas.focus();
+</script>
+</body>
+</html>
