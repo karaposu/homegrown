@@ -1,0 +1,94 @@
+# Innovation — no-fit detection: finding-ready compositions (P1-P4)
+
+## User Input
+
+devdocs/inquiries/2026-07-20_14-45__no_fit_detection__axis_conditions_and_no_fit_category_question/ — decomposition.md (question tree = work orders) + sensemaking.md (committed shapes). LEAN, production-task mode; WO-P1..WO-P4 with piece-level inversions staged. [Full block in the invocation record.]
+
+## Seed / preamble (mode consideration)
+
+Inherited mode: **Standard default** (compose committed directions, ship-ready). Alternative considered: **Contrarian-rethink (Framer-weighted)** — under it, the run would re-attack the collapses themselves (the absolute-test thesis, the sized fork) rather than compose them; the candidate space would be re-litigation. Decision: **default** — the collapses were adversarially settled at sensemaking (each carries its tested counter), and every piece below still runs a mandated piece-level Inversion, which supplies the contrarian pressure inside the composition. Inherited Frame Audit (run after Generate): the seed's central assumptions (absolute test; outcome-not-bin; three-way typology; grounded rejection) are each explicitly challenged by a tested inversion-candidate below — the audit does not fire.
+
+All four pieces classify as **meta-decision** (P1 evaluation-criterion; P2 lesson-vocabulary; P3 lesson-vocabulary + evaluation-criterion; P4 framing-semantic + relationship-label). None commits an intervention-shape from the vocabulary (paper finding, not spec maintenance) — property (v) does not fire; content-axis inversions satisfy compliance.
+
+---
+
+## P1 — The mechanism (finding-ready)
+
+**Why is miscategorizing structurally easier than saying no-fit?** Because the assignment act, as commonly run, asks a RELATIVE question — *which bin fits best?* — and a relative question always has an answer: over any finite bin-set, some bin is nearest [general: the closed-world/argmax point from open-set recognition]. No-fit is a different kind of question, an ABSOLUTE one — *does the best bin fit at all, by that bin's own standard?* — and it has no answer unless the standard exists. Four pressures stack to make cramming the default:
+
+1. **Best always exists.** "Nearest" is guaranteed; "adequate" is not. The relative act terminates successfully by construction. [general]
+2. **The absolute standard is usually unwritten.** Where membership is graded, "too far from the typical case" is unfalsifiable until the bar is stated — so the nearest bin wins by default. [general]
+3. **The visible-error asymmetry runs backwards in the moment.** A forced fit is an over-merge — it HIDES; a no-fit signal is over-split-like — VISIBLE. Signaling feels riskier precisely because it is inspectable, though it is the recoverable error. [owned transfer: finding:65's lean-toward-the-recoverable-error]
+4. **Some systems outlaw no-fit by design.** Exhaustive-by-fiat schemes (the MECE ideal forced onto a non-exhaustive domain) make "none" illegal, manufacturing forced fits. [general]
+
+**The cure-shape follows:** make the absolute test explicit, and keep "none" a STANDING OUTCOME of every assignment — *"none" is not on the menu unless the system puts it there.* **And the cure is cheap** — the categorizer's own unit already requires every placement to state its ground ("which axis governed; which test passed," finding:46); the absolute test is that same requirement read for failure: **no-fit detection is the placement test's failure branch, not new machinery.** The only genuinely new cost is one-time and system-side: graded systems must write their bar down. [owned + general, composite]
+
+**★Inversion log (P1 — the test's nature).** Reversed: "an absolute test is unnecessary — a smarter RELATIVE repair suffices: add a 'none' pseudo-bin to the comparison, or read the margin between the top two bins." Tested: the pseudo-bin only works if it has a score to beat — and that score IS an adequacy bar, the absolute test smuggled back in wearing a bin costume; the top-two margin detects *torn-between-two* (a fence case), not *fits-nothing* — an entry can be maximally far from every bin with a huge margin. **Every relative repair either smuggles the absolute bar or detects a lookalike.** The inversion collapses into the thesis; the sharpened line is kept. [5-test: novel-enough (the collapse itself is the content), survives scrutiny, fertile (it pre-answers the obvious engineering objection), actionable, mechanism-independent (Chow's rule reaches the same via decision theory [general]).]
+
+## P2 — The conditions + the fence (finding-ready)
+
+**Under what axis conditions is no-fit TRUE?** No-fit is a verdict at the region judgment, and it types by WHERE the placement-ground fails along the entry's relation to the axis-space — three conditions, each with a stateable ground and a live house instance:
+
+- **(a) OFF-AXIS (axis-inapplicable).** The entry does not vary along the system's axis at all; the axis question has no answer for it. The crispest form. *Ground to state: why the axis does not apply.* [Owned live instance: routelister:124 — dispositions "cannot be placed under either kind"; they are "a different category from how to engage" — and the verdict REHOMES the kernel: importance → the Priority field, formed-ness → Confidence, goal-inert concepts → Excluded. A no-fit that names where the content actually lives.]
+- **(b) UNCOVERED (on-axis, out-of-region).** The entry has a real value on the axis, but no named region covers it — a coverage gap. *Ground to state: the value, and the gap no region spans.* Routing by system kind [the finding's gate, :55]: in a closed/generated system the gap is evidence about the generator; in an open/practice system it is the extension moment [owned precedents: the thirteenth yield-kind admitted from the record; "add new shapes as evidence accumulates"].
+- **(c) UNDER-BAR (below-adequacy).** Membership is graded, and the nearest typical case is too far — reachable only by stretching past the bin's own stated bar. *Ground to state: the distance, against the stated bar.* Checkable ONLY where the bar is written; an unwritten bar makes this condition unfalsifiable — which is pressure 2's failure form. [general]
+
+**The fence — three neighbors that must never be converted into no-fit:**
+- **Torn-between-two (boundary-ambiguity):** on-axis, between two regions — a membership *uncertainty*, ruled by the asymmetry question (finding:69/:65), not an absence of fit.
+- **Fits-several (multi-fit):** the entry fits multiple regions — a membership-regime or facet question, not a misfit.
+- **Can't-tell-yet (undecidable-yet):** the entry's identity or axis-value cannot be determined with what is in hand — an epistemic gap, not a verdict. Unknown ≠ inapplicable: inapplicability is a positive determination about the entry; unknownness is a hole in the information. Converting confusion into no-fit is as wrong as cramming it into a bin.
+
+**Escalation note:** condition (a) is the escalation condition — an off-axis entry is what re-opens the axis judgment itself (finding:71's third re-opening moment: is the axis wrong, or the system incomplete?).
+
+**★Inversion log (P2 — the typology's count).** Reversed: "one condition suffices — *no truthfully stateable placement-ground* — and (a)(b)(c) are mere flavors." Tested honestly (the strongest compression pressure in the dive): the unified top IS true and the finding states it as the definition's core. But the three types earn their splits by the categorizer's own primary criterion — the handling-difference test: **(a) routes to rehome and the axis re-opening; (b) routes to generator-evidence or extension; (c) routes to bar-repair.** Different types license different downstream handling; a typology whose types licensed identical handling would be decoration. Adjudicated: **one definition, three types — the typology justified by the finding's own test.** [5-test passed; fertile — the routing IS the outcome's practical content.]
+
+## P3 — The reliability core (finding-ready)
+
+**What makes detection reliable, in both directions?**
+
+- **★Ground-symmetry (the candidate law).** The unit requires every placement to state its ground (finding:46). The same discipline binds the other verdict: **a no-fit signal must name its failed condition** — which of (a)/(b)/(c), and the specific ground. An ungrounded "doesn't fit" is as suspect as an ungrounded placement. The house's live no-fit verdicts already conform, all four: the paradigm-sweeper demotes "with the failed conjunct named"; the routelister's Excluded takes candidates "with reasons — never silently dropped" (:244); the seed gate records the strongest-failed candidate with the rule it failed; td-critique's KILL must extract a seed (:142). [owned]
+- **★Bidirectionality.** Reliability guards BOTH errors. Against the FORCED FIT (his worry — the misfit crammed into the nearest bin; the hiding error). And against the FALSE NO-FIT — the lazy rejection, with three faces: laziness (dodge the filing work), bar-inflation (set adequacy so high everything misfits), novelty-bias (every hard case declared special). The same ground requirement catches all three: a false verdict in either direction must fabricate a ground, and fabricated grounds are checkable. The house already polices this side too: "inability to extract a seed signals the KILL is unsupported — re-examine before rendering" (td-critique:199). One-sided reliability isn't reliability. [owned; Chow's two-sided cost structure is the general twin]
+- **The tie-breaker lean.** When the absolute test has run and residual uncertainty remains between forcing and signaling, lean signal — the forced fit hides; the signal stays visible and correctable [owned transfer, finding:65]. The lean comes AFTER the test, never instead of it.
+- **Why the house's un-named practice already works [G5]:** types-never-scores keeps gradedness out of the category layer — grades live in attributive fields (Priority, Confidence), never as membership — so the house's membership tests stay conjunctive and crisp, which is exactly the test-kind whose no-fit is decidable. The hygiene rule protects the detector it never mentions. [owned]
+- **The system-level stake [G2]:** a misrouted fence-case pollutes the evidence channel — a boundary-ambiguity signaled as no-fit is false generator-evidence, driving wrong extensions and wrong repairs. The fence is not pedantry; it keeps the system's self-correction signal clean.
+
+**★Inversion log (P3 — the burden's symmetry).** Reversed: "rejection should be FREE — absence of a placement-ground already mandates non-placement (:46), so default-no costs nothing." Tested: HALF RIGHT, and the true half sharpens the fence into a two-step: **non-placement is automatic** (no truthful ground → no placement — the unit already says so); but **the no-fit VERDICT is a further, grounded claim** — "this is a misfit, and here is where the ground fails" — and that further claim is what separates no-fit from can't-tell-yet. A free default-no collapses the two, invites the three lazy faces, and floods the evidence channel. Kept: the non-placement/no-fit-verdict distinction (drafted into P4's definition). [5-test passed; the inversion's surviving half became content.]
+
+## P4 — The sized fork + wrap (finding-ready)
+
+**Is an extra definition needed?** Sized adjudication:
+
+- **As an OUTCOME — yes, and small.** The assignment's verdict-set, stated openly, is **{placed / no-fit-signaled / (open systems) extended}** — an UNFOLDING of the categorizer finding, not a revision: finding:55 already governs "when no region fits"; the verb always had the branch implicitly [G4].
+- **As a BIN — no.** A no-fit bin is the pile arriving in slow motion [general: residual-category pathology — "Other" bins accumulate unexamined, hide structure]; it destroys the signal the gate exists to produce (a filed entry LOOKS HANDLED — the misfit's evidence about generator, coverage, or bar is lost); and it reverses the burden (a bin absorbs by default; an outcome demands stated grounds).
+- **The holding state — allowed as workflow only.** An "unclassified" queue with an explicit exit rule is a to-do list, not a home; legitimate, and not a category. Without the exit rule it decays into the pile.
+- **The honest size: mostly naming.** The canon slot is empty [disk-checked: no no-fit/misfit content anywhere in docs/canon/] while the practice is rich [the four conforming devices]. This finding mostly names what the house already does — which is the honest answer to "do we need an extra definition?": yes, a small one, and it was already half-written in practice.
+
+**★THE DEFINITION (small, mintable):**
+
+> **No-fit** is an outcome-kind of the assignment act — the third verdict beside placement and (in open systems) extension: *the verdict that no region of the system's axis-space can be truthfully grounded for this entry.* It types by where the ground fails — **off-axis** (the axis does not apply to the entry), **uncovered** (a real value no region spans), or **under-bar** (the nearest region reachable only past its own stated bar) — and it must name its failed condition, exactly as a placement must state its ground. It is never issued for the fence cases: torn-between-two, fits-several, can't-tell-yet (those are uncertainty, regime, and information questions). And it is not a bin: nothing is filed "in" no-fit — the entry stays outside the system, and the verdict routes as evidence (fix the generator; extend by the system's own rule; repair the bar).
+
+**The Refinement-Triggers adjudication (explicit).** The categorizer finding's trigger — "the compression re-opens if a filing judgment needs a criterion outside handling/stability/asymmetry/kind" (:117) — does NOT fire: the no-fit conditions are membership OUTCOMES of applying the governing axis, not PREFERENCES among candidate axes; they live at the region judgment plus the gate. Honest wrinkle, recorded: condition (a) sits at the axis-application boundary — it is the escalation condition to the axis judgment's re-opening (:71) — but "does the governing axis reach this entry at all?" is a different question from "which axis should govern?", and only the second is the criteria's business. The compression stands.
+
+**Detection-side failure shapes (this finding's own; the categorizer's FORCED FIT remains the placement-side sibling):**
+- **The menu-miss** — the system ships without the standing outcome; no-fit is illegal by omission (pressure 4's failure form).
+- **The free rejection** — an ungrounded no-fit; the three lazy faces (bidirectionality's failure form).
+- **The fence-breach** — a lookalike converted into no-fit; the evidence channel polluted (the fence's failure form).
+
+**Kinship (light).** The five live devices (membership test + Excluded; seed gate; KILL; demote; explicit-empty) are the practice this finding names. Individuation stays upstream (an entry must BE something before it can misfit). Run-level cousin, noted only: the traverse loop's "question not fully answered → iterate with the gap named" is a no-fit-shaped verdict about answers. The rejection option / open-set recognition / residual categories carry the general grade throughout.
+
+**★Inversion log (P4 — the fork itself; the dive's cleverest counter).** Reversed: "no-fit IS a category by the categorizer finding's own meta-definition — a named region ('misfit') in the axis-space of FIT-STATUS, purpose-relative, with the three conditions as its membership test — so mint the category." Tested carefully: fit-status is a META-axis about the assignment ACT, not an axis of the SYSTEM's space; filing entries by fit-status licenses handling ABOUT the system (fix the generator, extend, repair the bar), never handling OF the entry under the system's own purpose — and pushing the act-level verdict INTO the bin-set is precisely the level-collapse that builds the pile (the bin absorbs entries whose real property is "the system failed here"). **But the inversion's true half lands the exact answer to his question:** no-fit IS legitimately a category — OF OUTCOME, at the act level, exactly as SURVIVE/REFINE/KILL are categories of verdict rather than bins of the candidate space. So: **"do we need an extra definition of a no-fit category?" = YES as an outcome-kind (the small definition above); NO as a bin in the system.** [5-test passed: the inversion survived as the answer's precise form — kept and promoted into the definition.]
+
+**Assembly one-liner (candidate for the finding):** *Miscategorization is easy because "which bin fits best?" always has an answer; reliability begins when the act also asks "does the best bin fit at all?" — and treats "no" as a third verdict that must name where the fit fails, exactly as a placement must state why it holds.*
+
+## Seed flags (for Critique's gate)
+
+Definitional content = finding-content → **explicit-empty expected**; strongest-failed candidate: the outcome-kind distinction (no-fit as verdict-category, not bin) — fails the finding-content rule (it IS the deliverable). Enrich candidates: none found (standalone thread; no seed-index entry re-framed). Critique adjudicates ≤1-or-empty.
+
+## Telemetry
+
+- Generators: 3/4 — Combination (no-fit × the house's verdict-sets → the outcome-kind form), Absence Recognition (patch: the missing conditions/name [canon slot empty]; redesign: every assignment act ships with its verdict-set stated — placement never presumed), Domain Transfer (rejection option/open-set imported at general grade; native source: the house's own gates). Extrapolation: not applied — no trend claim in scope; flagged not silent.
+- Framers: 3/3 — Inversion (4 piece-level, all tested; P1 collapse-into-thesis; P2 typology-justified; P3 half-right-kept; P4 survived-as-the-answer), Constraint Manipulation (ADD: exhaustive-by-fiat → pressure 4; REMOVE: the written bar → (c) unfalsifiable — both directions live in P1/P2), Lens Shifting (act-level vs system-level lens resolves the fork).
+- Per-piece: P1 [Inversion:content, DomainTransfer] · P2 [Inversion:content, Combination] · P3 [Inversion:content, AbsenceRecognition] · P4 [Inversion:content, LensShifting, Combination]. All meta-decision; property (v) none; compliance: satisfied ×4.
+- Convergence: YES — inversion, combination, and lens-shifting converge on the outcome-kind form (independent grounds: the pile mechanism, the verdict-set precedent, the level distinction). Shared-input check: the three arrive via different upstream grounds (C3 pathology / owned verdict-sets / the meta-axis argument) — not spurious.
+- Survivors tested 5/5 dimensions; failure modes: none observed (survival-bias checked — the uncomfortable candidate [mint the category] was generated, tested, and its true half KEPT).
+- **Overall: PROCEED**

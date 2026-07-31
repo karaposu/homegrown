@@ -179,12 +179,30 @@ This means the value proposition is not "wait until the system runs autonomously
 
 ## Install
 
-```bash
-# Claude Code
-curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_claude.sh | bash
+### Claude Code — one-liner (raw GitHub link)
 
-# Codex
-curl -sL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh | bash
+```bash
+curl -fsSL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_claude.sh | bash
+```
+
+Or download first, inspect, then run:
+
+```bash
+curl -fsSL -o install_for_claude.sh https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_claude.sh
+bash install_for_claude.sh
+```
+
+### Codex
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh | bash
+```
+
+Or download first, inspect, then run:
+
+```bash
+curl -fsSL -o install_for_codex.sh https://raw.githubusercontent.com/karaposu/homegrown/main/install_for_codex.sh
+bash install_for_codex.sh
 ```
 
 Claude Code: installs to `~/.claude/skills/` as the agent-skills format (each discipline becomes `~/.claude/skills/<name>/SKILL.md`, invoked as `/<name>`). Loop runners (`/MVL`, `/MVL+`) load supporting protocols from `~/.claude/skills/protocols/`.
