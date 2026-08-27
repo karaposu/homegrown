@@ -46,6 +46,9 @@ If `_state.md` is missing or malformed, HALT and tell the user: "Cannot detect p
 
 Read all discipline outputs identified in Step 1, plus `_branch.md` for the question and goal context. Produce `finding.md` as a single argumentative document using the Below given finding document structure template. 
 
+Disambigugity NOTE: every count names its unit; every heading names its action; no invented shorthand; every comparison names what it’s compared against... i am tired of trying to undersnad finding.md files' language. THey should be human readable and not a compliation but tells things to a user in understanable way and this doesnt mean no complexity, they can include complexity but language should be better handled. 
+
+
 Write for a reader who has NOT seen the discipline outputs — someone
 who just joined the project and needs to understand: what was the
 question, what's the answer, why this answer over the alternatives,
