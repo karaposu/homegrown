@@ -86,7 +86,7 @@ Branch inquiry creation is delegated to `cognitive_harness/protocols/branch_inqu
 
    - Invoke `Skill(skill: "articulate_simple", args: "<raw_input verbatim>\n\n---\nSAVE OUTPUT TO: [inquiry_path]/articulate_simple.md")`.
    - articulate_simple performs its four-stage process (Itemize → MQ + MQA → Deconstruct + MultiDepth → Rephrase) on the raw input and saves the per-item bundle as `[inquiry_path]/articulate_simple.md`.
-   - If the Skill invocation cannot redirect the output path, fall back to: read the `articulate_simple` skill's own spec, execute the process inline, and save the bundle directly to `[inquiry_path]/articulate_simple.md`. Either way, **the bundle must end up at `[inquiry_path]/articulate_simple.md`** before step 4 begins.
+   - If the Skill invocation cannot redirect the output path, fall back to: read articulate_simple's spec via `Read` on `cognitive_harness/articulate_simple/SKILL.md`, execute the process inline, and save the bundle directly to `[inquiry_path]/articulate_simple.md`. Either way, **the bundle must end up at `[inquiry_path]/articulate_simple.md`** before step 4 begins.
    - Wait for the file to exist. Read it in full into context.
    - Note the **Itemize count**, the **per-item identifiers**, and the **verdict** (`HIGH-PROCEED` / `MED-FLAG` / `LOW-RE-RUN` / `LOW-PROCEED` / `HIGH-FLAG`).
      - `HIGH-PROCEED` / `LOW-PROCEED` → proceed to step 4.

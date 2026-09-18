@@ -13,7 +13,7 @@ Warm articulation is the **post-context second pass** of articulation. It runs a
 **★ Inheritance boundary.** Warm's reference is defined by what it delegates. To keep that honest and visible:
 
 - **OWNS (canonical *here*):** conflict-detection · the three operation-classes + the trigger-gated re-run principle · the re-anchor→re-surface loop *rule* · the warm output bundle · the warm-specific failure modes · the warm NOT-list additions.
-- **INHERITS (→ `articulate_simple/references/articulate_simple.md`, unchanged):** the five operation *definitions* · the 2-shape Answer Principle · the WHAT-axis/WHY-axis distinction · the verdict system · the `content-conflict` flag-type · the LAYER 1/LAYER 2 failure-mode framework.
+- **INHERITS (→ `cognitive_harness/articulate_simple/references/articulate_simple.md`, unchanged):** the five operation *definitions* · the 2-shape Answer Principle · the WHAT-axis/WHY-axis distinction · the verdict system · the `content-conflict` flag-type · the LAYER 1/LAYER 2 failure-mode framework.
 - **POINTS (→ `docs/how_articulate_warm_should_be.md`) for the WHY:** the ordering problem (§2), the re-anchor/re-surface decoupling (§4), why the round cap is 2 (§8), the cost argument (§9).
 
 Everything below inlines the *operational shape* of the owned pieces; where a canonical *definition* is needed it points, rather than restating it (a restated definition would drift silently — there is no sync mechanism between two copies).

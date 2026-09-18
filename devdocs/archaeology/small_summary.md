@@ -1,159 +1,102 @@
 # What This Project Is — A Plain-Language Summary
 
-*Based on actually reading the files: both install scripts, all seven "thinking
-discipline" specifications in full, a loop-runner, the protocol files, the
-cognitive-fixes folder, and real output the system has produced. The summary
-describes what the files DO, not what the marketing docs claim.*
+*Rewritten 2026-09-17 after reading every file in `cognitive_harness/` (72 files, including the retired material and the backup copies) and every file in `docs/canon/` (39 files) in full, plus the installer scripts, the CI workflow, the Python converter and schema, the React/three.js atlas app, and the two standalone HTML animations. Existing summaries were not consulted. Where this document reports what the project INTENDS, that comes from the canon; where it reports what EXISTS, that comes from the working files. The two are kept apart.*
 
 ## The one-line version
 
-This is a **toolkit that teaches an AI assistant how to think in a disciplined,
-repeatable way** — a set of very detailed "thinking recipes" that install into an
-AI coding tool (Claude Code, with an older variant for OpenAI's Codex) and then
-run like typed commands. There is essentially no conventional program here. The
-"software" is written in careful English as instructions the AI reads and obeys.
+This is a **set of very detailed "thinking recipes", written in English, that an AI coding assistant reads and follows as slash-commands**, plus a small side project that draws a 3D map of everything those recipes have produced. There is almost no conventional program. The "software" is prose instructions for a language model. The only ordinary code is two Python scripts and a browser app that visualise the output.
 
-## What's actually in the box
+The project calls itself **Homegrown** and describes itself, in its own words, as a "cognitive harness": a layer installed on top of an AI assistant that changes how the model thinks by forcing it through named, ordered cognitive steps.
 
-Strip away the documentation and the project has only two kinds of working parts:
+## What is actually in the box
 
-1. **Two installer scripts** (`install_for_claude.sh`, `install_for_codex.sh`).
-   These are short, ordinary shell scripts. All they do is copy or download a set
-   of text files from a public GitHub repository (named "homegrown") into the AI
-   tool's settings folder so the AI can use them as commands. That is the entire
-   "installation" — no compiling, no service, no dependencies.
+Stripped of documentation, there are six kinds of working parts:
 
-2. **A set of instruction files** (every one named `SKILL.md`, each backed by a
-   long `references/*.md` file). These are the real product. Each one is an
-   exhaustive, step-by-step procedure telling the AI how to perform one specific
-   kind of structured thinking.
+1. **Ten "disciplines."** Each is a folder with a short entry file (`SKILL.md`) and a long specification (`references/*.md`, 200 to 750 lines). The entry file tells the AI to read the specification in full, run the described procedure on whatever input it was given, save a markdown file, and end with a self-grade (PROCEED / FLAG / RE-RUN). The ten are:
+   - `articulate_simple` — spell out every way a request could be read, without picking one.
+   - `articulate_warm` — redo that after project material is in view; commit to an anchor; flag if the request conflicts with reality.
+   - `surfacing` — pull the relevant items out of a body of material and tag how relevant each is.
+   - `sense-making` — turn a vague input into a stable understanding, in six successive versions.
+   - `decompose` — cut a big problem into pieces along its natural seams, with a dependency order.
+   - `innovate` — generate candidate ideas by firing seven fixed "mechanisms" (combination, inversion, domain transfer, and so on) and test each.
+   - `td-critique` — put candidates through prosecution, defense and collision; verdict SURVIVE / REFINE / KILL.
+   - `routelister` — list every direction the work could go next, typed with one of nine verbs; never choose.
+   - `routelog` — a small append-only log of which of those directions were actually taken. The canon records it as never used.
+   - `paradigm_sweeper` — map the "schools of thought" around a stuck topic as seeds for later runs. Marked v0-provisional and never run on an unfamiliar topic.
 
-There is no app to open, no website, no database. The thousands of Python files
-you might notice are not part of the project at all — they are third-party
-libraries sitting in a virtual-environment folder (`.venv`) and have nothing to
-do with what this project does.
+2. **One runner: `traverse`.** This is the heart of the project. Given a question, it creates a timestamped folder under `devdocs/inquiries/`, then runs the disciplines one after another (articulate, surfacing, sense-making, decompose, innovate, critique, routelister), saving one file per step and tracking progress in a `_state.md` file so the run can be resumed in a later session. When the critique says the question is answered, a **CONCLUDE** protocol compiles everything into a `finding.md` written for someone who never saw the intermediate files. If not answered, it narrows the question and loops.
 
-## What it does when you use it
+3. **Four protocols** (procedures the runner or a human loads when needed): `branch_inquiry` (make a child question folder under a parent), `conclude` (write the finding and archive the working files), `loop_diagnose` (compare a bad run, the human's correction, and a good run to guess what went wrong), and `seed_harvester` (read a source such as a paper and extract "seeds": gated, deferred ideas for the project, recorded in a global index).
 
-The toolkit gives the AI seven named "thinking disciplines," each invoked by
-typing a slash command:
+4. **A "cognitive fixes" folder** meant to accumulate evidence-gated corrections to the recipes. It holds one fix whose planned validation experiment never ran, and the fix targets two runners that have since been retired.
 
-- **Articulate** — takes a vague request and spells out every reasonable way it
-  could be understood, *without* picking one. It surfaces the ambiguities instead
-  of guessing.
-- **Surfacing** — sweeps a body of material (a codebase, a document set) and pulls
-  the relevant pieces into view, tagging how relevant each one is.
-- **Sense-making** — turns something messy or ambiguous into a clear, stable
-  understanding, deliberately testing its own conclusion from many angles.
-- **Decompose** — finds the natural seams in a problem too big to handle at once
-  and splits it into independent pieces with defined connections.
-- **Innovate** — generates genuinely new ideas using seven named techniques, then
-  stress-tests each one for survival.
-- **Critique** — pits competing ideas against each other ("prosecution" vs.
-  "defense") and renders a verdict: keep, refine, or kill.
-- **Routelister** — surveys a finished body of work and lists every direction you
-  *could* take next, as typed "routes," without choosing among them.
+5. **Three installer scripts** that copy the recipes into the AI tool's skills folder so they become `/commands`. One targets Claude Code, one targets OpenAI Codex, and one installs a frozen older snapshot side-by-side so two versions can be compared.
 
-On top of these sit **"loop runners"** (commands like `/MVL`, `/MVLw`, `/aMVLwr`).
-A loop runner is a conductor: it runs the disciplines one after another, in a
-fixed order, to drive a single question from raw form to a finished answer. For
-example `/MVLw` runs Surfacing → Sense-making → Decompose → Innovate → Critique,
-in strict sequence, each step feeding the next.
+6. **The Venture Atlas** (`docs/visualisation/`). A Python script reads every inquiry folder, extracts dates, status, relationships and open next-steps, validates the result against a strict schema (with "honesty counters" recording everything it could not parse), and writes one JSON file. A React + three.js browser app then renders the inquiries as a 3D "time road": position is time, terrain height is weekly effort, chains of related inquiries sit as settlements, quiet stretches fold into marked pleats, and a NOW beacon marks the present. It has search, a "last 10 worked" list, an open-routes queue, a replay scrub bar, and a reader that renders any finding and offers a copy-paste command to resume it. Two standalone HTML pages animate a glowing line moving through a cube of dots; they are labelled illustrative and use generated points, not project data.
 
-The mechanism that ties it together is **files on disk**. When you pose a
-question, the runner creates a timestamped folder for that "inquiry." As each
-thinking step finishes, it writes its output to a file in that folder and updates
-a running status file (`_state.md`) that records what's done and what's next.
-Because all progress lives in files, the work can be **paused and resumed later** —
-even in a brand-new session, or by a different AI — just by pointing the command
-back at the folder. When the loop completes, a wrap-up step ("CONCLUDE") compiles
-everything into a single polished answer file (`finding.md`) and tidies the
-working notes into an archive sub-folder. There are also support procedures for
-spinning off a sub-question as a child "branch" inquiry, and for diagnosing why an
-earlier run produced a weak answer.
+## What the project says it is for (from the canon)
 
-## How serious the "recipes" actually are
+The `docs/canon/` folder is the project's statement of intent. Read in full, it says:
 
-This is the part that's only obvious once you read the files. These are not casual
-prompts. Each discipline's specification runs to many hundreds of lines and reads
-like an engineering standard for a single mental operation. They define their own
-vocabulary, a multi-step process, explicit "failure modes" split into two tiers
-(mistakes you can catch in one run vs. slow drifts you only catch over time),
-self-check routines, and a final self-assessment verdict the discipline must emit
-("proceed / flag / re-run"). They even contain rules about their own rules — when
-a new check is allowed to be added, and what evidence is required first.
+- **The long-term aim** is a self-improving thinking system that gradually takes over jobs the human does today: noticing what to work on, valuing it, steering mid-run, remembering across sessions, and deciding when to stop. The canon calls this a "consciousness gradient" with six observable indicators, and is explicit that "the test is capability, not phenomenology." The human's role is meant to shrink level by level, each step earned by recorded evidence.
+- **The bet** is that model intelligence is converging, so the structure of thinking is where advantage lies: give a present-day model the right cognitive structure and a self-improving loop becomes reachable earlier than by waiting for smarter models.
+- **The current era's goal** is called SUSTRALL, "the sustained traversal loop of loops": the runner (the hands), a separate warmed-up session that lists next directions (the eyes), and an orchestrator that selects, dispatches, remembers and assesses (the will). Its acceptance test, "explfine", is to point the system at any bounded readable territory and get back a concept map, per-concept findings, and an honest list of what was left unexplored, with the human contributing only the seed and reviews.
+- **The vocabulary settled in July 2026:** one runner execution is a "traverse"; a purposeful, bounded chain of many traverses is a "venture"; the next milestone is to "reach venture" with the system, not the human, carrying more of the between-run work. A worked example of one venture exists: roughly sixty runs between July 2 and July 10, steered entirely by the human.
+- **A standing rule of suspicion:** anything built to support chaining runs together (memory designs, selection records, dispatch machinery) is not to be trusted or built on until a real venture has exercised it. The canon states this rule applies to itself.
+- **Honest status statements the canon makes about itself:** the human "IS all three layers" of quality awareness today; cross-run "traversal memory" has "zero instances ever"; the real-time hunch layer (`/intuit`) is "an idea: nothing of it is implemented"; the structural checker is "designed, not built"; the loop's own feedback channel was never written to across 109 runs. The canon's own allocation rule therefore says: stop polishing the runner by default, and climb toward the loop-of-loops instead, doing runner work only when a concrete failure fires.
 
-Most strikingly, the specifications are **annotated with their own history**.
-Individual rules cite the specific past investigation that produced them, carry
-notes like "deferred pending three more examples," and reference measured lessons
-from real runs (one rule is justified by an observed "zero out of 109" failure
-count). In other words, the system has been used, over and over, to study and
-sharpen its own thinking instructions — and the edits left a paper trail baked
-into the specs.
+The canon also contains substantial theory: an argument that the project is writing an "executable theory of cognitive regulation" and testing it by running it; an argument that the runner's true lever is selection across runs rather than steering within one; a classification of the whole enterprise as evolutionary search rather than gradient descent; a movement vocabulary relating "paradigms" to steps, chart-changes, steering decisions and itineraries; and a careful clarification of why "when has the system thought enough?" is harder than the classic halting problem. Every one of these is written as a bet with named tests, and the tests have not been run.
 
-## It is mostly pointed at itself
+## What it currently does (working)
 
-The project contains **roughly 128 completed inquiry folders** (the docs claim
-350+ findings overall). Reading them, the overwhelming majority are the system
-investigating and improving *itself* — designing new sub-tools, refining the
-disciplines, settling its own terminology. The finished answers are genuinely
-substantial: structured, multi-section documents that weigh alternatives, record
-what was rejected and why, and lay out build-ready specifications. So the project
-is simultaneously the tool, the tool's main user, and the tool's main subject.
+- The disciplines and the runner have been used heavily: **254 dated inquiry folders** holding roughly **4,600 markdown files**, the latest dated 2026-07-20. Each folder follows the runner's layout. The system works as a pipeline that manufactures written analyses, and it has been used on itself repeatedly to revise its own recipes.
+- The recipes are internally rigorous in their own terms. Each names its inputs and outputs, its failure modes, and a self-assessment. Several enforce a shared design rule, "enumerate, never select", so that listing options and choosing among them are always separate steps.
+- The Python converter and schema work as a matched pair; the schema refuses to write a file whose counts do not match reality. The atlas app loads that file, handles its own errors, and renders correctly against the committed snapshot.
+- The seed-harvesting protocol has a live global index and a finding-template section it feeds.
+- The git-snapshot practice for A/B-comparing old and new versions of a recipe is documented and has been exercised once.
 
-## What it's reaching for (the aspirational part)
+## What it is trying to do and has not done (in progress)
 
-A large body of writing in the `docs/` folder describes an ambition far beyond
-what the working parts deliver today. The stated long-term goal is a
-**self-improving, increasingly autonomous "thinking system"** — one that would
-eventually notice its own gaps, propose its own improvements, judge its own work,
-and need less and less human steering over time. There's a named target for the
-current era (nicknamed "SUSTRALL," a loop that keeps several thinking loops running
-and coordinated), and a planned future tool that would track which suggested
-"routes" have actually been carried out.
+The canon's own status ledger, checked against the files, holds up. Between-run machinery is designed but unbuilt:
 
-The documents are unusually honest about the gap between vision and reality. By
-their own admission, almost none of the autonomous machinery exists yet: today a
-**human still does all the steering** — deciding what to work on, judging whether
-answers are good, and choosing what to do next. The automation currently stops at
-the boundary of a single question; everything *between* questions is still manual.
-Several centerpiece ideas (a quality-judging component, a memory that spans across
-inquiries, an autonomous orchestrator) are explicitly marked "designed, not built"
-or "idea only."
+- The `articulate_warm` step exists as a discipline, and the **installed** copy of the runner (in the user's skills folder) wires it into the pipeline as a "Warm" stage. The **repository's** copy of the runner never mentions it. The live runner is ahead of the repo, and the edit was never committed.
+- The Claude installer does not install `articulate_warm`, `paradigm_sweeper`, or the seed-harvester protocol, though all exist and two are installed on this machine. Installation has been happening by hand.
+- The runner calls a structural checker script (`tools/structural_check.sh`) that does not exist anywhere in the repo. The runner tolerates its absence by asking the AI to check manually.
+- The observation-feedback file the runner prompts for at the end of every run has never been created. The formal specification of "meaningful traversal" that several canon docs defer to (`devdocs/spec/meaningful_traversal.md`) does not exist either.
+- The reference specifications show layered growth: notes stacked onto older text, phrases like "forthcoming" pointing at sections that already exist, mismatched counts ("seven modes" where nine are listed; "five operations" where six are numbered), two competing phase numberings inside sense-making, and a critique spec that points at failure modes it never adopted. None of this breaks the recipes, but they are working drafts.
+- The atlas snapshot is from 2026-07-12 and covers 231 inquiries; there are now 254. Regenerating it is a one-command step that has not been run.
 
-## The general shape
+## What looks stale or abandoned
 
-It's best described as a **prompt-engineering / cognitive framework** — or more
-vividly, an "operating system for AI reasoning" — shipped as plain-text files. The
-delivery mechanism is a CLI-style install script; the runtime is whatever AI tool
-you've installed it into; the "memory" is a growing tree of Markdown files on disk.
-
-## Honest assessment of state
-
-- **Working and heavily used:** the seven disciplines, the loop runners, the
-  folder-based inquiry/resume system, and the wrap-up/archiving flow. These are
-  mature and have been exercised hundreds of times, on real (if self-directed)
-  problems.
-- **Stale around the edges:** the two installers have already drifted apart — the
-  Codex one still tries to install a "navigation" skill and a "resume" protocol
-  that have since been retired (they now live only in a `non-active/` folder). So
-  the Codex install path looks out of date relative to the Claude one.
-- **Cluttered from fast iteration:** there's a lot of sediment — folders named
-  `non-active`, `deprecated`, `archived_skills`, plus many "old" copies of files
-  (`README_old.md`, `_old`, `_old2`, "copy" files). This is the normal residue of
-  a fast-moving solo research project, not a sign of abandonment; the active set
-  is clearly distinguished from the retired set.
-- **Mostly aspirational at the top:** the grand vision of an autonomous,
-  self-improving mind. The foundation (rigorous, pausable, resumable structured
-  thinking) is real and impressive; the autonomy layer built on top of it is, for
-  now, a detailed plan rather than running code.
+- **The Codex installer is broken.** It references skills and a protocol that now live only in the retired folder.
+- **The GitHub Actions workflow publishes a Python package to PyPI on release**, but there is no package definition anywhere. It is a template leftover.
+- **A retired-material folder** (`cognitive_harness/non-active/`) holds a whole previous generation of the design, about twenty files: four earlier runners that were strict subsets of `traverse`; an `explore` discipline replaced by `surfacing`; `comprehend` and `reflect`; `navigation` and its successor `routeman` (both replaced by `routelister`); a first attempt at the cross-run layer (`meta-loop`, human-selected, never revived); and a family of protocols (artifact materialization, outcome review, an "alignment control" contract, multi-resolution navigation, resume, spec governance). Archive notes say they are kept only so old findings that cite them stay readable. Notably, the retired navigation "warm-up" files are project-summary and architecture-trace prompts of the same kind as the one that produced this document, and one of them explicitly says not to use this skill.
+- **The canon has drifted from the files.** Several live canon pages still describe the retired state: the worker-loop page says two runners are shipped, the naming page says the old runners "coexist", the folder-convention page names old runners as inquiry-creators, and the discipline taxonomy and discipline list still present `routeman` as the boundary discipline. The protocols page refers to an `/inquiry` command, a `/wayfinding` discipline, a `commands/` folder, and a metadata hook, none of which exist. The canon itself flags four of these spots as stale and lists the cleanup as a pending user-approved edit. Three versions of the north-star document sit side by side (old, old2, current), as do two versions of the thinking-space model. Several canon files are verbatim copies of inquiry findings, complete with model-name frontmatter, rather than curated concept pages.
+- Three skill files carry small uncommitted path edits with `.bak` backups dated 2026-09-11, the most recent activity in the project. A stray folder named `traverse copy` and three "copy" files inside the harness are pre-edit backups that duplicate their originals except for one paragraph each.
+- The browser app's `node_modules` (about 2,350 files) is committed to git, and the Python side depends on `pydantic` with no requirements file declaring it.
+- Six loose files in the repo root (`a.md` through `h.md`) are transcribed thinking-aloud notes, not code or docs.
 
 ## Who would use this and why
 
-The audience is essentially **the author and like-minded power-users of AI coding
-assistants** — someone who wants their AI to attack hard, fuzzy problems with a
-disciplined, auditable process instead of an off-the-cuff answer, and who wants the
-AI's reasoning saved, reviewable, and resumable rather than evaporating when the
-chat window closes. It would also interest researchers studying how to make AI
-reasoning more rigorous and, eventually, more self-directed. It is a
-research-and-personal-tooling project, not a consumer product.
+Practically, **one person**: the author, who uses an AI coding assistant as a research partner and wants its reasoning to follow a fixed, auditable procedure rather than free-form chat. The inquiry corpus is that person's working notebook, and the canon is their evolving theory of what the notebook is for. The atlas exists so they can see, at a glance, what they have been working on, what went quiet, and which threads have open next-steps. A second audience, other people installing the recipes into their own AI tool, is what the installers are for, but the stale Codex installer and the hand-installed extras suggest that path is not currently maintained.
+
+## The general shape
+
+- **Not** a web service, library, or API. There is no server, no database, no tests, no runtime code in the core.
+- The core is a **prompt-engineering toolkit**: markdown files executed by a language model inside Claude Code, invoked as slash-commands, producing markdown files in a fixed folder structure.
+- The side project is a **static browser app** (Vite + React + three.js) fed by a **one-shot Python converter**. It runs locally from a generated JSON file; nothing is deployed.
+- The repository is mostly output: of roughly 7,300 tracked files, about 5,000 are markdown and the majority of those are generated inquiry records.
+
+## Where things stand (dates)
+
+| Event | Date |
+|---|---|
+| First commit | 2025-05-10 |
+| Runner consolidated to `traverse` alone | 2026-06-14 |
+| "Venture" vocabulary settled in canon | 2026-07-10 to 07-19 |
+| Most recent inquiry folder | 2026-07-20 |
+| Atlas data snapshot | 2026-07-12 |
+| Last commit | 2026-08-27 |
+| Uncommitted edits (with backups) | 2026-09-11 |
+
+The project is alive but slowing: heavy use through mid-July 2026, a single commit in late August, and a few uncommitted line edits in September. Nothing indicates it is finished. The runner and disciplines are usable now. The self-steering layer they are built to feed remains unbuilt, and by the canon's own account, building it is the next thing to do.

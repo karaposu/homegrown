@@ -75,7 +75,6 @@ Routelisting is a **self-contained individual**. Its definition references only 
 | **goal** | The directional bias relative to which concepts count as routes. Required, but may be fuzzy ("help me see the landscape" is valid). Exogenous. |
 | **concept** | A teleological-or-epistemic unit in the territory: engaging it either *advances the goal* or *sharpens the understanding the goal rests on*. Abstractness is no bar. |
 | **manifestation** | One artifact-level appearance of a concept (a file, a paragraph, an implementation, a version). |
-| **basis** | What a route was perceived *from* — the instruction, correction, observation, definition, or premise it materially relies on; shown on the record as a Basis entry (§5.2.3). Distinct from *engagement* (what was later chosen or done with a route), which routelisting never records. |
 | **concept-identity** | The invariant a set of manifestations share; routelisting's unit. |
 | **route** | A concept-identity cast as a prescriptive direction toward the goal, carrying a type-signature + guidance. |
 | **route-type** | The three-axis signature `grain × kind × engagement-type` (§2.1). |
@@ -143,10 +142,6 @@ A run is three steps.
 
 Perceive the goal-relevant territory, drawing candidate items into attention (a relevance-biased traversal). Routelisting *perceives by enumerating* — it draws from what is present (or candidate-present) in the territory; it does not invent items the territory does not contain. The sweep is biased by the goal: items that bear on advancing or sharpening the goal are drawn in; items that bear on neither are candidates for the Excluded section.
 
-*Refinement note (applies at §3.1 Sweep — the never-invent rule, at the record):*
-
-**A route's basis is a manifestation; inventing its location or its words is inventing a manifestation.** The sweep draws routes from what is present; the record shows *what each route was perceived from* (the Basis entry, §5.2.3). So the rule that governs the sweep governs the entry: **never invent** a link, an identifier, a timestamp, a transcript location, a quotation, or a claim that a source was inspected. A pointer more precise than a bare path — a section, a line, a message location — and any quotation require the source **in view during this run**; a bare path may be cited from knowledge only if it resolves. Material that was in view only as conversation is citable only as an excerpt (which is its own evidence) or as *not recovered* with the reason. When precision and honesty conflict, honesty wins — the precision forms in §5.2.3 are subordinate to this note.
-
 ### 3.2 Individuate — the heart of the discipline
 
 Individuation is the judgment **"are these manifestations the same concept, or different ones?"** It is:
@@ -209,7 +204,6 @@ Three guarantees:
 | 4 | **Goal-loss** | The run enumerates without a goal-bias → an undirected concept dump | Restore the goal; re-bias the sweep + the engagement-typing. |
 | 5 | **Type-misassignment** | A route's `kind` or engagement-type does not fit (e.g., a goal-sharpening move typed teleological) | Re-type against the membership test (§2.2): is the value partitionable by `kind`, and does the verb match the move? |
 | 6 | **Index-drift** | The cross-run index diverges from the territory (stale entries treated as live; missed re-confirmation) | Let perception govern (§3.5): re-confirm against the current sweep; flag non-re-confirmed entries stale, do not delete. |
-| 7 | **Basis-unrecoverable** | A route materially relies on an instruction, correction, observation, definition, or premise whose source has neither a usable pointer nor a preserved excerpt (§5.2.3) | Keep the route (losing a route is the worse failure, §4.4); mark the entry *not recovered* with the reason and the material actually available; count it (§5.4); raise FLAG (§4.5). Never close the gap by invention (§3.1 note). |
 
 ### 4.3 LAYER 2 — Identity failure modes
 
@@ -232,7 +226,7 @@ Three guarantees:
 
 At the end of a run, routelisting reports one of:
 - **PROCEED** — territory swept at identity resolution; no LAYER 1 flags; output ready.
-- **FLAG** — output produced but a flag was raised (a frontier-signal for an uncovered sub-territory; an over-coverage concern; an uncertain individuation worth review; a not-recovered basis on a material reliance — §4.2 mode 7); the consumer should review.
+- **FLAG** — output produced but a flag was raised (a frontier-signal for an uncovered sub-territory; an over-coverage concern; an uncertain individuation worth review); the consumer should review.
 - **RE-RUN** — output incomplete or structurally suspect (goal was lost mid-run; the territory binding was wrong); re-run with adjusted parameters.
 
 ---
@@ -241,15 +235,12 @@ At the end of a run, routelisting reports one of:
 
 **A run always produces TWO files, and routelisting writes both itself — on every run, standalone included:** the per-run **`routelister.md`** Route-Map (§5.1) and the persistent **`_route.md`** state file (§5.3). Both are core output, not optional. Because routelisting is *cumulative* (each run reads the prior state to enrich its map) **and** *standalone* (it runs on any territory, frequently with nothing else around it), it is the only component guaranteed present on every run — so it owns and writes its own persistent state. Nothing external (no runner, no surrounding process) can be relied on to write `_route.md`, because routelisting often runs without one.
 
-**The map is written for a reader who did not see the run.** Both files are read later, by readers who were not present when the map was made. So every route must be recoverable from the artifact plus its accessible sources — what the route rests on, what that source is used to establish, and which part is the author's own reading (§5.2.3). This is a property of the artifact, not a reference to any consumer.
-
 ### 5.1 `routelister.md` — the Route-Map (per-run output)
 
 Contains:
 - a **Map Header** — identity count + high-priority count + **essential-count** (the number of `core` routes — the "what can't I skip?" triage number, which a raw high-priority count cannot give, since Priority fuses loudness with coreness);
 - a **Route Index** — a scannable table summarizing each route by ordinal + Direction + engagement-type + Priority + Essentiality + a `✓` done/explored column (included when the route count exceeds the index-threshold, default 10). The index is **lean** — it shows only fields that *vary and inform*: `grain` is omitted (it is constant across a single-grain map) and `kind` is omitted (it is derivable from engagement-type); both remain in the record's type-signature (§2.1), they are simply not displayed. **Priority and Essentiality are both shown** — they are the two *triage attributes* (how-loud and how-load-bearing), and each carries information the other does not (a quiet route can be `core`; §5.2.2); `Essentiality` earns its column by the same "vary and inform" rule that omits `grain`/`kind`. **Confidence is not shown** in the index — it is route formed-ness, not a triage signal — it stays on the record. `Direction` is a **self-explanatory noun-phrase** (understandable without opening the record). The `✓` column is a **consumer-filled done/explored mark**: routelisting authors it **empty and never reads it** — which routes were run is not routelisting's to track (it enumerates the field of routes; a consumer records engagement), so the column is filled by the consumer (or ticked by hand), never by routelisting. The mark is **durable because a per-run map over a *concluded* territory is a static piece** — no longer re-surveyed, so not regenerated, so a tick on it persists; on a still-active territory a fresh run re-authors the map with the column empty, and done-state lives with whatever consumer tracks it, not on the transient map. (This is what keeps the mark identity-clean: routelisting neither authors nor reads it, so "enumerate, don't track" holds even though the column rides its output — §4.3.);
 - the **per-route records** (§5.2);
-- *(optional)* a **Sources** list — a map-level, labelled list (`[S1] …`) of the sources that two or more routes rely on, so their Basis entries cite a label instead of repeating a long pointer (§5.2.3); labels are per-map and are regenerated with the map;
 - an **Excluded section** — notable candidate-concepts considered and rejected, *with reasons* — never silently dropped (this is where "engaging it does nothing toward the goal" non-routes go);
 - **Telemetry** (§5.4).
 
@@ -260,13 +251,13 @@ Each route record carries:
 | Group | Fields |
 |---|---|
 | **Route Identity** | Direction (a self-explanatory noun-phrase) · Goal · engagement-type *(grain + kind belong to the type-signature §2.1 but are not re-displayed when constant or derivable from engagement-type)* |
-| **Route Meaning** | **Move** (what engaging the concept does) · **Lands** (the state it results in) · *(optional)* **Touches** (the concrete artifacts / identifiers it acts on, each with its load-bearing qualifier) · *(when the route materially relies on a source)* **Basis** (what it was perceived from — a pointer or a marked excerpt; §5.2.3) |
+| **Route Meaning** | **Move** (what engaging the concept does) · **Lands** (the state it results in) · *(optional)* **Touches** (the concrete artifacts / identifiers it acts on, each with its load-bearing qualifier) |
 | **Route Reasoning** | WHY — a *line of sight* that climbs from the local (already in Move/Lands) to **what the end goal gains** (the goal rung, mandatory), with an optional neighbourhood rung between (§5.2 WHY refinement note) |
 | **Route Attribution** | Priority · Confidence · Essentiality *(all attributive — perceived salience / formed-ness / goal-coreness; not a winner-ranking; §5.2.2)* |
 | **Route Guidance** | Guidance Mode (none / compact / full / expand-on-drill) · Pointers, each with its own WHY · *(on DEVELOP/CONSOLIDATE routes) an optional `Meaning-gaps:` sub-block (§5.2.1)* |
 | **Route Depth-link** | a *within-concept* pointer to this identity's own depth run (if drilled) + a compact depth-signal |
 
-Worked example (the aligned form here is illustrative, not a layout requirement — **in a Markdown map, write one field per list item**, so that a renderer keeps each field on its own line; nested items such as Guidance pointers and Meaning-gaps sit under their field):
+Worked example:
 
 ```
 Direction:        the authentication mechanism
@@ -274,7 +265,6 @@ Goal:             a hardened, understood auth path
 engagement-type:  DIAGNOSE
 Move:             examine why auth has its current shape
 Lands:            a clear account of why auth is shaped as it is — the basis for hardening it
-Basis:            README § Authentication — "tokens are issued by the gateway" (defines the current token path)
 WHY:              understanding the current mechanism is what the hardened-auth goal rests on — without it the goal can't be reached safely
 Priority:         HIGH    Confidence: MED    Essentiality: core
 Guidance Mode:    compact
@@ -294,8 +284,6 @@ Touches: the per-item mode flag (← a global default) · the dispatch branch (a
 ```
 
 A reader gets the whole route from `Move` + `Lands` (two plain lines) and drops into `Touches` for the identifiers.
-
-**Move has a ceiling of its own.** Move is the action in one to three plain sentences. When the action has parts, the parts are Touches entries with their qualifiers; when the parts need their own guidance, that is a depth run reached by Depth-link, not a longer Move.
 
 *Refinement note (applies at §5.2 — the Guidance field):*
 
@@ -361,43 +349,6 @@ It is decided in the same framing glance that assigns Priority/Confidence (§3.3
 
 Essentiality is the *rating*; its *reasoning* is the WHY goal rung — what the goal gains (§5.2 WHY refinement note). The two are read together: the token says *whether* the goal needs the route, the goal rung says *what* the goal gains.
 
-### 5.2.3 The Basis entry (what a route was perceived from)
-
-**The map is read by someone who did not see the run (§5 preamble), so a route whose basis lives only in the run is a route the reader cannot check.** Routelisting perceives routes *from* the territory (§3.1); the Basis entry shows *what it perceived each route from* — the instruction, correction, observation, definition, or factual premise the route materially relies on. It is the record-side counterpart of perceive-by-enumerating: what was drawn from the territory must be findable in it.
-
-**When.** A route carries one Basis entry for each source it *materially* relies on — "materially" meaning that removing the source would change the route's Move, its Lands, its WHY, or its inclusion in the map. A route whose basis is a file already named in its Touches needs no entry (no redundant capture); the artifact's own `## User Input` is pointed into, never re-copied. Over an artifact-fed territory most routes carry no entry at all.
-
-**Shape.** One entry per material reliance, **up to three lines — a ceiling, not a floor.** A pointer is one line. An excerpt may take the relevant sentence, the speaker or source kind, and the surrounding context needed to interpret it — never the conversation. The entry sits after Touches (after Lands when Touches is absent); **basis never leads a record** — the prescription (Move / Lands) stays first. Each entry has three parts and one optional part:
-
-1. **The source.** A **pointer** when a durable original exists in the project record or at an accessible location — `path § section` · `URL § section` · this artifact's `## User Input ¶n` · the inquiry's `_branch.md § Source Input`. The forms are whatever the territory itself provides; never a reference to a runner, protocol, or process (§1.4). An **excerpt** when no durable original exists (a conversation turn; a passage in view only during the run): the speaker or source kind (user · assistant · a named document · a memory file) + the relevant sentence + context.
-2. **The mark** — exactly one. Quotation marks for verbatim text. `paraphrase:` when only a summary is available — never present a summary as the source's words. `not recovered —` plus the reason and the material actually available, when the original cannot be shown. **An attribution without a mark is non-compliant.**
-3. **The role clause** — a trailing parenthetical opening with a verb, saying what the source is used to establish: *(establishes …)* · *(records …)* · *(corrects …)* · *(defines …)* · *(supports …)*. It is the same reasoned-parenthetical shape as a Touches qualifier or a Guidance `(bc …)` pointer, read by its position on the Basis line.
-4. **`as-of <date | version>`** — only when the route's claim is about what the source said at a time (a state claim), not merely that it exists. That is the whole criterion; there is no general version tracking.
-
-**Source-said is not source-true.** A Basis entry proves the source said something; it does not verify the claim. The mark never adjusts **Confidence** (perceived formed-ness, §1.5) — recoverability and formed-ness vary independently, and a limitation is shown by the mark and the map's FLAG, never by a rating.
-
-**Honesty governs precision (§3.1 note).** Precision beyond a bare path, and any quotation, require the source in view during this run. When the original cannot be shown, say so: the route is kept (§4.4), the entry is marked *not recovered*, the count is reported (§5.4), and the map's verdict is FLAG (§4.2 mode 7).
-
-**Reuse.** When two or more routes rely on one source, the map may carry a **Sources** list (§5.1) with per-map labels that entries cite; labels are regenerated with the map and never appear in `_route.md` (§5.3). Every entry runs **route → source**; an entry never names another route — a shared source is a compactness device, not a stored relation (§1.3).
-
-**Forward-only.** Maps written before this rule are not rewritten under it. A consumer may backfill a *reference* on an older map's record, exactly as it fills the ✓ cell (§5.1) — never reconstructed words.
-
-**Container.** Structured text under the record, as with `Meaning-gaps:` (§5.2.1); the same promotion rule applies — a text convention until a consumer needs reliable structured extraction.
-
-Worked entries (the four forms, in the §5.2 example's world):
-
-```
-Basis: README § Authentication — "tokens are issued by the gateway" (defines the current token path)
-Basis: user, in conversation — "harden the issuance path first; the refresh path can wait"
-       (records the scope restriction; the turn exists in no project file)
-Basis: paraphrase: an earlier note summarised the audit as finding issuance the weak point
-       (supports the observation; the original wording was not kept)
-Basis: not recovered — the reviewer's correction was given in conversation and not preserved;
-       what is available is `## User Input ¶2`, which names the issuance path (supports the scope only)
-```
-
-The first is a pointer (one line). The second is an excerpt — the only copy of that turn — within the three-line ceiling. The third marks a paraphrase as a paraphrase. The fourth is the honest limitation: the route stays, the entry says what is and is not available, and the map's verdict is FLAG.
-
 ### 5.3 `_route.md` — the identity-set / index (the persistent concept-map)
 
 The persistent state file routelisting writes (and the next run loads). A registry: `{ identity → { own-depth pointer, depth-signal, individuation history, first-seen / last-touched } }` plus an invocation log. This is the project's persistent concept-map — the same object the listing builds, the output persists, and the cross-run model reads (§3.5). Routelisting writes `_route.md` itself on every run (standalone included; see §5 intro).
@@ -406,8 +357,6 @@ The persistent state file routelisting writes (and the next run loads). A regist
 
 **The content boundary that keeps it within the discipline:** `_route.md` records **only this discipline's own concept-map** — identities and their *within-concept* depth/individuation/timestamps. It records **no process or control-flow state** of any kind (no notion of cycles, verdicts-over-time, terminate/widen/merge/revisit, or any "what was done across a larger process"). Routelisting writes and reads only its own `_route.md`; it does not read or write any other component's state file. (This is what keeps the discipline self-contained per §1.4 — `_route.md` is the discipline's own memory, not a process's memory.)
 
-**Source references in the index — reachability, not a registry.** The index holds no source content by default: a route's basis lives on the per-run map (§5.2.3), and the invocation log names each run, so a basis is reachable by run. A manifestation row MAY carry a *found-in* reference — a location (`<map> R<n> Basis`, or the source's own pointer), never a label, an excerpt, or a registry entry — and MUST carry one when the identity's basis is no longer reachable through a map named in the log: the identity was re-individuated (§3.2), or the map was re-authored on a still-active territory (§5.1). A found-in reference whose target no longer resolves is flagged stale, not deleted (§3.5). The two boundaries above hold unchanged: a found-in reference is a fact about this identity's own manifestation, never a value that is another concept, and never process state.
-
 ### 5.4 Telemetry
 
 Reported with the output:
@@ -415,7 +364,6 @@ Reported with the output:
 - identities enumerated; routes at each `kind`; high-priority count; essential-count (routes at each `Essentiality`);
 - individuations made; uncertain-individuations flagged; stale entries flagged;
 - convergence status; frontier flags emitted;
-- basis entries: pointer / excerpt / paraphrase / not-recovered counts, and routes needing none (§5.2.3);
 - LAYER 1 / LAYER 2 failure modes checked;
 - self-assessment verdict (PROCEED / FLAG / RE-RUN).
 
@@ -443,13 +391,13 @@ If a `_route.md` index exists for this territory + goal, LOAD it (scoped to the 
 
 - **Sweep** the goal-relevant territory (perceive by enumerating; do not invent).
 - **Individuate** the swept items into concept-identities — goal-relative, signal-guided, lean-to-split, incremental (§3.2). Re-confirm loaded identities or start new ones; flag non-re-confirmed loaded identities **stale**.
-- **Frame** each identity as a typed route (`grain × kind × engagement-type`), with Move/Lands (+ optional Touches), WHY (a *line of sight* that climbs to what the goal gains, §5.2), attributive Priority/Confidence/Essentiality (§5.2.2), guidance (§5.2), and — where the route materially relies on a source — a **Basis** entry (§5.2.3: a pointer or a marked excerpt, never invented — §3.1 note). Route candidate-concepts that advance/sharpen nothing into the **Excluded** section with reasons.
+- **Frame** each identity as a typed route (`grain × kind × engagement-type`), with Move/Lands (+ optional Touches), WHY (a *line of sight* that climbs to what the goal gains, §5.2), attributive Priority/Confidence/Essentiality (§5.2.2), and guidance (§5.2). Route candidate-concepts that advance/sharpen nothing into the **Excluded** section with reasons.
 
 Loop the sweep until convergence (§3.4).
 
 ### 4. PERSIST (cross-run) + Emit Output
 
-PERSIST — routelisting writes **both** files itself, every run (standalone included): save the updated index + invocation log to **`_route.md`**, and write the **route-map** to **`routelister.md`** (Map Header → Route Index → per-route records → optional Sources → Excluded → Telemetry). Enrich-not-dump (depth-signals, not manifestation dumps); stale-flag-not-delete (live routes in the map; stale entries in `_route.md`). `_route.md` holds only the within-concept concept-map — never process/control-flow state (§5.3).
+PERSIST — routelisting writes **both** files itself, every run (standalone included): save the updated index + invocation log to **`_route.md`**, and write the **route-map** to **`routelister.md`** (Map Header → Route Index → per-route records → Excluded → Telemetry). Enrich-not-dump (depth-signals, not manifestation dumps); stale-flag-not-delete (live routes in the map; stale entries in `_route.md`). `_route.md` holds only the within-concept concept-map — never process/control-flow state (§5.3).
 
 Save the route-map as a markdown file (unless differently stated in additional instructions):
 - **If the input was a path** — save in the same folder as the input.
@@ -463,4 +411,4 @@ Report **PROCEED** / **FLAG** / **RE-RUN** with the telemetry from §5.4.
 
 ---
 
-**Reference loading during execution.** When recognizing failure modes — LAYER 1 (Over-merge, Under-coverage, Wrong-grain, Goal-loss, Type-misassignment, Index-drift, Basis-unrecoverable) and LAYER 2 (Selection-creep, Process-coupling, Description-collapse, Manifestation-dump) — consult §4 for full descriptions and correctives. The vocabulary (territory / goal / concept / manifestation / concept-identity / route / route-type / grain / kind / engagement-type / individuation / index / attributive Priority-Confidence; the three axes; the nine engagement-types under two kinds; the two run modes) is canonically defined above.
+**Reference loading during execution.** When recognizing failure modes — LAYER 1 (Over-merge, Under-coverage, Wrong-grain, Goal-loss, Type-misassignment, Index-drift) and LAYER 2 (Selection-creep, Process-coupling, Description-collapse, Manifestation-dump) — consult §4 for full descriptions and correctives. The vocabulary (territory / goal / concept / manifestation / concept-identity / route / route-type / grain / kind / engagement-type / individuation / index / attributive Priority-Confidence; the three axes; the nine engagement-types under two kinds; the two run modes) is canonically defined above.
