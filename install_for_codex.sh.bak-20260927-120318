@@ -23,17 +23,20 @@ SKILLS_WITH_REFS=(
   "td-critique:td-critique.md"
   "surfacing:surfacing.md"
   "decompose:decompose.md"
+  "navigation:navigation.md"
 )
 
-# Loop runner skills (no references/ folder).
-# MVL and MVLw were retired (superseded by /traverse) and now live in cognitive_harness/non-active/;
-# they are deliberately not installed. This list is empty until a runner is ported to Codex.
-SKILLS_NO_REFS=()
+# Loop runner skills (no references/ folder)
+SKILLS_NO_REFS=(
+  "MVL"
+  "MVLw"
+)
 
 # Supporting protocols (loaded by runners; not directly invoked)
 PROTOCOLS=(
   "branch_inquiry.md"
   "conclude.md"
+  "resume.md"
 )
 
 # --- Source detection: local repo or remote download ---
@@ -57,7 +60,7 @@ if [ ! -d "$HOMEGROWN_DIR" ]; then
     curl -fsSL "$RAW_URL/cognitive_harness/$skill/references/$ref"   -o "$HOMEGROWN_DIR/$skill/references/$ref"
   done
 
-  for skill in ${SKILLS_NO_REFS[@]+"${SKILLS_NO_REFS[@]}"}; do
+  for skill in "${SKILLS_NO_REFS[@]}"; do
     mkdir -p "$HOMEGROWN_DIR/$skill"
     # URL-encode '+' as %2B for safety (some HTTP clients/servers treat literal '+' as space)
     url_skill="${skill//+/%2B}"
@@ -166,7 +169,7 @@ for entry in "${SKILLS_WITH_REFS[@]}"; do
   fi
 done
 
-for skill in ${SKILLS_NO_REFS[@]+"${SKILLS_NO_REFS[@]}"}; do
+for skill in "${SKILLS_NO_REFS[@]}"; do
   src="$HOMEGROWN_DIR/$skill/SKILL.md"
   if [ -f "$src" ]; then
     # MVL references cognitive_harness/protocols/<file>.md — pass true to apply protocol-path substitution
@@ -196,7 +199,8 @@ echo ""
 echo "Done. Installed $installed skills + $proto_count protocols to $TARGET"
 echo ""
 echo "Skills (invoke with \$skill-name in Codex):"
-echo "  \$sense-making, \$innovate, \$td-critique, \$surfacing, \$decompose"
+echo "  \$MVL, \$MVLw, \$sense-making, \$innovate, \$td-critique,"
+echo "  \$surfacing, \$decompose, \$navigation"
 echo ""
 echo "Protocols (loaded by skills, not directly invoked):"
 for proto in "${PROTOCOLS[@]}"; do
